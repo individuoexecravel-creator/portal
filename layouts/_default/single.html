@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ if .Params.image }}
+<header class="materia-topo">
+  <div class="wrap mt-in">
+    <div class="mt-texto">
+      <a class="rotulo" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}{{ with .Params.periodo }} · {{ . }}{{ end }}</a>
+      <h1>{{ .Title }}</h1>
+      <p class="linha-fina">{{ .Description }}</p>
+      <p class="meta">{{ .ReadingTime }} min de leitura</p>
+    </div>
+    <div class="mt-img"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt=""></div>
+  </div>
+</header>
+{{ else }}
+<header class="wrap cabeca-lista"><h1>{{ .Title }}</h1></header>
+{{ end }}
+
+<div class="wrap materia">
+  {{ with .Params.ficha }}
+  <aside class="ficha">
+    <h2>Ficha do caso</h2>
+    <dl>
+      {{ range . }}<dt>{{ .item }}</dt><dd>{{ .valor | markdownify }}</dd>{{ end }}
+    </dl>
+  </aside>
+  {{ end }}
+  <article class="texto">{{ .Content }}</article>
+</div>
+
+{{ if .Params.image }}
+{{ $rel := where (where site.RegularPages "Section" .Section) "Permalink" "ne" .Permalink }}
+<section class="wrap bloco sec-{{ .Section }}">
+  <div class="bloco-topo"><h2>Outros casos</h2><a href="{{ .CurrentSection.RelPermalink }}">Ver todos →</a></div>
+  <div class="grade">{{ range first 4 (shuffle $rel) }}{{ partial "card.html" . }}{{ end }}</div>
+</section>
+{{ end }}
+{{ end }}

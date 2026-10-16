@@ -1,0 +1,37 @@
+{{ define "main" }}
+{{ $todas := where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") }}
+<section class="abertura" style="--banner:url('{{ "img/banner.jpg" | relURL }}')">
+  <div class="wrap">
+    <p class="sobretitulo">{{ site.Params.slogan }}</p>
+    <h1>Os casos que o poder<br>preferia esquecer</h1>
+    <p class="linha">{{ len $todas }} casos contados do início ao fim, com nomes, valores, datas e o que a Justiça decidiu.</p>
+  </div>
+</section>
+
+{{ with index $todas 0 }}
+<section class="wrap destaque-home">
+  <a class="dh-img" href="{{ .RelPermalink }}"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt=""></a>
+  <div class="dh-texto">
+    <span class="rotulo">Mais recente</span>
+    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+    <p>{{ .Description }}</p>
+    <a class="ler" href="{{ .RelPermalink }}">Ler o caso completo →</a>
+  </div>
+</section>
+{{ end }}
+
+{{ range slice "nova-republica" "internacional" }}
+  {{ $s := site.GetPage (print "/" .) }}
+  {{ $p := where site.RegularPages "Section" . }}
+  <section class="wrap bloco sec-{{ . }}">
+    <div class="bloco-topo">
+      <h2>{{ $s.Title }}</h2>
+      <a href="{{ $s.RelPermalink }}">Ver todos ({{ len $p }}) →</a>
+    </div>
+    <p class="bloco-desc">{{ $s.Description }}</p>
+    <div class="grade">
+      {{ range first 8 $p }}{{ partial "card.html" . }}{{ end }}
+    </div>
+  </section>
+{{ end }}
+{{ end }}

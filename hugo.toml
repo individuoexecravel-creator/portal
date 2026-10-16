@@ -1,0 +1,35 @@
+baseURL = "https://individuoexecravel-creator.github.io/portal/"
+languageCode = "pt-br"
+title = "Portal"
+summaryLength = 40
+
+[params]
+  description = "Os grandes escândalos políticos, contados do início ao fim."
+  slogan = "Arquivo de escândalos políticos"
+
+[taxonomies]
+  tag = "tags"
+
+[pagination]
+  pagerSize = 12
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[menus]
+  [[menus.main]]
+    name = "Início"
+    pageRef = "/"
+    weight = 1
+  [[menus.main]]
+    name = "Nova República"
+    pageRef = "/nova-republica"
+    weight = 2
+  [[menus.main]]
+    name = "Internacional"
+    pageRef = "/internacional"
+    weight = 3
+  [[menus.main]]
+    name = "Sobre"
+    pageRef = "/sobre"
+    weight = 4

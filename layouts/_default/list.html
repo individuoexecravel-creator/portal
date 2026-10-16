@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="wrap cabeca-lista">
+  <p class="sobretitulo">{{ len .RegularPages }} casos</p>
+  <h1>{{ .Title }}</h1>
+  {{ with .Description }}<p class="linha">{{ . }}</p>{{ end }}
+</section>
+<section class="wrap">
+  <div class="grade">
+    {{ range .RegularPages }}{{ partial "card.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}
