@@ -5,6 +5,8 @@
     <p class="sobretitulo">{{ site.Params.slogan }}</p>
     <h1>Os casos que o poder<br>preferia esquecer</h1>
     <p class="linha">{{ len $todas }} casos contados do início ao fim, com nomes, valores, datas e o que a Justiça decidiu.</p>
+    <p class="assina">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a></p>
+    {{ partial "redes.html" . }}
   </div>
 </section>
 

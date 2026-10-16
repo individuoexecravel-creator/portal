@@ -7,6 +7,29 @@ summaryLength = 40
   description = "Os grandes escândalos políticos, contados do início ao fim."
   slogan = "Arquivo de escândalos políticos"
 
+  [params.autor]
+    nome = "Indivíduo Execrável"
+    funcao = "Jornalista em formação · investigação política e criminal"
+    bio = "Jornalista em formação, dedicado à investigação de casos políticos e criminais. Reconstrói cada escândalo a partir de processos judiciais, relatórios de CPIs e reportagens da época, com um compromisso: mostrar o que aconteceu, quem estava envolvido e o que a Justiça decidiu, sem esconder absolvições, prescrições ou anulações."
+
+  # Redes sociais: cole o link de cada perfil entre as aspas.
+  # Redes com o link vazio não aparecem no site.
+  [[params.redes]]
+    nome = "Instagram"
+    url = "https://www.instagram.com/individuo_execravel/"
+  [[params.redes]]
+    nome = "TikTok"
+    url = "https://www.tiktok.com/@indivduo.execrvel"
+  [[params.redes]]
+    nome = "YouTube"
+    url = "https://www.youtube.com/@IndividuoExecravel"
+  [[params.redes]]
+    nome = "X"
+    url = "https://x.com/indiv_execravel"
+  [[params.redes]]
+    nome = "Threads"
+    url = "https://www.threads.com/@individuo_execravel"
+
 [taxonomies]
   tag = "tags"
 

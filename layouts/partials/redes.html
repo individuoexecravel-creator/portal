@@ -1,0 +1,6 @@
+{{ $redes := where (site.Params.redes | default slice) "url" "ne" "" }}
+{{ with $redes }}
+<ul class="redes">
+  {{ range . }}<li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ .nome }}</a></li>{{ end }}
+</ul>
+{{ end }}

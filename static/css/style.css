@@ -140,3 +140,25 @@ a { color: inherit; }
   .topo nav { gap: 14px; }
   .topo nav a { font-size: .74rem; letter-spacing: .07em; }
 }
+
+/* Autor e redes */
+.redes { list-style: none; padding: 0; margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.redes a { display: inline-block; padding: 7px 14px; border: 1px solid var(--linha); font: 600 .75rem/1 var(--titulo); text-transform: uppercase; letter-spacing: .1em; color: var(--texto); text-decoration: none; transition: border-color .2s, color .2s; }
+.redes a:hover { border-color: var(--acento); color: var(--acento); }
+.abertura .assina { margin: 18px 0 0; font: 600 .85rem/1 var(--titulo); text-transform: uppercase; letter-spacing: .12em; color: var(--suave); }
+.abertura .assina a { color: var(--texto); text-decoration: none; border-bottom: 2px solid var(--vermelho); }
+.autor { display: flex; gap: 22px; align-items: flex-start; margin-top: 3em; padding: 26px 24px; background: var(--fundo-2); border: 1px solid var(--linha); border-top: 4px solid var(--acento); }
+.autor img { width: 88px; height: 88px; border-radius: 50%; flex-shrink: 0; }
+.texto .autor h2 { margin: 6px 0 2px; font-size: 1.5rem; }
+.texto .autor h2::after { display: none; }
+.autor .autor-funcao { margin: 0 0 10px; font: 500 .8rem/1.3 var(--titulo); text-transform: uppercase; letter-spacing: .08em; color: var(--suave); }
+.autor p { margin: 0; font-size: 1rem; line-height: 1.6; }
+.rodape a { color: var(--texto); }
+.rodape .redes { margin-top: 14px; }
+.rodape-fim { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--linha); font-size: .8rem; }
+@media (max-width: 560px) {
+  .autor { flex-direction: column; gap: 14px; }
+  .autor img { width: 64px; height: 64px; }
+}
+.texto .redes { padding-left: 0; }
+.texto .redes li { margin: 0; }

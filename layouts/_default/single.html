@@ -6,7 +6,7 @@
       <a class="rotulo" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}{{ with .Params.periodo }} · {{ . }}{{ end }}</a>
       <h1>{{ .Title }}</h1>
       <p class="linha-fina">{{ .Description }}</p>
-      <p class="meta">{{ .ReadingTime }} min de leitura</p>
+      <p class="meta">Por {{ site.Params.autor.nome }} · {{ .ReadingTime }} min de leitura</p>
     </div>
     <div class="mt-img"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt=""></div>
   </div>
@@ -24,7 +24,10 @@
     </dl>
   </aside>
   {{ end }}
-  <article class="texto">{{ .Content }}</article>
+  <article class="texto">
+    {{ .Content }}
+    {{ partial "autor.html" . }}
+  </article>
 </div>
 
 {{ if .Params.image }}
