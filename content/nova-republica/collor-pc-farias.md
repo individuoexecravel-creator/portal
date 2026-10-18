@@ -105,7 +105,7 @@ Passadas três décadas, a morte do homem no centro do maior escândalo do gover
 
 ## O que aconteceu depois
 
-Com os direitos políticos restabelecidos, Collor voltou à vida pública. Foi eleito **senador por Alagoas em 2006** e reeleito em 2014, ficando no Senado até 2023. Em 2023, o STF o condenou por corrupção passiva e lavagem de dinheiro em um processo derivado da Lava Jato, sobre a BR Distribuidora, com pena de 8 anos e 10 meses. Esse é outro caso, sem relação com o esquema PC.
+Com os direitos políticos restabelecidos, Collor voltou à vida pública. Foi eleito **senador por Alagoas em 2006** e reeleito em 2014, ficando no Senado até 2023. Em 2023, o STF o condenou por corrupção passiva e lavagem de dinheiro em um processo derivado da Lava Jato, sobre a BR Distribuidora, com pena de 8 anos e 10 meses, e em abril de 2025 ele foi preso. Esse é outro caso, sem relação com o esquema PC, contado em **[Collor e a BR Distribuidora](../collor-br-distribuidora/)**.
 
 Pedro Collor, o irmão denunciante, morreu em dezembro de 1994, aos 42 anos, de câncer no cérebro.
 
