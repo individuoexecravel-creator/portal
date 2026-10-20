@@ -3,7 +3,7 @@
 <header class="materia-topo">
   <div class="wrap mt-in">
     <div class="mt-texto">
-      <a class="rotulo" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}{{ with .Params.periodo }} · {{ . }}{{ end }}</a>
+      <a class="rotulo" href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}{{ with .Params.periodo }}, {{ . }}{{ end }}</a>
       <h1>{{ .Title }}</h1>
       <p class="linha-fina">{{ .Description }}</p>
       <p class="meta">Por {{ site.Params.autor.nome }} · {{ .ReadingTime }} min de leitura</p>

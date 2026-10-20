@@ -1,39 +1,87 @@
 {{ define "main" }}
-{{ $todas := where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") }}
-<section class="abertura" style="--banner:url('{{ "img/banner.jpg" | relURL }}')">
-  <div class="wrap">
-    <p class="sobretitulo">{{ site.Params.slogan }}</p>
-    <h1>Os casos que o poder<br>preferia esquecer</h1>
-    <p class="linha">{{ len $todas }} casos contados do início ao fim, com nomes, valores, datas e o que a Justiça decidiu.</p>
-    <p class="assina">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a></p>
-    {{ partial "redes.html" . }}
+{{ $secoes := slice "nova-republica" "internacional" }}
+{{ $todas := where site.RegularPages "Section" "in" $secoes }}
+
+<section class="diptico" aria-label="Novos casos">
+  {{ range $secoes }}
+    {{ $s := site.GetPage (print "/" .) }}
+    {{ with index (where site.RegularPages "Section" .) 0 }}
+    <a class="painel sec-{{ .Section }}" href="{{ .RelPermalink }}">
+      <img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt="" fetchpriority="high">
+      <div class="painel-texto">
+        <p class="painel-secao">Novo em {{ $s.Title }}</p>
+        <h2>{{ .Title | replaceRE ":.*$" "" }}</h2>
+        <span class="tarja" aria-hidden="true"></span>
+        <p class="painel-linha">{{ .Description }}</p>
+        <span class="painel-ler">Ler o caso</span>
+      </div>
+    </a>
+    {{ end }}
+  {{ end }}
+</section>
+
+<section class="manifesto wrap">
+  <p class="manifesto-frase">{{ len $todas }} casos contados do início ao fim, com nomes, valores, datas e o que a Justiça decidiu.</p>
+  <div class="manifesto-autor">
+    <img src="{{ "img/logo.png" | relURL }}" alt="" width="64" height="64">
+    <div>
+      <p>Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a></p>
+      {{ partial "redes.html" . }}
+    </div>
   </div>
 </section>
 
-{{ with index $todas 0 }}
-<section class="wrap destaque-home">
-  <a class="dh-img" href="{{ .RelPermalink }}"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt=""></a>
-  <div class="dh-texto">
-    <span class="rotulo">Mais recente</span>
-    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-    <p>{{ .Description }}</p>
-    <a class="ler" href="{{ .RelPermalink }}">Ler o caso completo →</a>
-  </div>
-</section>
-{{ end }}
-
-{{ range slice "nova-republica" "internacional" }}
+{{ range $secoes }}
   {{ $s := site.GetPage (print "/" .) }}
   {{ $p := where site.RegularPages "Section" . }}
-  <section class="wrap bloco sec-{{ . }}">
-    <div class="bloco-topo">
-      <h2>{{ $s.Title }}</h2>
-      <a href="{{ $s.RelPermalink }}">Ver todos ({{ len $p }}) →</a>
-    </div>
-    <p class="bloco-desc">{{ $s.Description }}</p>
-    <div class="grade">
-      {{ range first 8 $p }}{{ partial "card.html" . }}{{ end }}
+  <section class="trilho-bloco sec-{{ . }}">
+    <header class="wrap trilho-topo">
+      <div>
+        <h2>{{ $s.Title }}</h2>
+        <p>{{ $s.Description }}</p>
+      </div>
+      <div class="trilho-acoes">
+        <button class="seta" type="button" data-dir="-1" aria-label="Casos anteriores">‹</button>
+        <button class="seta" type="button" data-dir="1" aria-label="Próximos casos">›</button>
+        <a class="ver-todos" href="{{ $s.RelPermalink }}">Ver os {{ len $p }} casos</a>
+      </div>
+    </header>
+    <div class="trilho" tabindex="0" aria-label="Casos de {{ $s.Title }}">
+      {{ range first 12 $p }}{{ partial "card.html" . }}{{ end }}
     </div>
   </section>
 {{ end }}
+
+<section class="arquivo wrap" aria-labelledby="arquivo-titulo">
+  <h2 id="arquivo-titulo">Arquivo completo</h2>
+  <p class="arquivo-desc">Todos os casos em ordem cronológica, pelo ano em que começaram.</p>
+  <div class="arquivo-colunas">
+    {{ range $secoes }}
+      {{ $s := site.GetPage (print "/" .) }}
+      <div class="arquivo-col sec-{{ . }}">
+        <h3>{{ $s.Title }}</h3>
+        <ol>
+          {{ $itens := slice }}
+          {{ range where site.RegularPages "Section" . }}
+            {{ $itens = $itens | append (dict "ano" (int (substr .Params.periodo 0 4)) "titulo" (.Title | replaceRE ":.*$" "") "link" .RelPermalink) }}
+          {{ end }}
+          {{ range sort $itens "ano" }}
+          <li><a href="{{ .link }}"><span class="ano">{{ .ano }}</span><span class="nome">{{ .titulo }}</span></a></li>
+          {{ end }}
+        </ol>
+      </div>
+    {{ end }}
+  </div>
+</section>
+
+<script>
+document.querySelectorAll('.trilho-bloco').forEach(function (b) {
+  var t = b.querySelector('.trilho');
+  b.querySelectorAll('.seta').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      t.scrollBy({ left: Number(btn.dataset.dir) * t.clientWidth * 0.8, behavior: 'smooth' });
+    });
+  });
+});
+</script>
 {{ end }}

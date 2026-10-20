@@ -1,8 +1,8 @@
 {{ define "main" }}
 <section class="wrap cabeca-lista">
-  <p class="sobretitulo">{{ len .RegularPages }} casos</p>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="linha">{{ . }}</p>{{ end }}
+  <p class="contagem">{{ len .RegularPages }} casos, do mais recente ao mais antigo</p>
 </section>
 <section class="wrap">
   <div class="grade">

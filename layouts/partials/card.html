@@ -1,10 +1,8 @@
-<article class="card sec-{{ .Section }}">
-  <a class="card-img" href="{{ .RelPermalink }}">
-    {{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy">{{ end }}
-  </a>
-  <div class="card-corpo">
-    <span class="rotulo">{{ .Section | replaceRE "-" " " | title | replaceRE "Republica" "República" }}{{ with .Params.periodo }} · {{ . }}{{ end }}</span>
-    <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-    <p>{{ .Description }}</p>
-  </div>
-</article>
+<a class="card sec-{{ .Section }}" href="{{ .RelPermalink }}">
+  {{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy">{{ end }}
+  <span class="card-texto">
+    {{ with .Params.periodo }}<span class="card-periodo">{{ . }}</span>{{ end }}
+    <span class="card-titulo">{{ .Title | replaceRE ":.*$" "" }}</span>
+    <span class="card-sub">{{ .Title | replaceRE "^[^:]*:?\\s*" "" }}</span>
+  </span>
+</a>
