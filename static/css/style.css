@@ -207,3 +207,7 @@ a { color: inherit; }
   .grade .card-texto { padding: 12px 12px 14px; }
   .trilho { scroll-padding-inline: 16px; }
 }
+
+/* ---------- Link para a Teia (ficha do caso) ---------- */
+.ver-teia { display: inline-block; margin-top: 20px; font: 600 1rem/1.2 var(--titulo); text-decoration: none; color: var(--osso); padding-bottom: 4px; border-bottom: 2px solid var(--acento); }
+.ver-teia:hover { color: #fff; }

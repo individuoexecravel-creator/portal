@@ -49,10 +49,14 @@ summaryLength = 40
     pageRef = "/nova-republica"
     weight = 2
   [[menus.main]]
+    name = "Teia"
+    pageRef = "/teia"
+    weight = 3
+  [[menus.main]]
     name = "Internacional"
     pageRef = "/internacional"
-    weight = 3
+    weight = 4
   [[menus.main]]
     name = "Sobre"
     pageRef = "/sobre"
-    weight = 4
+    weight = 5

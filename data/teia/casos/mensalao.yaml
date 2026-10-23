@@ -1,0 +1,78 @@
+# Teia do caso: Mensalão
+caso: mensalao
+nome: Mensalão
+periodo:
+  - 2003
+  - 2014
+resumo: Empréstimos fictícios no Banco Rural e no BMG e contratos de publicidade financiavam pagamentos a partidos da base do governo Lula, segundo o STF.
+desfecho: 'Ação Penal 470: 25 dos 37 réus condenados em 2012. Cúpula do PT presa em 2013.'
+envolvidos:
+  - id: valerio
+    tipo: condenado
+    rel: Maior pena do processo, acima de 37 anos
+  - id: dirceu
+    tipo: condenado
+    rel: Corrupção ativa; preso em 2013
+  - id: delubio
+    tipo: condenado
+    rel: Corrupção ativa; preso em 2013
+  - id: genoino
+    tipo: condenado
+    rel: Corrupção ativa; preso em 2013
+  - id: jefferson
+    tipo: condenado
+    rel: Denunciou o esquema e também foi condenado
+  - id: katia
+    tipo: condenado
+    rel: Gestão fraudulenta e lavagem
+  - id: duda
+    tipo: citado
+    rel: Admitiu à CPI pagamentos no exterior
+  - id: lula
+    tipo: citado
+    rel: Disse não conhecer o esquema; não foi denunciado
+  - id: barbosa
+    tipo: agente
+    rel: Relator no STF
+  - id: antonio-fernando-de-souza
+    tipo: agente
+    rel: Denunciou 40 pessoas em 2006
+  - id: stf
+    tipo: agente
+    rel: Julgou a Ação Penal 470
+  - id: acao-penal-470
+    tipo: vinculo
+    rel: O processo
+  - id: cpmi-correios
+    tipo: agente
+    rel: Investigou em 2005
+  - id: rural
+    tipo: vinculo
+    rel: Empréstimos fictícios
+  - id: bmg
+    tipo: vinculo
+    rel: Empréstimos
+  - id: smpb
+    tipo: vinculo
+    rel: Agências de Valério
+  - id: pt
+    tipo: vinculo
+    rel: Partido do núcleo político
+  - id: pp
+    tipo: vinculo
+    rel: Partido da base que recebeu, segundo a acusação
+  - id: ptb
+    tipo: vinculo
+    rel: Partido da base que recebeu, segundo a acusação
+  - id: pmdb
+    tipo: vinculo
+    rel: Parte do partido recebeu, segundo a acusação
+  - id: bh
+    tipo: vinculo
+    rel: Saques em agências do Banco Rural
+  - id: camara
+    tipo: agente
+    rel: Cassou Dirceu e Jefferson
+relacionados:
+  - caso: petrolao
+    rel: Os dois esquemas coexistiram

@@ -1,0 +1,198 @@
+# Ligações diretas entre entidades (não passam por um caso): parentesco, cargo, sociedade.
+# Gerado a partir da teia; edite à vontade. Tipos de ligação: condenado, cassado, delator, anulado, citado, agente, vinculo.
+- de: pc-farias
+  para: collor
+  tipo: vinculo
+  rel: Tesoureiro da campanha de 1989
+- de: pedro-collor
+  para: collor
+  tipo: vinculo
+  rel: Irmão
+- de: leoni
+  para: collor
+  tipo: vinculo
+  rel: Ex-ministro do governo Collor
+- de: br
+  para: petrobras
+  tipo: vinculo
+  rel: Subsidiária
+- de: clesio
+  para: valerio
+  tipo: vinculo
+  rel: Sócio
+- de: valerio
+  para: smpb
+  tipo: vinculo
+  rel: Sócio
+- de: katia
+  para: rural
+  tipo: vinculo
+  rel: Presidente do banco
+- de: dirceu
+  para: pt
+  tipo: vinculo
+  rel: Ex-ministro do PT
+- de: delubio
+  para: pt
+  tipo: vinculo
+  rel: Tesoureiro
+- de: genoino
+  para: pt
+  tipo: vinculo
+  rel: Presidente do partido
+- de: jefferson
+  para: ptb
+  tipo: vinculo
+  rel: Presidente do partido
+- de: paulo-roberto-costa
+  para: petrobras
+  tipo: vinculo
+  rel: Diretor de Abastecimento
+- de: duque
+  para: petrobras
+  tipo: vinculo
+  rel: Diretor de Serviços
+- de: cervero
+  para: petrobras
+  tipo: vinculo
+  rel: Diretor Internacional
+- de: barusco
+  para: petrobras
+  tipo: vinculo
+  rel: Gerente
+- de: paulo-roberto-costa
+  para: pp
+  tipo: vinculo
+  rel: Indicado pelo PP
+- de: alberto-youssef
+  para: paulo-roberto-costa
+  tipo: vinculo
+  rel: Deu a ele um Range Rover
+- de: moro
+  para: vaza-jato
+  tipo: vinculo
+  rel: Autor das mensagens reveladas
+- de: marcelo-odebrecht
+  para: odebrecht
+  tipo: vinculo
+  rel: Presidente da empresa
+- de: lula
+  para: guaruja
+  tipo: vinculo
+  rel: Apartamento atribuído a ele na acusação anulada
+- de: moro
+  para: justica-federal-curitiba
+  tipo: vinculo
+  rel: Juiz
+- de: adriana
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Esposa
+- de: wilson
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Secretário
+- de: miranda
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Amigo
+- de: pezao
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Vice e sucessor
+- de: lula
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Aliado político
+- de: dilma
+  para: sergio-cabral
+  tipo: vinculo
+  rel: Aliada política
+- de: acm
+  para: sarney
+  tipo: vinculo
+  rel: Ministro do governo
+- de: calmon
+  para: econ
+  tipo: vinculo
+  rel: Controlador
+- de: pitta
+  para: maluf
+  tipo: vinculo
+  rel: Secretário e sucessor apoiado por Maluf
+- de: cameli
+  para: acre
+  tipo: vinculo
+  rel: Governador
+- de: andrade
+  para: telemar
+  tipo: vinculo
+  rel: Integrava o consórcio
+- de: dantas
+  para: opportunity
+  tipo: vinculo
+  rel: Fundador
+- de: lara-resende
+  para: bndes
+  tipo: vinculo
+  rel: Presidente
+- de: francisco-lopes
+  para: bc
+  tipo: vinculo
+  rel: Presidente
+- de: cacciola
+  para: banco-marka
+  tipo: vinculo
+  rel: Dono do banco
+- de: estevao
+  para: grupo-ok
+  tipo: vinculo
+  rel: Dono
+- de: acm
+  para: cpi-judiciario
+  tipo: vinculo
+  rel: Instalou a CPI
+- de: fhc
+  para: arruda
+  tipo: vinculo
+  rel: Arruda era líder do governo no Senado
+- de: lula
+  para: celso-daniel
+  tipo: vinculo
+  rel: Celso Daniel coordenava seu programa de governo
+- de: vedoin
+  para: planam
+  tipo: vinculo
+  rel: Dono
+- de: darci-vedoin
+  para: planam
+  tipo: vinculo
+  rel: Sócio
+- de: zuleido
+  para: gautama
+  tipo: vinculo
+  rel: Dono
+- de: lula
+  para: rondeau
+  tipo: vinculo
+  rel: Ministro do governo
+- de: cavendish
+  para: delta
+  tipo: vinculo
+  rel: Dono
+- de: lula
+  para: waldomiro
+  tipo: vinculo
+  rel: Assessor da Casa Civil do governo
+- de: geddel
+  para: caixa
+  tipo: vinculo
+  rel: Vice-presidente de Pessoa Jurídica
+- de: lucio
+  para: geddel
+  tipo: vinculo
+  rel: Irmão
+- de: pitta
+  para: sp
+  tipo: vinculo
+  rel: Prefeito

@@ -1,0 +1,30 @@
+# Teia do caso: Caixa de Pandora
+caso: caixa-de-pandora
+nome: Caixa de Pandora
+periodo:
+  - 2006
+  - 2010
+resumo: Um ex-secretário gravou o governador e deputados distritais recebendo propina em dinheiro vivo.
+desfecho: Arruda é o primeiro governador preso no cargo, em 2010, e perde o mandato.
+envolvidos:
+  - id: arruda
+    tipo: condenado
+    rel: Preso no cargo em 2010; perdeu o mandato
+  - id: durval
+    tipo: delator
+    rel: Gravou as entregas
+  - id: paulo-octavio
+    tipo: citado
+    rel: Assumiu e renunciou
+  - id: prudente
+    tipo: citado
+    rel: Filmado com dinheiro nas meias
+  - id: stj
+    tipo: agente
+    rel: Decretou a prisão
+  - id: brasilia
+    tipo: vinculo
+    rel: Governo do DF
+  - id: pfl
+    tipo: vinculo
+    rel: Partido do governador

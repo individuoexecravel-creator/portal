@@ -1,0 +1,30 @@
+# Teia do caso: Natan Donadon
+caso: natan-donadon
+nome: Natan Donadon
+periodo:
+  - 1995
+  - 2019
+resumo: Condenado por desviar R$ 8,4 milhões da Assembleia de Rondônia, foi mantido deputado em votação secreta já preso.
+desfecho: Cassado por 467 a 0 em 2014, em votação aberta; indultado em 2019.
+envolvidos:
+  - id: natan-donadon
+    tipo: condenado
+    rel: 13 anos, 4 meses e 10 dias
+  - id: marcos-donadon
+    tipo: citado
+    rel: Integrante da cúpula da Assembleia
+  - id: stf
+    tipo: agente
+    rel: Condenou e mandou prender
+  - id: barroso
+    tipo: agente
+    rel: Suspendeu a votação secreta
+  - id: camara
+    tipo: agente
+    rel: Cassou por 467 a 0
+  - id: papuda
+    tipo: vinculo
+    rel: Preso desde 2013
+  - id: rondonia
+    tipo: vinculo
+    rel: Origem do desvio

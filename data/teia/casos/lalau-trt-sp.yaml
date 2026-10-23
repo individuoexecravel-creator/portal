@@ -1,0 +1,39 @@
+# Teia do caso: Lalau e o TRT-SP
+caso: lalau-trt-sp
+nome: Lalau e o TRT-SP
+periodo:
+  - 1992
+  - 2016
+resumo: A obra do Fórum Trabalhista da Barra Funda recebia pagamentos antecipados enquanto o dinheiro era desviado.
+desfecho: Luiz Estevão é o primeiro senador cassado (2000); Lalau e os donos da Incal são condenados; Estevão preso em 2016.
+envolvidos:
+  - id: nicolau
+    tipo: condenado
+    rel: Peculato, estelionato e corrupção
+  - id: estevao
+    tipo: cassado
+    rel: Primeiro senador cassado (2000); preso em 2016
+  - id: incal
+    tipo: condenado
+    rel: Donos condenados
+  - id: grupo-ok
+    tipo: vinculo
+    rel: Recebeu dinheiro da obra
+  - id: cpi-judiciario
+    tipo: agente
+    rel: Rastreou o dinheiro
+  - id: senado
+    tipo: agente
+    rel: Cassou Estevão
+  - id: forum-barra-funda
+    tipo: vinculo
+    rel: A obra
+  - id: sp
+    tipo: vinculo
+    rel: TRT de São Paulo
+  - id: suica
+    tipo: vinculo
+    rel: Contas do juiz
+relacionados:
+  - caso: guerra-no-senado
+    rel: A votação que cassou Estevão foi a do painel violado

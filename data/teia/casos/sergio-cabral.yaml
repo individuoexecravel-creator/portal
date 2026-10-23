@@ -1,0 +1,48 @@
+# Teia do caso: Império de Sérgio Cabral
+caso: sergio-cabral
+nome: Império de Sérgio Cabral
+periodo:
+  - 2007
+  - 2022
+resumo: Taxa de cerca de 5% sobre contratos do governo do Rio, lavada em joias, imóveis e contas no exterior.
+desfecho: Mais de 20 condenações somando mais de 400 anos; deixa a prisão em 2022 após seis anos.
+envolvidos:
+  - id: sergio-cabral
+    tipo: condenado
+    rel: Mais de 400 anos somados; parte anulada
+  - id: adriana
+    tipo: condenado
+    rel: Condenada em 2017
+  - id: wilson
+    tipo: citado
+    rel: Operador, segundo o MPF
+  - id: miranda
+    tipo: citado
+    rel: Operador, segundo o MPF
+  - id: pezao
+    tipo: citado
+    rel: Sucessor, preso em 2018
+  - id: calicute
+    tipo: agente
+    rel: Prendeu Cabral em 17/11/2016
+  - id: stf
+    tipo: agente
+    rel: Soltou Cabral em 2022
+  - id: andrade
+    tipo: vinculo
+    rel: Empreiteira com contratos no estado
+  - id: delta
+    tipo: vinculo
+    rel: Empreiteira com contratos no estado
+  - id: rio
+    tipo: vinculo
+    rel: Obras investigadas
+  - id: paris
+    tipo: vinculo
+    rel: Farra dos guardanapos
+  - id: pmdb
+    tipo: vinculo
+    rel: Partido do governador
+relacionados:
+  - caso: lava-jato
+    rel: Desdobramento da Lava Jato no Rio

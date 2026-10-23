@@ -1,0 +1,27 @@
+# Teia do caso: Sanguessugas
+caso: sanguessugas
+nome: Sanguessugas
+periodo:
+  - 2000
+  - 2006
+resumo: Emendas compravam ambulâncias superfaturadas da Planam para prefeituras, com comissão aos autores.
+desfecho: CPMI pede a cassação de 72 parlamentares; nenhum é cassado, mas a maioria não se reelege.
+envolvidos:
+  - id: vedoin
+    tipo: delator
+    rel: Entregou a lista de parlamentares
+  - id: darci-vedoin
+    tipo: delator
+    rel: Colaborou com a Justiça
+  - id: planam
+    tipo: vinculo
+    rel: A empresa das ambulâncias
+  - id: saude
+    tipo: vinculo
+    rel: Origem das verbas
+  - id: camara
+    tipo: agente
+    rel: Nenhum dos 69 deputados foi cassado
+relacionados:
+  - caso: dossie-dos-aloprados
+    rel: O dossiê era vendido pelo delator dos Sanguessugas

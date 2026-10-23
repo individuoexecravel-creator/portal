@@ -1,0 +1,27 @@
+# Teia do caso: Jorgina de Freitas
+caso: jorgina-de-freitas
+nome: Jorgina de Freitas
+periodo:
+  - 1988
+  - 1998
+resumo: Advogada, juiz e procuradores combinados inflavam indenizações de acidente de trabalho pagas pelo INSS no Rio.
+desfecho: Jorgina foge, é presa na Costa Rica em 1997, extraditada e condenada; parte do dinheiro volta do exterior.
+envolvidos:
+  - id: jorgina-freitas
+    tipo: condenado
+    rel: Presa na Costa Rica e condenada
+  - id: nestor
+    tipo: condenado
+    rel: Juiz condenado
+  - id: inss
+    tipo: vinculo
+    rel: Autarquia lesada
+  - id: costa-rica
+    tipo: vinculo
+    rel: Onde Jorgina foi presa
+  - id: rio
+    tipo: vinculo
+    rel: Vara de acidentes do trabalho do Rio
+  - id: suica
+    tipo: vinculo
+    rel: Parte do dinheiro voltou da Suíça

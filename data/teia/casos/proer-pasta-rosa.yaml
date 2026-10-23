@@ -1,0 +1,36 @@
+# Teia do caso: PROER e Pasta Rosa
+caso: proer-pasta-rosa
+nome: PROER e Pasta Rosa
+periodo:
+  - 1995
+  - 1997
+resumo: O programa de socorro aos bancos salvou Econômico, Nacional e Bamerindus. No Econômico apareceu a lista de doações a políticos em 1990.
+desfecho: Pasta Rosa arquivada; dirigentes do Nacional condenados por fraude.
+envolvidos:
+  - id: calmon
+    tipo: citado
+    rel: Controlador do Econômico
+  - id: econ
+    tipo: vinculo
+    rel: Onde estava a Pasta Rosa
+  - id: nacional
+    tipo: condenado
+    rel: Dirigentes condenados por fraude
+  - id: bamerindus
+    tipo: vinculo
+    rel: Vendido ao HSBC com recursos do programa
+  - id: bc
+    tipo: agente
+    rel: Financiou o socorro
+  - id: acm
+    tipo: citado
+    rel: Aliados na Pasta Rosa; próximo de Calmon de Sá
+  - id: brindeiro
+    tipo: agente
+    rel: Pasta Rosa arquivada
+  - id: fhc
+    tipo: vinculo
+    rel: Criou o PROER em 1995
+relacionados:
+  - caso: marka-fontecindam
+    rel: Socorro do Banco Central a bancos privados

@@ -1,0 +1,24 @@
+# Teia do caso: Propinoduto
+caso: propinoduto
+nome: Propinoduto
+periodo:
+  - 2002
+  - 2023
+resumo: Fiscais da Receita do Rio escondiam mais de US$ 33 milhões na Suíça. O alerta veio dos promotores suíços.
+desfecho: 22 condenados no TRF-2 em 2007; parte dos crimes prescreveu; Silveirinha morreu em 2023.
+envolvidos:
+  - id: silveirinha
+    tipo: condenado
+    rel: Condenado; morreu em 2023 antes do fim do processo
+  - id: garotinho
+    tipo: vinculo
+    rel: Silveirinha era subsecretário do seu governo
+  - id: suica
+    tipo: vinculo
+    rel: US$ 33,4 milhões
+  - id: rio
+    tipo: vinculo
+    rel: Fazenda estadual
+  - id: stj
+    tipo: agente
+    rel: Manteve as condenações em 2014

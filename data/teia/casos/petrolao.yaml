@@ -1,0 +1,51 @@
+# Teia do caso: Petrolão
+caso: petrolao
+nome: Petrolão
+periodo:
+  - 2003
+  - 2014
+resumo: Diretorias da Petrobras loteadas entre PT, PP e PMDB; um clube de empreiteiras pagava de 1% a 3% sobre os contratos.
+desfecho: Ex-diretores, empreiteiros e doleiros condenados; Petrobras reconhece R$ 6,2 bilhões em perdas.
+envolvidos:
+  - id: paulo-roberto-costa
+    tipo: delator
+    rel: Descreveu o esquema por dentro
+  - id: duque
+    tipo: condenado
+    rel: Ex-diretor condenado
+  - id: cervero
+    tipo: condenado
+    rel: Ex-diretor condenado
+  - id: barusco
+    tipo: delator
+    rel: Aceitou devolver US$ 97 milhões
+  - id: alberto-youssef
+    tipo: condenado
+    rel: Operador financeiro do esquema
+  - id: dirceu
+    tipo: condenado
+    rel: Condenado de novo
+  - id: dilma
+    tipo: vinculo
+    rel: Presidia o Conselho na compra de Pasadena
+  - id: petrobras
+    tipo: vinculo
+    rel: A estatal loteada
+  - id: odebrecht
+    tipo: vinculo
+    rel: Integrante do clube de empreiteiras
+  - id: pasadena
+    tipo: vinculo
+    rel: Compra superfaturada
+  - id: abreu
+    tipo: vinculo
+    rel: Obra que custou 7 vezes o orçamento
+  - id: pt
+    tipo: vinculo
+    rel: Indicou a diretoria de Serviços
+  - id: pp
+    tipo: vinculo
+    rel: Indicou a diretoria de Abastecimento
+  - id: pmdb
+    tipo: vinculo
+    rel: Indicou a diretoria Internacional

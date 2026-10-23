@@ -1,0 +1,42 @@
+# Teia do caso: Dossiê dos Aloprados
+caso: dossie-dos-aloprados
+nome: Dossiê dos Aloprados
+periodo:
+  - 2006
+  - 2006
+resumo: Petistas foram presos num hotel em São Paulo com R$ 1,7 milhão para comprar de Vedoin um dossiê contra o PSDB.
+desfecho: A origem do dinheiro nunca foi identificada; a eleição presidencial vai ao segundo turno.
+envolvidos:
+  - id: vedoin
+    tipo: vinculo
+    rel: Vendedor do dossiê
+  - id: gedimar
+    tipo: citado
+    rel: Preso com o dinheiro
+  - id: valdebran
+    tipo: citado
+    rel: Preso com o dinheiro
+  - id: lorenzetti
+    tipo: citado
+    rel: Afastado da campanha
+  - id: hamilton-lacerda
+    tipo: citado
+    rel: Apontado pela investigação
+  - id: berzoini
+    tipo: vinculo
+    rel: Deixou a coordenação da campanha
+  - id: lula
+    tipo: vinculo
+    rel: Chamou os envolvidos de aloprados
+  - id: serra
+    tipo: vinculo
+    rel: Alvo do dossiê
+  - id: sp
+    tipo: vinculo
+    rel: O hotel do flagrante
+  - id: pt
+    tipo: vinculo
+    rel: Integrantes do partido presos
+  - id: psdb
+    tipo: vinculo
+    rel: Partido do alvo

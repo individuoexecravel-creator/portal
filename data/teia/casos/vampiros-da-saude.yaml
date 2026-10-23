@@ -1,0 +1,15 @@
+# Teia do caso: Vampiros da Saúde
+caso: vampiros-da-saude
+nome: Vampiros da Saúde
+periodo:
+  - 1990
+  - 2004
+resumo: Um cartel de fornecedores e servidores fraudava as compras de hemoderivados do Ministério da Saúde.
+desfecho: Operação Vampiro prende servidores, empresários e lobistas em 2004; prejuízo estimado na casa de R$ 2 bilhões.
+envolvidos:
+  - id: humberto-costa
+    tipo: citado
+    rel: Citado e investigado; sempre negou
+  - id: saude
+    tipo: vinculo
+    rel: Comprador lesado

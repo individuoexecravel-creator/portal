@@ -1,0 +1,24 @@
+# Teia do caso: O Deputado da Motosserra
+caso: deputado-da-motosserra
+nome: O Deputado da Motosserra
+periodo:
+  - 1994
+  - 2026
+resumo: Um coronel da PM virou deputado federal enquanto, segundo a Justiça, comandava um esquadrão da morte no Acre.
+desfecho: Cassado e preso em 1999; condenações passam de 100 anos; último recurso rejeitado em 2026.
+envolvidos:
+  - id: hildebrando
+    tipo: condenado
+    rel: Penas somadas acima de 100 anos
+  - id: camara
+    tipo: agente
+    rel: Cassou em 1999
+  - id: cpi-narcotrafico
+    tipo: agente
+    rel: Expôs o esquema
+  - id: acre
+    tipo: vinculo
+    rel: Base do grupo
+  - id: pfl
+    tipo: vinculo
+    rel: Partido do deputado

@@ -1,0 +1,21 @@
+# Teia do caso: O Preço do Quinto Ano
+caso: o-preco-do-quinto-ano
+nome: O Preço do Quinto Ano
+periodo:
+  - 1987
+  - 1988
+resumo: Na Constituinte, o governo Sarney distribuiu rádios, TVs, cargos e verbas para garantir cinco anos de mandato. Nasceu ali o Centrão.
+desfecho: Constituinte aprova cinco anos por 304 a 223 em junho de 1988; nenhuma punição.
+envolvidos:
+  - id: sarney
+    tipo: citado
+    rel: Ganhou o quinto ano de mandato
+  - id: acm
+    tipo: citado
+    rel: Ministro das Comunicações que distribuía concessões
+  - id: centrao
+    tipo: vinculo
+    rel: Bloco formado na troca de favores
+relacionados:
+  - caso: collor-pc-farias
+    rel: O desgaste de Sarney abriu caminho para Collor

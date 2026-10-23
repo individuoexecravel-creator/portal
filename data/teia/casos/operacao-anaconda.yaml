@@ -1,0 +1,21 @@
+# Teia do caso: Operação Anaconda
+caso: operacao-anaconda
+nome: Operação Anaconda
+periodo:
+  - 2003
+  - 2016
+resumo: Juízes federais, delegados e advogados vendiam decisões judiciais em São Paulo.
+desfecho: Rocha Mattos perde a toga e cumpre cerca de oito anos; condenado de novo em 2015 por US$ 12 milhões na Suíça.
+envolvidos:
+  - id: rochamattos
+    tipo: condenado
+    rel: Perdeu a toga; condenado de novo em 2015
+  - id: mazloum
+    tipo: condenado
+    rel: Juiz federal condenado
+  - id: suica
+    tipo: vinculo
+    rel: US$ 12 milhões não declarados
+  - id: sp
+    tipo: vinculo
+    rel: Justiça Federal de São Paulo

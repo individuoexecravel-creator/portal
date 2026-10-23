@@ -1,0 +1,24 @@
+# Teia do caso: Marka e FonteCindam
+caso: marka-fontecindam
+nome: Marka e FonteCindam
+periodo:
+  - 1999
+  - 2008
+resumo: Na desvalorização do real, o Banco Central vendeu dólares abaixo do mercado a dois bancos que quebravam.
+desfecho: Prejuízo de cerca de R$ 1,6 bilhão; Cacciola foge, é preso em Mônaco em 2007 e condenado a 13 anos.
+envolvidos:
+  - id: cacciola
+    tipo: condenado
+    rel: 13 anos por peculato e gestão fraudulenta
+  - id: francisco-lopes
+    tipo: citado
+    rel: Condenado em 1ª instância; não cumpriu pena
+  - id: bc
+    tipo: vinculo
+    rel: Vendeu dólares abaixo do mercado
+  - id: banco-marka
+    tipo: vinculo
+    rel: Banco socorrido
+  - id: senado
+    tipo: agente
+    rel: CPI dos Bancos

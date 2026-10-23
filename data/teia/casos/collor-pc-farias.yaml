@@ -1,0 +1,33 @@
+# Teia do caso: Caso PC Farias
+caso: collor-pc-farias
+nome: Caso PC Farias
+periodo:
+  - 1989
+  - 1994
+resumo: O tesoureiro da campanha de Collor montou um esquema de contas fantasmas que pagava até despesas da Casa da Dinda. A denúncia de Pedro Collor levou à CPI e ao impeachment de 1992.
+desfecho: Collor renuncia e fica inelegível por 8 anos; STF o absolve em 1994. PC Farias condenado por sonegação e falsidade; morto em 1996.
+envolvidos:
+  - id: collor
+    tipo: anulado
+    rel: Renunciou; absolvido pelo STF em 1994 por falta de provas
+  - id: pc-farias
+    tipo: condenado
+    rel: Condenado por sonegação e falsidade
+  - id: pedro-collor
+    tipo: citado
+    rel: Denunciou o esquema em 1992
+  - id: cpi-pc-farias
+    tipo: agente
+    rel: Investigou e levou ao impeachment
+  - id: stf
+    tipo: agente
+    rel: Absolveu Collor em 1994
+  - id: dinda
+    tipo: vinculo
+    rel: Despesas pagas pelo esquema
+  - id: ibsen
+    tipo: vinculo
+    rel: Presidiu a votação do impeachment
+relacionados:
+  - caso: anoes-do-orcamento
+    rel: Ibsen presidiu o impeachment e foi cassado no ano seguinte

@@ -1,0 +1,33 @@
+# Teia do caso: Privatização da Telebrás
+caso: privatizacao-telebras
+nome: Privatização da Telebrás
+periodo:
+  - 1998
+  - 1998
+resumo: Grampos no BNDES mostraram o ministro das Comunicações e o presidente do banco articulando consórcios para o leilão.
+desfecho: Os dois pedem demissão; ninguém é condenado; o leilão é mantido.
+envolvidos:
+  - id: mendonca-de-barros
+    tipo: citado
+    rel: Pediu demissão após os grampos
+  - id: lara-resende
+    tipo: citado
+    rel: Pediu demissão após os grampos
+  - id: dantas
+    tipo: vinculo
+    rel: Opportunity disputou a Tele Norte Leste
+  - id: opportunity
+    tipo: vinculo
+    rel: Consórcio favorecido nas conversas
+  - id: bndes
+    tipo: vinculo
+    rel: Onde ocorreram os grampos
+  - id: fhc
+    tipo: vinculo
+    rel: Nome citado nas conversas
+  - id: telemar
+    tipo: vinculo
+    rel: Levou a Tele Norte Leste
+relacionados:
+  - caso: daniel-dantas-satiagraha
+    rel: Dantas voltou ao noticiário dez anos depois

@@ -1,0 +1,27 @@
+# Teia do caso: SIVAM
+caso: sivam
+nome: SIVAM
+periodo:
+  - 1993
+  - 1996
+resumo: O sistema de vigilância da Amazônia foi entregue à Raytheon sem licitação. Um grampo da PF expôs o chefe do cerimonial da Presidência.
+desfecho: Chefe do cerimonial e ministro da Aeronáutica deixam o governo; Senado mantém o contrato; ninguém é condenado.
+envolvidos:
+  - id: julio-cesar-gomes-dos-santos
+    tipo: citado
+    rel: Afastado após o grampo
+  - id: gandra
+    tipo: citado
+    rel: Deixou o ministério
+  - id: assumpcao
+    tipo: citado
+    rel: Representante da Raytheon
+  - id: raytheon
+    tipo: vinculo
+    rel: Contrato sem licitação
+  - id: fhc
+    tipo: vinculo
+    rel: Presidente; o chefe do cerimonial era seu amigo
+  - id: senado
+    tipo: agente
+    rel: Manteve o contrato

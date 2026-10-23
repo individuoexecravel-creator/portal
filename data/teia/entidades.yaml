@@ -1,0 +1,717 @@
+# Pessoas, empresas, órgãos, partidos e lugares que aparecem em mais de um caso ou podem aparecer.
+# tipo: pessoa | org | estado | partido | lugar
+# Gerado a partir da teia; edite à vontade. Tipos de ligação: condenado, cassado, delator, anulado, citado, agente, vinculo.
+- id: abin
+  nome: Abin
+  tipo: estado
+  desc: Agentes participaram da Satiagraha sem autorização formal.
+- id: acao-penal-470
+  nome: Ação Penal 470
+  tipo: estado
+  desc: O processo do Mensalão no STF, julgado de agosto a dezembro de 2012.
+- id: bc
+  nome: Banco Central
+  tipo: estado
+  desc: Socorreu bancos no PROER e vendeu dólares ao Marka e ao FonteCindam.
+- id: bndes
+  nome: BNDES
+  tipo: estado
+  desc: Coordenou a privatização da Telebrás.
+- id: cade
+  nome: Cade
+  tipo: estado
+  desc: Órgão de defesa da concorrência.
+- id: camara
+  nome: Câmara dos Deputados
+  tipo: estado
+  desc: Cassou deputados nos Anões, no Mensalão, no caso Hildebrando e no caso Donadon.
+- id: cpi-pc-farias
+  nome: CPI do caso PC (1992)
+  tipo: estado
+  desc: Comissão do Congresso que levou ao impeachment.
+- id: cpi-judiciario
+  nome: CPI do Judiciário
+  tipo: estado
+  desc: Instalada no Senado em 1999 por iniciativa de ACM.
+- id: cpi-narcotrafico
+  nome: CPI do Narcotráfico
+  tipo: estado
+  desc: Comissão da Câmara de 1999.
+- id: cpi-orcamento
+  nome: CPI do Orçamento
+  tipo: estado
+  desc: Out. 1993 a jan. 1994.
+- id: cpmi-banestado
+  nome: CPMI do Banestado
+  tipo: estado
+  desc: 2003–2004; terminou sem relatório aprovado.
+- id: cpmi-correios
+  nome: CPMI dos Correios
+  tipo: estado
+  desc: Comissão de 2005 que passou a investigar o mensalão.
+- id: justica-federal-curitiba
+  nome: Justiça Federal de Curitiba
+  tipo: estado
+  desc: 2ª Vara Criminal no Banestado; 13ª Vara na Lava Jato. O mesmo juiz nos dois.
+- id: saude
+  nome: Ministério da Saúde
+  tipo: estado
+  desc: Pagava as ambulâncias dos Sanguessugas e os hemoderivados dos Vampiros.
+- id: calicute
+  nome: Operação Calicute
+  tipo: estado
+  desc: Braço da Lava Jato no Rio que prendeu Cabral em novembro de 2016.
+- id: pgr
+  nome: PGR
+  tipo: estado
+  desc: Procuradoria-Geral da República.
+- id: senado
+  nome: Senado Federal
+  tipo: estado
+  desc: Cassou Luiz Estevão (2000) e Demóstenes Torres (2012); sediou CPIs de vários casos.
+- id: stf
+  nome: STF
+  tipo: estado
+  desc: Supremo Tribunal Federal.
+- id: stj
+  nome: STJ
+  tipo: estado
+  desc: Superior Tribunal de Justiça.
+- id: vaza-jato
+  nome: Vaza Jato
+  tipo: estado
+  desc: Mensagens entre Moro e procuradores publicadas a partir de junho de 2019.
+- id: abreu
+  nome: Abreu e Lima (PE)
+  tipo: lugar
+  desc: Refinaria orçada em US$ 2,5 bilhões que custou mais de US$ 18 bilhões.
+- id: acre
+  nome: Acre
+  tipo: lugar
+  desc: Estado dos deputados da compra de votos e do esquadrão de Hildebrando.
+- id: rondonia
+  nome: Assembleia de Rondônia
+  tipo: lugar
+  desc: De onde saíram os R$ 8,4 milhões.
+- id: bh
+  nome: Belo Horizonte (MG)
+  tipo: lugar
+  desc: Saques do Banco Rural no Mensalão; prisão de Azeredo em 2018.
+- id: dinda
+  nome: Casa da Dinda, Brasília
+  tipo: lugar
+  desc: Residência de Collor. Teve despesas pagas pelo esquema PC em 1992 e foi alvo de buscas da PF em 2015.
+- id: suica
+  nome: Contas na Suíça
+  tipo: lugar
+  desc: Onde apareceu o dinheiro de cinco casos da série.
+- id: costa-rica
+  nome: Costa Rica
+  tipo: lugar
+  desc: Onde Jorgina foi presa em 1997.
+- id: curitiba
+  nome: Curitiba (PR)
+  tipo: lugar
+  desc: Sede dos processos do Banestado e da Lava Jato; onde Lula ficou preso.
+- id: brasilia
+  nome: Distrito Federal
+  tipo: lugar
+  desc: Governo de Arruda e Câmara Legislativa da Caixa de Pandora.
+- id: forum-barra-funda
+  nome: Fórum da Barra Funda
+  tipo: lugar
+  desc: A obra do TRT-SP.
+- id: foz
+  nome: Foz do Iguaçu (PR)
+  tipo: lugar
+  desc: Agência do Banestado de onde partiam as remessas CC5.
+- id: goias
+  nome: Goiás
+  tipo: lugar
+  desc: Base do jogo ilegal de Cachoeira.
+- id: painel
+  nome: Painel do Senado
+  tipo: lugar
+  desc: Violado na votação secreta que cassou Luiz Estevão.
+- id: papuda
+  nome: Papuda, Brasília
+  tipo: lugar
+  desc: Presídio onde ficaram Maluf e Donadon.
+- id: paris
+  nome: Paris, 2009
+  tipo: lugar
+  desc: Jantar da “farra dos guardanapos” com secretários e empresários.
+- id: pasadena
+  nome: Pasadena (EUA)
+  tipo: lugar
+  desc: Refinaria comprada por US$ 42 milhões em 2005; a Petrobras pagou mais de US$ 1 bilhão.
+- id: posto
+  nome: Posto em Brasília
+  tipo: lugar
+  desc: Onde a Lava Jato começou, em março de 2014.
+- id: rio
+  nome: Rio de Janeiro
+  tipo: lugar
+  desc: Maracanã, Arco Metropolitano e PAC das favelas entre as obras investigadas.
+- id: salvador
+  nome: Salvador (BA)
+  tipo: lugar
+  desc: O apartamento do bunker, no bairro da Graça.
+- id: santo-andre
+  nome: Santo André (SP)
+  tipo: lugar
+  desc: Prefeitura de Celso Daniel.
+- id: sp
+  nome: São Paulo (capital)
+  tipo: lugar
+  desc: Palco dos Precatórios, de Maluf, do Lalau, da Anaconda, do Trensalão e do hotel dos aloprados.
+- id: guaruja
+  nome: Tríplex do Guarujá (SP)
+  tipo: lugar
+  desc: Apartamento no centro da condenação de Lula, anulada em 2021.
+- id: alstom
+  nome: Alstom
+  tipo: org
+  desc: Investigada na Suíça e na França por pagamentos a autoridades paulistas.
+- id: andrade
+  nome: Andrade Gutierrez
+  tipo: org
+  desc: Empreiteira com contratos no governo do Rio.
+- id: bamerindus
+  nome: Bamerindus
+  tipo: org
+  desc: Vendido ao HSBC em 1997 com recursos do PROER.
+- id: banco-banestado
+  nome: Banco Banestado
+  tipo: org
+  desc: Banco estatal do Paraná, privatizado em 2000 e comprado pelo Itaú.
+- id: bmg
+  nome: Banco BMG
+  tipo: org
+  desc: Também emprestou às agências de Valério.
+- id: econ
+  nome: Banco Econômico
+  tipo: org
+  desc: Banco baiano onde apareceu a Pasta Rosa.
+- id: banco-marka
+  nome: Banco Marka
+  tipo: org
+  desc: Banco de Cacciola.
+- id: nacional
+  nome: Banco Nacional
+  tipo: org
+  desc: Banco da família Magalhães Pinto, que escondia prejuízos em contas fictícias.
+- id: opportunity
+  nome: Banco Opportunity
+  tipo: org
+  desc: Banco de Daniel Dantas, ator na privatização das teles.
+- id: rural
+  nome: Banco Rural
+  tipo: org
+  desc: Banco dos empréstimos usados em 1998 (Minas) e a partir de 2003 (Brasília).
+- id: br
+  nome: BR Distribuidora
+  tipo: org
+  desc: Subsidiária da Petrobras, maior distribuidora de combustíveis do país.
+- id: caixa
+  nome: Caixa Econômica Federal
+  tipo: org
+  desc: Banco público cujos créditos eram liberados em troca de propina, segundo a investigação.
+- id: delta
+  nome: Delta
+  tipo: org
+  desc: Empreiteira com contratos no governo do Rio.
+- id: gautama
+  nome: Gautama
+  tipo: org
+  desc: Construtora no centro da Operação Navalha.
+- id: grupo-ok
+  nome: Grupo OK
+  tipo: org
+  desc: Empresas de Luiz Estevão que receberam dinheiro da obra.
+- id: incal
+  nome: Incal
+  tipo: org
+  desc: Construtora da obra do Fórum Trabalhista.
+- id: inss
+  nome: INSS
+  tipo: org
+  desc: Previdência Social.
+- id: oas
+  nome: OAS
+  tipo: org
+  desc: Empreiteira do caso do tríplex do Guarujá.
+- id: odebrecht
+  nome: Odebrecht
+  tipo: org
+  desc: Maior empreiteira da América Latina; tinha um setor interno só para propina.
+- id: petrobras
+  nome: Petrobras
+  tipo: org
+  desc: Maior empresa do país, centro do Petrolão.
+- id: planam
+  nome: Planam
+  tipo: org
+  desc: Empresa de Cuiabá que vendia as ambulâncias.
+- id: raytheon
+  nome: Raytheon
+  tipo: org
+  desc: Empresa americana que ganhou o SIVAM sem licitação.
+- id: siemens
+  nome: Siemens
+  tipo: org
+  desc: Confessou o cartel ao Cade em 2013.
+- id: smpb
+  nome: SMP&B e DNA
+  tipo: org
+  desc: Agências de publicidade de Marcos Valério.
+- id: telemar
+  nome: Telemar / Oi
+  tipo: org
+  desc: Consórcio que levou a Tele Norte Leste, com a Andrade Gutierrez.
+- id: utc
+  nome: UTC Engenharia
+  tipo: org
+  desc: Construtora que fechou quatro contratos com a BR entre 2010 e 2014.
+- id: centrao
+  nome: Centrão
+  tipo: partido
+  desc: Bloco nascido na Constituinte em troca de cargos e concessões.
+- id: pfl
+  nome: PFL / DEM
+  tipo: partido
+- id: pmdb
+  nome: PMDB / MDB
+  tipo: partido
+- id: pp
+  nome: PP
+  tipo: partido
+- id: psdb
+  nome: PSDB
+  tipo: partido
+- id: pt
+  nome: PT
+  tipo: partido
+- id: ptb
+  nome: PTB
+  tipo: partido
+- id: adriana
+  nome: Adriana Ancelmo
+  tipo: pessoa
+  desc: Advogada, então primeira-dama do Rio.
+- id: alberto-youssef
+  nome: Alberto Youssef
+  tipo: pessoa
+  desc: Doleiro de Londrina. Delator no Banestado em 2003, preso de novo na primeira fase da Lava Jato em 2014.
+- id: moraes
+  nome: Alexandre de Moraes
+  tipo: pessoa
+  desc: Ministro do STF que mandou prender Collor em 2025.
+- id: amazonino
+  nome: Amazonino Mendes
+  tipo: pessoa
+  desc: Governador do Amazonas citado nas gravações.
+- id: lara-resende
+  nome: André Lara Resende
+  tipo: pessoa
+  desc: Presidente do BNDES gravado nos grampos.
+- id: calmon
+  nome: Ângelo Calmon de Sá
+  tipo: pessoa
+  desc: Controlador do Banco Econômico, próximo de ACM.
+- id: garotinho
+  nome: Anthony Garotinho
+  tipo: pessoa
+  desc: Governador do Rio de Janeiro.
+- id: acm
+  nome: Antônio Carlos Magalhães
+  tipo: pessoa
+  desc: Ministro das Comunicações de Sarney; depois governador da Bahia e presidente do Senado.
+- id: antonio-fernando-de-souza
+  nome: Antonio Fernando de Souza
+  tipo: pessoa
+  desc: Procurador-geral da República; denunciou o Mensalão (2006) e o mensalão mineiro (2007).
+- id: carlinhos-cachoeira
+  nome: Carlinhos Cachoeira
+  tipo: pessoa
+  desc: Empresário de Goiás apontado como chefe do jogo ilegal.
+- id: miranda
+  nome: Carlos Miranda
+  tipo: pessoa
+  desc: Amigo de Cabral e arrecadador, segundo o MPF.
+- id: mazloum
+  nome: Casem Mazloum
+  tipo: pessoa
+  desc: Juiz federal também condenado na Anaconda.
+- id: celso-daniel
+  nome: Celso Daniel
+  tipo: pessoa
+  desc: Prefeito de Santo André pelo PT e coordenador do programa de Lula em 2002.
+- id: pitta
+  nome: Celso Pitta
+  tipo: pessoa
+  desc: Secretário de Finanças de Maluf e depois prefeito de São Paulo; preso na Satiagraha em 2008.
+- id: clesio
+  nome: Clésio Andrade
+  tipo: pessoa
+  desc: Candidato a vice de Azeredo e então sócio de Valério.
+- id: dantas
+  nome: Daniel Dantas
+  tipo: pessoa
+  desc: Fundador do banco Opportunity.
+- id: darci-vedoin
+  nome: Darci Vedoin
+  tipo: pessoa
+  desc: Sócio da Planam, pai de Luiz Antônio.
+- id: delcidio
+  nome: Delcídio do Amaral
+  tipo: pessoa
+  desc: Primeiro senador preso no exercício do mandato.
+- id: deltan
+  nome: Deltan Dallagnol
+  tipo: pessoa
+  desc: Coordenou a força-tarefa do MPF em Curitiba.
+- id: delubio
+  nome: Delúbio Soares
+  tipo: pessoa
+  desc: Tesoureiro do PT.
+- id: demostenes
+  nome: Demóstenes Torres
+  tipo: pessoa
+  desc: Senador do DEM por Goiás.
+- id: dilma
+  nome: Dilma Rousseff
+  tipo: pessoa
+  desc: Presidiu o Conselho de Administração da Petrobras na compra de Pasadena.
+- id: duda
+  nome: Duda Mendonça
+  tipo: pessoa
+  desc: Marqueteiro da campanha de Lula em 2002; admitiu à CPI pagamentos no exterior.
+- id: durval
+  nome: Durval Barbosa
+  tipo: pessoa
+  desc: Ex-secretário do DF que gravou as entregas de dinheiro.
+- id: fachin
+  nome: Edson Fachin
+  tipo: pessoa
+  desc: Ministro do STF que anulou as condenações de Lula em 2021.
+- id: azeredo
+  nome: Eduardo Azeredo
+  tipo: pessoa
+  desc: Governador de Minas pelo PSDB; candidato à reeleição em 1998.
+- id: cunha
+  nome: Eduardo Cunha
+  tipo: pessoa
+  desc: Ex-presidente da Câmara, preso na Lava Jato.
+- id: fausto-de-sanctis
+  nome: Fausto De Sanctis
+  tipo: pessoa
+  desc: Juiz federal do caso em São Paulo.
+- id: cavendish
+  nome: Fernando Cavendish
+  tipo: pessoa
+  desc: Dono da Delta Construções.
+- id: collor
+  nome: Fernando Collor
+  tipo: pessoa
+  desc: Presidente de 1990 a 1992; senador por Alagoas de 2007 a 2023. Único personagem da série a aparecer em dois casos com 33 anos de distância.
+- id: fhc
+  nome: Fernando Henrique Cardoso
+  tipo: pessoa
+  desc: Presidente de 1995 a 2002, reeleito em 1998 pela emenda que permitiu a reeleição.
+- id: francisco-lopes
+  nome: Francisco Lopes
+  tipo: pessoa
+  desc: Presidente do Banco Central em janeiro de 1999.
+- id: geddel
+  nome: Geddel Vieira Lima
+  tipo: pessoa
+  desc: Ministro de Lula, vice-presidente da Caixa no governo Dilma e ministro de Temer.
+- id: gedimar
+  nome: Gedimar Passos
+  tipo: pessoa
+  desc: Ex-agente da PF que trabalhava para o PT; preso com o dinheiro.
+- id: brindeiro
+  nome: Geraldo Brindeiro
+  tipo: pessoa
+  desc: Procurador-geral da República no governo FHC.
+- id: gilmar
+  nome: Gilmar Mendes
+  tipo: pessoa
+  desc: Presidente do STF em 2008.
+- id: hamilton-lacerda
+  nome: Hamilton Lacerda
+  tipo: pessoa
+  desc: Coordenador da campanha de Mercadante.
+- id: hildebrando
+  nome: Hildebrando Pascoal
+  tipo: pessoa
+  desc: Coronel da PM do Acre e deputado federal pelo PFL.
+- id: humberto-costa
+  nome: Humberto Costa
+  tipo: pessoa
+  desc: Ministro da Saúde em 2004.
+- id: ibsen
+  nome: Ibsen Pinheiro
+  tipo: pessoa
+  desc: Presidente da Câmara no impeachment de Collor; cassado em 1994 com base num valor divulgado errado.
+- id: jader
+  nome: Jader Barbalho
+  tipo: pessoa
+  desc: Senador pelo Pará; presidente do Senado em 2001.
+- id: joao-alves
+  nome: João Alves
+  tipo: pessoa
+  desc: Deputado pela Bahia e relator do Orçamento; disse ter ganhado na loteria mais de 200 vezes.
+- id: rochamattos
+  nome: João Carlos da Rocha Mattos
+  tipo: pessoa
+  desc: Juiz federal da 4ª Vara Criminal de São Paulo.
+- id: joao-maia
+  nome: João Maia
+  tipo: pessoa
+  desc: Deputado do PFL do Acre.
+- id: barbosa
+  nome: Joaquim Barbosa
+  tipo: pessoa
+  desc: Ministro do STF, relator da Ação Penal 470.
+- id: lorenzetti
+  nome: Jorge Lorenzetti
+  tipo: pessoa
+  desc: Coordenador de inteligência da campanha de Lula em 2006.
+- id: jorgina-freitas
+  nome: Jorgina de Freitas
+  tipo: pessoa
+  desc: Advogada que conduzia as ações contra o INSS.
+- id: assumpcao
+  nome: José Afonso Assumpção
+  tipo: pessoa
+  desc: Dono da Líder Táxi Aéreo e representante da Raytheon no Brasil.
+- id: jose-carlos-alves-dos-santos
+  nome: José Carlos Alves dos Santos
+  tipo: pessoa
+  desc: Ex-diretor de Orçamento do Senado; denunciou o esquema em 1993.
+- id: dirceu
+  nome: José Dirceu
+  tipo: pessoa
+  desc: Ministro-chefe da Casa Civil até 2005. Condenado no Mensalão e de novo na Lava Jato.
+- id: genoino
+  nome: José Genoino
+  tipo: pessoa
+  desc: Presidente do PT.
+- id: arruda
+  nome: José Roberto Arruda
+  tipo: pessoa
+  desc: Líder de FHC no Senado; depois governador do DF. Protagonista de dois casos da série.
+- id: sarney
+  nome: José Sarney
+  tipo: pessoa
+  desc: Vice de Tancredo, assumiu a Presidência em 1985.
+- id: serra
+  nome: José Serra
+  tipo: pessoa
+  desc: Candidato do PSDB ao governo de São Paulo em 2006; alvo do dossiê.
+- id: julio-cesar-gomes-dos-santos
+  nome: Júlio César Gomes dos Santos
+  tipo: pessoa
+  desc: Chefe do cerimonial da Presidência, gravado com o representante da Raytheon.
+- id: katia
+  nome: Kátia Rabello
+  tipo: pessoa
+  desc: Presidente do Banco Rural.
+- id: prudente
+  nome: Leonardo Prudente
+  tipo: pessoa
+  desc: Presidente da Câmara Legislativa do DF, filmado guardando dinheiro nas meias.
+- id: funaro
+  nome: Lúcio Funaro
+  tipo: pessoa
+  desc: Operador financeiro que fez delação.
+- id: lucio
+  nome: Lúcio Vieira Lima
+  tipo: pessoa
+  desc: Deputado federal, irmão de Geddel.
+- id: amorim
+  nome: Luís P. Duarte de Amorim
+  tipo: pessoa
+  desc: Recebia e depositava o dinheiro em espécie, segundo a acusação.
+- id: barroso
+  nome: Luís Roberto Barroso
+  tipo: pessoa
+  desc: Ministro do STF que suspendeu a votação secreta de 2013.
+- id: vedoin
+  nome: Luiz Antônio Vedoin
+  tipo: pessoa
+  desc: Dono da Planam. Delator nos Sanguessugas e vendedor do dossiê dos aloprados.
+- id: mendonca-de-barros
+  nome: Luiz Carlos Mendonça de Barros
+  tipo: pessoa
+  desc: Ministro das Comunicações gravado nos grampos do BNDES.
+- id: estevao
+  nome: Luiz Estevão
+  tipo: pessoa
+  desc: Senador pelo DF e empresário do Grupo OK.
+- id: pezao
+  nome: Luiz Fernando Pezão
+  tipo: pessoa
+  desc: Sucessor de Cabral; preso em 2018 no exercício do mandato.
+- id: lula
+  nome: Lula
+  tipo: pessoa
+  desc: Presidente de 2003 a 2010 e eleito de novo em 2022.
+- id: calero
+  nome: Marcelo Calero
+  tipo: pessoa
+  desc: Ministro da Cultura que acusou Geddel de pressão em 2016.
+- id: marcelo-odebrecht
+  nome: Marcelo Odebrecht
+  tipo: pessoa
+  desc: Presidente da Odebrecht, preso em 2015.
+- id: marcos-donadon
+  nome: Marcos Donadon
+  tipo: pessoa
+  desc: Irmão do deputado, integrante da cúpula da Assembleia.
+- id: valerio
+  nome: Marcos Valério
+  tipo: pessoa
+  desc: Publicitário, sócio da SMP&B e da DNA. O mesmo operador em 1998 (Minas) e a partir de 2003 (Brasília).
+- id: gandra
+  nome: Mauro Gandra
+  tipo: pessoa
+  desc: Ministro da Aeronáutica que deixou o governo no caso SIVAM.
+- id: temer
+  nome: Michel Temer
+  tipo: pessoa
+  desc: Presidente de 2016 a 2018.
+- id: nahas
+  nome: Naji Nahas
+  tipo: pessoa
+  desc: Investidor preso na Satiagraha.
+- id: natan-donadon
+  nome: Natan Donadon
+  tipo: pessoa
+  desc: Deputado federal por Rondônia.
+- id: cervero
+  nome: Nestor Cerveró
+  tipo: pessoa
+  desc: Diretor Internacional da Petrobras.
+- id: nestor
+  nome: Nestor do Nascimento
+  tipo: pessoa
+  desc: Juiz da vara de acidentes do trabalho do Rio.
+- id: nicolau
+  nome: Nicolau dos Santos Neto
+  tipo: pessoa
+  desc: O Lalau, presidente do TRT de São Paulo.
+- id: cameli
+  nome: Orleir Cameli
+  tipo: pessoa
+  desc: Governador do Acre citado nas gravações.
+- id: maluf
+  nome: Paulo Maluf
+  tipo: pessoa
+  desc: Prefeito de São Paulo de 1993 a 1996, deputado federal por vários mandatos.
+- id: paulo-octavio
+  nome: Paulo Octávio
+  tipo: pessoa
+  desc: Vice-governador do DF.
+- id: paulo-roberto-costa
+  nome: Paulo Roberto Costa
+  tipo: pessoa
+  desc: Diretor de Abastecimento da Petrobras, indicado pelo PP. Primeiro grande delator do Petrolão.
+- id: pc-farias
+  nome: PC Farias
+  tipo: pessoa
+  desc: Paulo César Farias, empresário alagoano e tesoureiro da campanha de Collor em 1989.
+- id: barusco
+  nome: Pedro Barusco
+  tipo: pessoa
+  desc: Gerente da Petrobras que aceitou devolver US$ 97 milhões.
+- id: pedro-collor
+  nome: Pedro Collor
+  tipo: pessoa
+  desc: Irmão do presidente; suas denúncias em 1992 expuseram o esquema.
+- id: leoni
+  nome: Pedro Paulo Leoni Ramos
+  tipo: pessoa
+  desc: Ex-ministro do governo Collor; arrecadava a propina da BR Distribuidora, segundo o STF.
+- id: protogenes
+  nome: Protógenes Queiroz
+  tipo: pessoa
+  desc: Delegado da PF que comandou a Satiagraha.
+- id: regina
+  nome: Regina Borges
+  tipo: pessoa
+  desc: Diretora do Prodasen que extraiu a lista do painel.
+- id: duque
+  nome: Renato Duque
+  tipo: pessoa
+  desc: Diretor de Serviços da Petrobras.
+- id: berzoini
+  nome: Ricardo Berzoini
+  tipo: pessoa
+  desc: Presidente do PT e coordenador da campanha de Lula em 2006.
+- id: jefferson
+  nome: Roberto Jefferson
+  tipo: pessoa
+  desc: Presidente do PTB; denunciou o mensalão em 2005 e também foi condenado.
+- id: requiao
+  nome: Roberto Requião
+  tipo: pessoa
+  desc: Senador relator da CPI dos Precatórios.
+- id: silveirinha
+  nome: Rodrigo Silveirinha
+  tipo: pessoa
+  desc: Subsecretário de Administração Tributária do Rio no governo Garotinho.
+- id: ronivon
+  nome: Ronivon Santiago
+  tipo: pessoa
+  desc: Deputado do PFL do Acre gravado dizendo que recebeu R$ 200 mil.
+- id: cacciola
+  nome: Salvatore Cacciola
+  tipo: pessoa
+  desc: Dono do Banco Marka; fugiu para a Itália e foi preso em Mônaco.
+- id: sergio-cabral
+  nome: Sérgio Cabral
+  tipo: pessoa
+  desc: Governador do Rio de 2007 a 2014, pelo MDB.
+- id: sombra
+  nome: Sérgio Gomes da Silva (Sombra)
+  tipo: pessoa
+  desc: Empresário que estava com o prefeito na noite do sequestro.
+- id: moro
+  nome: Sergio Moro
+  tipo: pessoa
+  desc: Juiz federal em Curitiba nos dois casos; ministro da Justiça em 2019; declarado parcial pelo STF em 2021.
+- id: motta
+  nome: Sérgio Motta
+  tipo: pessoa
+  desc: Ministro das Comunicações e articulador político de FHC.
+- id: rondeau
+  nome: Silas Rondeau
+  tipo: pessoa
+  desc: Ministro de Minas e Energia em 2007.
+- id: valdebran
+  nome: Valdebran Padilha
+  tipo: pessoa
+  desc: Empresário ligado ao PT; preso com o dinheiro.
+- id: wagner
+  nome: Wagner Baptista Ramos
+  tipo: pessoa
+  desc: Ex-funcionário da prefeitura paulistana, apontado pela CPI como peça central das emissões.
+- id: waldomiro
+  nome: Waldomiro Diniz
+  tipo: pessoa
+  desc: Assessor da Casa Civil filmado negociando com Cachoeira em 2004.
+- id: walfrido
+  nome: Walfrido dos Mares Guia
+  tipo: pessoa
+  desc: Coordenador financeiro da campanha de 1998.
+- id: wilson
+  nome: Wilson Carlos
+  tipo: pessoa
+  desc: Ex-secretário de Governo de Cabral.
+- id: zuleido
+  nome: Zuleido Veras
+  tipo: pessoa
+  desc: Dono da construtora Gautama.

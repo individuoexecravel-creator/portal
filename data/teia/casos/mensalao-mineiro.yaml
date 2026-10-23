@@ -1,0 +1,39 @@
+# Teia do caso: Mensalão mineiro
+caso: mensalao-mineiro
+nome: Mensalão mineiro
+periodo:
+  - 1998
+  - 2018
+resumo: Estatais mineiras patrocinavam eventos esportivos; o dinheiro passava pelas agências de Marcos Valério e abastecia a campanha de Eduardo Azeredo em 1998.
+desfecho: Azeredo condenado a mais de 20 anos por peculato e lavagem; preso em 2018.
+envolvidos:
+  - id: azeredo
+    tipo: condenado
+    rel: 20 anos e 10 meses; preso em 2018
+  - id: valerio
+    tipo: citado
+    rel: Operador do esquema de 1998
+  - id: clesio
+    tipo: citado
+    rel: Candidato a vice
+  - id: walfrido
+    tipo: anulado
+    rel: Crimes prescritos
+  - id: antonio-fernando-de-souza
+    tipo: agente
+    rel: Denunciou ao STF em 2007
+  - id: smpb
+    tipo: vinculo
+    rel: Agências por onde o dinheiro passava
+  - id: rural
+    tipo: vinculo
+    rel: Empréstimos de fachada
+  - id: psdb
+    tipo: vinculo
+    rel: Partido do governador
+  - id: bh
+    tipo: vinculo
+    rel: Prisão de Azeredo
+relacionados:
+  - caso: mensalao
+    rel: Mensalão mineiro foi o laboratório do valerioduto

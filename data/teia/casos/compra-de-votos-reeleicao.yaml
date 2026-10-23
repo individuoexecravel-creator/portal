@@ -1,0 +1,39 @@
+# Teia do caso: Compra de votos da reeleição
+caso: compra-de-votos-reeleicao
+nome: Compra de votos da reeleição
+periodo:
+  - 1997
+  - 1997
+resumo: Gravações mostraram deputados do Acre contando que receberam R$ 200 mil para votar a emenda da reeleição.
+desfecho: Dois deputados renunciam; CPI não é instalada; ninguém é punido.
+envolvidos:
+  - id: ronivon
+    tipo: cassado
+    rel: Renunciou ao mandato
+  - id: joao-maia
+    tipo: cassado
+    rel: Renunciou ao mandato
+  - id: amazonino
+    tipo: citado
+    rel: Apontado nas gravações como intermediário; negou
+  - id: cameli
+    tipo: citado
+    rel: Apontado nas gravações como intermediário; negou
+  - id: motta
+    tipo: citado
+    rel: Mencionado nas gravações; negou
+  - id: fhc
+    tipo: vinculo
+    rel: Beneficiário da emenda; negou compra de votos
+  - id: brindeiro
+    tipo: agente
+    rel: Não levou adiante a investigação
+  - id: acre
+    tipo: vinculo
+    rel: Estado dos deputados gravados
+  - id: pfl
+    tipo: vinculo
+    rel: Partido dos deputados gravados
+relacionados:
+  - caso: mensalao
+    rel: Dinheiro por voto no Congresso, oito anos antes

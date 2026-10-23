@@ -1,0 +1,24 @@
+# Teia do caso: Maluf
+caso: paulo-maluf
+nome: Maluf
+periodo:
+  - 1993
+  - 2017
+resumo: Obras superfaturadas na Prefeitura de São Paulo e o dinheiro escondido em contas em Jersey e na Suíça.
+desfecho: Condenado pelo STF em 2017 por lavagem; preso na Papuda; depois prisão domiciliar.
+envolvidos:
+  - id: maluf
+    tipo: condenado
+    rel: Lavagem de dinheiro, STF 2017
+  - id: stf
+    tipo: agente
+    rel: Condenou em 2017
+  - id: papuda
+    tipo: vinculo
+    rel: Preso em dezembro de 2017
+  - id: suica
+    tipo: vinculo
+    rel: Contas em Jersey e na Suíça
+  - id: sp
+    tipo: vinculo
+    rel: Obras da prefeitura

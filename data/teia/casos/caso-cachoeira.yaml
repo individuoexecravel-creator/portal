@@ -1,0 +1,36 @@
+# Teia do caso: Caso Cachoeira
+caso: caso-cachoeira
+nome: Caso Cachoeira
+periodo:
+  - 2004
+  - 2012
+resumo: Escutas da Operação Monte Carlo ligaram o contraventor a policiais, à Delta e ao senador Demóstenes Torres.
+desfecho: Demóstenes cassado em 2012; Cachoeira condenado; provas contra o senador anuladas depois.
+envolvidos:
+  - id: carlinhos-cachoeira
+    tipo: condenado
+    rel: Condenado na Monte Carlo
+  - id: demostenes
+    tipo: cassado
+    rel: Cassado em 2012; provas anuladas depois
+  - id: waldomiro
+    tipo: citado
+    rel: Vídeo de 2004
+  - id: cavendish
+    tipo: vinculo
+    rel: Dono da Delta
+  - id: delta
+    tipo: vinculo
+    rel: Ligação com o grupo
+  - id: senado
+    tipo: agente
+    rel: Cassou Demóstenes
+  - id: goias
+    tipo: vinculo
+    rel: Base do grupo
+  - id: pfl
+    tipo: vinculo
+    rel: Partido de Demóstenes
+relacionados:
+  - caso: sergio-cabral
+    rel: Cavendish e a Delta reapareceram no governo Cabral

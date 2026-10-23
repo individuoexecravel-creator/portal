@@ -1,0 +1,47 @@
+# Teia do caso: Collor e a BR Distribuidora
+caso: collor-br-distribuidora
+nome: Collor e a BR Distribuidora
+periodo:
+  - 2010
+  - 2025
+resumo: Como senador, Collor indicava dirigentes da BR Distribuidora. Segundo o STF, recebeu R$ 20 milhões em propina por contratos da UTC Engenharia.
+desfecho: Condenado pelo STF em 2023 (8 votos a 2), 8 anos e 10 meses. Preso em abril de 2025; domiciliar seis dias depois.
+envolvidos:
+  - id: collor
+    tipo: condenado
+    rel: 8 anos e 10 meses; preso em 2025
+  - id: leoni
+    tipo: condenado
+    rel: 4 anos e 1 mês
+  - id: amorim
+    tipo: citado
+    rel: Operador do dinheiro, segundo a acusação
+  - id: br
+    tipo: vinculo
+    rel: Estatal onde Collor indicava dirigentes
+  - id: utc
+    tipo: vinculo
+    rel: Quatro contratos com a BR
+  - id: alberto-youssef
+    tipo: vinculo
+    rel: Documentos do seu escritório ligaram o esquema a Collor
+  - id: dinda
+    tipo: vinculo
+    rel: Buscas da PF em 2015
+  - id: stf
+    tipo: agente
+    rel: Condenou por 8 votos a 2
+  - id: pgr
+    tipo: agente
+    rel: Denunciou Collor em 2015
+  - id: moraes
+    tipo: agente
+    rel: Rejeitou o último recurso e mandou prender
+  - id: senado
+    tipo: vinculo
+    rel: Collor foi senador por 16 anos
+relacionados:
+  - caso: collor-pc-farias
+    rel: Mesmo personagem, 33 anos depois
+  - caso: lava-jato
+    rel: Documentos da Lava Jato ligaram o esquema a Collor

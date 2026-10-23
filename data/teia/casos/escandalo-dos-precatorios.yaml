@@ -1,0 +1,30 @@
+# Teia do caso: Escândalo dos Precatórios
+caso: escandalo-dos-precatorios
+nome: Escândalo dos Precatórios
+periodo:
+  - 1995
+  - 1997
+resumo: Títulos para pagar dívidas judiciais eram inflados e revendidos numa cadeia de corretoras com lucro para intermediários.
+desfecho: CPI aponta prejuízo bilionário; Senado restringe as emissões; poucas condenações.
+envolvidos:
+  - id: maluf
+    tipo: citado
+    rel: Prefeito na época das emissões
+  - id: pitta
+    tipo: citado
+    rel: Secretário de Finanças das emissões
+  - id: wagner
+    tipo: citado
+    rel: Peça central da engenharia, segundo a CPI
+  - id: requiao
+    tipo: agente
+    rel: Relator da CPI
+  - id: senado
+    tipo: agente
+    rel: Autorizou as emissões e as investigou
+  - id: sp
+    tipo: vinculo
+    rel: Prefeitura emissora
+relacionados:
+  - caso: paulo-maluf
+    rel: Mesma gestão na Prefeitura de São Paulo

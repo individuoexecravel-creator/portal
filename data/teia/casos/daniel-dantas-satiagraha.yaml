@@ -1,0 +1,36 @@
+# Teia do caso: Daniel Dantas e a Satiagraha
+caso: daniel-dantas-satiagraha
+nome: Daniel Dantas e a Satiagraha
+periodo:
+  - 2004
+  - 2011
+resumo: A PF prendeu o banqueiro do Opportunity e filmou a tentativa de suborno de um delegado.
+desfecho: Dantas condenado em 2008; em 2011 o STJ anula toda a operação; o delegado é condenado por vazamento.
+envolvidos:
+  - id: dantas
+    tipo: anulado
+    rel: Condenado em 2008; operação anulada em 2011
+  - id: protogenes
+    tipo: condenado
+    rel: Condenado por violação de sigilo
+  - id: fausto-de-sanctis
+    tipo: agente
+    rel: Juiz do caso
+  - id: gilmar
+    tipo: agente
+    rel: Concedeu dois habeas corpus
+  - id: nahas
+    tipo: citado
+    rel: Preso em 2008
+  - id: pitta
+    tipo: citado
+    rel: Preso em 2008
+  - id: abin
+    tipo: vinculo
+    rel: Participação irregular anulou as provas
+  - id: stj
+    tipo: agente
+    rel: Anulou a operação
+  - id: opportunity
+    tipo: vinculo
+    rel: Banco investigado

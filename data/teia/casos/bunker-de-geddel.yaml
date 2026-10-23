@@ -1,0 +1,42 @@
+# Teia do caso: Bunker de Geddel
+caso: bunker-de-geddel
+nome: Bunker de Geddel
+periodo:
+  - 2016
+  - 2019
+resumo: R$ 51 milhões em malas num apartamento em Salvador, a maior apreensão de dinheiro vivo do país.
+desfecho: STF condena Geddel a 14 anos e 10 meses e o irmão a 10 anos e 6 meses, em 2019.
+envolvidos:
+  - id: geddel
+    tipo: condenado
+    rel: 14 anos e 10 meses
+  - id: lucio
+    tipo: condenado
+    rel: 10 anos e 6 meses
+  - id: funaro
+    tipo: delator
+    rel: Operador que delatou o esquema da Caixa
+  - id: cunha
+    tipo: citado
+    rel: Apontado ao lado de Geddel no esquema da Caixa
+  - id: caixa
+    tipo: vinculo
+    rel: Créditos liberados em troca de propina
+  - id: temer
+    tipo: vinculo
+    rel: Geddel era seu ministro
+  - id: calero
+    tipo: vinculo
+    rel: Acusou Geddel de pressão
+  - id: salvador
+    tipo: vinculo
+    rel: O apartamento do bunker
+  - id: stf
+    tipo: agente
+    rel: Condenou em 2019
+  - id: pmdb
+    tipo: vinculo
+    rel: Partido dos irmãos
+relacionados:
+  - caso: lava-jato
+    rel: Operações derivadas da Lava Jato chegaram à Caixa

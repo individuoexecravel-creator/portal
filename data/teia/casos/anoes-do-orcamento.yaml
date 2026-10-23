@@ -1,0 +1,32 @@
+# Teia do caso: Anões do Orçamento
+caso: anoes-do-orcamento
+nome: Anões do Orçamento
+periodo:
+  - 1989
+  - 1994
+resumo: Deputados do baixo clero controlavam a Comissão de Orçamento e vendiam emendas a empreiteiras e entidades de fachada.
+desfecho: 'CPI pede 18 cassações: 6 cassados, 4 renúncias e 8 absolvidos pelo plenário.'
+envolvidos:
+  - id: joao-alves
+    tipo: cassado
+    rel: Renunciou antes do julgamento
+  - id: jose-carlos-alves-dos-santos
+    tipo: delator
+    rel: Denunciou o esquema em 1993
+  - id: ibsen
+    tipo: cassado
+    rel: Cassado com base num valor divulgado errado
+  - id: cpi-orcamento
+    tipo: agente
+    rel: Pediu 18 cassações
+  - id: camara
+    tipo: agente
+    rel: Cassou 6 e absolveu 8
+  - id: odebrecht
+    tipo: vinculo
+    rel: Documentos apreendidos com executivos
+relacionados:
+  - caso: sanguessugas
+    rel: As emendas continuaram sendo a porta do desvio
+  - caso: lava-jato
+    rel: Documentos da Odebrecht já apareciam em 1993

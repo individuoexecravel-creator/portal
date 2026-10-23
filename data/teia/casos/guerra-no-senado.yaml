@@ -1,0 +1,39 @@
+# Teia do caso: Guerra no Senado
+caso: guerra-no-senado
+nome: Guerra no Senado
+periodo:
+  - 2000
+  - 2001
+resumo: A briga entre ACM e Jader pela presidência do Senado revelou a violação do painel na votação que cassou Luiz Estevão.
+desfecho: Arruda, ACM e Jader renunciam em 2001; os três voltam eleitos em 2002.
+envolvidos:
+  - id: acm
+    tipo: cassado
+    rel: Renunciou em maio de 2001
+  - id: jader
+    tipo: cassado
+    rel: Renunciou em outubro de 2001
+  - id: arruda
+    tipo: cassado
+    rel: Confessou e renunciou em maio de 2001
+  - id: regina
+    tipo: citado
+    rel: Extraiu a lista dos votos
+  - id: estevao
+    tipo: vinculo
+    rel: A votação violada foi a da sua cassação
+  - id: painel
+    tipo: vinculo
+    rel: Violado
+  - id: senado
+    tipo: vinculo
+    rel: Palco da crise
+  - id: pfl
+    tipo: vinculo
+    rel: Partido de ACM
+  - id: pmdb
+    tipo: vinculo
+    rel: Partido de Jader
+relacionados:
+  - caso: caixa-de-pandora
+    rel: Arruda renunciou em 2001 e caiu de novo em 2010

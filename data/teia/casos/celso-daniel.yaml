@@ -1,0 +1,21 @@
+# Teia do caso: Caso Celso Daniel
+caso: celso-daniel
+nome: Caso Celso Daniel
+periodo:
+  - 2002
+  - 2016
+resumo: O prefeito de Santo André foi sequestrado e morto. A polícia viu crime comum; o MP e a família viram crime político ligado a propina.
+desfecho: Executores condenados; o acusado de ser mandante morreu em 2016 sem julgamento.
+envolvidos:
+  - id: celso-daniel
+    tipo: vinculo
+    rel: Vítima
+  - id: sombra
+    tipo: anulado
+    rel: Denunciado como mandante; morreu sem julgamento
+  - id: santo-andre
+    tipo: vinculo
+    rel: Prefeitura
+  - id: pt
+    tipo: vinculo
+    rel: Partido do prefeito

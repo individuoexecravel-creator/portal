@@ -1,0 +1,33 @@
+# Teia do caso: Banestado
+caso: banestado
+nome: Banestado
+periodo:
+  - 1996
+  - 2004
+resumo: Contas CC5 abertas em nome de laranjas no Banestado de Foz do Iguaçu remeteram cerca de US$ 30 bilhões ao exterior.
+desfecho: Dezenas de condenações na Justiça Federal; CPMI termina sem relatório aprovado.
+envolvidos:
+  - id: alberto-youssef
+    tipo: delator
+    rel: Primeira delação premiada, em 2003
+  - id: moro
+    tipo: agente
+    rel: Juiz da 2ª Vara Federal Criminal de Curitiba
+  - id: cpmi-banestado
+    tipo: agente
+    rel: CPMI de 2003–2004
+  - id: banco-banestado
+    tipo: vinculo
+    rel: Banco das contas CC5
+  - id: foz
+    tipo: vinculo
+    rel: Agência de origem das remessas
+  - id: justica-federal-curitiba
+    tipo: agente
+    rel: Concentrou os processos
+  - id: curitiba
+    tipo: vinculo
+    rel: Sede dos processos
+relacionados:
+  - caso: lava-jato
+    rel: 'Mesmo juiz, mesmo doleiro: o ensaio da Lava Jato'

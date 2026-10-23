@@ -1,0 +1,72 @@
+# Teia do caso: Operação Lava Jato
+caso: lava-jato
+nome: Operação Lava Jato
+periodo:
+  - 2014
+  - 2021
+resumo: Começou num posto de combustíveis em Brasília e chegou à Petrobras, às maiores empreiteiras e a um ex-presidente.
+desfecho: Mais de cem condenados em Curitiba; força-tarefa extinta em 2021; STF declara Moro parcial e anula condenações de Lula.
+envolvidos:
+  - id: alberto-youssef
+    tipo: delator
+    rel: Preso na primeira fase, em 2014; fez delação
+  - id: paulo-roberto-costa
+    tipo: delator
+    rel: Delação em agosto de 2014
+  - id: marcelo-odebrecht
+    tipo: condenado
+    rel: Preso em 2015
+  - id: cunha
+    tipo: condenado
+    rel: Ex-presidente da Câmara preso
+  - id: delcidio
+    tipo: delator
+    rel: Senador preso no mandato; fez delação
+  - id: lula
+    tipo: anulado
+    rel: Condenado em 2017 e preso por 580 dias; condenações anuladas em 2021
+  - id: moro
+    tipo: agente
+    rel: Juiz da 13ª Vara; declarado parcial em 2021
+  - id: deltan
+    tipo: agente
+    rel: Coordenador da força-tarefa
+  - id: fachin
+    tipo: agente
+    rel: Anulou as condenações de Lula
+  - id: stf
+    tipo: agente
+    rel: Declarou Moro parcial
+  - id: justica-federal-curitiba
+    tipo: agente
+    rel: Concentrou os processos
+  - id: vaza-jato
+    tipo: vinculo
+    rel: Mensagens que levaram à revisão da operação
+  - id: odebrecht
+    tipo: delator
+    rel: 77 executivos assinaram a “delação do fim do mundo”
+  - id: oas
+    tipo: vinculo
+    rel: Empresa do tríplex
+  - id: guaruja
+    tipo: vinculo
+    rel: Caso do tríplex
+  - id: petrobras
+    tipo: vinculo
+    rel: Estatal no centro da investigação
+  - id: curitiba
+    tipo: vinculo
+    rel: Sede da força-tarefa
+  - id: posto
+    tipo: vinculo
+    rel: Onde tudo começou
+  - id: dirceu
+    tipo: condenado
+    rel: Condenado de novo
+  - id: calicute
+    tipo: vinculo
+    rel: Braço da Lava Jato no Rio
+relacionados:
+  - caso: petrolao
+    rel: A operação que revelou o Petrolão

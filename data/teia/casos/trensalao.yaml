@@ -1,0 +1,27 @@
+# Teia do caso: Trensalão
+caso: trensalao
+nome: Trensalão
+periodo:
+  - 1998
+  - 2019
+resumo: Multinacionais combinavam vencedores e preços nas licitações do Metrô e da CPTM de São Paulo.
+desfecho: Cade condena 11 empresas em 2019; processos criminais se arrastam e parte prescreve.
+envolvidos:
+  - id: siemens
+    tipo: delator
+    rel: Acordo de leniência em 2013
+  - id: alstom
+    tipo: citado
+    rel: Pagamentos investigados na Suíça e na França
+  - id: cade
+    tipo: agente
+    rel: Condenou 11 empresas em 2019
+  - id: psdb
+    tipo: vinculo
+    rel: Partido das gestões paulistas
+  - id: sp
+    tipo: vinculo
+    rel: Metrô e CPTM
+  - id: suica
+    tipo: vinculo
+    rel: Contas investigadas

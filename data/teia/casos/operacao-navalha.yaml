@@ -1,0 +1,18 @@
+# Teia do caso: Operação Navalha
+caso: operacao-navalha
+nome: Operação Navalha
+periodo:
+  - 2007
+  - 2007
+resumo: A construtora Gautama pagava em toda a cadeia da obra pública, da emenda à medição.
+desfecho: Dezenas de presos; ministro de Minas e Energia deixa o cargo; parte dos processos arquivada ou prescrita.
+envolvidos:
+  - id: zuleido
+    tipo: citado
+    rel: Preso; respondeu a múltiplas ações
+  - id: gautama
+    tipo: vinculo
+    rel: A construtora
+  - id: rondeau
+    tipo: citado
+    rel: Deixou o ministério; negou

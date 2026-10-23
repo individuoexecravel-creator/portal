@@ -22,6 +22,9 @@
     <dl>
       {{ range . }}<dt>{{ .item }}</dt><dd>{{ .valor | markdownify }}</dd>{{ end }}
     </dl>
+    {{ with index (site.Data.teia.casos | default dict) $.File.ContentBaseName }}
+    <a class="ver-teia" href="{{ "teia/" | relURL }}#{{ .caso }}">Ver as ligações deste caso na Teia →</a>
+    {{ end }}
   </aside>
   {{ end }}
   <article class="texto">
