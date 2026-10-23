@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{ $todas := where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">Casos</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+</section>
+<section class="wrap">
+  {{ partial "explorador.html" (dict "paginas" $todas "abas" true) }}
+</section>
+{{ end }}

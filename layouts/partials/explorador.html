@@ -1,0 +1,44 @@
+{{- /* Lista filtrável de casos. Recebe dict: paginas, abas (bool). */ -}}
+{{- $pags := .paginas -}}
+{{- $decadas := slice -}}
+{{- range $pags }}{{ with .Params.periodo }}{{ $d := mul (div (int (substr . 0 4)) 10) 10 }}{{ if not (in $decadas $d) }}{{ $decadas = $decadas | append $d }}{{ end }}{{ end }}{{ end -}}
+{{- $decadas = sort $decadas -}}
+<div class="explorador" data-explorador>
+  <div class="filtros" role="search">
+    <div class="filtro-busca">
+      {{ partial "icone.html" "busca" }}
+      <label class="sr" for="ex-q">Filtrar casos</label>
+      <input id="ex-q" type="search" placeholder="Filtrar por nome, pessoa, empresa…" autocomplete="off" data-f-q>
+    </div>
+    {{ if .abas }}
+    <div class="filtro-grupo" role="group" aria-label="Seção">
+      <button type="button" class="chip" aria-pressed="true" data-f-sec="">Todos</button>
+      {{ range slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" .) }}
+      <button type="button" class="chip sec-{{ .Section }}" aria-pressed="false" data-f-sec="{{ .Section }}">{{ .Title }}</button>
+      {{ end }}{{ end }}
+    </div>
+    {{ end }}
+    <div class="filtro-grupo" role="group" aria-label="Época">
+      <button type="button" class="chip" aria-pressed="true" data-f-dec="">Todas as épocas</button>
+      {{ range $decadas }}<button type="button" class="chip" aria-pressed="false" data-f-dec="{{ . }}">Anos {{ if lt . 2000 }}{{ sub . 1900 }}{{ else }}{{ . }}{{ end }}</button>{{ end }}
+    </div>
+    <div class="filtro-linha">
+      <p class="filtro-conta" aria-live="polite" data-f-conta>{{ len $pags }} casos</p>
+      <label class="filtro-ordem">Ordenar
+        <select data-f-ordem>
+          <option value="pub">Publicados por último</option>
+          <option value="ano">Linha do tempo (mais antigo)</option>
+          <option value="ano-desc">Linha do tempo (mais recente)</option>
+          <option value="az">De A a Z</option>
+        </select>
+      </label>
+    </div>
+  </div>
+  <div class="grade" data-f-grade>
+    {{ range $pags }}{{ partial "card.html" . }}{{ end }}
+  </div>
+  <div class="vazio" hidden data-f-vazio>
+    <p>Nenhum caso encontrado com esses filtros.</p>
+    <button type="button" class="botao" data-f-limpar>Limpar filtros</button>
+  </div>
+</div>

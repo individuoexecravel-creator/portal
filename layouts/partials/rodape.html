@@ -1,0 +1,22 @@
+<footer class="rodape">
+  <div class="wrap rodape-in">
+    <div class="rodape-marca">
+      <strong>{{ site.Title }}</strong>
+      <p>{{ site.Params.description }}</p>
+      <p>Um projeto de <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, responsável pelo conteúdo publicado.</p>
+    </div>
+    <nav class="rodape-nav" aria-label="Mapa do site">
+      <h2>Navegar</h2>
+      <ul>
+        <li><a href="{{ site.Home.RelPermalink }}">Início</a></li>
+        {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+      </ul>
+    </nav>
+    <div class="rodape-redes">
+      <h2>Siga</h2>
+      {{ partial "redes.html" . }}
+    </div>
+    <p class="nota">Os textos se baseiam em processos, relatórios de CPIs e reportagens publicadas. Quando um acusado foi absolvido, teve a pena extinta ou o processo anulado, isso está dito no texto.</p>
+  </div>
+  <div class="wrap rodape-fim">© {{ now.Year }} {{ site.Title }}, {{ site.Params.autor.nome }}</div>
+</footer>

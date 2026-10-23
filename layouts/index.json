@@ -1,0 +1,19 @@
+{{- /* Índice para a busca do topo: um item por caso. */ -}}
+{{- $itens := slice -}}
+{{- range where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") -}}
+  {{- $p := partial "partes.html" . -}}
+  {{- $ficha := slice -}}
+  {{- range .Params.ficha }}{{ $ficha = $ficha | append (print .valor) }}{{ end -}}
+  {{- $itens = $itens | append (dict
+      "t" $p.caso
+      "s" $p.sub
+      "d" .Description
+      "u" .RelPermalink
+      "sec" .CurrentSection.Title
+      "k" .Section
+      "per" (.Params.periodo | default "")
+      "img" (cond (isset .Params "image") (print "img/thumbs/" .Params.image | relURL) "")
+      "f" (delimit $ficha " ")
+  ) -}}
+{{- end -}}
+{{- $itens | jsonify -}}

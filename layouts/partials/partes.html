@@ -1,0 +1,6 @@
+{{- /* Divide "Nome do caso: subtítulo" em duas partes. Devolve dict caso/sub. */ -}}
+{{- $t := .Title -}}
+{{- $caso := $t | replaceRE ":.*$" "" -}}
+{{- $sub := $t | replaceRE "^[^:]*:?\\s*" "" -}}
+{{- if $sub }}{{ $sub = print (upper (substr $sub 0 1)) (substr $sub 1) }}{{ end -}}
+{{- return (dict "caso" $caso "sub" $sub) -}}

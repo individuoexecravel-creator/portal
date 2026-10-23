@@ -39,22 +39,26 @@ summaryLength = 40
 [markup.goldmark.renderer]
   unsafe = true
 
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+# Menu principal. A ordem segue o "weight".
 [menus]
   [[menus.main]]
-    name = "Início"
-    pageRef = "/"
+    name = "Casos"
+    pageRef = "/casos"
     weight = 1
   [[menus.main]]
     name = "Nova República"
     pageRef = "/nova-republica"
     weight = 2
   [[menus.main]]
-    name = "Teia"
-    pageRef = "/teia"
-    weight = 3
-  [[menus.main]]
     name = "Internacional"
     pageRef = "/internacional"
+    weight = 3
+  [[menus.main]]
+    name = "Teia"
+    pageRef = "/teia"
     weight = 4
   [[menus.main]]
     name = "Sobre"

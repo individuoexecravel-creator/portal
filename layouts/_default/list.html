@@ -1,12 +1,10 @@
 {{ define "main" }}
 <section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><a href="{{ "casos/" | relURL }}">Casos</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
   <h1>{{ .Title }}</h1>
   {{ with .Description }}<p class="linha">{{ . }}</p>{{ end }}
-  <p class="contagem">{{ len .RegularPages }} casos, do mais recente ao mais antigo</p>
 </section>
 <section class="wrap">
-  <div class="grade">
-    {{ range .RegularPages }}{{ partial "card.html" . }}{{ end }}
-  </div>
+  {{ partial "explorador.html" (dict "paginas" .RegularPages "abas" false) }}
 </section>
 {{ end }}
