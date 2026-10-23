@@ -1,0 +1,42 @@
+# Teia do caso: Sérgio Naya
+caso: sergio-naya
+nome: Sérgio Naya e o Palace II
+periodo:
+  - 1998
+  - 2018
+resumo: O edifício Palace II, da construtora do deputado Sérgio Naya, desabou na Barra da Tijuca em 1998 e matou oito pessoas.
+desfecho: Cassado em 1998 por 277 a 163; absolvido na esfera criminal em 2005; condenado a indenizar as vítimas, morreu em 2009 sem que elas recebessem o valor integral.
+novas_entidades:
+  - id: sergio-naya
+    nome: Sérgio Naya
+    tipo: pessoa
+    desc: Engenheiro, empresário e deputado federal por Minas Gerais, dono da construtora Sersan.
+  - id: sersan
+    nome: Construtora Sersan
+    tipo: org
+    desc: Construtora de Sérgio Naya, responsável pelo edifício Palace II.
+  - id: palace-ii
+    nome: Edifício Palace II, Barra da Tijuca
+    tipo: lugar
+    desc: Prédio de 176 apartamentos que desabou em 22 de fevereiro de 1998.
+envolvidos:
+  - id: sergio-naya
+    tipo: cassado
+    rel: Cassado em 1998; absolvido na esfera criminal em 2005
+  - id: sersan
+    tipo: vinculo
+    rel: Construtora condenada a indenizar cerca de 120 famílias
+  - id: camara
+    tipo: agente
+    rel: Cassou por 277 a 163
+  - id: palace-ii
+    tipo: vinculo
+    rel: Desabou e matou oito pessoas
+  - id: rio
+    tipo: vinculo
+    rel: Local da tragédia
+vinculos:
+  - de: sergio-naya
+    para: sersan
+    tipo: vinculo
+    rel: Principal acionista
