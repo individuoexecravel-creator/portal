@@ -48,6 +48,10 @@
   .t-lbl.caso::before{content:"";display:block;height:3px;background:var(--t-sangue);margin-bottom:3px}
   .t-lbl.peq{font-size:10px;opacity:.6}
   .t-lbl.apagado{opacity:.06}
+  .t-lbl.longe{opacity:.45}
+  .t-seg{display:inline-flex;border:1px solid var(--t-linha)}
+  .t-seg button{font:600 .75rem/1 var(--titulo);letter-spacing:.06em;text-transform:uppercase;background:transparent;color:var(--t-mudo);border:0;padding:7px 10px;cursor:pointer}
+  .t-seg button[aria-pressed="true"]{background:var(--t-sangue);color:#fff}
 
   .t-cab{position:fixed;z-index:5;top:calc(var(--topo) + 14px);left:0;right:0;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-start;justify-content:space-between;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));pointer-events:none}
   .t-cab>*{pointer-events:auto}
@@ -134,10 +138,19 @@
   <div class="t-cab">
     <div class="t-titulo">
       <h1>{{ .Title }}</h1>
-      <p><span id="t-contagem"></span> Arraste para girar, role para aproximar e clique num ponto para abrir o dossiê.</p>
+      <p><span id="t-contagem"></span> Arraste para girar, role para aproximar e clique num ponto para abrir o dossiê. Passe o mouse sobre um ponto para ver o nome.</p>
     </div>
     <div class="t-ferr">
       <div class="t-chips" id="t-chips" role="group" aria-label="Mostrar tipos"></div>
+      <div class="t-barra">
+        <label id="t-rot-lbl">Nomes</label>
+        <div class="t-seg" role="group" aria-labelledby="t-rot-lbl" id="t-rot">
+          <button type="button" data-m="casos" aria-pressed="true">Casos</button>
+          <button type="button" data-m="principais" aria-pressed="false">Principais</button>
+          <button type="button" data-m="todos" aria-pressed="false">Todos</button>
+          <button type="button" data-m="nenhum" aria-pressed="false">Nenhum</button>
+        </div>
+      </div>
       <div class="t-barra">
         <label for="t-busca">Buscar</label>
         <input id="t-busca" list="t-lista" placeholder="caso, pessoa, lugar…" autocomplete="off">
@@ -229,7 +242,7 @@
   document.getElementById("t-contagem").textContent = `${casos.length} casos e ${N.length-casos.length} pessoas, empresas, órgãos e lugares, ligados por ${links.length} relações.`;
 
   const tipoOn = Object.fromEntries(Object.keys(TIPOS).map(k=>[k,true]));
-  let ano = ANO_MAX, sel = null, caminhoNos = null, caminhoArestas = null;
+  let ano = ANO_MAX, sel = null, caminhoNos = null, caminhoArestas = null, hover = null, modoRotulo = "casos";
   const casoVisivel = id => byId[id].per[0] <= ano;
   function visivel(n){ if(!tipoOn[n.k]) return false; if(n.k==="caso") return casoVisivel(n.id); return n.casos.size===0 || [...n.casos].some(casoVisivel); }
   function lVisivel(l){ const s=typeof l.source==="object"?l.source:byId[l.source], t=typeof l.target==="object"?l.target:byId[l.target]; return visivel(s)&&visivel(t); }
@@ -241,36 +254,75 @@
   const G = ForceGraph3D({controlType:"orbit"})(el)
     .backgroundColor("#07080a").showNavInfo(false)
     .graphData({nodes:N, links})
-    .nodeVal(n => n.k==="caso" ? 22 : Math.max(1.4, n.deg*0.9))
+    .nodeRelSize(4)
+    .nodeVal(n => n.k==="caso" ? 16 : Math.min(6, 0.8 + n.deg*0.35))
     .nodeColor(n => { const f=foco(); return f && !f.has(n.id) ? "#22252b" : TIPOS[n.k].cor; })
     .nodeOpacity(.95).nodeResolution(14)
     .nodeLabel(n => tip(n.n, TIPOS[n.k].label))
     .nodeVisibility(visivel).linkVisibility(lVisivel)
     .linkColor(l => { if(caminhoArestas) return caminhoArestas.has(l) ? "#ffffff" : "#16181c"; if(sel && !(l.source.id===sel||l.target.id===sel)) return "#16181c"; return LIGA[l.k].cor; })
     .linkWidth(l => caminhoArestas && caminhoArestas.has(l) ? 3 : LIGA[l.k].w)
-    .linkOpacity(.75)
+    .linkOpacity(.45)
     .linkDirectionalParticles(l => caminhoArestas && caminhoArestas.has(l) ? 4 : 0)
     .linkDirectionalParticleWidth(2.4).linkDirectionalParticleColor(()=>"#d3112b")
     .linkLabel(l => tip(l.l))
     .onNodeClick(n => selecionar(n.id, true))
+    .onNodeHover(n => { hover = n ? n.id : null; el.style.cursor = n ? "pointer" : ""; })
     .onBackgroundClick(() => { if(!caminhoNos) fechar(); });
-  G.d3Force("charge").strength(n => n.k==="caso" ? -320 : -45);
-  G.d3Force("link").distance(l => l.k==="caso" ? 120 : (l.source.k==="caso"||l.target.k==="caso") ? 55 : 35);
-  function dimensionar(){ G.width(el.clientWidth).height(el.clientHeight); }
+  /* espaçamento: repulsão forte entre casos, ligações longas e atrito maior para estabilizar */
+  G.d3Force("charge").strength(n => n.k==="caso" ? -700 : -120).distanceMax(520);
+  G.d3Force("link").distance(l => l.k==="caso" ? 230 : (l.source.k==="caso"||l.target.k==="caso") ? 95 : 60).strength(l => l.k==="caso" ? 0.15 : 0.5);
+  G.d3VelocityDecay(0.35).warmupTicks(120).cooldownTicks(200);
+  let enquadrado = false;
+  G.onEngineStop(() => { if(!enquadrado && !location.hash){ enquadrado = true; G.zoomToFit(1000, 10); } });
+  function dimensionar(){
+    G.width(el.clientWidth).height(el.clientHeight);
+    const ferr=document.querySelector(".t-ferr"), dos=document.getElementById("t-dossie");
+    if(ferr && dos){ dos.style.top = innerWidth>820 ? (ferr.getBoundingClientRect().bottom + 12) + "px" : ""; }
+  }
   addEventListener("resize", dimensionar); dimensionar();
 
   const rotEl = document.getElementById("t-rotulos"), rot = {};
   const TOPO = () => el.getBoundingClientRect().top;
-  N.forEach(n=>{ const d=document.createElement("div"); d.className="t-lbl"+(n.k==="caso"?" caso":(n.deg<5?" peq":"")); d.textContent=n.n; rotEl.appendChild(d); rot[n.id]=d; });
+  N.forEach(n=>{ const d=document.createElement("div"); d.className="t-lbl"+(n.k==="caso"?" caso":(n.deg<6?" peq":"")); d.textContent=n.n; rotEl.appendChild(d); rot[n.id]=d; });
+  /* rótulos: só aparecem os que cabem sem sobrepor; prioridade para foco, casos e mais conectados */
+  const LARG = {caso: 8.6, outro: 6.4};
+  function prioridade(n, f){
+    if(hover===n.id) return 1e6;
+    if(f && f.has(n.id)) return 5e5 + (n.k==="caso"?1000:0) + n.deg;
+    if(n.k==="caso") return 1e5 + n.deg;
+    return n.deg;
+  }
+  function candidato(n, f){
+    if(hover===n.id || (f && f.has(n.id))) return true;
+    if(n.k==="caso") return modoRotulo !== "nenhum";
+    if(modoRotulo === "todos") return true;
+    if(modoRotulo === "principais") return n.deg >= 6;
+    return false;
+  }
   function desenhar(){
-    const f=foco(), W=el.clientWidth, H=el.clientHeight;
+    const f=foco(), W=el.clientWidth, H=el.clientHeight, ocupados=[];
+    const cam=G.camera().position, alvo=(G.controls()&&G.controls().target)||{x:0,y:0,z:0}, ref=Math.hypot(cam.x-alvo.x,cam.y-alvo.y,cam.z-alvo.z)||1;
+    const lista=[];
     for(const n of N){
       const d=rot[n.id];
-      if(n.x===undefined || !visivel(n) || !(n.k==="caso" || n.deg>=5 || (f&&f.has(n.id)))){ d.hidden=true; continue; }
+      if(n.x===undefined || !visivel(n) || !candidato(n,f) || (f && !f.has(n.id))){ d.hidden=true; continue; }
       const p=G.graph2ScreenCoords(n.x,n.y,n.z);
-      if(p.x<-80||p.y<-40||p.x>W+80||p.y>H+40){ d.hidden=true; continue; }
-      d.hidden=false; d.style.left=p.x+"px"; d.style.top=(p.y+(n.k==="caso"?14:7))+"px";
+      if(p.x<-60||p.y<-30||p.x>W+60||p.y>H+30){ d.hidden=true; continue; }
+      lista.push({n,p,pr:prioridade(n,f),dist:Math.hypot(cam.x-n.x,cam.y-n.y,cam.z-n.z)});
+    }
+    lista.sort((a,b)=>b.pr-a.pr || a.dist-b.dist);
+    for(const {n,p,dist} of lista){
+      const d=rot[n.id], caso=n.k==="caso";
+      const w=n.n.length*(caso?LARG.caso:LARG.outro)+8, h=caso?20:15;
+      const y=p.y+(caso?16:9);
+      const box={x1:p.x-w/2,x2:p.x+w/2,y1:y,y2:y+h};
+      const forcado = hover===n.id || (f && f.has(n.id) && (caminhoNos || n.id===sel));
+      if(!forcado && ocupados.some(o=>box.x1<o.x2&&box.x2>o.x1&&box.y1<o.y2&&box.y2>o.y1)){ d.hidden=true; continue; }
+      ocupados.push(box);
+      d.hidden=false; d.style.left=p.x+"px"; d.style.top=y+"px";
       d.classList.toggle("apagado", !!(f && !f.has(n.id)));
+      d.classList.toggle("longe", !f && dist > ref*1.25);
     }
     requestAnimationFrame(desenhar);
   }
@@ -297,7 +349,7 @@
     h += `<p class="t-nota">Fonte: matérias e posts do ${esc(document.title.split(" · ").pop())}. A cor de cada ligação indica a natureza do vínculo; aparecer na teia não significa culpa.</p>`;
     corpo.innerHTML=h; dossie.hidden=false; atualizar();
     try{ history.replaceState(null,"","#"+(n.slug||n.id)); }catch(e){}
-    if(voar && n.x!==undefined){ const dist=n.k==="caso"?200:140, r=1+dist/Math.hypot(n.x||1,n.y||1,n.z||1); G.cameraPosition({x:n.x*r,y:n.y*r,z:n.z*r}, n, 900); }
+    if(voar && n.x!==undefined){ const dist=n.k==="caso"?420:260, r=1+dist/Math.hypot(n.x||1,n.y||1,n.z||1); G.cameraPosition({x:n.x*r,y:n.y*r,z:n.z*r}, n, 900); }
   }
   corpo.addEventListener("click", e=>{ const b=e.target.closest("button[data-id]"); if(!b) return; const id=b.dataset.id; if(!visivel(byId[id])){ tipoOn[byId[id].k]=true; ano=ANO_MAX; sincronizar(); } selecionar(id,true); });
   function fechar(){ sel=null; caminhoNos=null; caminhoArestas=null; dossie.hidden=true; atualizar(); try{ history.replaceState(null,"",location.pathname); }catch(e){} }
@@ -312,6 +364,14 @@
   const passo=(ANO_MAX-ANO_MIN)/4; document.getElementById("t-marcas").innerHTML=[0,1,2,3,4].map(i=>`<span>${Math.round(ANO_MIN+passo*i)}</span>`).join("");
   anoEl.addEventListener("input",()=>{ ano=+anoEl.value; anoOut.textContent=ano; atualizar(); });
   function sincronizar(){ anoEl.value=ano; anoOut.textContent=ano; Object.keys(tipoOn).forEach(k=>document.getElementById("t-chip-"+k).setAttribute("aria-pressed",String(tipoOn[k]))); atualizar(); }
+
+  document.getElementById("t-rot").addEventListener("click", e=>{
+    const b=e.target.closest("button[data-m]"); if(!b) return;
+    modoRotulo=b.dataset.m;
+    document.querySelectorAll("#t-rot button").forEach(x=>x.setAttribute("aria-pressed", String(x===b)));
+    try{ localStorage.setItem("teia-rotulos", modoRotulo); }catch(err){}
+  });
+  try{ const m=localStorage.getItem("teia-rotulos"); if(m){ const b=document.querySelector(`#t-rot button[data-m="${m}"]`); if(b) b.click(); } }catch(err){}
 
   /* ===== busca ===== */
   const busca=document.getElementById("t-busca");
@@ -341,14 +401,14 @@
     let h=`<p>${p.nos.length-1} passos separam as duas pessoas nos casos publicados.</p><ol class="t-passos">`;
     p.nos.forEach((id,i)=>{ const n=byId[id]; h+=`<li><span class="n" style="background:${TIPOS[n.k].cor}"></span><div class="t-grp"><ul><li><button data-id="${esc(id)}"><b>${esc(n.n)}</b><span>${TIPOS[n.k].label}</span></button></li></ul></div></li>`; if(p.ar[i]) h+=`<li class="aresta">${esc(p.ar[i].l)}</li>`; });
     h+=`</ol><p class="t-nota">O caminho mostra como os casos se conectam, não uma relação direta entre as pessoas.</p>`;
-    corpo.innerHTML=h; dossie.hidden=false; atualizar(); G.zoomToFit(900,120,n=>caminhoNos&&caminhoNos.has(n.id));
+    corpo.innerHTML=h; dossie.hidden=false; atualizar(); G.zoomToFit(900,160,n=>caminhoNos&&caminhoNos.has(n.id));
   });
   document.getElementById("t-limpar").addEventListener("click", fechar);
 
   /* ===== abrir pelo link (#slug-do-caso ou #id) ===== */
   setTimeout(()=>{
     document.getElementById("t-carregando").hidden=true;
-    G.cameraPosition({x:0,y:0,z:900});
+    G.cameraPosition({x:0,y:0,z:1500});
     const h=decodeURIComponent(location.hash.slice(1));
     if(h){ const id = byId["caso:"+h] ? "caso:"+h : (byId[h] ? h : null); if(id) setTimeout(()=>selecionar(id,true), 1800); }
   }, 300);
