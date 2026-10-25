@@ -1,0 +1,33 @@
+{{- /*
+  Aviso no topo do site. Configurado em hugo.toml, em [params.aviso].
+  Só é gerado se estiver ativo e se a data "fim" ainda não passou no momento da publicação.
+  No navegador, o script abaixo mostra o aviso apenas entre "inicio" e "fim"
+  e lembra quando o leitor o fecha (por id).
+*/ -}}
+{{- with site.Params.aviso -}}
+{{- if and .ativo .texto (or (not .fim) (now.Before (time .fim))) -}}
+<aside class="aviso" id="aviso-site" role="note" aria-label="{{ .rotulo | default "Aviso" }}"
+  data-id="{{ .id }}" data-inicio="{{ .inicio }}" data-fim="{{ .fim }}" hidden>
+  <div class="wrap aviso-in">
+    <p class="aviso-rotulo"><span class="aviso-ponto" aria-hidden="true"></span>{{ .rotulo | default "Aviso" }}</p>
+    <p class="aviso-texto">{{ with .titulo }}<strong>{{ . }}.</strong> {{ end }}{{ .texto }}</p>
+    <button class="aviso-fechar" type="button" aria-label="Fechar aviso">{{ partial "icone.html" "fechar" }}</button>
+  </div>
+</aside>
+<script>
+(function () {
+  var el = document.getElementById("aviso-site");
+  if (!el) return;
+  var agora = Date.now(), ini = Date.parse(el.dataset.inicio), fim = Date.parse(el.dataset.fim);
+  if ((ini && agora < ini) || (fim && agora >= fim)) { el.remove(); return; }
+  var chave = "aviso-fechado:" + el.dataset.id;
+  try { if (localStorage.getItem(chave)) { el.remove(); return; } } catch (e) {}
+  el.hidden = false;
+  el.querySelector(".aviso-fechar").addEventListener("click", function () {
+    try { localStorage.setItem(chave, "1"); } catch (e) {}
+    el.remove();
+  });
+})();
+</script>
+{{- end -}}
+{{- end -}}

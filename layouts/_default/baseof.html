@@ -7,6 +7,7 @@
 </head>
 <body class="{{ with .Section }}sec-{{ . }}{{ end }}{{ if .IsPage }} e-materia{{ end }}">
   {{ partial "topo.html" . }}
+  {{ partial "aviso.html" . }}
   <main id="conteudo" tabindex="-1">
     {{ block "main" . }}{{ end }}
   </main>

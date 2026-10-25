@@ -30,6 +30,18 @@ summaryLength = 40
     nome = "Threads"
     url = "https://www.threads.com/@individuo_execravel"
 
+  # Aviso no topo de todas as páginas.
+  # Aparece só entre "inicio" e "fim" (horário de Brasília) e some sozinho depois.
+  # Para um aviso novo: troque o "id", o texto e as datas. Para desligar: ativo = false.
+  [params.aviso]
+    ativo = true
+    id = "pausa-eleicoes-2026"
+    rotulo = "Aviso"
+    titulo = "Pausa nas publicações"
+    texto = "Neste sábado (24) e domingo (25) não teremos casos novos, em respeito às eleições. Voltamos na segunda-feira, 26 de outubro."
+    inicio = "2026-10-24T00:00:00-03:00"
+    fim = "2026-10-26T06:00:00-03:00"
+
 [taxonomies]
   tag = "tags"
 

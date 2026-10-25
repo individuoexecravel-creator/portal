@@ -403,3 +403,25 @@ body:not(.e-materia) .progresso { display: none; }
 .botao-menu .i-fechar, .botao-menu[aria-expanded="true"] .i-abrir { display: none; }
 .botao-menu[aria-expanded="true"] .i-fechar { display: inline-flex; }
 .botao-menu[aria-expanded="true"] { border-color: var(--sangue); }
+
+/* ---------- Aviso no topo (configurado em hugo.toml → [params.aviso]) ---------- */
+.aviso { background: var(--carvao); border-bottom: 1px solid var(--grafite); position: relative; }
+.aviso::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--sangue); }
+.aviso-in { display: flex; align-items: center; gap: 18px; padding-top: 14px; padding-bottom: 14px; }
+.aviso-rotulo { margin: 0; flex: none; display: inline-flex; align-items: center; gap: 8px; font: 600 .95rem/1 var(--titulo); text-transform: uppercase; letter-spacing: .06em; color: var(--sangue); }
+.aviso-ponto { width: 9px; height: 9px; border-radius: 50%; background: var(--sangue); }
+.aviso-texto { margin: 0; flex: 1; font-size: 1rem; line-height: 1.5; color: #d6d1c9; }
+.aviso-texto strong { color: var(--osso); font-weight: 600; }
+.aviso-fechar { flex: none; width: 40px; height: 40px; display: grid; place-items: center; background: transparent; border: 1px solid var(--grafite); color: var(--cinza); cursor: pointer; transition: color .2s, border-color .2s; }
+.aviso-fechar:hover { color: var(--osso); border-color: var(--sangue); }
+.aviso-fechar svg { width: 18px; height: 18px; }
+@media (max-width: 600px) {
+  .aviso-in { flex-wrap: wrap; gap: 8px 12px; padding-top: 12px; padding-bottom: 12px; }
+  .aviso-rotulo { order: 1; }
+  .aviso-fechar { order: 2; margin-left: auto; width: 36px; height: 36px; }
+  .aviso-texto { order: 3; flex-basis: 100%; font-size: .95rem; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .aviso-ponto { animation: aviso-pulso 1.6s ease-in-out infinite; }
+  @keyframes aviso-pulso { 50% { opacity: .25; } }
+}
