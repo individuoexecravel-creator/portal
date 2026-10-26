@@ -1,0 +1,42 @@
+# Presidentes do Brasil desde o fim da ditadura. Usado na linha do tempo.
+# "ate" é o ano em que o mandato terminou (deixe vazio para o mandato atual).
+- nome: Ditadura militar
+  curto: Ditadura
+  de: 1964
+  ate: 1985
+- nome: José Sarney
+  curto: Sarney
+  de: 1985
+  ate: 1990
+- nome: Fernando Collor
+  curto: Collor
+  de: 1990
+  ate: 1992
+- nome: Itamar Franco
+  curto: Itamar
+  de: 1992
+  ate: 1994
+- nome: Fernando Henrique Cardoso
+  curto: FHC
+  de: 1995
+  ate: 2002
+- nome: Luiz Inácio Lula da Silva
+  curto: Lula
+  de: 2003
+  ate: 2010
+- nome: Dilma Rousseff
+  curto: Dilma
+  de: 2011
+  ate: 2016
+- nome: Michel Temer
+  curto: Temer
+  de: 2016
+  ate: 2018
+- nome: Jair Bolsonaro
+  curto: Bolsonaro
+  de: 2019
+  ate: 2022
+- nome: Luiz Inácio Lula da Silva
+  curto: Lula
+  de: 2023
+  ate:

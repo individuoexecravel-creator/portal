@@ -8,19 +8,26 @@
     <div class="filtro-busca">
       {{ partial "icone.html" "busca" }}
       <label class="sr" for="ex-q">Filtrar casos</label>
-      <input id="ex-q" type="search" placeholder="Filtrar por nome, pessoa, empresa…" autocomplete="off" data-f-q>
+      <input id="ex-q" type="search" placeholder="Nome do caso, pessoa, empresa…" autocomplete="off" data-f-q>
     </div>
     {{ if .abas }}
     <div class="filtro-grupo" role="group" aria-label="Seção">
-      <button type="button" class="chip" aria-pressed="true" data-f-sec="">Todos</button>
+      <button type="button" class="chip" aria-pressed="true" data-f-sec="">Todas as seções</button>
       {{ range slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" .) }}
       <button type="button" class="chip sec-{{ .Section }}" aria-pressed="false" data-f-sec="{{ .Section }}">{{ .Title }}</button>
       {{ end }}{{ end }}
     </div>
     {{ end }}
     <div class="filtro-grupo" role="group" aria-label="Época">
-      <button type="button" class="chip" aria-pressed="true" data-f-dec="">Todas as épocas</button>
+      <button type="button" class="chip" aria-pressed="true" data-f-dec="">Qualquer época</button>
       {{ range $decadas }}<button type="button" class="chip" aria-pressed="false" data-f-dec="{{ . }}">Anos {{ if lt . 2000 }}{{ sub . 1900 }}{{ else }}{{ . }}{{ end }}</button>{{ end }}
+    </div>
+    <div class="filtro-grupo" role="group" aria-label="Desfecho">
+      <button type="button" class="chip" aria-pressed="true" data-f-desf="">Qualquer desfecho</button>
+      <button type="button" class="chip" aria-pressed="false" data-f-desf="condenado"><i class="ponto d-condenado" aria-hidden="true"></i>Com condenação</button>
+      <button type="button" class="chip" aria-pressed="false" data-f-desf="cassado"><i class="ponto d-cassado" aria-hidden="true"></i>Com cassação</button>
+      <button type="button" class="chip" aria-pressed="false" data-f-desf="delator"><i class="ponto d-delator" aria-hidden="true"></i>Com delação</button>
+      <button type="button" class="chip" aria-pressed="false" data-f-desf="anulado"><i class="ponto d-anulado" aria-hidden="true"></i>Com absolvição ou anulação</button>
     </div>
     <div class="filtro-linha">
       <p class="filtro-conta" aria-live="polite" data-f-conta>{{ len $pags }} casos</p>
@@ -40,5 +47,6 @@
   <div class="vazio" hidden data-f-vazio>
     <p>Nenhum caso encontrado com esses filtros.</p>
     <button type="button" class="botao" data-f-limpar>Limpar filtros</button>
+    <p class="vazio-dica">Ou tente a <a href="{{ "pessoas/" | relURL }}">lista de pessoas</a>, se estiver procurando alguém.</p>
   </div>
 </div>

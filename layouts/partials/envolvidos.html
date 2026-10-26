@@ -1,0 +1,11 @@
+{{- /* Recebe o slug do caso. Devolve os envolvidos com nome, tipo e papel. */ -}}
+{{- $ents := partialCached "ents.html" "ents" -}}
+{{- $papeis := partialCached "papeis.html" "papeis" -}}
+{{- $out := slice -}}
+{{- with index (site.Data.teia.casos | default dict) . -}}
+  {{- range .envolvidos -}}
+    {{- $e := index $ents .id | default dict -}}
+    {{- $out = $out | append (dict "id" .id "papel" .tipo "rel" (.rel | default "") "nome" ($e.nome | default .id) "tipo" ($e.tipo | default "") "desc" ($e.desc | default "") "ordem" ((index $papeis .tipo).ordem | default 9)) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

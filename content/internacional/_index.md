@@ -1,4 +1,4 @@
 ---
 title: "Internacional"
-description: "Governos ligados a cartéis, guerrilhas e organizações criminosas, só com casos de condenação definitiva."
+description: "Governos que se misturaram com cartéis, máfias e grupos armados. Entram aqui só os casos com condenação definitiva."
 ---

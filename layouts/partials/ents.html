@@ -1,0 +1,5 @@
+{{- /* Mapa id → entidade (entidades.yaml + novas_entidades dos casos). Use com partialCached. */ -}}
+{{- $m := dict -}}
+{{- range site.Data.teia.entidades }}{{ $m = merge $m (dict .id .) }}{{ end -}}
+{{- range site.Data.teia.casos }}{{ range .novas_entidades }}{{ $m = merge $m (dict .id .) }}{{ end }}{{ end -}}
+{{- return $m -}}

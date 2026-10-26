@@ -1,0 +1,6 @@
+{{- $papeis := partialCached "papeis.html" "papeis" -}}
+<dl class="legenda">
+  {{- range slice "condenado" "cassado" "delator" "anulado" "citado" }}{{ $p := index $papeis . }}
+  <div><dt><i class="ponto d-{{ . }}" aria-hidden="true"></i>{{ $p.nome }}</dt><dd>{{ $p.explica }}</dd></div>
+  {{- end }}
+</dl>

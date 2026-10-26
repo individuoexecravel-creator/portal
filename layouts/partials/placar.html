@@ -1,0 +1,29 @@
+{{- /* Placar de desfechos das pessoas de um caso.
+       Recebe dict: slug (nome do arquivo do caso), completo (mostra a legenda com números). */ -}}
+{{- $slug := .slug -}}
+{{- $env := partial "envolvidos.html" $slug -}}
+{{- $papeis := partialCached "papeis.html" "papeis" -}}
+{{- $ordem := slice "condenado" "cassado" "delator" "anulado" "citado" -}}
+{{- $cont := dict -}}{{- $total := 0 -}}
+{{- range $env -}}
+  {{- if and (eq .tipo "pessoa") (in $ordem .papel) -}}
+    {{- $cont = merge $cont (dict .papel (add (index $cont .papel | default 0) 1)) -}}
+    {{- $total = add $total 1 -}}
+  {{- end -}}
+{{- end -}}
+{{- if gt $total 0 -}}
+{{- $frase := slice -}}
+{{- range $p := $ordem }}{{ with index $cont $p }}{{ $frase = $frase | append (printf "%d %s" . (cond (eq . 1) (lower (index $papeis $p).nome) (index $papeis $p).plural)) }}{{ end }}{{ end -}}
+<div class="placar{{ if .completo }} placar-completo{{ end }}">
+  <span class="placar-barra" role="img" aria-label="{{ $total }} pessoas: {{ delimit $frase ", " }}">
+    {{- range $p := $ordem }}{{ with index $cont $p }}<i class="d-{{ $p }}" style="flex-grow:{{ . }}"></i>{{ end }}{{ end -}}
+  </span>
+  {{- if .completo }}
+  <ul class="placar-legenda">
+    {{- range $p := $ordem }}{{ with index $cont $p }}
+    <li><i class="ponto d-{{ $p }}" aria-hidden="true"></i><b>{{ . }}</b> {{ cond (eq . 1) (lower (index $papeis $p).nome) (index $papeis $p).plural }}</li>
+    {{- end }}{{ end }}
+  </ul>
+  {{- end }}
+</div>
+{{- end -}}

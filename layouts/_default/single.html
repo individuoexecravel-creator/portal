@@ -8,11 +8,18 @@
         <a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span>
         <a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>
       </nav>
-      {{ with .Params.periodo }}<p class="rotulo">{{ . }}</p>{{ end }}
+      {{ with .Params.periodo }}<p class="mt-periodo">{{ . }}</p>{{ end }}
       <h1><span class="h1-caso">{{ $p.caso }}</span>{{ with $p.sub }}<span class="h1-sub">{{ . }}</span>{{ end }}</h1>
       <p class="linha-fina">{{ .Description }}</p>
+      {{ with partial "placar.html" (dict "slug" .File.ContentBaseName "completo" true) }}
+      <div class="mt-placar">
+        <p class="mt-placar-t">Como o caso terminou para as pessoas envolvidas</p>
+        {{ . }}
+        <a class="mt-placar-link" href="#quem-e-quem">Ver quem é quem</a>
+      </div>
+      {{ end }}
       <div class="meta-linha">
-        <p class="meta">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a> · {{ .ReadingTime }} min de leitura</p>
+        <p class="meta">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, {{ .ReadingTime }} min de leitura</p>
         <button class="botao botao-fino" type="button" data-compartilhar data-titulo="{{ .Title }}">{{ partial "icone.html" "compartilhar" }}<span>Compartilhar</span></button>
       </div>
     </div>
@@ -28,18 +35,19 @@
     </nav>
     {{ with .Params.ficha }}
     <details class="ficha" open data-ficha>
-      <summary><span>Ficha do caso</span><span class="sumario-dica" aria-hidden="true"></span></summary>
+      <summary><span>Ficha do caso</span><span class="sumario-dica" aria-hidden="true">{{ partial "icone.html" "dir" }}</span></summary>
       <dl>
         {{ range . }}<dt>{{ .item }}</dt><dd>{{ .valor | markdownify }}</dd>{{ end }}
       </dl>
       {{ with index (site.Data.teia.casos | default dict) $.File.ContentBaseName }}
-      <a class="ver-teia" href="{{ "teia/" | relURL }}#{{ .caso }}">{{ partial "icone.html" "teia" }} Ver as ligações deste caso na Teia</a>
+      <a class="ver-teia" href="{{ "teia/" | relURL }}#{{ .caso }}">{{ partial "icone.html" "teia" }}<span>Ver as ligações deste caso na Teia</span></a>
       {{ end }}
     </details>
     {{ end }}
   </aside>
   <article class="texto" data-texto>
     {{ .Content }}
+    {{ partial "quem-e-quem.html" . }}
     {{ partial "autor.html" . }}
   </article>
 </div>
@@ -56,14 +64,14 @@
 <nav class="wrap vizinhos" aria-label="Linha do tempo de {{ .CurrentSection.Title }}">
   {{ if gt $i 0 }}{{ with index $itens (sub $i 1) }}{{ $q := partial "partes.html" .pag }}
   <a class="vizinho ant" href="{{ .pag.RelPermalink }}" rel="prev">
-    <span class="viz-rot">{{ partial "icone.html" "esq" }} Caso anterior na linha do tempo</span>
+    <span class="viz-rot">{{ partial "icone.html" "esq" }}Antes, na linha do tempo</span>
     <span class="viz-ano">{{ .pag.Params.periodo }}</span>
     <span class="viz-nome">{{ $q.caso }}</span>
   </a>
   {{ end }}{{ else }}<span></span>{{ end }}
   {{ if lt $i (sub (len $itens) 1) }}{{ with index $itens (add $i 1) }}{{ $q := partial "partes.html" .pag }}
   <a class="vizinho prox" href="{{ .pag.RelPermalink }}" rel="next">
-    <span class="viz-rot">Próximo caso na linha do tempo {{ partial "icone.html" "dir" }}</span>
+    <span class="viz-rot">Depois, na linha do tempo{{ partial "icone.html" "dir" }}</span>
     <span class="viz-ano">{{ .pag.Params.periodo }}</span>
     <span class="viz-nome">{{ $q.caso }}</span>
   </a>
@@ -74,7 +82,7 @@
 <section class="wrap bloco">
   <div class="bloco-topo">
     <h2>Outros casos de {{ .CurrentSection.Title }}</h2>
-    <a class="link-seta" href="{{ .CurrentSection.RelPermalink }}">Ver todos</a>
+    <a class="link-forte" href="{{ .CurrentSection.RelPermalink }}">Ver todos</a>
   </div>
   <div class="grade grade-4">{{ range first 4 (shuffle $rel) }}{{ partial "card.html" . }}{{ end }}</div>
 </section>

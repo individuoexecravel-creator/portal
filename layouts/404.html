@@ -1,0 +1,12 @@
+{{ define "main" }}
+<section class="wrap erro">
+  <p class="erro-cod">Erro 404</p>
+  <h1>Esta página não existe</h1>
+  <p class="linha">O endereço pode ter mudado ou ter sido digitado errado. Procure o caso pelo nome ou volte para um dos caminhos abaixo.</p>
+  <p><button class="botao" type="button" data-abrir-busca>{{ partial "icone.html" "busca" }}<span>Buscar um caso</span></button></p>
+  <ul class="erro-links">
+    <li><a href="{{ site.Home.RelPermalink }}">Página inicial</a></li>
+    {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+  </ul>
+</section>
+{{ end }}

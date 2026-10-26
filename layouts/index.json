@@ -4,6 +4,7 @@
   {{- $p := partial "partes.html" . -}}
   {{- $ficha := slice -}}
   {{- range .Params.ficha }}{{ $ficha = $ficha | append (print .valor) }}{{ end -}}
+  {{- range partial "envolvidos.html" .File.ContentBaseName }}{{ $ficha = $ficha | append .nome }}{{ end -}}
   {{- $itens = $itens | append (dict
       "t" $p.caso
       "s" $p.sub
@@ -15,5 +16,9 @@
       "img" (cond (isset .Params "image") (print "img/thumbs/" .Params.image | relURL) "")
       "f" (delimit $ficha " ")
   ) -}}
+{{- end -}}
+{{- range partialCached "pessoas.html" "p" -}}
+  {{- $cs := slice }}{{ range .casos }}{{ $cs = $cs | append .nome }}{{ end -}}
+  {{- $itens = $itens | append (dict "t" .nome "s" (delimit $cs ", ") "d" .desc "u" (print ("pessoas/" | relURL) "#" .id) "sec" "Pessoa" "k" "pessoa" "per" "" "img" "" "f" "") -}}
 {{- end -}}
 {{- $itens | jsonify -}}

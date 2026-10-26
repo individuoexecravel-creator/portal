@@ -1,0 +1,57 @@
+{{ define "main" }}
+{{ $pessoas := partialCached "pessoas.html" "p" }}
+{{ $papeis := partialCached "papeis.html" "papeis" }}
+{{ $varios := where $pessoas "n" "gt" 1 }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ len $pessoas }} pessoas que aparecem nos casos da Nova República, com o desfecho de cada caso para cada uma. {{ len $varios }} delas aparecem em mais de um escândalo.</p>
+  <p class="aviso-leitura">Estar nesta lista não significa ter sido condenado. A cor ao lado de cada caso mostra como ele terminou para a pessoa. Veja o que cada cor significa na página <a href="{{ "sobre/" | relURL }}#como-ler-um-caso">Sobre</a>.</p>
+</section>
+
+<div class="wrap" data-pessoas>
+  <div class="filtros">
+    <div class="filtro-busca">
+      {{ partial "icone.html" "busca" }}
+      <label class="sr" for="ps-q">Procurar pessoa</label>
+      <input id="ps-q" type="search" placeholder="Nome da pessoa ou cargo" autocomplete="off" data-p-q>
+    </div>
+    <div class="filtro-grupo" role="group" aria-label="Desfecho">
+      <button type="button" class="chip" aria-pressed="true" data-p-papel="">Qualquer desfecho</button>
+      {{ range slice "condenado" "cassado" "delator" "anulado" "citado" }}
+      <button type="button" class="chip" aria-pressed="false" data-p-papel="{{ . }}"><i class="ponto d-{{ . }}" aria-hidden="true"></i>{{ (index $papeis .).nome }}</button>
+      {{ end }}
+    </div>
+    <div class="filtro-linha">
+      <p class="filtro-conta" aria-live="polite" data-p-conta>{{ len $pessoas }} pessoas</p>
+      <label class="alternar"><input type="checkbox" data-p-varios> Só quem aparece em mais de um caso</label>
+    </div>
+  </div>
+
+  <ul class="pessoas">
+    {{ range $pessoas }}
+    {{ $ps := slice }}{{ range .casos }}{{ $ps = $ps | append .papel }}{{ end }}
+    <li class="pessoa" id="{{ .id }}" data-n="{{ .n }}" data-papeis="{{ delimit (uniq $ps) " " }}" data-busca="{{ print .nome " " .desc | lower }}">
+      <h2 class="pessoa-nome">{{ .nome }}</h2>
+      {{ with .desc }}<p class="pessoa-desc">{{ . }}</p>{{ end }}
+      <ul class="pessoa-casos" aria-label="Casos de {{ .nome }}">
+        {{ range .casos }}{{ $pp := index $papeis .papel }}
+        <li>
+          <i class="ponto d-{{ .papel }}" aria-hidden="true"></i>
+          <span class="pc-texto">
+            {{ if .url }}<a href="{{ .url }}">{{ .nome }}</a>{{ else }}<b>{{ .nome }}</b>{{ end }}
+            <span class="pc-papel">{{ $pp.nome | default .papel }}{{ with .rel }}: {{ . }}{{ end }}</span>
+          </span>
+        </li>
+        {{ end }}
+      </ul>
+      <a class="pessoa-teia" href="{{ "teia/" | relURL }}#{{ .id }}">{{ partial "icone.html" "teia" }}<span>Ver na Teia</span></a>
+    </li>
+    {{ end }}
+  </ul>
+  <div class="vazio" hidden data-p-vazio>
+    <p>Ninguém encontrado com esses filtros.</p>
+    <button type="button" class="botao" data-p-limpar>Limpar filtros</button>
+  </div>
+</div>
+{{ end }}

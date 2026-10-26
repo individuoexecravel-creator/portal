@@ -1,22 +1,29 @@
 <footer class="rodape">
   <div class="wrap rodape-in">
     <div class="rodape-marca">
-      <strong>{{ site.Title }}</strong>
+      <a class="marca" href="{{ site.Home.RelPermalink }}"><img src="{{ "img/logo.png" | relURL }}" alt="" width="44" height="44"><span class="marca-nome">{{ site.Title }}</span></a>
       <p>{{ site.Params.description }}</p>
-      <p>Um projeto de <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, responsável pelo conteúdo publicado.</p>
+      <p>Escrito e mantido por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>.</p>
     </div>
     <nav class="rodape-nav" aria-label="Mapa do site">
-      <h2>Navegar</h2>
+      <h2>Explorar</h2>
       <ul>
         <li><a href="{{ site.Home.RelPermalink }}">Início</a></li>
         {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
       </ul>
     </nav>
+    <nav class="rodape-nav" aria-label="Seções">
+      <h2>Seções</h2>
+      <ul>
+        {{ range slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" .) }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a> <span class="rodape-n">{{ len .RegularPages }}</span></li>{{ end }}{{ end }}
+        <li><a href="{{ "index.xml" | relURL }}">Feed RSS</a></li>
+      </ul>
+    </nav>
     <div class="rodape-redes">
       <h2>Siga</h2>
-      {{ partial "redes.html" . }}
+      {{ partial "redes.html" (dict "nomes" true) }}
     </div>
-    <p class="nota">Os textos se baseiam em processos, relatórios de CPIs e reportagens publicadas. Quando um acusado foi absolvido, teve a pena extinta ou o processo anulado, isso está dito no texto.</p>
+    <p class="nota">Os textos se baseiam em processos, relatórios de CPIs e reportagens publicadas. Quando alguém foi absolvido, teve a pena prescrita ou o processo anulado, isso está escrito no texto.</p>
   </div>
-  <div class="wrap rodape-fim">© {{ now.Year }} {{ site.Title }}, {{ site.Params.autor.nome }}</div>
+  <div class="wrap rodape-fim"><span>© {{ now.Year }} {{ site.Params.autor.nome }}</span><a href="#conteudo">Voltar ao topo</a></div>
 </footer>

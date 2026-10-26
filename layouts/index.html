@@ -2,97 +2,179 @@
 {{ $secoes := slice "nova-republica" "internacional" }}
 {{ $todas := where site.RegularPages "Section" "in" $secoes }}
 
-<section class="diptico" aria-label="Novos casos">
-  {{ range $secoes }}
-    {{ $s := site.GetPage (print "/" .) }}
-    {{ with index (where site.RegularPages "Section" .) 0 }}
-    <a class="painel sec-{{ .Section }}" href="{{ .RelPermalink }}">
-      <img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt="" fetchpriority="high">
-      <div class="painel-texto">
-        <p class="painel-secao">Novo em {{ $s.Title }}</p>
-        <h2>{{ .Title | replaceRE ":.*$" "" }}</h2>
-        <span class="tarja" aria-hidden="true"></span>
-        <p class="painel-linha">{{ .Description }}</p>
-        <span class="painel-ler">Ler o caso</span>
+{{/* ---------- Linha do tempo de abertura ---------- */}}
+{{ $itens := slice }}
+{{ $de := 3000 }}{{ $ate := now.Year }}
+{{ range $todas }}
+  {{ $per := partial "periodo.html" . }}
+  {{ if gt $per.ini 0 }}
+    {{ if lt $per.ini $de }}{{ $de = $per.ini }}{{ end }}
+    {{ if gt $per.fim $ate }}{{ $ate = $per.fim }}{{ end }}
+    {{ $itens = $itens | append (dict "chave" (printf "%04d-%04d-%s" $per.ini $per.fim .Title) "ini" $per.ini "fim" $per.fim "pag" .) }}
+  {{ end }}
+{{ end }}
+{{ $itens = sort $itens "chave" }}
+{{/* Distribui as barras em faixas sem sobreposição */}}
+{{ $fins := slice }}{{ $comFaixa := slice }}
+{{ range $it := $itens }}
+  {{ $faixa := -1 }}
+  {{ range $k, $f := $fins }}{{ if and (eq $faixa -1) (lt $f $it.ini) }}{{ $faixa = $k }}{{ end }}{{ end }}
+  {{ if eq $faixa -1 }}
+    {{ $faixa = len $fins }}{{ $fins = $fins | append $it.fim }}
+  {{ else }}
+    {{ $novo := slice }}{{ range $k, $f := $fins }}{{ $novo = $novo | append (cond (eq $k $faixa) $it.fim $f) }}{{ end }}{{ $fins = $novo }}
+  {{ end }}
+  {{ $comFaixa = $comFaixa | append (merge $it (dict "faixa" $faixa)) }}
+{{ end }}
+{{ $itens = $comFaixa }}
+{{ $de = mul (div $de 5) 5 }}
+{{ $fimEixo := add $ate 1 }}
+{{ $span := sub $fimEixo $de }}
+{{ $recente := index (sort $todas "Date" "desc") 0 }}
+
+<section class="abertura" aria-labelledby="abertura-t">
+  <div class="wrap abertura-in">
+    <div class="abertura-texto">
+      <h1 id="abertura-t">Escândalos políticos, do começo ao fim.</h1>
+      <p>{{ len $todas }} casos contados com nomes, valores, datas e o que a Justiça decidiu no final. Cada barra abaixo é um caso, do ano em que começou ao ano em que terminou.</p>
+    </div>
+
+    <figure class="cronos" data-cronos>
+      <figcaption class="cronos-legenda">
+        <span><i class="ponto sec-nova-republica"></i>Nova República</span>
+        <span><i class="ponto sec-internacional"></i>Internacional</span>
+        <span class="cronos-dica">Passe o mouse ou toque numa barra para ver o caso.</span>
+      </figcaption>
+      <div class="cronos-rolagem" tabindex="-1">
+        <div class="cronos-area" style="--anos: {{ $span }}; --faixas: {{ len $fins }}">
+          <div class="cronos-governos" aria-hidden="true">
+            {{ range site.Data.presidentes }}
+              {{ $ini := math.Max .de $de }}{{ $fim := add (.ate | default $ate) 0 }}
+              {{ if gt $fim $de }}
+              <span class="gov" style="left: {{ div (mul (sub $ini $de) 100.0) $span }}%; width: {{ div (mul (sub $fim $ini) 100.0) $span }}%" title="{{ .nome }}"><b>{{ .curto }}</b></span>
+              {{ end }}
+            {{ end }}
+          </div>
+          <ol class="cronos-raias" aria-label="Casos em ordem cronológica">
+            {{ range $i, $it := $itens }}{{ $p := partial "partes.html" .pag }}
+            <li><a class="raia sec-{{ .pag.Section }}" href="{{ .pag.RelPermalink }}" data-i="{{ $i }}" data-ini="{{ .ini }}" data-fim="{{ .fim }}"
+              style="--f: {{ .faixa }}; left: {{ div (mul (sub .ini $de) 100.0) $span }}%; width: calc({{ div (mul (add (sub .fim .ini) 1) 100.0) $span }}% - 3px)"{{ if ne $i 0 }} tabindex="-1"{{ end }}>
+              <span class="raia-txt">{{ $p.caso }}, {{ .pag.Params.periodo }}</span></a></li>
+            {{ end }}
+          </ol>
+          <div class="cronos-eixo" aria-hidden="true">
+            {{ range seq $de 5 $ate }}<span style="left: {{ div (mul (sub . $de) 100.0) $span }}%">{{ . }}</span>{{ end }}
+          </div>
+        </div>
       </div>
+      <div class="cronos-nav">
+        <button type="button" class="botao-icone" data-cronos-passo="-1" aria-label="Caso anterior">{{ partial "icone.html" "esq" }}</button>
+        <button type="button" class="botao-icone" data-cronos-passo="1" aria-label="Próximo caso">{{ partial "icone.html" "dir" }}</button>
+        <a class="link-forte" href="{{ "linha-do-tempo/" | relURL }}">Abrir a linha do tempo completa</a>
+      </div>
+    </figure>
+
+    <div class="vitrine" aria-live="polite">
+      {{ range $i, $it := $itens }}{{ $pg := .pag }}{{ $p := partial "partes.html" $pg }}
+      <article class="vit sec-{{ $pg.Section }}" data-vit="{{ $i }}"{{ if ne $pg.RelPermalink $recente.RelPermalink }} hidden{{ else }} data-inicial{{ end }}>
+        <a class="vit-foto" href="{{ $pg.RelPermalink }}" tabindex="-1" aria-hidden="true">
+          {{ with $pg.Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" {{ if eq $pg.RelPermalink $recente.RelPermalink }}fetchpriority="high"{{ else }}loading="lazy"{{ end }} width="560" height="700">{{ end }}
+        </a>
+        <div class="vit-texto">
+          <p class="vit-meta">{{ if eq $pg.RelPermalink $recente.RelPermalink }}<span class="selo">Publicado por último</span>{{ end }}<span>{{ $pg.CurrentSection.Title }}, {{ $pg.Params.periodo }}</span></p>
+          <h2 class="vit-nome"><a href="{{ $pg.RelPermalink }}">{{ $p.caso }}</a></h2>
+          {{ with $p.sub }}<p class="vit-sub">{{ . }}</p>{{ end }}
+          {{ partial "placar.html" (dict "slug" $pg.File.ContentBaseName "completo" true) }}
+          <a class="botao" href="{{ $pg.RelPermalink }}">Ler o caso</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ---------- Publicados por último ---------- */}}
+{{ $novos := first 3 (sort $todas "Date" "desc") }}
+<section class="wrap bloco" aria-labelledby="novos-t">
+  <header class="bloco-topo">
+    <h2 id="novos-t">Publicados por último</h2>
+    <a class="link-forte" href="{{ "casos/" | relURL }}">Ver todos os {{ len $todas }} casos</a>
+  </header>
+  <div class="novos">
+    {{ range $i, $pg := $novos }}{{ $p := partial "partes.html" $pg }}
+    <a class="novo{{ if eq $i 0 }} novo-grande{{ end }} sec-{{ $pg.Section }}" href="{{ $pg.RelPermalink }}">
+      <span class="novo-foto">{{ with $pg.Params.image }}<img src="{{ (print (cond (eq $i 0) "img/capas/" "img/thumbs/") .) | relURL }}" alt="" loading="lazy">{{ end }}</span>
+      <span class="novo-texto">
+        <span class="novo-meta">{{ $pg.CurrentSection.Title }}, {{ $pg.Params.periodo }}</span>
+        <span class="novo-nome">{{ $p.caso }}</span>
+        {{ with $p.sub }}<span class="novo-sub">{{ . }}</span>{{ end }}
+        {{ if eq $i 0 }}<span class="novo-desc">{{ $pg.Description }}</span>{{ end }}
+        <span class="novo-tempo">{{ $pg.ReadingTime }} min de leitura</span>
+      </span>
     </a>
     {{ end }}
-  {{ end }}
-</section>
-
-<section class="comece wrap" aria-labelledby="comece-t">
-  <div class="comece-intro">
-    <h2 id="comece-t">Comece por aqui</h2>
-    <p class="manifesto-frase">{{ len $todas }} casos contados do início ao fim, com nomes, valores, datas e o que a Justiça decidiu.</p>
-    <div class="manifesto-autor">
-      <img src="{{ "img/logo.png" | relURL }}" alt="" width="56" height="56">
-      <div>
-        <p>Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a></p>
-        {{ partial "redes.html" . }}
-      </div>
-    </div>
   </div>
-  <ol class="caminhos">
-    <li><a href="{{ "casos/" | relURL }}">
-      <span class="cam-n">1</span>
-      <span class="cam-t">Procure um caso</span>
-      <span class="cam-d">Busque por nome, pessoa, empresa ou ano. Filtre por seção e época.</span>
-    </a></li>
-    <li><a href="{{ "teia/" | relURL }}">
-      <span class="cam-n">2</span>
-      <span class="cam-t">Veja as ligações na Teia</span>
-      <span class="cam-d">Um mapa de quem aparece em quais casos, e como cada um terminou.</span>
-    </a></li>
-    <li><a href="{{ "sobre/" | relURL }}">
-      <span class="cam-n">3</span>
-      <span class="cam-t">Entenda o método</span>
-      <span class="cam-d">Como os casos são escolhidos, quais são as fontes e como as correções são feitas.</span>
-    </a></li>
-  </ol>
 </section>
 
-{{ range $secoes }}
-  {{ $s := site.GetPage (print "/" .) }}
-  {{ $p := where site.RegularPages "Section" . }}
-  <section class="trilho-bloco sec-{{ . }}">
-    <header class="wrap trilho-topo">
-      <div>
-        <h2>{{ $s.Title }}</h2>
-        <p>{{ $s.Description }}</p>
-      </div>
-      <div class="trilho-acoes">
-        <button class="seta" type="button" data-dir="-1" aria-label="Casos anteriores">{{ partial "icone.html" "esq" }}</button>
-        <button class="seta" type="button" data-dir="1" aria-label="Próximos casos">{{ partial "icone.html" "dir" }}</button>
-        <a class="ver-todos" href="{{ $s.RelPermalink }}">Ver os {{ len $p }} casos</a>
-      </div>
-    </header>
-    <div class="trilho" tabindex="0" aria-label="Casos de {{ $s.Title }}">
-      {{ range first 12 $p }}{{ partial "card.html" . }}{{ end }}
+{{/* ---------- Para começar ---------- */}}
+{{ with site.Params.essenciais }}
+<section class="wrap bloco" aria-labelledby="comecar-t">
+  <header class="bloco-topo">
+    <div>
+      <h2 id="comecar-t">Para começar</h2>
+      <p class="bloco-desc">Chegou agora? Estes casos explicam como os esquemas funcionam e aparecem de novo em muitos dos outros.</p>
     </div>
-  </section>
+  </header>
+  <div class="lista-casos">
+    {{ range . }}{{ with or (site.GetPage (print "/nova-republica/" .)) (site.GetPage (print "/internacional/" .)) }}{{ partial "linha-caso.html" . }}{{ end }}{{ end }}
+  </div>
+</section>
 {{ end }}
 
-<section class="arquivo wrap" aria-labelledby="arquivo-titulo">
-  <h2 id="arquivo-titulo">Arquivo completo</h2>
-  <p class="arquivo-desc">Todos os casos em ordem cronológica, pelo ano em que começaram. Para buscar e filtrar, use a <a href="{{ "casos/" | relURL }}">página de casos</a>.</p>
-  <div class="arquivo-colunas">
-    {{ range $secoes }}
-      {{ $s := site.GetPage (print "/" .) }}
-      <div class="arquivo-col sec-{{ . }}">
-        <h3>{{ $s.Title }}</h3>
-        <ol>
-          {{ $itens := slice }}
-          {{ range where site.RegularPages "Section" . }}
-            {{ $itens = $itens | append (dict "ano" (int (substr .Params.periodo 0 4)) "titulo" (.Title | replaceRE ":.*$" "") "link" .RelPermalink) }}
-          {{ end }}
-          {{ range sort $itens "ano" }}
-          <li><a href="{{ .link }}"><span class="ano">{{ .ano }}</span><span class="nome">{{ .titulo }}</span></a></li>
-          {{ end }}
-        </ol>
-      </div>
-    {{ end }}
-  </div>
+{{/* ---------- Outras formas de explorar ---------- */}}
+{{ $pessoas := partialCached "pessoas.html" "p" }}
+{{ $recorrentes := where $pessoas "n" "gt" 1 }}
+<section class="wrap bloco" aria-labelledby="explorar-t">
+  <header class="bloco-topo"><h2 id="explorar-t">Outras formas de explorar</h2></header>
+  <ul class="caminhos">
+    <li><a href="{{ "linha-do-tempo/" | relURL }}">
+      {{ partial "icone.html" "tempo" }}
+      <span class="cam-t">Linha do tempo</span>
+      <span class="cam-d">Os casos ano a ano, de {{ $de }} até hoje, com o presidente que governava em cada época.</span>
+    </a></li>
+    <li><a href="{{ "pessoas/" | relURL }}">
+      {{ partial "icone.html" "pessoas" }}
+      <span class="cam-t">Pessoas</span>
+      <span class="cam-d">{{ len $pessoas }} pessoas e como cada caso terminou para elas. {{ len $recorrentes }} aparecem em mais de um escândalo.</span>
+    </a></li>
+    <li><a href="{{ "teia/" | relURL }}">
+      {{ partial "icone.html" "teia" }}
+      <span class="cam-t">Teia</span>
+      <span class="cam-d">Um mapa em 3D das ligações entre casos, pessoas, empresas, órgãos e partidos.</span>
+    </a></li>
+  </ul>
 </section>
 
+{{/* ---------- Internacional ---------- */}}
+{{ with site.GetPage "/internacional" }}
+<section class="bloco bloco-int sec-internacional" aria-labelledby="int-t">
+  <div class="wrap">
+    <header class="bloco-topo">
+      <div>
+        <h2 id="int-t">Fora do Brasil</h2>
+        <p class="bloco-desc">{{ .Description }}</p>
+      </div>
+      <a class="link-forte" href="{{ .RelPermalink }}">Ver a seção Internacional</a>
+    </header>
+  </div>
+  <div class="trilho" tabindex="0" aria-label="Casos internacionais">
+    {{ range .RegularPages }}{{ partial "card.html" . }}{{ end }}
+  </div>
+</section>
+{{ end }}
 
+{{/* ---------- Autor ---------- */}}
+<section class="wrap bloco bloco-autor" aria-label="Quem escreve">
+  {{ partial "autor.html" . }}
+</section>
 {{ end }}

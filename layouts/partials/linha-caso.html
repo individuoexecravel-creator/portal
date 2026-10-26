@@ -1,0 +1,11 @@
+{{- /* Caso em linha: ano, nome, subtítulo, placar e miniatura. Recebe a página. */ -}}
+{{- $p := partial "partes.html" . -}}
+<a class="linha-caso sec-{{ .Section }}" href="{{ .RelPermalink }}">
+  <span class="lc-ano">{{ .Params.periodo }}</span>
+  <span class="lc-texto">
+    <span class="lc-nome">{{ $p.caso }}</span>
+    {{ with $p.sub }}<span class="lc-sub">{{ . }}</span>{{ end }}
+    {{ partial "placar.html" (dict "slug" .File.ContentBaseName "completo" true) }}
+  </span>
+  {{ with .Params.image }}<img class="lc-img" src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy" width="560" height="700">{{ end }}
+</a>

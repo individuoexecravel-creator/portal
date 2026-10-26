@@ -1,5 +1,5 @@
 ---
-title: "Todos os casos"
-description: "Busque e filtre todos os casos do Portal por nome, pessoa, seção ou época."
+title: "Casos"
+description: "Todos os casos publicados. Procure por nome, pessoa, empresa ou ano, e filtre por seção e época."
 layout: "casos"
 ---

@@ -1,20 +1,20 @@
 {{- /* Topo do site: usado por todas as páginas, inclusive a Teia. */ -}}
 {{- $cur := . -}}
+{{- $emCaso := in (slice "nova-republica" "internacional") $cur.Section -}}
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
   <div class="wrap topo-in">
-    <a class="marca" href="{{ site.Home.RelPermalink }}" aria-label="{{ site.Title }}, página inicial">
-      <img src="{{ "img/logo.png" | relURL }}" alt="" width="40" height="40">
-      <span>{{ site.Title }}</span>
+    <a class="marca" href="{{ site.Home.RelPermalink }}">
+      <img src="{{ "img/logo.png" | relURL }}" alt="" width="36" height="36">
+      <span class="marca-nome">{{ site.Title }}</span>
+      <span class="marca-desc">{{ site.Params.slogan }}</span>
     </a>
-
     <nav class="nav-principal" aria-label="Principal">
       {{- range site.Menus.main }}
-        {{- $ativo := or ($cur.IsMenuCurrent "main" .) (and .Page (eq .Page.Section $cur.Section) (ne $cur.Section "")) (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) }}
+        {{- $ativo := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Identifier "casos")) (and $emCaso (eq .Name "Casos")) }}
         <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ .Name }}</a>
       {{- end }}
     </nav>
-
     <div class="topo-acoes">
       <button class="botao-topo" type="button" data-abrir-busca aria-haspopup="dialog" aria-controls="busca">
         {{ partial "icone.html" "busca" }}<span class="rotulo-botao">Buscar</span><kbd class="atalho" aria-hidden="true">/</kbd>
@@ -29,10 +29,10 @@
 
 <div class="menu-movel" id="menu-movel" hidden>
   <nav aria-label="Menu">
-    <a href="{{ site.Home.RelPermalink }}"{{ if $cur.IsHome }} aria-current="page"{{ end }}>Início</a>
+    <a href="{{ site.Home.RelPermalink }}"{{ if $cur.IsHome }} aria-current="page"{{ end }}><span>Início</span></a>
     {{- range site.Menus.main }}
-      {{- $ativo := or ($cur.IsMenuCurrent "main" .) (and .Page (eq .Page.Section $cur.Section) (ne $cur.Section "")) (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) }}
-      <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ .Name }}</a>
+      {{- $ativo := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Casos")) }}
+      <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}><span>{{ .Name }}</span>{{ with .Page }}<small>{{ .Description }}</small>{{ end }}</a>
     {{- end }}
   </nav>
   <div class="menu-movel-pe">
@@ -41,16 +41,23 @@
   </div>
 </div>
 
-<dialog class="busca" id="busca" aria-label="Buscar casos" data-indice="{{ "index.json" | relURL }}">
+<dialog class="busca" id="busca" aria-label="Buscar no Portal" data-indice="{{ "index.json" | relURL }}">
   <form method="dialog" class="busca-in" role="search">
     <div class="busca-campo">
       {{ partial "icone.html" "busca" }}
-      <label class="sr" for="busca-q">Buscar casos</label>
-      <input id="busca-q" type="search" placeholder="Nome do caso, pessoa, empresa ou ano" autocomplete="off" spellcheck="false">
+      <label class="sr" for="busca-q">Buscar casos e pessoas</label>
+      <input id="busca-q" type="search" placeholder="Caso, pessoa, empresa ou ano" autocomplete="off" spellcheck="false">
       <button class="busca-fechar" value="fechar" aria-label="Fechar busca">{{ partial "icone.html" "fechar" }}</button>
     </div>
-    <p class="busca-dica" id="busca-dica">Digite para buscar entre todos os casos. Dá para procurar pelo nome de uma pessoa, como “Youssef”, ou por um ano, como “1998”.</p>
+    <div class="busca-dica" id="busca-dica">
+      <p>Procure pelo nome de um caso, de uma pessoa ou de uma empresa, ou por um ano.</p>
+      <p class="busca-sugestoes">Por exemplo:
+        <button type="button" data-sugestao="Youssef">Youssef</button>
+        <button type="button" data-sugestao="Banco Central">Banco Central</button>
+        <button type="button" data-sugestao="1992">1992</button>
+      </p>
+    </div>
     <ul class="busca-res" id="busca-res" aria-live="polite"></ul>
-    <p class="busca-todos"><a href="{{ "casos/" | relURL }}">Ver todos os casos com filtros</a></p>
+    <p class="busca-todos"><a href="{{ "casos/" | relURL }}">Ver todos os casos, com filtros</a></p>
   </form>
 </dialog>

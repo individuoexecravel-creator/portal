@@ -1,11 +1,14 @@
 {{- $p := partial "partes.html" . -}}
-{{- $ano := 0 }}{{ with .Params.periodo }}{{ $ano = int (substr . 0 4) }}{{ end -}}
+{{- $per := partial "periodo.html" . -}}
 {{- $ficha := slice }}{{ range .Params.ficha }}{{ $ficha = $ficha | append (print .valor) }}{{ end -}}
-<a class="card sec-{{ .Section }}" href="{{ .RelPermalink }}" data-sec="{{ .Section }}" data-ano="{{ $ano }}" data-pub="{{ .Date.Unix }}" data-nome="{{ $p.caso }}" data-busca="{{ print .Title " " .Description " " (delimit $ficha " ") | plainify | lower }}">
-  {{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy" width="560" height="700">{{ end }}
+{{- $env := partial "envolvidos.html" .File.ContentBaseName -}}
+{{- $nomes := slice }}{{ $desf := slice }}{{ range $env }}{{ $nomes = $nomes | append .nome }}{{ if and (eq .tipo "pessoa") (not (in $desf .papel)) }}{{ $desf = $desf | append .papel }}{{ end }}{{ end -}}
+<a class="card sec-{{ .Section }}" href="{{ .RelPermalink }}" data-sec="{{ .Section }}" data-ano="{{ $per.ini }}" data-pub="{{ .Date.Unix }}" data-nome="{{ $p.caso }}" data-desf="{{ delimit $desf " " }}" data-busca="{{ print .Title " " .Description " " (delimit $ficha " ") " " (delimit $nomes " ") | plainify | lower }}">
+  <span class="card-foto">{{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy" width="560" height="700">{{ end }}</span>
   <span class="card-texto">
     {{ with .Params.periodo }}<span class="card-periodo">{{ . }}</span>{{ end }}
     <span class="card-titulo">{{ $p.caso }}</span>
     {{ with $p.sub }}<span class="card-sub">{{ . }}</span>{{ end }}
   </span>
+  {{ partial "placar.html" (dict "slug" .File.ContentBaseName) }}
 </a>

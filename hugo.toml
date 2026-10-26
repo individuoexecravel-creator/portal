@@ -4,13 +4,17 @@ title = "Portal"
 summaryLength = 40
 
 [params]
-  description = "Os grandes escândalos políticos, contados do início ao fim."
+  description = "Escândalos políticos contados do começo ao fim, com nomes, valores, datas e o que a Justiça decidiu."
   slogan = "Arquivo de escândalos políticos"
+
+  # Casos indicados para quem está chegando agora (nome do arquivo, sem .md).
+  # Aparecem no início, em "Para começar". Troque à vontade.
+  essenciais = ["collor-pc-farias", "anoes-do-orcamento", "mensalao", "lava-jato"]
 
   [params.autor]
     nome = "Indivíduo Execrável"
-    funcao = "Jornalista em formação · investigação política e criminal"
-    bio = "Jornalista em formação, dedicado à investigação de casos políticos e criminais. Reconstrói cada escândalo a partir de processos judiciais, relatórios de CPIs e reportagens da época, com um compromisso: mostrar o que aconteceu, quem estava envolvido e o que a Justiça decidiu, sem esconder absolvições, prescrições ou anulações."
+    funcao = "Jornalista em formação, dedicado a casos políticos e criminais"
+    bio = "Reconstrói cada escândalo a partir de processos judiciais, relatórios de CPIs e reportagens da época, com um compromisso: mostrar o que aconteceu, quem estava envolvido e o que a Justiça decidiu, sem esconder absolvições, prescrições ou anulações."
 
   # Redes sociais: cole o link de cada perfil entre as aspas.
   # Redes com o link vazio não aparecem no site.
@@ -61,12 +65,12 @@ summaryLength = 40
     pageRef = "/casos"
     weight = 1
   [[menus.main]]
-    name = "Nova República"
-    pageRef = "/nova-republica"
+    name = "Linha do tempo"
+    pageRef = "/linha-do-tempo"
     weight = 2
   [[menus.main]]
-    name = "Internacional"
-    pageRef = "/internacional"
+    name = "Pessoas"
+    pageRef = "/pessoas"
     weight = 3
   [[menus.main]]
     name = "Teia"

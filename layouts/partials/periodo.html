@@ -1,0 +1,5 @@
+{{- /* Recebe a página. Devolve dict ini/fim (anos inteiros) a partir de .Params.periodo. */ -}}
+{{- $anos := findRE `\d{4}` (.Params.periodo | default "") -}}
+{{- $ini := 0 }}{{ $fim := 0 -}}
+{{- with $anos }}{{ $ini = int (index . 0) }}{{ $fim = int (index . (sub (len .) 1)) }}{{ end -}}
+{{- return (dict "ini" $ini "fim" $fim) -}}

@@ -1,12 +1,11 @@
 {{ with site.Params.autor }}
-<aside class="autor">
-  <img src="{{ "img/logo.png" | relURL }}" alt="" width="88" height="88">
+<aside class="autor" aria-label="Quem escreve">
+  <img src="{{ "img/logo.png" | relURL }}" alt="" width="72" height="72">
   <div>
-    <span class="rotulo">Quem assina</span>
-    <h2>{{ .nome }}</h2>
+    <p class="autor-nome"><a href="{{ "sobre/" | relURL }}">{{ .nome }}</a></p>
     <p class="autor-funcao">{{ .funcao }}</p>
-    <p>{{ .bio }}</p>
-    {{ partial "redes.html" $ }}
+    <p class="autor-bio">{{ .bio }}</p>
+    {{ partial "redes.html" (dict "nomes" true) }}
   </div>
 </aside>
 {{ end }}

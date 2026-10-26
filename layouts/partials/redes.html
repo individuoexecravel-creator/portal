@@ -1,6 +1,10 @@
-{{ $redes := where (site.Params.redes | default slice) "url" "ne" "" }}
-{{ with $redes }}
-<ul class="redes">
-  {{ range . }}<li><a href="{{ .url }}" target="_blank" rel="noopener me">{{ .nome }}</a></li>{{ end }}
+{{- /* Links das redes com ícones. Recebe a página ou dict "nomes" true para mostrar o nome ao lado do ícone. */ -}}
+{{- $nomes := and (reflect.IsMap .) (index . "nomes") -}}
+{{- $redes := where (site.Params.redes | default slice) "url" "ne" "" -}}
+{{- with $redes }}
+<ul class="redes{{ if $nomes }} redes-nomes{{ end }}">
+  {{- range . }}
+  <li><a href="{{ .url }}" target="_blank" rel="noopener me" aria-label="{{ .nome }}{{ if not $nomes }} de {{ site.Params.autor.nome }}{{ end }}">{{ partial "icone.html" (lower .nome) }}{{ if $nomes }}<span>{{ .nome }}</span>{{ end }}</a></li>
+  {{- end }}
 </ul>
-{{ end }}
+{{- end -}}

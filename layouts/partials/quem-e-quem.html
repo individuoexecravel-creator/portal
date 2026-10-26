@@ -1,0 +1,29 @@
+{{- /* Bloco "Quem é quem" no fim da matéria, a partir de data/teia/casos/<slug>.yaml. */ -}}
+{{- $env := partial "envolvidos.html" .File.ContentBaseName -}}
+{{- $papeis := partialCached "papeis.html" "papeis" -}}
+{{- $pessoas := where $env "tipo" "pessoa" -}}
+{{- $outros := where $env "tipo" "ne" "pessoa" -}}
+{{- $outros = where $outros "papel" "ne" "vinculo" | append (where $outros "papel" "vinculo") -}}
+{{- if $env }}
+<section class="quem" id="quem-e-quem" aria-labelledby="quem-t">
+  <h2 id="quem-t">Quem é quem</h2>
+  <p class="quem-intro">Como o caso terminou para cada pessoa. O significado de cada cor está na página <a href="{{ "sobre/" | relURL }}#como-ler-um-caso">Sobre</a>.</p>
+  {{ with $pessoas }}
+  <ul class="quem-lista">
+    {{ range sort . "ordem" }}{{ $pp := index $papeis .papel }}
+    <li class="d-borda-{{ .papel }}">
+      <p class="quem-nome"><a href="{{ "pessoas/" | relURL }}#{{ .id }}">{{ .nome }}</a></p>
+      <p class="quem-papel"><i class="ponto d-{{ .papel }}" aria-hidden="true"></i>{{ $pp.nome }}</p>
+      {{ with .rel }}<p class="quem-rel">{{ . }}</p>{{ end }}
+    </li>
+    {{ end }}
+  </ul>
+  {{ end }}
+  {{ with $outros }}
+  <h3>Órgãos, empresas e lugares</h3>
+  <ul class="quem-outros">
+    {{ range . }}<li><b>{{ .nome }}</b>{{ with .rel }} <span>{{ . }}</span>{{ end }}</li>{{ end }}
+  </ul>
+  {{ end }}
+</section>
+{{- end -}}

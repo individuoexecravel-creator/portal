@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{ $todas := where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") }}
+{{ $itens := slice }}
+{{ range $todas }}{{ $per := partial "periodo.html" . }}{{ $itens = $itens | append (dict "chave" (printf "%04d-%s" $per.ini .Title) "ini" $per.ini "pag" .) }}{{ end }}
+{{ $itens = sort $itens "chave" }}
+{{ $govs := site.Data.presidentes }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ len $todas }} casos na ordem em que começaram. Cada bloco corresponde a um governo no Brasil, para situar a época, inclusive nos casos de outros países.</p>
+</section>
+
+<div class="wrap">
+  <div class="lt-ferr" data-lt>
+    <div class="filtro-grupo" role="group" aria-label="Seção">
+      <button type="button" class="chip" aria-pressed="true" data-lt-sec="">Todas as seções</button>
+      <button type="button" class="chip sec-nova-republica" aria-pressed="false" data-lt-sec="nova-republica">Nova República</button>
+      <button type="button" class="chip sec-internacional" aria-pressed="false" data-lt-sec="internacional">Internacional</button>
+    </div>
+    <nav class="lt-saltos" aria-label="Ir para o governo">
+      {{ range $govs }}{{ $g := . }}{{ $tem := false }}{{ range $itens }}{{ if and (ge .ini $g.de) (or (not $g.ate) (lt .ini $g.ate)) }}{{ $tem = true }}{{ end }}{{ end }}
+      {{ if $tem }}<a href="#gov-{{ .de }}-{{ .curto | urlize }}">{{ .curto }}</a>{{ end }}{{ end }}
+    </nav>
+  </div>
+
+  <ol class="lt">
+    {{ range $govs }}{{ $g := . }}
+      {{ $dele := slice }}
+      {{ range $itens }}{{ if and (ge .ini $g.de) (or (not $g.ate) (lt .ini $g.ate)) }}{{ $dele = $dele | append .pag }}{{ end }}{{ end }}
+      {{ with $dele }}
+      <li class="lt-gov" id="gov-{{ $g.de }}-{{ $g.curto | urlize }}">
+        <header class="lt-gov-topo">
+          <p class="lt-anos">{{ $g.de }}–{{ with $g.ate }}{{ . }}{{ else }}hoje{{ end }}</p>
+          <h2>{{ if eq $g.curto "Ditadura" }}{{ $g.nome }}{{ else }}Governo {{ $g.nome }}{{ end }}</h2>
+          <p class="lt-n" data-lt-conta>{{ len . }} {{ cond (eq (len .) 1) "caso começou" "casos começaram" }} nesse período</p>
+        </header>
+        <div class="lista-casos">
+          {{ range . }}<div class="lt-item" data-sec="{{ .Section }}">{{ partial "linha-caso.html" . }}</div>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    {{ end }}
+  </ol>
+</div>
+{{ end }}

@@ -1,0 +1,23 @@
+{{- /* Índice de pessoas a partir da Teia. Use com partialCached "pessoas.html" "p".
+       Devolve lista ordenada por nome: id, nome, desc, casos (slug, nome, url, papel, rel, ano). */ -}}
+{{- $ents := partialCached "ents.html" "ents" -}}
+{{- $s := newScratch -}}
+{{- range $slug, $c := site.Data.teia.casos -}}
+  {{- $pag := or (site.GetPage (printf "/nova-republica/%s" $slug)) (site.GetPage (printf "/internacional/%s" $slug)) -}}
+  {{- $nomeCaso := $c.nome -}}{{- $url := "" -}}{{- $ano := 0 -}}
+  {{- with $pag }}{{ $nomeCaso = (partial "partes.html" .).caso }}{{ $url = .RelPermalink }}{{ end -}}
+  {{- with $c.periodo }}{{ $ano = int (index . 0) }}{{ end -}}
+  {{- range $c.envolvidos -}}
+    {{- $e := index $ents .id -}}
+    {{- if and $e (eq $e.tipo "pessoa") -}}
+      {{- $s.Add .id (slice (dict "slug" $slug "nome" $nomeCaso "url" $url "papel" .tipo "rel" (.rel | default "") "ano" $ano)) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $out := slice -}}
+{{- range $id, $casos := $s.Values -}}
+  {{- $e := index $ents $id -}}
+  {{- $k := lower $e.nome | replaceRE "[áàâã]" "a" | replaceRE "[éê]" "e" | replaceRE "í" "i" | replaceRE "[óôõ]" "o" | replaceRE "[úü]" "u" | replaceRE "ç" "c" -}}
+  {{- $out = $out | append (dict "id" $id "chave" $k "nome" $e.nome "desc" ($e.desc | default "") "casos" (sort $casos "ano") "n" (len $casos)) -}}
+{{- end -}}
+{{- return (sort $out "chave") -}}
