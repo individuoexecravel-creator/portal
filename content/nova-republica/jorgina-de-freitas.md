@@ -15,6 +15,13 @@ ficha:
     valor: "Na casa de US$ 600 milhões, segundo estimativas oficiais da época"
   - item: "Desfecho"
     valor: "Jorgina foge, é presa na Costa Rica em 1997, extraditada e condenada; parte do dinheiro é recuperada no exterior"
+valores:
+  - tipo: desvio
+    valor: 600000000
+    moeda: USD
+    ano: 1991
+    descricao: "Fraude contra a Previdência Social"
+    fonte: "Estimativas oficiais da época"
 ---
 
 O Instituto Nacional do Seguro Social, o INSS, é condenado na Justiça todos os dias a pagar benefícios e indenizações. Na maioria das vezes, isso é a lei funcionando. No Rio de Janeiro do fim dos anos 1980, um grupo percebeu que, se controlasse as três pontas de um processo, quem pede, quem julga e quem deveria defender o INSS, poderia fazer a Previdência pagar o que quisesse. A figura mais conhecida desse grupo era a advogada **Jorgina de Freitas**.

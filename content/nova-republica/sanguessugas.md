@@ -15,6 +15,13 @@ ficha:
     valor: "Operação Sanguessuga (Polícia Federal, maio de 2006) e CPMI das Sanguessugas"
   - item: "Desfecho"
     valor: "CPMI pede a cassação de 69 deputados e 3 senadores; nenhum é cassado, mas a maioria não se reelege"
+valores:
+  - tipo: desvio
+    valor: 15500000
+    moeda: BRL
+    ano: 2006
+    descricao: "Prejuízo mínimo na compra de ambulâncias, com superfaturamento em 70% dos convênios analisados"
+    fonte: "CGU e Denasus"
 ---
 
 Uma ambulância é um dos pedidos mais comuns que prefeitos de cidades pequenas fazem a deputados e senadores. É um bem concreto, que aparece na foto da entrega e rende voto. Durante anos, essa demanda legítima alimentou um esquema que a Polícia Federal batizou com um nome que dizia tudo: **Operação Sanguessuga**.

@@ -147,6 +147,12 @@
       <span class="cam-t">Pessoas</span>
       <span class="cam-d">{{ len $pessoas }} pessoas e como cada caso terminou para elas. {{ len $recorrentes }} aparecem em mais de um escândalo.</span>
     </a></li>
+    {{ $tot := 0.0 }}{{ range where (where (partial "valores-dados.html" "nova-republica") "tipo" "desvio") "moeda" "BRL" }}{{ if not .repete }}{{ $tot = add $tot .valor }}{{ end }}{{ end }}
+    <li><a href="{{ "valores/" | relURL }}">
+      {{ partial "icone.html" "valores" }}
+      <span class="cam-t">Quanto custou</span>
+      <span class="cam-d">{{ partial "dinheiro.html" (dict "v" $tot "m" "BRL") }} em dinheiro público desviado ou perdido, somados caso a caso, com gráficos e fontes.</span>
+    </a></li>
     <li><a href="{{ "teia/" | relURL }}">
       {{ partial "icone.html" "teia" }}
       <span class="cam-t">Teia</span>

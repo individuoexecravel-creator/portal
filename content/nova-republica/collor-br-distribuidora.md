@@ -15,6 +15,13 @@ ficha:
     valor: "R$ 20 milhões, segundo o STF"
   - item: "Desfecho"
     valor: "Condenado pelo STF em maio de 2023 a 8 anos e 10 meses; preso em 25 de abril de 2025 e, seis dias depois, transferido para prisão domiciliar"
+valores:
+  - tipo: propina
+    valor: 20000000
+    moeda: BRL
+    ano: 2014
+    descricao: "Propina recebida em contratos da BR Distribuidora"
+    fonte: "STF"
 ---
 
 Em dezembro de 1992, Fernando Collor de Mello deixou a Presidência da República pela porta dos fundos: renunciou horas antes de ser condenado pelo Senado no processo de impeachment, depois do escândalo do **esquema PC Farias**. Dois anos depois, o Supremo Tribunal Federal o absolveu da acusação de corrupção por falta de provas. Parecia o fim da história. Não era. Em **25 de abril de 2025**, aos 75 anos, Collor foi preso pela Polícia Federal em Maceió. O motivo, desta vez, era outro: **propina em contratos da BR Distribuidora**, uma subsidiária da Petrobras.

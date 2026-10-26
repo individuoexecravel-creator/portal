@@ -17,6 +17,19 @@ ficha:
     valor: "R$ 11,37 milhões desviados pela folha paralela entre 2004 e 2005; a PF estimou em cerca de R$ 70 milhões o total desviado pelo grupo"
   - item: "Desfecho"
     valor: "Condenações em vários processos; em 2023, num deles, 17 dos 21 réus foram beneficiados pela prescrição; Carlão foi preso em 2025, depois de anos foragido"
+valores:
+  - tipo: desvio
+    valor: 11371646.83
+    moeda: BRL
+    ano: 2005
+    descricao: "Folha paralela da Assembleia de Rondônia, entre 2004 e 2005"
+    fonte: "Justiça de Rondônia"
+  - tipo: desvio
+    valor: 2600000
+    moeda: BRL
+    ano: 2005
+    descricao: "Passagens aéreas pagas pela Assembleia para os réus e indicados"
+    fonte: "Tribunal de Justiça de Rondônia"
 ---
 
 Na manhã de **4 de agosto de 2006**, cerca de **300 policiais federais** saíram às ruas de Porto Velho. No fim do dia, estavam presos o **presidente da Assembleia Legislativa** e o **presidente do Tribunal de Justiça** de Rondônia. Junto com eles, um juiz, um procurador de Justiça, um conselheiro do Tribunal de Contas, assessores e parentes de deputados. A imprensa resumiu o tamanho da coisa numa frase: o Legislativo, o Judiciário e os órgãos de controle de um estado inteiro tinham ido para a cadeia no mesmo dia.

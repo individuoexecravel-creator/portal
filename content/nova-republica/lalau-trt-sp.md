@@ -15,6 +15,13 @@ ficha:
     valor: "Cerca de R$ 169 milhões em valores da época"
   - item: "Desfecho"
     valor: "Luiz Estevão cassado em 2000, o primeiro senador cassado; Lalau e os donos da Incal condenados"
+valores:
+  - tipo: desvio
+    valor: 169000000
+    moeda: BRL
+    ano: 1998
+    descricao: "Desvio da obra do Fórum Trabalhista da Barra Funda"
+    fonte: "Ministério Público Federal"
 ---
 
 O apelido pegou porque rimava e porque resumia. **Nicolau dos Santos Neto**, juiz que presidiu o Tribunal Regional do Trabalho de São Paulo, virou para o país o **Lalau**. Sob sua responsabilidade, a construção do novo Fórum Trabalhista da cidade se transformou num dos maiores desvios de dinheiro público dos anos 1990 e no escândalo mais grave já envolvendo um magistrado no Brasil.

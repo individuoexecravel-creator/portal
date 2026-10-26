@@ -15,6 +15,13 @@ ficha:
     valor: "Acordo de leniência da Siemens com o Cade, em maio de 2013"
   - item: "Desfecho"
     valor: "Cade condena 11 empresas e dezenas de pessoas em 2019; processos criminais e de improbidade se arrastam por anos"
+valores:
+  - tipo: desvio
+    valor: 800000000
+    moeda: BRL
+    ano: 2014
+    descricao: "Sobrepreço estimado em dez contratos de reforma de trens do Metrô"
+    fonte: "Ministério Público de São Paulo"
 ---
 
 São Paulo tem a maior rede de transporte sobre trilhos do país, operada por duas empresas estaduais: o **Metrô** e a **CPTM**, a Companhia Paulista de Trens Metropolitanos. Comprar trens, reformar composições e construir sistemas de sinalização são contratos de centenas de milhões de reais, disputados por poucas multinacionais. Durante mais de uma década, segundo as autoridades de defesa da concorrência, essas empresas não disputavam de verdade. Combinavam. O caso ficou conhecido como **Trensalão**, ou cartel dos trens.

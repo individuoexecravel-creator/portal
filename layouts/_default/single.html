@@ -33,6 +33,7 @@
       <h2 id="sumario-t">Neste caso</h2>
       <ol></ol>
     </nav>
+    {{ partial "valores-caso.html" . }}
     {{ with .Params.ficha }}
     <details class="ficha" open data-ficha>
       <summary><span>Ficha do caso</span><span class="sumario-dica" aria-hidden="true">{{ partial "icone.html" "dir" }}</span></summary>

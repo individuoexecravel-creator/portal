@@ -1,0 +1,136 @@
+{{- /* Painel de valores de uma seção (nova-republica ou internacional). Recebe o nome da seção. */ -}}
+{{- $sec := . -}}
+{{- $secPag := site.GetPage (print "/" $sec) -}}
+{{- $dados := partial "valores-dados.html" $sec -}}
+{{- $conta := where $dados "repete" "" -}}
+{{- $tipos := partial "tipos-valor.html" "x" -}}
+{{- $moedas := slice "BRL" "USD" "EUR" -}}
+{{- $nomeMoeda := dict "BRL" "Em reais" "USD" "Em dólares" "EUR" "Em euros" -}}
+
+{{- /* Somas por tipo e moeda, e por caso */ -}}
+{{- $soma := newScratch -}}
+{{- $porCaso := newScratch -}}
+{{- $casosCom := slice -}}
+{{- range $conta -}}
+  {{- $soma.Add (print .tipo "|" .moeda) .valor -}}
+  {{- $k := print .tipo "|" .moeda "|" .slug -}}
+  {{- $porCaso.Add $k .valor -}}
+  {{- $porCaso.SetInMap "info" $k (dict "caso" .caso "url" .url "slug" .slug) -}}
+{{- end -}}
+{{- range $dados }}{{ if not (in $casosCom .slug) }}{{ $casosCom = $casosCom | append .slug }}{{ end }}{{ end -}}
+{{- $todos := $secPag.RegularPages -}}
+
+<div class="painel-valores" role="tabpanel" id="painel-{{ $sec }}" aria-labelledby="aba-{{ $sec }}" data-painel="{{ $sec }}">
+
+  <p class="valores-cobertura">{{ len $casosCom }} de {{ len $todos }} casos de {{ $secPag.Title }} têm valores documentados. {{ if lt (len $casosCom) (len $todos) }}Os outros aparecem no fim da página.{{ end }}</p>
+
+  {{/* ---------- Totais ---------- */}}
+  <div class="totais">
+    {{ range $i, $t := $tipos }}
+    {{ $linhas := slice }}
+    {{ range $moedas }}{{ $m := . }}{{ with $soma.Get (print $t.id "|" $m) }}{{ $linhas = $linhas | append (dict "m" $m "v" .) }}{{ end }}{{ end }}
+    <section class="total total-{{ $t.id }}{{ if eq $i 0 }} total-principal{{ end }}{{ if not $linhas }} total-vazio{{ end }}" aria-labelledby="t-{{ $sec }}-{{ $t.id }}">
+      <h3 id="t-{{ $sec }}-{{ $t.id }}"><i class="ponto v-{{ $t.id }}" aria-hidden="true"></i>{{ $t.titulo }}</h3>
+      {{ with $linhas }}
+        {{ range . }}<p class="total-valor">{{ partial "dinheiro.html" (dict "v" .v "m" .m) }}</p>{{ end }}
+      {{ else }}
+        <p class="total-nada">Nenhum valor documentado ainda</p>
+      {{ end }}
+      <p class="total-explica">{{ $t.explica }}</p>
+    </section>
+    {{ end }}
+  </div>
+
+  {{/* ---------- Caso a caso ---------- */}}
+  {{ $comDados := slice }}{{ range $tipos }}{{ $id := .id }}{{ if where $conta "tipo" $id }}{{ $comDados = $comDados | append . }}{{ end }}{{ end }}
+  {{ with $comDados }}
+  <section class="grafico" aria-labelledby="g-{{ $sec }}">
+    <header class="grafico-topo">
+      <h2 id="g-{{ $sec }}">Caso a caso</h2>
+      <div class="filtro-grupo" role="group" aria-label="Tipo de valor">
+        {{ range $i, $t := . }}<button type="button" class="chip" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}" data-v-tipo="{{ $t.id }}"><i class="ponto v-{{ $t.id }}" aria-hidden="true"></i>{{ $t.nome }}</button>{{ end }}
+      </div>
+    </header>
+    {{ range $i, $t := . }}
+    <div class="ranking" data-v-lista="{{ $t.id }}"{{ if ne $i 0 }} hidden{{ end }}>
+      {{ range $moedas }}{{ $m := . }}
+        {{ $itens := slice }}
+        {{ range $k, $v := $porCaso.Values }}{{ if and (ne $k "info") (hasPrefix $k (print $t.id "|" $m "|")) }}{{ $itens = $itens | append (merge (index ($porCaso.Get "info") $k) (dict "v" $v)) }}{{ end }}{{ end }}
+        {{ with $itens }}
+        {{ $itens = sort . "v" "desc" }}
+        {{ $max := (index $itens 0).v }}
+        {{ if gt (len $moedas) 0 }}<h3 class="ranking-moeda">{{ index $nomeMoeda $m }}</h3>{{ end }}
+        <ol class="barras">
+          {{ range $itens }}
+          <li>
+            <a class="barra" href="{{ .url }}" title="{{ .caso }}: {{ partial "dinheiro.html" (dict "v" .v "m" $m "longo" true) }}">
+              <span class="barra-nome">{{ .caso }}</span>
+              <span class="barra-trilho"><span class="barra-fill v-{{ $t.id }}" style="width: {{ math.Max 0.6 (div (mul .v 100.0) $max) }}%"></span></span>
+              <span class="barra-valor">{{ partial "dinheiro.html" (dict "v" .v "m" $m) }}</span>
+            </a>
+          </li>
+          {{ end }}
+        </ol>
+        {{ end }}
+      {{ end }}
+      <p class="grafico-nota">{{ $t.explica }} Cada barra é proporcional ao maior valor da mesma moeda.</p>
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+
+  {{/* ---------- Por década (desvio em reais) ---------- */}}
+  {{ $dec := newScratch }}{{ $decs := slice }}
+  {{ range where (where $conta "tipo" "desvio") "moeda" "BRL" }}{{ $d := mul (div .ano 10) 10 }}{{ $dec.Add (string $d) .valor }}{{ if not (in $decs $d) }}{{ $decs = $decs | append $d }}{{ end }}{{ end }}
+  {{ if ge (len $decs) 2 }}
+  {{ $decs = sort $decs }}
+  {{ $maxD := 0.0 }}{{ range $decs }}{{ $maxD = math.Max $maxD ($dec.Get (string .)) }}{{ end }}
+  <section class="grafico" aria-labelledby="d-{{ $sec }}">
+    <header class="grafico-topo"><h2 id="d-{{ $sec }}">Desviado ou perdido, por década</h2></header>
+    <ol class="colunas" aria-label="Dinheiro público desviado ou perdido em reais, por década em que o valor foi apurado">
+      {{ range $decs }}{{ $v := $dec.Get (string .) }}
+      <li title="Anos {{ . }}: {{ partial "dinheiro.html" (dict "v" $v "m" "BRL" "longo" true) }}">
+        <span class="coluna-valor">{{ partial "dinheiro.html" (dict "v" $v "m" "BRL") }}</span>
+        <span class="coluna-trilho"><span class="coluna-fill v-desvio" style="height: {{ math.Max 1.5 (div (mul $v 100.0) $maxD) }}%"></span></span>
+        <span class="coluna-ano">Anos {{ if lt . 2000 }}{{ sub . 1900 }}{{ else }}{{ . }}{{ end }}</span>
+      </li>
+      {{ end }}
+    </ol>
+    <p class="grafico-nota">Só valores em reais, pelo ano em que o desvio aconteceu ou foi apurado. Valores em dólares ficam fora desta soma.</p>
+  </section>
+  {{ end }}
+
+  {{/* ---------- Tabela completa ---------- */}}
+  {{ with $dados }}
+  <section class="grafico" aria-labelledby="tb-{{ $sec }}">
+    <header class="grafico-topo"><h2 id="tb-{{ $sec }}">Todos os valores</h2></header>
+    <div class="tabela-rolagem" tabindex="0">
+      <table class="tabela-valores">
+        <thead><tr><th scope="col">Caso</th><th scope="col">Ano</th><th scope="col">Tipo</th><th scope="col" class="num">Valor</th><th scope="col">O que é</th><th scope="col">Fonte</th></tr></thead>
+        <tbody>
+          {{ range sort . "valor" "desc" }}{{ $t := index (where $tipos "id" .tipo) 0 }}
+          <tr{{ if .repete }} class="fora"{{ end }}>
+            <th scope="row"><a href="{{ .url }}">{{ .caso }}</a></th>
+            <td>{{ .ano }}</td>
+            <td><span class="tag-tipo"><i class="ponto v-{{ .tipo }}" aria-hidden="true"></i>{{ $t.nome }}</span></td>
+            <td class="num">{{ partial "dinheiro.html" (dict "v" .valor "m" .moeda "longo" true) }}</td>
+            <td>{{ .descricao }}{{ if .repete }} <em>Não entra na soma, para não contar duas vezes.</em>{{ end }}</td>
+            <td>{{ .fonte }}</td>
+          </tr>
+          {{ end }}
+        </tbody>
+      </table>
+    </div>
+  </section>
+  {{ end }}
+
+  {{/* ---------- Casos sem valor ---------- */}}
+  {{ $sem := slice }}{{ range $todos }}{{ if not (in $casosCom .File.ContentBaseName) }}{{ $sem = $sem | append . }}{{ end }}{{ end }}
+  {{ with $sem }}
+  <section class="sem-valor" aria-labelledby="s-{{ $sec }}">
+    <h2 id="s-{{ $sec }}">Casos sem valor documentado</h2>
+    <p>Nestes casos, o texto não traz um valor confiável de dinheiro público envolvido, ou o crime não foi sobre dinheiro. Eles entram na conta quando um valor for apurado e publicado.</p>
+    <ul>{{ range sort . "Title" }}{{ $p := partial "partes.html" . }}<li><a href="{{ .RelPermalink }}">{{ $p.caso }}</a></li>{{ end }}</ul>
+  </section>
+  {{ end }}
+</div>

@@ -15,6 +15,13 @@ ficha:
     valor: "Cerca de R$ 3,5 milhões em recursos públicos, segundo a denúncia da Procuradoria-Geral da República"
   - item: "Desfecho"
     valor: "Azeredo condenado a mais de 20 anos por peculato e lavagem de dinheiro; preso em 2018"
+valores:
+  - tipo: desvio
+    valor: 3500000
+    moeda: BRL
+    ano: 1998
+    descricao: "Recursos públicos desviados para a campanha, segundo a denúncia"
+    fonte: "Procuradoria-Geral da República"
 ---
 
 Quando o país descobriu, em 2005, que um publicitário mineiro chamado **Marcos Valério** operava pagamentos a deputados da base do governo Lula, os investigadores logo perceberam que aquele mecanismo não tinha nascido em Brasília. Ele já tinha sido usado, com as mesmas agências, o mesmo banco e quase o mesmo roteiro, sete anos antes, em Minas Gerais. Ali, o candidato beneficiado era um tucano: o governador **Eduardo Azeredo**, que tentava a reeleição em 1998. O caso ficou conhecido como **mensalão mineiro**, ou mensalão tucano, e a Procuradoria-Geral da República o descreveu como a origem do esquema que viria depois.

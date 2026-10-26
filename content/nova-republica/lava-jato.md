@@ -15,6 +15,19 @@ ficha:
     valor: "Delações premiadas, acordos de leniência, prisões preventivas e cooperação internacional"
   - item: "Desfecho"
     valor: "Mais de uma centena de condenações em Curitiba e bilhões devolvidos; anos depois, o STF anula condenações de Lula e declara Moro parcial; força-tarefa é extinta em 2021"
+valores:
+  - tipo: propina
+    valor: 6400000000
+    moeda: BRL
+    ano: 2015
+    descricao: "Propina identificada nos crimes denunciados até dezembro de 2015"
+    fonte: "Ministério Público Federal"
+  - tipo: devolvido
+    valor: 4069514758.69
+    moeda: BRL
+    ano: 2019
+    descricao: "Valor devolvido aos cofres públicos até outubro de 2019"
+    fonte: "Força-tarefa da Lava Jato em Curitiba"
 ---
 
 Em **17 de março de 2014**, a Polícia Federal deflagrou uma operação contra doleiros que usavam um **posto de combustíveis** em Brasília, o Posto da Torre, para movimentar dinheiro. Por causa do lava-jato do posto, a operação foi batizada de **Lava Jato**. Ninguém imaginava que ela chegaria à maior empresa do país, às maiores empreiteiras, a um ex-presidente da República e a governos de mais de dez países. Sete anos depois, a operação tinha mudado a política brasileira, e começava a ser desmontada.

@@ -15,6 +15,13 @@ ficha:
     valor: "13 anos, 4 meses e 10 dias de prisão, fixada pelo STF em 2010"
   - item: "Desfecho"
     valor: "Preso em junho de 2013; mantido no cargo em votação secreta em agosto; cassado por 467 a 0 em fevereiro de 2014; indultado, com reconhecimento do STF em 2019"
+valores:
+  - tipo: desvio
+    valor: 8400000
+    moeda: BRL
+    ano: 1998
+    descricao: "Desvio da Assembleia Legislativa de Rondônia"
+    fonte: "STF"
 ---
 
 Em **agosto de 2013**, o Brasil assistiu a uma cena que parecia impossível. Um deputado federal saiu da **Papuda**, o presídio de Brasília, foi levado sob escolta até a Câmara dos Deputados, fez sua defesa no plenário e voltou para a cela **ainda deputado**. Os colegas tinham votado, em sessão secreta, para não cassar o mandato de um homem condenado pelo Supremo Tribunal Federal e que já cumpria pena. O nome dele era **Natan Donadon**, e o episódio mudou uma regra do Congresso.

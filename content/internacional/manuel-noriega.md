@@ -15,6 +15,13 @@ ficha:
     valor: "Invasão americana do Panamá (Operação Justa Causa), em dezembro de 1989"
   - item: "Condenações"
     valor: "Estados Unidos (1992, narcotráfico), França (2010, lavagem) e Panamá (homicídios); morreu preso em 2017"
+valores:
+  - tipo: devolvido
+    valor: 2300000
+    moeda: EUR
+    ano: 2010
+    descricao: "Dinheiro confiscado de contas de Noriega na França"
+    fonte: "Justiça francesa"
 ---
 
 Manuel Antonio Noriega nunca foi eleito para nada. Mesmo assim, durante a maior parte dos anos 1980, foi o homem que mandava no **Panamá**. Comandava as forças armadas, decidia quem seria presidente e controlava a polícia e os serviços de inteligência. Ao mesmo tempo, era um **informante pago pela CIA** e um **parceiro do Cartel de Medellín**, de Pablo Escobar. Essa dupla lealdade funcionou por anos, até que deixou de ser útil para Washington.

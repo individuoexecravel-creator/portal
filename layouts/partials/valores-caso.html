@@ -1,0 +1,16 @@
+{{- /* Valores do caso na lateral da matéria. */ -}}
+{{- with .Params.valores -}}
+{{- $tipos := partial "tipos-valor.html" "x" -}}
+<section class="valores-caso" aria-labelledby="vc-t">
+  <h2 id="vc-t">Quanto custou</h2>
+  <ul>
+    {{- range . }}{{ $t := index (where $tipos "id" .tipo) 0 }}
+    <li>
+      <span class="vc-valor"><i class="ponto v-{{ .tipo }}" aria-hidden="true"></i>{{ partial "dinheiro.html" (dict "v" .valor "m" (.moeda | default "BRL")) }}</span>
+      <span class="vc-desc">{{ $t.nome }}: {{ .descricao }}. Fonte: {{ .fonte }}.</span>
+    </li>
+    {{- end }}
+  </ul>
+  <a class="vc-link" href="{{ "valores/" | relURL }}">Ver todos os valores</a>
+</section>
+{{- end -}}

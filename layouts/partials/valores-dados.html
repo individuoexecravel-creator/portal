@@ -1,0 +1,10 @@
+{{- /* Todos os valores dos casos de uma seção. Recebe o nome da seção.
+       Devolve lista de dicts: slug, caso, url, ano, tipo, valor, moeda, descricao, fonte, repete. */ -}}
+{{- $out := slice -}}
+{{- range where site.RegularPages "Section" . -}}
+  {{- $pg := . }}{{ $p := partial "partes.html" . -}}
+  {{- range .Params.valores -}}
+    {{- $out = $out | append (dict "slug" $pg.File.ContentBaseName "caso" $p.caso "url" $pg.RelPermalink "ano" (int .ano) "tipo" .tipo "valor" (float .valor) "moeda" (.moeda | default "BRL") "descricao" (.descricao | default "") "fonte" (.fonte | default "") "repete" (.repete | default "")) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

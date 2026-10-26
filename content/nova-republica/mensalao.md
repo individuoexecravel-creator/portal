@@ -15,6 +15,13 @@ ficha:
     valor: "CPMI dos Correios, Polícia Federal e Ação Penal 470 no STF"
   - item: "Desfecho"
     valor: "STF condena 25 dos 37 réus em 2012; Dirceu, Genoino, Delúbio e Valério são presos em 2013"
+valores:
+  - tipo: desvio
+    valor: 73800000
+    moeda: BRL
+    ano: 2005
+    descricao: "Dinheiro do Fundo Visanet, do Banco do Brasil, desviado para o esquema"
+    fonte: "Processo do mensalão no STF"
 ---
 
 Em maio de 2005, a revista *Veja* publicou o vídeo de um funcionário dos Correios, Maurício Marinho, recebendo **R$ 3 mil** de propina e explicando como funcionava a cobrança de comissões na estatal. Ele dizia agir com o respaldo do PTB, partido do deputado **Roberto Jefferson**. A cena parecia o início de um escândalo menor. Acabou sendo o estopim do maior caso de corrupção julgado pelo Supremo Tribunal Federal até então.

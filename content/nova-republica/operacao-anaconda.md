@@ -15,6 +15,19 @@ ficha:
     valor: "Venda de decisões judiciais, liberação de cargas ilegais e uso de documentos falsos em troca de dinheiro"
   - item: "Desfecho"
     valor: "Oito acusados condenados; Rocha Mattos perde o cargo, cumpre cerca de oito anos em regime fechado e volta a ser condenado em 2015 e preso em 2016"
+valores:
+  - tipo: apreendido
+    valor: 12000000
+    moeda: USD
+    ano: 2003
+    descricao: "Dinheiro não declarado numa conta na Suíça"
+    fonte: "Ministério Público Federal"
+  - tipo: apreendido
+    valor: 550000
+    moeda: USD
+    ano: 2003
+    descricao: "Dinheiro vivo encontrado com a ex-mulher do juiz"
+    fonte: "Polícia Federal"
 ---
 
 No Brasil, juízes têm uma proteção que poucas profissões têm. São **vitalícios**: depois de dois anos no cargo, só podem perdê-lo por decisão judicial definitiva. E não podem ser investigados por qualquer delegado ou promotor: um juiz federal, por exemplo, só pode ser processado criminalmente com a autorização e sob a supervisão do **Tribunal Regional Federal** ao qual está vinculado. Essas garantias existem para proteger a independência de quem julga. Durante anos, porém, deram a impressão de que o Judiciário era **intocável**. Em 2003, uma operação da Polícia Federal mostrou o contrário. Ela se chamava **Anaconda**.

@@ -15,6 +15,13 @@ ficha:
     valor: "Propinas ligadas à Caixa Econômica Federal e desvios de salários de assessores"
   - item: "Desfecho"
     valor: "STF condena Geddel a 14 anos e 10 meses e Lúcio a 10 anos e 6 meses, em outubro de 2019"
+valores:
+  - tipo: apreendido
+    valor: 51000000
+    moeda: BRL
+    ano: 2017
+    descricao: "Dinheiro vivo achado num apartamento em Salvador: R$ 42,6 milhões e US$ 2,7 milhões"
+    fonte: "Polícia Federal"
 ---
 
 Em **5 de setembro de 2017**, agentes da Polícia Federal entraram num apartamento no bairro da Graça, em Salvador. Não havia móveis. Havia **malas e caixas de papelão** empilhadas pelo chão, cheias de dinheiro vivo. A contagem, feita com máquinas, levou cerca de **14 horas**. O total: **R$ 42,6 milhões e US$ 2,7 milhões**, cerca de **R$ 51 milhões**. Foi a **maior apreensão de dinheiro em espécie da história do Brasil**. O apartamento tinha sido emprestado a um ex-ministro: **Geddel Vieira Lima**.

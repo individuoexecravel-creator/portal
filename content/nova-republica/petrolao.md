@@ -15,6 +15,13 @@ ficha:
     valor: "R$ 6,2 bilhões, lançados pela Petrobras em seu balanço de 2014"
   - item: "Desfecho"
     valor: "Condenação de ex-diretores, empreiteiros e operadores; devolução de bilhões em acordos de leniência e colaboração"
+valores:
+  - tipo: desvio
+    valor: 6200000000
+    moeda: BRL
+    ano: 2014
+    descricao: "Prejuízo com corrupção reconhecido pela Petrobras no balanço de 2014"
+    fonte: "Petrobras"
 ---
 
 A Petrobras é a maior empresa do Brasil e, durante a primeira década dos anos 2000, viveu seu período de maior expansão. Com a descoberta do **pré-sal**, em 2006, a estatal passou a investir dezenas de bilhões de reais por ano em refinarias, plataformas, navios e gasodutos. Esse dinheiro passava por poucas mãos: as diretorias da empresa e um grupo restrito de grandes empreiteiras. As investigações da Lava Jato mostraram que, nesse caminho, uma parte ficava pelo caminho. O esquema ganhou o nome de **Petrolão**.

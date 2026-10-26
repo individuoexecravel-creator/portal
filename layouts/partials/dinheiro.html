@@ -1,0 +1,18 @@
+{{- /* Formata dinheiro. Recebe dict: v (número), m (BRL, USD ou EUR), longo (bool). */ -}}
+{{- $simb := index (dict "BRL" "R$" "USD" "US$" "EUR" "€") (.m | default "BRL") -}}
+{{- $v := float .v -}}
+{{- $txt := "" -}}
+{{- if .longo -}}
+  {{- $casas := cond (ne (math.Floor $v) $v) 2 0 -}}
+  {{- $txt = lang.FormatNumberCustom $casas $v "- , ." -}}
+{{- else if ge $v 1e9 -}}
+  {{- $txt = print (replace (replace (printf "%.1f" (div $v 1e9)) ".0" "") "." ",") " bi" -}}
+{{- else if ge $v 1e6 -}}
+  {{- $n := div $v 1e6 -}}
+  {{- $txt = print (cond (ge $n 100.0) (printf "%.0f" $n) (replace (replace (printf "%.1f" $n) ".0" "") "." ",")) " mi" -}}
+{{- else if ge $v 1e3 -}}
+  {{- $txt = print (printf "%.0f" (div $v 1e3)) " mil" -}}
+{{- else -}}
+  {{- $txt = printf "%.0f" $v -}}
+{{- end -}}
+{{- return (print $simb " " $txt) -}}

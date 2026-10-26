@@ -15,6 +15,13 @@ ficha:
     valor: "Cerca de R$ 1,6 bilhão aos cofres públicos, segundo a CPI"
   - item: "Desfecho"
     valor: "Cacciola foge para a Itália, é preso em Mônaco em 2007, extraditado e condenado"
+valores:
+  - tipo: desvio
+    valor: 1600000000
+    moeda: BRL
+    ano: 1999
+    descricao: "Prejuízo aos cofres públicos com a venda de dólares abaixo do mercado"
+    fonte: "CPI dos Bancos"
 ---
 
 Em **janeiro de 1999**, o Brasil abandonou o câmbio controlado que sustentava o Plano Real desde 1994. Em poucos dias, o dólar disparou e o país viveu uma das maiores crises financeiras da sua história recente. No meio desse terremoto, o Banco Central tomou uma decisão que só se tornaria pública semanas depois: vendeu dólares, a preço camarada, a dois bancos que estavam à beira da falência. O caso ficou conhecido pelos nomes desses bancos, **Marka e FonteCindam**.

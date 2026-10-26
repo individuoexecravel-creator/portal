@@ -15,6 +15,13 @@ ficha:
     valor: "Um suposto dossiê ligando José Serra e outros tucanos à máfia das ambulâncias"
   - item: "Desfecho"
     valor: "Origem do dinheiro nunca identificada; queda de dirigentes do PT; eleição vai ao segundo turno"
+valores:
+  - tipo: apreendido
+    valor: 1700000
+    moeda: BRL
+    ano: 2006
+    descricao: "Dinheiro vivo apreendido num hotel em São Paulo, entre reais e dólares"
+    fonte: "Polícia Federal"
 ---
 
 No dia **15 de setembro de 2006**, a Polícia Federal entrou num quarto do hotel Ibis, perto do aeroporto de Congonhas, em São Paulo, e encontrou dois homens com uma montanha de dinheiro vivo: **cerca de R$ 1,7 milhão**, parte em reais e parte em dólares. Os dois eram ligados ao PT. O dinheiro, segundo a investigação, seria usado para comprar um **dossiê** contra o candidato do PSDB ao governo de São Paulo, **José Serra**. Faltavam duas semanas para a eleição.

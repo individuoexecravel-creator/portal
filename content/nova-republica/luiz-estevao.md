@@ -17,6 +17,14 @@ ficha:
     valor: "36 até a condenação se tornar definitiva, segundo o MPF; 39 contando os posteriores"
   - item: "Desfecho"
     valor: "Preso em março de 2016; prisão domiciliar em 2020, na pandemia; regime aberto a partir de 2021"
+valores:
+  - tipo: desvio
+    valor: 169000000
+    moeda: BRL
+    ano: 1998
+    descricao: "Desvio da obra do TRT de São Paulo; é o mesmo valor do caso Lalau"
+    fonte: "Ministério Público Federal"
+    repete: lalau-trt-sp
 ---
 
 Na madrugada de **8 de março de 2016**, por volta das 5h40, um ex-senador saiu de casa no Lago Sul, em Brasília, e foi se entregar à Polícia Civil do Distrito Federal. Era **Luiz Estevão**, condenado **dez anos antes** a 31 anos de prisão. Nesse intervalo, a defesa apresentou recurso atrás de recurso, em todas as instâncias da Justiça. A pergunta que o caso deixa é simples: como alguém condenado em 2006 só começa a cumprir a pena em 2016?

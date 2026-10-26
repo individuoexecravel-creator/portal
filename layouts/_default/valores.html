@@ -1,0 +1,31 @@
+{{ define "main" }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+</section>
+
+<div class="wrap" data-valores>
+  <div class="abas" role="tablist" aria-label="Seção">
+    {{ range $i, $s := slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" $s) }}
+    <button type="button" role="tab" class="aba sec-{{ $s }}" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}<span>{{ .Title }}</span></button>
+    {{ end }}{{ end }}
+  </div>
+
+  {{ range $i, $s := slice "nova-republica" "internacional" }}
+    <div{{ if ne $i 0 }} hidden{{ end }} data-painel-wrap="{{ $s }}">{{ partial "painel-valores.html" $s }}</div>
+  {{ end }}
+
+  <section class="como-conta" aria-labelledby="como-t">
+    <h2 id="como-t">Como a conta é feita</h2>
+    <ul>
+      <li><strong>Valores da época, sem correção.</strong> Um real de 1998 valia mais do que um real de hoje. Os números somam o que foi apurado em cada momento, sem atualizar pela inflação.</li>
+      <li><strong>Moedas separadas.</strong> Reais, dólares e euros nunca se misturam numa mesma soma.</li>
+      <li><strong>Só valores com fonte.</strong> Cada número vem de um processo, de uma CPI, do Ministério Público, da polícia ou do órgão lesado, e a fonte está na tabela.</li>
+      <li><strong>Sem contar duas vezes.</strong> Quando dois casos tratam do mesmo dinheiro, como Lalau e Luiz Estevão, o valor entra uma vez só.</li>
+      <li><strong>Estimativas são estimativas.</strong> Alguns números são cálculos de investigadores, não decisões finais da Justiça. O texto de cada caso explica o que foi provado.</li>
+    </ul>
+    <p>A conta se atualiza sozinha: a cada caso novo publicado com valores, os totais e os gráficos mudam.</p>
+  </section>
+</div>
+{{ end }}

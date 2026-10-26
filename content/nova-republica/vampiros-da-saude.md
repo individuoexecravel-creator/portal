@@ -15,6 +15,13 @@ ficha:
     valor: "Na casa de R$ 2 bilhões ao longo de mais de uma década, segundo a Polícia Federal"
   - item: "Investigação"
     valor: "Operação Vampiro, da Polícia Federal, deflagrada em maio de 2004"
+valores:
+  - tipo: desvio
+    valor: 2000000000
+    moeda: BRL
+    ano: 2004
+    descricao: "Prejuízo estimado aos cofres públicos ao longo de mais de uma década"
+    fonte: "Polícia Federal"
 ---
 
 Hemoderivados são medicamentos produzidos a partir do **plasma do sangue humano**. O mais conhecido é o fator de coagulação usado por **hemofílicos**, pessoas cujo sangue não coagula normalmente e que podem morrer por um sangramento simples. Para esses pacientes, o remédio não é opcional. No Brasil, o Ministério da Saúde compra e distribui esses produtos gratuitamente pelo SUS. Durante anos, essas compras foram controladas por um cartel que a Polícia Federal apelidou com precisão: os **vampiros**.

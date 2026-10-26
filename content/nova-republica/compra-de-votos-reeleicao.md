@@ -15,6 +15,13 @@ ficha:
     valor: "Gravações publicadas pela Folha de S.Paulo em maio de 1997"
   - item: "Desfecho"
     valor: "Dois deputados renunciam; o Congresso não instala CPI e ninguém é punido"
+valores:
+  - tipo: propina
+    valor: 200000
+    moeda: BRL
+    ano: 1997
+    descricao: "Valor que o deputado Ronivon Santiago disse ter recebido por um voto"
+    fonte: "Gravações publicadas pela Folha de S.Paulo"
 ---
 
 A Constituição de 1988 proibia a reeleição de presidente, governadores e prefeitos. Em 1996, o governo Fernando Henrique Cardoso, embalado pelo sucesso do Plano Real, decidiu mudar a regra e permitir um segundo mandato consecutivo, a começar pelo próprio presidente. A emenda foi aprovada. Meses depois, gravações mostraram que pelo menos parte dos votos tinha sido **comprada**.
