@@ -1,0 +1,108 @@
+# Teia do caso: Operação Dominó
+caso: operacao-domino
+nome: Operação Dominó
+periodo:
+  - 2004
+  - 2025
+resumo: Em 2006, a PF prendeu num só dia os presidentes da Assembleia e do Tribunal de Justiça de Rondônia por um esquema que incluía a folha paralela da Assembleia.
+desfecho: Condenações em vários processos; em 2023, 17 de 21 réus escaparam pela prescrição; Carlão de Oliveira foi preso em 2025, depois de anos foragido.
+novas_entidades:
+  - id: carlao-de-oliveira
+    nome: Carlão de Oliveira
+    tipo: pessoa
+    desc: José Carlos de Oliveira, presidente da Assembleia Legislativa de Rondônia, apontado como chefe da folha paralela.
+  - id: moises-de-oliveira
+    nome: Moisés de Oliveira
+    tipo: pessoa
+    desc: Irmão de Carlão, ex-diretor-geral da Assembleia de Rondônia.
+  - id: sebastiao-teixeira-chaves
+    nome: Sebastião Teixeira Chaves
+    tipo: pessoa
+    desc: Desembargador, presidente do Tribunal de Justiça de Rondônia em 2006.
+  - id: vitachi
+    nome: José Carlos Vitachi
+    tipo: pessoa
+    desc: Procurador de Justiça e ex-procurador-geral de Rondônia.
+  - id: edilson-de-souza-silva
+    nome: Edilson de Souza Silva
+    tipo: pessoa
+    desc: Conselheiro do Tribunal de Contas de Rondônia.
+  - id: ronilton-capixaba
+    nome: Ronilton Capixaba
+    tipo: pessoa
+    desc: Ronilton Rodrigues Reis, ex-deputado estadual de Rondônia.
+  - id: amarildo-almeida
+    nome: Amarildo Almeida
+    tipo: pessoa
+    desc: Ex-deputado estadual de Rondônia, um dos filmados por Ivo Cassol.
+  - id: ivo-cassol
+    nome: Ivo Cassol
+    tipo: pessoa
+    desc: Governador de Rondônia que gravou deputados pedindo pagamentos em 2005.
+  - id: eliana-calmon
+    nome: Eliana Calmon
+    tipo: pessoa
+    desc: Ministra do STJ que decretou as prisões da Operação Dominó.
+  - id: tj-ro
+    nome: Tribunal de Justiça de Rondônia
+    tipo: estado
+    desc: Teve o presidente preso em 2006; em 2023 julgou um dos processos da Dominó.
+  - id: cnj
+    nome: CNJ
+    tipo: estado
+    desc: Conselho Nacional de Justiça, órgão de controle da magistratura.
+envolvidos:
+  - id: carlao-de-oliveira
+    tipo: condenado
+    rel: Cinco condenações definitivas que somam mais de 72 anos; preso em 2025 depois de anos foragido
+  - id: moises-de-oliveira
+    tipo: condenado
+    rel: 11 anos no caso das passagens aéreas (2023)
+  - id: marcos-donadon
+    tipo: condenado
+    rel: 8 anos e 4 meses no caso das passagens aéreas (2023)
+  - id: ronilton-capixaba
+    tipo: condenado
+    rel: 8 anos e 4 meses no caso das passagens aéreas (2023)
+  - id: amarildo-almeida
+    tipo: condenado
+    rel: 11 anos pela folha paralela (2012)
+  - id: sebastiao-teixeira-chaves
+    tipo: citado
+    rel: Preso em 2006; aposentado compulsoriamente pelo CNJ em 2008
+  - id: vitachi
+    tipo: citado
+    rel: Preso em 2006; negociou aumentos em troca da soltura de assessores, segundo as gravações
+  - id: edilson-de-souza-silva
+    tipo: citado
+    rel: Preso em 2006
+  - id: ivo-cassol
+    tipo: vinculo
+    rel: Divulgou em 2005 vídeos de deputados pedindo pagamentos
+  - id: eliana-calmon
+    tipo: agente
+    rel: Decretou as prisões
+  - id: stj
+    tipo: agente
+    rel: Autorizou a operação
+  - id: tj-ro
+    tipo: agente
+    rel: Julgou o caso das passagens em 2023
+  - id: cnj
+    tipo: agente
+    rel: Aposentou o desembargador
+  - id: rondonia
+    tipo: vinculo
+    rel: Folha paralela de R$ 11,37 milhões
+vinculos:
+  - de: moises-de-oliveira
+    para: carlao-de-oliveira
+    tipo: vinculo
+    rel: Irmão
+  - de: marcos-donadon
+    para: natan-donadon
+    tipo: vinculo
+    rel: Irmão
+relacionados:
+  - caso: natan-donadon
+    rel: Os dois casos saíram dos cofres da mesma Assembleia

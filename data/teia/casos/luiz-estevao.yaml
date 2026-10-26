@@ -1,0 +1,54 @@
+# Teia do caso: Luiz Estevão
+caso: luiz-estevao
+nome: Luiz Estevão
+periodo:
+  - 1992
+  - 2021
+resumo: Primeiro senador cassado da história, condenado em 2006 pelo desvio nas obras do TRT-SP, só foi preso em 2016, depois de dezenas de recursos.
+desfecho: 31 anos de prisão em 2006, reduzidos a 26; preso em 2016; prisão domiciliar em 2020; regime aberto em 2021.
+novas_entidades:
+  - id: trf3
+    nome: TRF da 3ª Região
+    tipo: estado
+    desc: Tribunal Regional Federal de São Paulo e Mato Grosso do Sul.
+envolvidos:
+  - id: estevao
+    tipo: condenado
+    rel: 31 anos em 2006, reduzidos a 26; preso em 2016, após 36 recursos
+  - id: nicolau
+    tipo: condenado
+    rel: Juiz que comandava a obra do TRT-SP
+  - id: incal
+    tipo: condenado
+    rel: Donos condenados com Estevão
+  - id: grupo-ok
+    tipo: vinculo
+    rel: Empresa de Estevão que recebeu dinheiro da obra
+  - id: senado
+    tipo: agente
+    rel: Cassou Estevão em 2000
+  - id: trf3
+    tipo: agente
+    rel: Condenou em 2006
+  - id: stf
+    tipo: agente
+    rel: Reconheceu a condenação definitiva em 2016
+  - id: stj
+    tipo: agente
+    rel: Concedeu prisão domiciliar em 2020
+  - id: forum-barra-funda
+    tipo: vinculo
+    rel: A obra
+  - id: papuda
+    tipo: vinculo
+    rel: Preso de 2016 a 2020
+  - id: geddel
+    tipo: vinculo
+    rel: Dividiu cela com Estevão na Papuda
+relacionados:
+  - caso: lalau-trt-sp
+    rel: O mesmo desvio, contado a partir do juiz
+  - caso: guerra-no-senado
+    rel: O painel foi violado na votação que cassou Estevão
+  - caso: bunker-de-geddel
+    rel: Estevão e Geddel dividiram cela na Papuda
