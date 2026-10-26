@@ -2,14 +2,19 @@
 {{ $pessoas := partialCached "pessoas.html" "p" }}
 {{ $papeis := partialCached "papeis.html" "papeis" }}
 {{ $varios := where $pessoas "n" "gt" 1 }}
+{{ $mundo := partialCached "pessoas-mundo.html" "m" }}
 <section class="wrap cabeca-lista">
   <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
   <h1>{{ .Title }}</h1>
-  <p class="linha">{{ len $pessoas }} pessoas que aparecem nos casos da Nova República, com o desfecho de cada caso para cada uma. {{ len $varios }} delas aparecem em mais de um escândalo.</p>
+  <p class="linha">{{ add (len $pessoas) (len $mundo) }} pessoas que aparecem nos casos do Portal, com o desfecho de cada caso para cada uma. {{ len $varios }} delas aparecem em mais de um escândalo brasileiro.</p>
   <p class="aviso-leitura">Estar nesta lista não significa ter sido condenado. A cor ao lado de cada caso mostra como ele terminou para a pessoa. Veja o que cada cor significa na página <a href="{{ "sobre/" | relURL }}#como-ler-um-caso">Sobre</a>.</p>
 </section>
 
-<div class="wrap" data-pessoas>
+<div class="wrap" data-pessoas data-abas>
+  <div class="seletor seletor-abas" role="tablist" aria-label="Seção">
+    <button type="button" role="tab" class="seletor-op" id="aba-nova-republica" aria-controls="painel-nova-republica" aria-selected="true" data-aba="nova-republica">{{ partial "icone.html" "brasil" }}<span>No Brasil</span><small>{{ len $pessoas }}</small></button>
+    <button type="button" role="tab" class="seletor-op" id="aba-internacional" aria-controls="painel-internacional" aria-selected="false" tabindex="-1" data-aba="internacional">{{ partial "icone.html" "mundo" }}<span>Fora do Brasil</span><small>{{ len $mundo }}</small></button>
+  </div>
   <div class="filtros">
     <div class="filtro-busca">
       {{ partial "icone.html" "busca" }}
@@ -28,8 +33,10 @@
     </div>
   </div>
 
+  {{ range $i, $grupo := slice (dict "sec" "nova-republica" "lista" $pessoas "teia" true) (dict "sec" "internacional" "lista" $mundo "teia" false) }}
+  <div data-painel-wrap="{{ $grupo.sec }}" role="tabpanel" id="painel-{{ $grupo.sec }}" aria-labelledby="aba-{{ $grupo.sec }}"{{ if ne $i 0 }} hidden{{ end }}>
   <ul class="pessoas">
-    {{ range $pessoas }}
+    {{ range $grupo.lista }}
     {{ $ps := slice }}{{ range .casos }}{{ $ps = $ps | append .papel }}{{ end }}
     <li class="pessoa" id="{{ .id }}" data-n="{{ .n }}" data-papeis="{{ delimit (uniq $ps) " " }}" data-busca="{{ print .nome " " .desc | lower }}">
       <h2 class="pessoa-nome">{{ .nome }}</h2>
@@ -45,10 +52,12 @@
         </li>
         {{ end }}
       </ul>
-      <a class="pessoa-teia" href="{{ "teia/" | relURL }}#{{ .id }}">{{ partial "icone.html" "teia" }}<span>Ver na Teia</span></a>
+      {{ if $grupo.teia }}<a class="pessoa-teia" href="{{ "teia/" | relURL }}#{{ .id }}">{{ partial "icone.html" "teia" }}<span>Ver na Teia</span></a>{{ else }}<a class="pessoa-teia" href="{{ "globo/" | relURL }}#{{ (index .casos 0).slug }}">{{ partial "icone.html" "mundo" }}<span>Ver no Globo</span></a>{{ end }}
     </li>
     {{ end }}
   </ul>
+  </div>
+  {{ end }}
   <div class="vazio" hidden data-p-vazio>
     <p>Ninguém encontrado com esses filtros.</p>
     <button type="button" class="botao" data-p-limpar>Limpar filtros</button>

@@ -1,0 +1,62 @@
+caso: mafia-dentro-do-estado
+pais: Itália
+locais:
+  - id: palermo
+    nome: Palermo, Sicília
+    lat: 38.12
+    lng: 13.36
+    tipo: crime
+    desc: Sede do governo regional de Cuffaro e da Cosa Nostra; escutas na casa de Guttadauro em 2001.
+  - id: capaci
+    nome: Capaci, Sicília
+    lat: 38.17
+    lng: 13.24
+    tipo: outro
+    desc: Bomba que matou o juiz Giovanni Falcone em 23 de maio de 1992.
+  - id: milao
+    nome: Milão
+    lat: 45.46
+    lng: 9.19
+    tipo: crime
+    desc: Encontro de 1974 entre Berlusconi e o chefe mafioso Stefano Bontade, organizado por Dell'Utri, segundo a Justiça.
+  - id: arcore
+    nome: Arcore
+    lat: 45.63
+    lng: 9.32
+    tipo: outro
+    desc: Mansão de Berlusconi, onde o mafioso Vittorio Mangano morou a partir de 1974.
+  - id: beirute
+    nome: Beirute, Líbano
+    lat: 33.89
+    lng: 35.50
+    tipo: fuga
+    desc: Dell'Utri foge para cá antes da condenação definitiva e é preso por alerta da Interpol.
+  - id: roma
+    nome: Roma (presídio de Rebibbia)
+    lat: 41.93
+    lng: 12.57
+    tipo: justica
+    desc: Cuffaro se apresenta em 2011; Dell'Utri chega extraditado em 2014.
+rotas:
+  - de: beirute
+    para: roma
+    desc: Extradição de Dell'Utri (13 de junho de 2014)
+  - de: palermo
+    para: roma
+    desc: Cuffaro se apresenta à prisão (2011)
+envolvidos:
+  - nome: Salvatore Cuffaro
+    tipo: condenado
+    rel: Presidente da Sicília; condenado em 2011 a 7 anos por favorecer a Cosa Nostra
+  - nome: Marcello Dell'Utri
+    tipo: condenado
+    rel: Fundador da Forza Italia; condenado em 2014 a 7 anos por concurso externo em associação mafiosa
+  - nome: Michele Aiello
+    tipo: condenado
+    rel: Empresário da saúde; condenado a 15 anos e 6 meses por associação mafiosa
+  - nome: Silvio Berlusconi
+    tipo: vinculo
+    rel: Dell'Utri organizou seu encontro com o mafioso Stefano Bontade em 1974, segundo a Justiça
+  - nome: Giovanni Falcone
+    tipo: vinculo
+    rel: Juiz antimáfia morto em Capaci em 1992

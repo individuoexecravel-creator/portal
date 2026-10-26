@@ -1,0 +1,58 @@
+# Dados do caso para o Globo e para a página Pessoas (aba Fora do Brasil).
+# locais: pontos no globo; lat e lng em graus (no Google Maps, clique com o botão direito no lugar e copie os números).
+#   tipo: crime (onde aconteceu) | justica (julgamento ou prisão) | fuga | outro
+# rotas: arcos entre dois locais do caso, pelo id.
+# envolvidos: tipo usa as cores da Teia: condenado | cassado | delator | anulado | citado | agente | vinculo
+caso: golpe-da-cocaina
+pais: Bolívia
+locais:
+  - id: la-paz
+    nome: La Paz, Bolívia
+    lat: -16.50
+    lng: -68.15
+    tipo: crime
+    desc: Golpe de 17 de julho de 1980 e massacre da Rua Harrington, em janeiro de 1981.
+  - id: sao-paulo
+    nome: São Paulo, Brasil
+    lat: -23.55
+    lng: -46.63
+    tipo: fuga
+    desc: García Meza, foragido, é preso aqui em 1994 e extraditado para a Bolívia em 1995.
+  - id: eua
+    nome: Estados Unidos
+    lat: 38.9
+    lng: -77.04
+    tipo: justica
+    desc: Arce Gómez é entregue aos americanos em 1989 e condenado por narcotráfico.
+  - id: franca
+    nome: França
+    lat: 45.76
+    lng: 4.84
+    tipo: justica
+    desc: Klaus Barbie, expulso da Bolívia em 1983, é condenado à prisão perpétua por crimes da Segunda Guerra.
+rotas:
+  - de: sao-paulo
+    para: la-paz
+    desc: Extradição de García Meza (1995)
+  - de: la-paz
+    para: eua
+    desc: Arce Gómez entregue aos EUA (1989)
+  - de: la-paz
+    para: franca
+    desc: Klaus Barbie expulso para a França (1983)
+envolvidos:
+  - nome: Luis García Meza
+    tipo: condenado
+    rel: Ditador; condenado em 1993 a 30 anos sem indulto; morreu preso em 2018
+  - nome: Luis Arce Gómez
+    tipo: condenado
+    rel: Ministro do Interior; condenado nos EUA por narcotráfico e na Bolívia a 30 anos
+  - nome: Klaus Barbie
+    tipo: condenado
+    rel: Criminoso nazista que serviu ao regime; condenado na França à prisão perpétua
+  - nome: Roberto Suárez Gómez
+    tipo: citado
+    rel: Traficante ligado ao regime
+  - nome: Marcelo Quiroga Santa Cruz
+    tipo: vinculo
+    rel: Líder de oposição morto no dia do golpe

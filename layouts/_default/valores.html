@@ -5,11 +5,11 @@
   <p class="linha">{{ .Description }}</p>
 </section>
 
-<div class="wrap" data-valores>
-  <div class="abas" role="tablist" aria-label="Seção">
-    {{ range $i, $s := slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" $s) }}
-    <button type="button" role="tab" class="aba sec-{{ $s }}" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}<span>{{ .Title }}</span></button>
-    {{ end }}{{ end }}
+<div class="wrap" data-valores data-abas>
+  <div class="seletor seletor-abas" role="tablist" aria-label="Seção">
+    {{ range $i, $s := slice "nova-republica" "internacional" }}
+    <button type="button" role="tab" class="seletor-op" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ partial "icone.html" (cond (eq $s "nova-republica") "brasil" "mundo") }}<span>{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}</span></button>
+    {{ end }}
   </div>
 
   {{ range $i, $s := slice "nova-republica" "internacional" }}

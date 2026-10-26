@@ -101,7 +101,7 @@
   .t-abas button{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 13px;font:500 .95rem/1 var(--titulo);background:rgba(20,20,20,.92);color:var(--t-texto);border:1px solid var(--t-linha);cursor:pointer}
   .t-abas button[aria-expanded="true"]{border-color:var(--t-sangue);background:#1a0a0c}
   .t-abrir-ferr{display:none!important}
-  .t-ajuda{position:fixed;z-index:7;top:calc(var(--topo) + 14px);left:max(16px,env(safe-area-inset-left,0px));width:min(430px,calc(100vw - 32px));max-height:calc(100% - var(--topo) - 130px);overflow-y:auto;background:var(--t-sup);border:1px solid var(--t-linha);border-top:5px solid var(--t-sangue);padding:18px 20px 20px;font-size:.95rem;line-height:1.55;color:#ddd8d0;box-shadow:0 10px 40px rgba(0,0,0,.7)}
+  .t-ajuda{position:fixed;z-index:7;top:calc(var(--topo) + 74px);left:max(16px,env(safe-area-inset-left,0px));width:min(430px,calc(100vw - 32px));max-height:calc(100% - var(--topo) - 130px);overflow-y:auto;background:var(--t-sup);border:1px solid var(--t-linha);border-top:5px solid var(--t-sangue);padding:18px 20px 20px;font-size:.95rem;line-height:1.55;color:#ddd8d0;box-shadow:0 10px 40px rgba(0,0,0,.7)}
   .t-ajuda h2{margin:0 0 10px;font:700 1.3rem/1 var(--titulo);font-stretch:85%;color:var(--t-texto);display:flex;justify-content:space-between;align-items:center}
   .t-ajuda ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
   .t-ajuda b{color:#fff}
@@ -117,7 +117,7 @@
     .t-barra select{max-width:none;flex:1 1 38%;min-width:110px}
     .t-btn{flex:1}
     .t-barra{width:100%}
-    .t-ajuda{top:calc(var(--topo) + 10px);max-height:calc(100svh - var(--topo) - 120px)}
+    .t-ajuda{top:calc(var(--topo) + 66px);max-height:calc(100svh - var(--topo) - 170px)}
     .t-ferr{align-items:stretch;width:100%}
     .t-chips,.t-barra{justify-content:flex-start}
     .t-titulo p,.t-legenda{display:none}
@@ -135,6 +135,7 @@
 
   <div class="t-cab" id="conteudo" tabindex="-1">
     <div class="t-titulo">
+      {{ partial "seletor-mapas.html" . }}
       <h1>{{ .Title }}</h1>
       <p><span id="t-contagem"></span> Arraste para girar, role para aproximar e clique num ponto para abrir o dossiê. Passe o mouse sobre um ponto para ver o nome.</p>
       <div class="t-abas">

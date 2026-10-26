@@ -11,11 +11,10 @@
       <input id="ex-q" type="search" placeholder="Nome do caso, pessoa, empresa…" autocomplete="off" data-f-q>
     </div>
     {{ if .abas }}
-    <div class="filtro-grupo" role="group" aria-label="Seção">
-      <button type="button" class="chip" aria-pressed="true" data-f-sec="">Todas as seções</button>
-      {{ range slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" .) }}
-      <button type="button" class="chip sec-{{ .Section }}" aria-pressed="false" data-f-sec="{{ .Section }}">{{ .Title }}</button>
-      {{ end }}{{ end }}
+    <div class="seletor" role="group" aria-label="Seção">
+      <button type="button" class="seletor-op" aria-pressed="true" data-f-sec="">{{ partial "icone.html" "todos" }}<span>Todos</span></button>
+      <button type="button" class="seletor-op" aria-pressed="false" data-f-sec="nova-republica">{{ partial "icone.html" "brasil" }}<span>No Brasil</span></button>
+      <button type="button" class="seletor-op" aria-pressed="false" data-f-sec="internacional">{{ partial "icone.html" "mundo" }}<span>Fora do Brasil</span></button>
     </div>
     {{ end }}
     <div class="filtro-grupo" role="group" aria-label="Época">

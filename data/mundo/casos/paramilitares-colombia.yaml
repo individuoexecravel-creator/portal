@@ -1,0 +1,44 @@
+caso: paramilitares-colombia
+pais: Colômbia
+locais:
+  - id: bogota
+    nome: Bogotá, Colômbia
+    lat: 4.71
+    lng: -74.07
+    tipo: justica
+    desc: Congresso, DAS e Suprema Corte, que condenou dezenas de congressistas.
+  - id: ralito
+    nome: Santa Fe de Ralito, Córdoba
+    lat: 8.17
+    lng: -76.06
+    tipo: crime
+    desc: Onde chefes paramilitares e políticos assinaram o Pacto de Ralito, em 2001.
+  - id: eua
+    nome: Estados Unidos
+    lat: 38.9
+    lng: -77.04
+    tipo: justica
+    desc: Destino de 14 chefes paramilitares extraditados em maio de 2008 por narcotráfico.
+rotas:
+  - de: ralito
+    para: bogota
+    desc: Do pacto ao Congresso
+  - de: bogota
+    para: eua
+    desc: Extradição de 14 chefes das AUC (2008)
+envolvidos:
+  - nome: Mario Uribe Escobar
+    tipo: condenado
+    rel: Senador e primo do presidente; condenado em 2011 por associação com paramilitares
+  - nome: Jorge Noguera
+    tipo: condenado
+    rel: Diretor do DAS; condenado em 2011 a 25 anos por colaborar com as AUC
+  - nome: Salvatore Mancuso
+    tipo: citado
+    rel: Chefe das AUC; extraditado aos EUA em 2008 para responder por narcotráfico
+  - nome: Carlos Castaño
+    tipo: vinculo
+    rel: Chefe das AUC; morto em 2004
+  - nome: Alfredo Correa de Andreis
+    tipo: vinculo
+    rel: Professor universitário assassinado; seu nome estava em listas repassadas pelo DAS

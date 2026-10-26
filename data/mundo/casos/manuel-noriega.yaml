@@ -1,0 +1,47 @@
+caso: manuel-noriega
+pais: Panamá
+locais:
+  - id: panama
+    nome: Cidade do Panamá
+    lat: 8.98
+    lng: -79.52
+    tipo: crime
+    desc: Sede do poder de Noriega de 1983 a 1989; invadida pelos EUA em dezembro de 1989.
+  - id: medellin
+    nome: Medellín, Colômbia
+    lat: 6.24
+    lng: -75.58
+    tipo: crime
+    desc: Base do cartel que tinha rotas e dinheiro protegidos por Noriega.
+  - id: miami
+    nome: Miami, EUA
+    lat: 25.76
+    lng: -80.19
+    tipo: justica
+    desc: Julgado e condenado em 1992 por narcotráfico, lavagem e associação criminosa.
+  - id: paris
+    nome: França
+    lat: 48.86
+    lng: 2.35
+    tipo: justica
+    desc: Extraditado em 2010 e condenado por lavagem de dinheiro do narcotráfico.
+rotas:
+  - de: medellin
+    para: panama
+    desc: Rotas e dinheiro do Cartel de Medellín
+  - de: panama
+    para: miami
+    desc: Levado aos EUA depois da invasão (1990)
+  - de: miami
+    para: paris
+    desc: Extraditado para a França (2010)
+  - de: paris
+    para: panama
+    desc: Extraditado de volta ao Panamá (2011)
+envolvidos:
+  - nome: Manuel Noriega
+    tipo: condenado
+    rel: Condenado nos EUA (1992), na França (2010) e no Panamá; morreu preso em 2017
+  - nome: Hugo Spadafora
+    tipo: vinculo
+    rel: Opositor assassinado; Noriega foi condenado pelo crime no Panamá

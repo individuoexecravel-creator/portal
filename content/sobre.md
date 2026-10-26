@@ -27,11 +27,12 @@ Nos casos da Nova República, uma barra colorida mostra como o caso terminou par
 
 Aparecer num caso não é o mesmo que ser culpado. Ser investigado ou denunciado não é ser condenado. Por isso o desfecho de cada pessoa está sempre escrito, inclusive quando ela foi absolvida, teve a pena prescrita ou o processo anulado.
 
-## Três formas de explorar
+## Outras formas de explorar
 
 - A [linha do tempo](../linha-do-tempo/) põe todos os casos em ordem, com o presidente que governava em cada época.
-- A página [Pessoas](../pessoas/) mostra quem aparece em mais de um escândalo.
-- A [Teia](../teia/) desenha as ligações entre casos, pessoas, empresas, órgãos e partidos num mapa que dá para girar e explorar.
+- A página [Pessoas](../pessoas/) mostra quem aparece em cada caso, no Brasil e fora dele, e como terminou para cada um.
+- [Quanto custou](../valores/) soma o dinheiro desviado, as propinas e os valores apreendidos, caso a caso, com a fonte de cada número.
+- A [Teia](../teia/) desenha as ligações entre os casos brasileiros, e o [globo](../globo/) mostra onde aconteceram os casos de fora do Brasil, para onde os acusados fugiram e onde foram julgados.
 
 ## Correções
 

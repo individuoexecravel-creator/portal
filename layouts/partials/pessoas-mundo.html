@@ -1,0 +1,21 @@
+{{- /* Pessoas dos casos internacionais, a partir de data/mundo/casos. Mesmo formato de pessoas.html. */ -}}
+{{- $s := newScratch -}}
+{{- range $slug, $c := site.Data.mundo.casos -}}
+  {{- $pag := site.GetPage (printf "/internacional/%s" $slug) -}}
+  {{- $nomeCaso := $slug }}{{ $url := "" }}{{ $ano := 0 -}}
+  {{- with $pag }}{{ $nomeCaso = (partial "partes.html" .).caso }}{{ $url = .RelPermalink }}{{ $ano = (partial "periodo.html" .).ini }}{{ end -}}
+  {{- range $c.envolvidos -}}
+    {{- $id := .nome | urlize -}}
+    {{- $s.Add $id (slice (dict "slug" $slug "nome" $nomeCaso "url" $url "papel" .tipo "rel" (.rel | default "") "ano" $ano)) -}}
+    {{- $s.SetInMap "nomes" $id .nome -}}
+  {{- end -}}
+{{- end -}}
+{{- $out := slice -}}
+{{- range $id, $casos := $s.Values -}}
+  {{- if ne $id "nomes" -}}
+  {{- $nome := index ($s.Get "nomes") $id -}}
+  {{- $k := lower $nome | replaceRE "[áàâã]" "a" | replaceRE "[éê]" "e" | replaceRE "í" "i" | replaceRE "[óôõ]" "o" | replaceRE "[úü]" "u" | replaceRE "ç" "c" -}}
+  {{- $out = $out | append (dict "id" (print "mundo-" $id) "chave" $k "nome" $nome "desc" "" "casos" (sort $casos "ano") "n" (len $casos)) -}}
+  {{- end -}}
+{{- end -}}
+{{- return (sort $out "chave") -}}

@@ -202,10 +202,16 @@
   /* ---------- Pessoas ---------- */
   var ps = $('[data-pessoas]');
   if (ps) {
-    var itens = $$('.pessoa', ps), pq = $('[data-p-q]', ps), varios = $('[data-p-varios]', ps),
+    var todosItens = $$('.pessoa', ps), itens = todosItens, pq = $('[data-p-q]', ps), varios = $('[data-p-varios]', ps),
       pconta = $('[data-p-conta]', ps), pvazio = $('[data-p-vazio]', ps), plista = $('.pessoas', ps), papel = '';
-    itens.forEach(function (it) { it._b = norm(it.dataset.busca); it._p = it.dataset.papeis.split(' '); });
+    todosItens.forEach(function (it) { it._b = norm(it.dataset.busca); it._p = it.dataset.papeis.split(' '); });
+    function painelAtivo() {
+      var w = $$('[data-painel-wrap]', ps).filter(function (x) { return !x.hidden; })[0];
+      itens = w ? $$('.pessoa', w) : todosItens; plista = w ? $('.pessoas', w) : plista;
+    }
+    ps.addEventListener('aba', function () { filtrar(); });
     function filtrar() {
+      painelAtivo();
       var termos = norm(pq.value).trim().split(/\s+/).filter(Boolean), n = 0;
       itens.forEach(function (it) {
         var ok = (!papel || it._p.indexOf(papel) >= 0) && (!varios.checked || +it.dataset.n > 1) &&
@@ -231,6 +237,7 @@
     function destacar() {
       var alvo = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
       if (alvo && alvo.classList.contains('pessoa')) {
+        var w = alvo.closest('[data-painel-wrap]'); if (w && w.hidden && ps._abrirAba) ps._abrirAba(w.dataset.painelWrap);
         if (alvo.hidden) { pq.value = ''; papel = ''; varios.checked = false; filtrar(); }
         $$('.pessoa.destaque').forEach(function (x) { x.classList.remove('destaque'); });
         alvo.classList.add('destaque');
@@ -291,18 +298,18 @@
     });
   });
 
-  /* ---------- Quanto custou: abas e tipos ---------- */
-  var vl = $('[data-valores]');
-  if (vl) {
-    var abas = $$('[data-aba]', vl);
-    function abrirAba(sec, foco) {
+  /* ---------- Abas No Brasil / Fora do Brasil (Valores, Pessoas) ---------- */
+  $$('[data-abas]').forEach(function (grupo) {
+    var abas = $$('[data-aba]', grupo);
+    function abrirAba(sec, foco, inicial) {
       abas.forEach(function (a) {
         var on = a.dataset.aba === sec;
         a.setAttribute('aria-selected', String(on)); a.tabIndex = on ? 0 : -1;
         if (on && foco) a.focus();
       });
-      $$('[data-painel-wrap]', vl).forEach(function (p) { p.hidden = p.dataset.painelWrap !== sec; });
-      history.replaceState(null, '', location.pathname + (sec === abas[0].dataset.aba ? '' : '#' + sec));
+      $$('[data-painel-wrap]', grupo).forEach(function (p) { p.hidden = p.dataset.painelWrap !== sec; });
+      if (!inicial) history.replaceState(null, '', location.pathname + location.search + (sec === abas[0].dataset.aba ? '' : '#' + sec));
+      grupo.dispatchEvent(new CustomEvent('aba', { detail: sec }));
     }
     abas.forEach(function (a, i) {
       a.addEventListener('click', function () { abrirAba(a.dataset.aba); });
@@ -311,16 +318,20 @@
         if (k) { e.preventDefault(); abrirAba(abas[(i + k + abas.length) % abas.length].dataset.aba, true); }
       });
     });
-    var h = location.hash.slice(1);
+    grupo._abrirAba = abrirAba;
+    var h = decodeURIComponent(location.hash.slice(1));
     if (h && abas.some(function (a) { return a.dataset.aba === h; })) abrirAba(h);
-    $$('[data-painel]', vl).forEach(function (p) {
-      var chips = $$('[data-v-tipo]', p);
-      chips.forEach(function (c) {
-        c.addEventListener('click', function () {
-          chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); });
-          $$('[data-v-lista]', p).forEach(function (l) { l.hidden = l.dataset.vLista !== c.dataset.vTipo; });
-        });
+    else if (h) { var alvo = document.getElementById(h); var w = alvo && alvo.closest('[data-painel-wrap]'); if (w) abrirAba(w.dataset.painelWrap, false, true); }
+  });
+
+  /* ---------- Quanto custou: tipos de valor ---------- */
+  $$('[data-painel]').forEach(function (p) {
+    var chips = $$('[data-v-tipo]', p);
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        chips.forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); });
+        $$('[data-v-lista]', p).forEach(function (l) { l.hidden = l.dataset.vLista !== c.dataset.vTipo; });
       });
     });
-  }
+  });
 })();

@@ -12,10 +12,10 @@
 
 <div class="wrap">
   <div class="lt-ferr" data-lt>
-    <div class="filtro-grupo" role="group" aria-label="Seção">
-      <button type="button" class="chip" aria-pressed="true" data-lt-sec="">Todas as seções</button>
-      <button type="button" class="chip sec-nova-republica" aria-pressed="false" data-lt-sec="nova-republica">Nova República</button>
-      <button type="button" class="chip sec-internacional" aria-pressed="false" data-lt-sec="internacional">Internacional</button>
+    <div class="seletor" role="group" aria-label="Seção">
+      <button type="button" class="seletor-op" aria-pressed="true" data-lt-sec="">{{ partial "icone.html" "todos" }}<span>Todos</span></button>
+      <button type="button" class="seletor-op" aria-pressed="false" data-lt-sec="nova-republica">{{ partial "icone.html" "brasil" }}<span>No Brasil</span></button>
+      <button type="button" class="seletor-op" aria-pressed="false" data-lt-sec="internacional">{{ partial "icone.html" "mundo" }}<span>Fora do Brasil</span></button>
     </div>
     <nav class="lt-saltos" aria-label="Ir para o governo">
       {{ range $govs }}{{ $g := . }}{{ $tem := false }}{{ range $itens }}{{ if and (ge .ini $g.de) (or (not $g.ate) (lt .ini $g.ate)) }}{{ $tem = true }}{{ end }}{{ end }}

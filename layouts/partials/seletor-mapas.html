@@ -1,0 +1,5 @@
+{{- /* Troca entre a Teia (Brasil) e o Globo (fora do Brasil). Recebe a página atual. */ -}}
+<nav class="seletor seletor-mapas" aria-label="Mapas">
+  <a class="seletor-op" href="{{ "teia/" | relURL }}"{{ if eq .Layout "teia" }} aria-current="page"{{ end }}>{{ partial "icone.html" "brasil" }}<span>No Brasil</span><small>Teia</small></a>
+  <a class="seletor-op" href="{{ "globo/" | relURL }}"{{ if eq .Layout "globo" }} aria-current="page"{{ end }}>{{ partial "icone.html" "mundo" }}<span>Fora do Brasil</span><small>Globo</small></a>
+</nav>
