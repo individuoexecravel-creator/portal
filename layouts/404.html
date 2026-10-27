@@ -6,7 +6,7 @@
   <p><button class="botao" type="button" data-abrir-busca>{{ partial "icone.html" "busca" }}<span>Buscar um caso</span></button></p>
   <ul class="erro-links">
     <li><a href="{{ site.Home.RelPermalink }}">Página inicial</a></li>
-    {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+    {{ range site.Menus.main }}{{ if .HasChildren }}{{ range .Children }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ else }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ end }}
   </ul>
 </section>
 {{ end }}

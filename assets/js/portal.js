@@ -381,6 +381,7 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !painelLeitura.hidden) fecharLeitura(true); });
     document.addEventListener('click', function (e) { if (!painelLeitura.hidden && !painelLeitura.contains(e.target) && !botaoLeitura.contains(e.target)) fecharLeitura(false); });
+    if (temaFixo) { var nota = $('.lp-nota', painelLeitura); if (nota) nota.textContent = 'Esta ferramenta só tem tema escuro, porque as cores foram feitas para fundo preto. O tema que você escolher vale para as outras páginas.'; }
     mostrarLeitura();
   }
 
@@ -602,4 +603,25 @@
     });
     var tm; q.addEventListener('input', function () { clearTimeout(tm); tm = setTimeout(aplicar, 120); });
   });
+
+  /* ---------- Menu do topo: grupos Explorar e Entender ---------- */
+  var grupos = $$('[data-nav-grupo]');
+  var fecharGrupos = function (exceto) {
+    grupos.forEach(function (g) { if (g === exceto) return; var b = $('.nav-btn', g); b.setAttribute('aria-expanded', 'false'); $('.nav-sub', g).hidden = true; });
+  };
+  grupos.forEach(function (g) {
+    var b = $('.nav-btn', g), sub = $('.nav-sub', g), tm;
+    var abrir = function (on) { fecharGrupos(g); b.setAttribute('aria-expanded', String(on)); sub.hidden = !on; };
+    b.addEventListener('click', function () { abrir(sub.hidden); });
+    g.addEventListener('mouseenter', function () { if (ultimoPonteiro === 'mouse') { clearTimeout(tm); abrir(true); } });
+    g.addEventListener('mouseleave', function () { if (ultimoPonteiro === 'mouse') tm = setTimeout(function () { abrir(false); }, 180); });
+    g.addEventListener('keydown', function (e) {
+      var links = $$('a', sub), i = links.indexOf(document.activeElement);
+      if (e.key === 'Escape' && !sub.hidden) { abrir(false); b.focus(); }
+      else if (e.key === 'ArrowDown') { e.preventDefault(); if (sub.hidden) abrir(true); (links[i + 1] || links[0]).focus(); }
+      else if (e.key === 'ArrowUp' && i >= 0) { e.preventDefault(); (links[i - 1] || links[links.length - 1]).focus(); }
+    });
+    g.addEventListener('focusout', function (e) { if (!g.contains(e.relatedTarget)) abrir(false); });
+  });
+  document.addEventListener('click', function (e) { if (!e.target.closest('[data-nav-grupo]')) fecharGrupos(); });
 })();

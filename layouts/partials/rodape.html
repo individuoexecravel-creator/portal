@@ -9,13 +9,15 @@
       <h2>Explorar</h2>
       <ul>
         <li><a href="{{ site.Home.RelPermalink }}">Início</a></li>
-        {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+        {{ range site.Menus.main }}{{ if not .HasChildren }}{{ if ne .Name "Sobre" }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ end }}{{ end }}
+        {{ range site.Menus.main }}{{ if eq .Identifier "explorar" }}{{ range .Children }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ end }}{{ end }}
+        {{ range site.Menus.main }}{{ if eq .Name "Sobre" }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ end }}
       </ul>
     </nav>
     <nav class="rodape-nav" aria-label="Ferramentas">
-      <h2>Para entender melhor</h2>
+      <h2>Entender</h2>
       <ul>
-        {{ range site.Menus.ferramentas }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+        {{ range site.Menus.main }}{{ if eq .Identifier "entender" }}{{ range .Children }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}{{ end }}{{ end }}
       </ul>
     </nav>
     <nav class="rodape-nav" aria-label="Seções">

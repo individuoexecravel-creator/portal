@@ -2,7 +2,14 @@
 {{- $cur := . -}}
 {{- $emCaso := in (slice "nova-republica" "internacional") $cur.Section -}}
 {{- $emGlobo := eq $cur.Layout "globo" -}}
-{{- $icones := dict "Casos" "casos" "Linha do tempo" "tempo" "Pessoas" "pessoas" "Valores" "valores" "Teia" "teia" "Sobre" "ajuda" -}}
+{{- /* Página atual dentro de um item do menu: casos contam como "Casos"; o Globo conta como "Teia e globo". */ -}}
+{{- $ativoEm := dict -}}
+{{- range site.Menus.main -}}
+  {{- $item := . -}}
+  {{- $on := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Casos")) (and $emGlobo (eq .Name "Teia e globo")) -}}
+  {{- range .Children }}{{ if or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emGlobo (eq .Name "Teia e globo")) }}{{ $on = true }}{{ end }}{{ end -}}
+  {{- $ativoEm = merge $ativoEm (dict .Name $on) -}}
+{{- end -}}
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 <header class="topo">
   <div class="wrap topo-in">
@@ -13,8 +20,22 @@
     </a>
     <nav class="nav-principal" aria-label="Principal">
       {{- range site.Menus.main }}
-        {{- $ativo := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Casos")) (and $emGlobo (eq .Name "Teia")) }}
-        <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{- $on := index $ativoEm .Name }}
+        {{- if .HasChildren }}
+        <div class="nav-grupo" data-nav-grupo>
+          <button type="button" class="nav-btn{{ if $on }} ativo{{ end }}" aria-expanded="false" aria-controls="nav-{{ .Identifier }}">{{ .Name }}<svg class="nav-seta" viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav-sub" id="nav-{{ .Identifier }}" hidden>
+            {{ with .Params.desc }}<p class="nav-sub-desc">{{ . }}</p>{{ end }}
+            <ul>
+              {{- range .Children }}
+              <li><a href="{{ .URL }}"{{ if or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emGlobo (eq .Name "Teia e globo")) }} aria-current="page"{{ end }}>{{ partial "icone.html" .Params.icone }}<span class="nav-sub-t">{{ .Name }}</span><span class="nav-sub-d">{{ .Params.desc }}</span></a></li>
+              {{- end }}
+            </ul>
+          </div>
+        </div>
+        {{- else }}
+        <a href="{{ .URL }}"{{ if $on }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        {{- end }}
       {{- end }}
     </nav>
     <div class="topo-acoes">
@@ -55,16 +76,22 @@
 <div class="menu-movel" id="menu-movel" hidden>
   <nav aria-label="Menu">
     <a href="{{ site.Home.RelPermalink }}"{{ if $cur.IsHome }} aria-current="page"{{ end }}>{{ partial "icone.html" "inicio" }}<span>Início</span></a>
-    {{- range site.Menus.main }}
-      {{- $ativo := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Casos")) (and $emGlobo (eq .Name "Teia")) }}
-      <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ partial "icone.html" (index $icones .Name | default "casos") }}<span>{{ .Name }}</span>{{ with .Page }}<small>{{ .Description }}</small>{{ end }}</a>
+    {{- range site.Menus.main }}{{ if not .HasChildren }}{{ if ne .Name "Sobre" }}
+      <a href="{{ .URL }}"{{ if index $ativoEm .Name }} aria-current="page"{{ end }}>{{ partial "icone.html" (.Params.icone | default "casos") }}<span>{{ .Name }}</span>{{ with .Page }}<small>{{ .Description }}</small>{{ end }}</a>
+    {{- end }}{{ end }}{{ end }}
+  </nav>
+  {{- range site.Menus.main }}{{ if .HasChildren }}
+  <nav class="menu-grupo" aria-labelledby="mg-{{ .Identifier }}">
+    <p class="mg-t" id="mg-{{ .Identifier }}">{{ .Name }}</p>
+    {{- range .Children }}
+      <a href="{{ .URL }}"{{ if or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emGlobo (eq .Name "Teia e globo")) }} aria-current="page"{{ end }}>{{ partial "icone.html" .Params.icone }}<span>{{ .Name }}</span><small>{{ .Params.desc }}</small></a>
     {{- end }}
   </nav>
-  <nav class="menu-ferramentas" aria-label="Ferramentas">
-    <p class="mf-t">Para entender melhor</p>
-    {{- range site.Menus.ferramentas }}
-      <a href="{{ .URL }}"{{ if and .Page (eq .Page.RelPermalink $cur.RelPermalink) }} aria-current="page"{{ end }}>{{ partial "icone.html" .Params.icone }}<span>{{ .Name }}</span></a>
-    {{- end }}
+  {{- end }}{{ end }}
+  <nav class="menu-grupo" aria-label="Sobre o Portal">
+    {{- range site.Menus.main }}{{ if eq .Name "Sobre" }}
+    <a href="{{ .URL }}"{{ if index $ativoEm .Name }} aria-current="page"{{ end }}>{{ partial "icone.html" "ajuda" }}<span>{{ .Name }}</span><small>{{ with .Page }}{{ .Description }}{{ end }}</small></a>
+    {{- end }}{{ end }}
   </nav>
   <div class="menu-movel-pe">
     <p>Siga {{ site.Params.autor.nome }}</p>

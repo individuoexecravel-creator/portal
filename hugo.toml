@@ -59,60 +59,106 @@ summaryLength = 40
   home = ["HTML", "RSS", "JSON"]
 
 # Menu principal. A ordem segue o "weight".
+# "Explorar" e "Entender" são grupos: no computador abrem uma lista; no celular viram seções do menu.
+# Para pôr uma página dentro de um grupo, use parent = "explorar" ou parent = "entender".
 [menus]
   [[menus.main]]
     name = "Casos"
     pageRef = "/casos"
     weight = 1
+    [menus.main.params]
+      icone = "casos"
   [[menus.main]]
-    name = "Linha do tempo"
-    pageRef = "/linha-do-tempo"
+    name = "Explorar"
+    identifier = "explorar"
     weight = 2
+    [menus.main.params]
+      desc = "Os casos vistos de outros jeitos: no tempo, pelas pessoas, pelo dinheiro e pelas ligações."
   [[menus.main]]
-    name = "Pessoas"
-    pageRef = "/pessoas"
+    name = "Entender"
+    identifier = "entender"
     weight = 3
-  [[menus.main]]
-    name = "Valores"
-    pageRef = "/valores"
-    weight = 4
-  [[menus.main]]
-    name = "Teia"
-    pageRef = "/teia"
-    weight = 5
+    [menus.main.params]
+      desc = "Ferramentas para entender os casos: prazos da Justiça, mapa, trilhas, comparação e glossário."
   [[menus.main]]
     name = "Sobre"
     pageRef = "/sobre"
-    weight = 6
+    weight = 4
+    [menus.main.params]
+      icone = "ajuda"
 
-# Ferramentas: aparecem no menu do celular, no rodapé e em "Outras formas de explorar".
-[[menus.ferramentas]]
-  name = "Tempo da Justiça"
-  pageRef = "/tempo-da-justica"
-  weight = 1
-  [menus.ferramentas.params]
-    icone = "relogio"
-[[menus.ferramentas]]
-  name = "Mapa dos casos"
-  pageRef = "/mapa"
-  weight = 2
-  [menus.ferramentas.params]
-    icone = "mapa"
-[[menus.ferramentas]]
-  name = "Trilhas de leitura"
-  pageRef = "/trilhas"
-  weight = 3
-  [menus.ferramentas.params]
-    icone = "trilha"
-[[menus.ferramentas]]
-  name = "Comparar casos"
-  pageRef = "/comparar"
-  weight = 4
-  [menus.ferramentas.params]
-    icone = "comparar"
-[[menus.ferramentas]]
-  name = "Glossário"
-  pageRef = "/glossario"
-  weight = 5
-  [menus.ferramentas.params]
-    icone = "livro"
+  # Grupo Explorar
+  [[menus.main]]
+    name = "Linha do tempo"
+    pageRef = "/linha-do-tempo"
+    parent = "explorar"
+    weight = 1
+    [menus.main.params]
+      icone = "tempo"
+      desc = "Os casos ano a ano, com o presidente de cada época."
+  [[menus.main]]
+    name = "Pessoas"
+    pageRef = "/pessoas"
+    parent = "explorar"
+    weight = 2
+    [menus.main.params]
+      icone = "pessoas"
+      desc = "Quem aparece em cada caso e como terminou para cada um."
+  [[menus.main]]
+    name = "Quanto custou"
+    pageRef = "/valores"
+    parent = "explorar"
+    weight = 3
+    [menus.main.params]
+      icone = "valores"
+      desc = "Dinheiro desviado, propinas e valores devolvidos, somados."
+  [[menus.main]]
+    name = "Teia e globo"
+    pageRef = "/teia"
+    parent = "explorar"
+    weight = 4
+    [menus.main.params]
+      icone = "teia"
+      desc = "As ligações entre os casos do Brasil e o mapa dos de fora."
+
+  # Grupo Entender
+  [[menus.main]]
+    name = "Tempo da Justiça"
+    pageRef = "/tempo-da-justica"
+    parent = "entender"
+    weight = 1
+    [menus.main.params]
+      icone = "relogio"
+      desc = "Quantos anos cada caso levou até o desfecho."
+  [[menus.main]]
+    name = "Mapa dos casos"
+    pageRef = "/mapa"
+    parent = "entender"
+    weight = 2
+    [menus.main.params]
+      icone = "mapa"
+      desc = "Os escândalos de cada estado e os federais."
+  [[menus.main]]
+    name = "Trilhas de leitura"
+    pageRef = "/trilhas"
+    parent = "entender"
+    weight = 3
+    [menus.main.params]
+      icone = "trilha"
+      desc = "Casos para ler em sequência, por tema."
+  [[menus.main]]
+    name = "Comparar casos"
+    pageRef = "/comparar"
+    parent = "entender"
+    weight = 4
+    [menus.main.params]
+      icone = "comparar"
+      desc = "Dois casos lado a lado."
+  [[menus.main]]
+    name = "Glossário"
+    pageRef = "/glossario"
+    parent = "entender"
+    weight = 5
+    [menus.main.params]
+      icone = "livro"
+      desc = "Os termos da Justiça e da política, explicados."

@@ -91,3 +91,7 @@ correcoes:               # opcional: histórico público de correções
 - Tema claro troca os tokens em `html[data-tema="claro"]`. Cores novas devem usar tokens, nunca `#000` ou `#fff` direto. Para texto sobre fundo cor de papel, use `--tinta`; para negrito forte, `--forte`.
 - Casos lidos ficam em `portal-lidos`. Qualquer link de caso com `data-lido="<slug>"` ganha o selo "Lido".
 - "Ouvir" usa a voz do próprio navegador. Se o navegador não tiver síntese de voz, o botão não aparece.
+
+## Menu do topo
+
+O menu tem quatro entradas: Casos, **Explorar**, **Entender** e Sobre. Explorar e Entender são grupos: no computador abrem uma lista com ícone e descrição; no celular viram seções do menu. Para pôr uma página nova num grupo, crie a entrada em `hugo.toml` com `parent = "explorar"` ou `parent = "entender"`, e preencha `icone` e `desc` em `[menus.main.params]`. O rodapé e o início leem o mesmo menu.

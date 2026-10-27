@@ -861,13 +861,10 @@ body:not(.e-materia) .progresso { display: none; }
 .mapa-uf a.lido .selo-lido, .sem-desf .selo-lido { margin: 0 0 0 8px; }
 
 /* Menu do celular e início: ferramentas */
-.menu-ferramentas { margin-top: var(--e5); padding-top: var(--e4); border-top: 1px solid var(--grafite); display: grid; }
-.mf-t { margin: 0 0 4px; font-size: var(--t-13); color: var(--chumbo); }
-.menu-ferramentas a { display: flex; align-items: center; gap: 14px; min-height: var(--alvo); padding: 6px 0; text-decoration: none; font-size: var(--t-17); }
-.menu-ferramentas a[aria-current] { font-weight: 600; }
-.menu-ferramentas .ico { color: var(--chumbo); }
 .caminhos-t { margin: var(--e7) 0 var(--e3); font: 700 var(--t-22)/1.2 var(--sans); font-stretch: 85%; }
 .caminhos-ferr .ico { color: var(--papel-2); width: 28px; height: 28px; }
+.caminhos-t1 { margin-top: 0; }
+@media (min-width: 1180px) { .caminhos-ferr { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 var(--e5); } }
 
 /* Quanto custou: modo de valor */
 .valor-orig { display: block; font-size: var(--t-13); color: var(--chumbo); font-weight: 400; }
@@ -1063,3 +1060,37 @@ html[data-tema="claro"] .busca::backdrop { background: rgba(40,35,30,.35); }
   .v-tabela td.v-fonte::before { content: "Fonte: "; }
 }
 @media (max-width: 480px) { .v-totais { grid-template-columns: 1fr; } }
+
+/* =========================================================================
+   Menu do topo em grupos: Explorar e Entender
+   ========================================================================= */
+.nav-principal { align-items: center; }
+.nav-grupo { position: relative; }
+.nav-btn { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 10px 12px; border: 0; border-radius: var(--raio); background: none; color: var(--papel-2); font: 500 var(--t-15)/1 var(--sans); white-space: nowrap; cursor: pointer; }
+.nav-btn:hover, .nav-btn[aria-expanded="true"] { color: var(--papel); background: var(--carvao); }
+.nav-btn.ativo { color: var(--papel); }
+.nav-btn.ativo::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; background: var(--nova-republica); }
+.nav-seta { transition: transform .15s; }
+.nav-btn[aria-expanded="true"] .nav-seta { transform: rotate(180deg); }
+.nav-sub { position: absolute; top: calc(100% + 10px); left: 50%; transform: translateX(-50%); z-index: 50; width: 380px; padding: var(--e3); border-radius: var(--r2); background: var(--carvao); border: 1px solid var(--grafite); box-shadow: 0 20px 50px rgba(0,0,0,.55); }
+.nav-sub-desc { margin: var(--e1) var(--e3) var(--e3); font-size: var(--t-13); line-height: 1.45; color: var(--chumbo); }
+.nav-sub ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.nav-sub a { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 2px 12px; align-items: center; padding: 10px var(--e3); border-radius: var(--raio); text-decoration: none; }
+.nav-sub a:hover, .nav-sub a:focus-visible { background: var(--carvao-2); }
+.nav-sub a .ico { grid-row: span 2; align-self: start; margin-top: 1px; color: var(--chumbo); }
+.nav-sub-t { font-weight: 600; font-size: var(--t-15); color: var(--papel); }
+.nav-sub-d { grid-column: 2; font-size: var(--t-13); line-height: 1.35; color: var(--papel-2); }
+.nav-sub a[aria-current] .nav-sub-t { color: var(--sangue-texto); }
+.nav-sub a[aria-current] .ico { color: var(--nova-republica); }
+html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
+@media (max-width: 1060px) { .nav-btn { padding: 10px 9px; } }
+@media (prefers-reduced-motion: reduce) { .nav-seta { transition: none; } }
+
+.menu-grupo { display: flex; flex-direction: column; margin-top: var(--e5); }
+.mg-t { margin: 0; padding: 0 4px 6px; font-size: var(--t-13); font-weight: 600; color: var(--chumbo); border-bottom: 1px solid var(--grafite); }
+.menu-movel .menu-grupo a { display: grid; grid-template-columns: 28px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--grafite); text-decoration: none; }
+.menu-movel .menu-grupo a .ico { width: 22px; height: 22px; color: var(--chumbo); grid-row: span 2; align-self: start; margin-top: 2px; }
+.menu-movel .menu-grupo a span { font: 700 var(--t-22)/1.1 var(--sans); font-stretch: 85%; }
+.menu-movel .menu-grupo a small { grid-column: 2; font-size: var(--t-13); color: var(--chumbo); line-height: 1.35; }
+.menu-movel .menu-grupo a[aria-current] span { color: var(--sangue-texto); }
+.menu-movel .menu-grupo a[aria-current] .ico { color: var(--nova-republica); }

@@ -135,7 +135,8 @@
 {{ $pessoas := partialCached "pessoas.html" "p" }}
 {{ $recorrentes := where $pessoas "n" "gt" 1 }}
 <section class="wrap bloco" aria-labelledby="explorar-t">
-  <header class="bloco-topo"><h2 id="explorar-t">Outras formas de explorar</h2></header>
+  <header class="bloco-topo"><h2 id="explorar-t">Explorar e entender</h2></header>
+  <h3 class="caminhos-t caminhos-t1">Explorar</h3>
   <ul class="caminhos">
     <li><a href="{{ "linha-do-tempo/" | relURL }}">
       {{ partial "icone.html" "tempo" }}
@@ -166,15 +167,15 @@
     "Comparar casos" "Dois casos lado a lado: período, dinheiro, pessoas envolvidas e o tempo da Justiça."
     "Glossário" "Peculato, prescrição, foro privilegiado e outros termos dos processos, explicados em poucas linhas."
   }}
-  <h3 class="caminhos-t">Para entender melhor</h3>
+  <h3 class="caminhos-t">Entender</h3>
   <ul class="caminhos caminhos-ferr">
-    {{ range site.Menus.ferramentas }}
+    {{ range site.Menus.main }}{{ if eq .Identifier "entender" }}{{ range .Children }}
     <li><a href="{{ .URL }}">
       {{ partial "icone.html" .Params.icone }}
       <span class="cam-t">{{ .Name }}</span>
       <span class="cam-d">{{ index $desc .Name }}</span>
     </a></li>
-    {{ end }}
+    {{ end }}{{ end }}{{ end }}
   </ul>
 </section>
 
