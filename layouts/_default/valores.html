@@ -6,20 +6,22 @@
 </section>
 
 <div class="wrap" data-valores data-abas>
-  <div class="seletor seletor-abas" role="tablist" aria-label="Seção">
-    {{ range $i, $s := slice "nova-republica" "internacional" }}
-    <button type="button" role="tab" class="seletor-op" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ partial "icone.html" (cond (eq $s "nova-republica") "brasil" "mundo") }}<span>{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}</span></button>
-    {{ end }}
-  </div>
-
-  <div class="modo-valor" role="group" aria-labelledby="modo-t">
-    <p id="modo-t" class="modo-t">Mostrar os valores em reais</p>
-    <div class="seletor">
-      <button type="button" class="seletor-op" aria-pressed="true" data-modo-op="epoca">Da época</button>
-      <button type="button" class="seletor-op" aria-pressed="false" data-modo-op="ipca">Corrigidos pela inflação</button>
+  <div class="lt-ferr v-ferr">
+    <div class="seletor" role="tablist" aria-label="Seção">
+      {{ range $i, $s := slice "nova-republica" "internacional" }}
+      {{ $n := slice }}{{ range partial "valores-dados.html" $s }}{{ if not (in $n .slug) }}{{ $n = $n | append .slug }}{{ end }}{{ end }}
+      <button type="button" role="tab" class="seletor-op" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ partial "icone.html" (cond (eq $s "nova-republica") "brasil" "mundo") }}<span>{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}</span><small>{{ len $n }}</small></button>
+      {{ end }}
     </div>
-    <p class="modo-nota">A correção usa o IPCA, a inflação oficial, de cada ano até {{ site.Data.ipca.ate }}. Dólares e euros não são corrigidos.</p>
+    <div class="v-modo" role="group" aria-label="Valores em reais">
+      <span class="v-modo-t" aria-hidden="true">Reais</span>
+      <div class="seletor">
+        <button type="button" class="seletor-op" aria-pressed="true" data-modo-op="epoca">Da época</button>
+        <button type="button" class="seletor-op" aria-pressed="false" data-modo-op="ipca">Corrigidos pela inflação</button>
+      </div>
+    </div>
   </div>
+  <p class="v-modo-nota">"Corrigidos pela inflação" atualiza cada valor em reais pelo IPCA, do ano em que foi apurado até {{ site.Data.ipca.ate }}. Dólares e euros ficam como estão.</p>
 
   {{ range $i, $s := slice "nova-republica" "internacional" }}
     <div{{ if ne $i 0 }} hidden{{ end }} data-painel-wrap="{{ $s }}" role="tabpanel" id="painel-{{ $s }}" aria-labelledby="aba-{{ $s }}">

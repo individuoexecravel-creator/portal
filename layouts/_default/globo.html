@@ -18,7 +18,7 @@
 {{- end -}}
 {{- $casos = sort $casos "ini" -}}
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" data-tema-fixo>
 <head>
   <title>{{ .Title }} · {{ site.Title }}</title>
   {{ partial "cabeca.html" . }}
@@ -111,7 +111,7 @@
     <div class="g-corpo" id="g-corpo"></div>
   </aside>
 
-  <div class="g-pe" aria-label="Legenda">
+  <div class="g-pe" tabindex="0" role="group" aria-label="Legenda">
     <span><span class="g-marca"><i class="m-crime"></i></span>Onde aconteceu</span>
     <span><span class="g-marca"><i class="m-justica"></i></span>Julgamento ou prisão</span>
     <span><span class="g-marca"><i class="m-fuga"></i></span>Fuga</span>

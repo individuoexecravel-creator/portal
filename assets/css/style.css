@@ -664,20 +664,6 @@ body:not(.e-materia) .progresso { display: none; }
 .aba:hover { color: var(--papel); }
 .aba[aria-selected="true"] { color: var(--papel); border-bottom-color: var(--acento); }
 
-.valores-cobertura { margin: 24px 0 0; color: var(--papel-2); font-size: var(--t-17); }
-.totais { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 20px; }
-.total { display: flex; flex-direction: column; padding: var(--e5) 0; border-top: 1px solid var(--linha-ui); }
-.total h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; font-size: var(--t-15); font-weight: 600; color: var(--papel); }
-.total-valor { margin: 0; font: 800 clamp(2rem, 3.4vw, 2.75rem)/1.05 var(--sans); font-stretch: 75%; font-variant-numeric: tabular-nums; }
-.total-valor + .total-valor { margin-top: 6px; font-size: clamp(1.5rem, 2.4vw, 2rem); color: var(--papel-2); }
-.total-nada { margin: 0; font-size: var(--t-17); color: var(--chumbo); }
-.total-explica { margin: 14px 0 0; padding-top: 12px; border-top: 1px solid var(--grafite); font-size: var(--t-13); line-height: 1.5; color: var(--chumbo); }
-.total-principal { grid-row: span 3; justify-content: center; padding: 32px; }
-.total-principal .total-valor { font-size: clamp(3rem, 7vw, 6rem); }
-.total-principal .total-valor + .total-valor { font-size: clamp(1.8rem, 3.6vw, 2.8rem); }
-.total-principal .total-explica { font-size: var(--t-15); max-width: 48ch; }
-.totais { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
-.total-vazio { opacity: .75; }
 
 .grafico { margin-top: 56px; }
 .grafico-topo { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; margin-bottom: 18px; }
@@ -694,26 +680,7 @@ body:not(.e-materia) .progresso { display: none; }
 .barra-fill { display: block; height: 100%; min-width: 3px; border-radius: 0 4px 4px 0; }
 .barra-valor { font-size: var(--t-15); font-weight: 600; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-.colunas { list-style: none; margin: 0; padding: 0; display: flex; align-items: flex-end; gap: 12px; height: 280px; border-bottom: 1px solid var(--grafite); }
-.colunas li { flex: 1; max-width: 140px; height: 100%; display: flex; flex-direction: column; align-items: stretch; justify-content: flex-end; gap: 6px; position: relative; }
-.coluna-valor { font-size: var(--t-15); font-weight: 600; text-align: center; font-variant-numeric: tabular-nums; }
-.coluna-trilho { flex: 0 1 auto; height: 78%; display: flex; align-items: flex-end; }
-.coluna-fill { display: block; width: 100%; min-height: 3px; border-radius: 4px 4px 0 0; }
-.coluna-ano { position: absolute; bottom: -28px; left: 0; right: 0; text-align: center; font-size: var(--t-13); color: var(--chumbo); }
-.colunas + .grafico-nota { margin-top: 40px; }
 
-.tabela-rolagem { overflow-x: auto; border-top: 1px solid var(--linha-ui); }
-.tabela-valores { width: 100%; min-width: 760px; border-collapse: collapse; font-size: var(--t-15); line-height: 1.45; }
-.tabela-valores th, .tabela-valores td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--grafite); }
-.tabela-valores thead th { font-size: var(--t-13); font-weight: 600; color: var(--chumbo); }
-.tabela-valores tbody th { font-weight: 700; }
-.tabela-valores tbody th a { text-decoration-color: var(--grafite); text-underline-offset: 3px; }
-.tabela-valores .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
-.tabela-valores td:last-child { color: var(--chumbo); }
-.tabela-valores tr.fora td, .tabela-valores tr.fora th { color: var(--chumbo); }
-.tabela-valores em { display: block; margin-top: 4px; font-style: normal; font-size: var(--t-13); color: var(--chumbo); }
-.tag-tipo { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
-.tabela-valores tbody tr:last-child > * { border-bottom: 0; }
 
 .sem-valor { margin-top: var(--e8); padding-top: var(--e6); border-top: 1px solid var(--linha); }
 .sem-valor h2 { margin: 0; font: 700 var(--t-22)/1.2 var(--sans); font-stretch: 85%; }
@@ -737,21 +704,13 @@ body:not(.e-materia) .progresso { display: none; }
 .valores-caso .vc-desc { font-size: var(--t-13); color: var(--papel-2); line-height: 1.4; }
 .valores-caso a.vc-link { display: inline-block; margin-top: 12px; font-size: var(--t-13); color: var(--papel-2); }
 
-@media (max-width: 900px) {
-  .totais { grid-template-columns: 1fr; }
-  .total-principal { grid-row: auto; }
-}
 @media (max-width: 600px) {
   .barra { grid-template-columns: minmax(0, 1fr) auto; grid-template-rows: auto auto; gap: 6px 12px; padding: 10px 4px; }
   .barra-nome { grid-column: 1; }
   .barra-valor { grid-column: 2; grid-row: 1; }
   .barra-trilho { grid-column: 1 / -1; }
-  .colunas { gap: 6px; height: 220px; }
-  .coluna-valor { font-size: var(--t-13); }
   .aba { padding: 10px 12px 12px; font-size: var(--t-19); }
-  .total-principal { padding: 24px 20px; }
 }
-.total-principal.total-vazio { grid-row: auto; justify-content: flex-start; padding: 22px; }
 
 /* ---------- Seletor No Brasil / Fora do Brasil (Casos, Linha do tempo, Pessoas, Valores, Teia e Globo) ---------- */
 .seletor { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: var(--r-pilula); background: var(--vidro-2); border: 1px solid var(--linha-ui); max-width: 100%; }
@@ -779,9 +738,6 @@ body:not(.e-materia) .progresso { display: none; }
 /* ---------- Sistema v2: ajustes de ritmo e alvos ---------- */
 .pessoa-teia { min-height: var(--alvo); padding-top: var(--e2); }
 .pessoas { gap: 0 var(--e6); }
-.totais { gap: 0 var(--e6); }
-.total-principal { padding: var(--e5) 0; }
-.total-principal.total-vazio { padding: var(--e5) 0; }
 .quem-lista { gap: var(--e4) var(--e6); }
 .quem-lista li.d-borda-condenado { border-left-color: var(--d-condenado); }
 .quem-lista li.d-borda-cassado { border-left-color: var(--d-cassado); }
@@ -801,19 +757,9 @@ body:not(.e-materia) .progresso { display: none; }
   .filtros { margin-left: 0; margin-right: 0; padding: var(--e4) 0; border-left: 0; border-right: 0; }
   .filtro-grupo { margin: 0 -16px; padding: 0 16px; }
 }
-.totais { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.total-principal { grid-row: auto; grid-column: 1 / -1; justify-content: flex-start; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--e6); align-items: end; }
-.total-principal h3 { grid-column: 1 / -1; }
-.total-principal .total-explica { grid-column: 2; grid-row: 2 / span 2; align-self: end; border-top: 0; padding-top: 0; margin: 0 0 var(--e2); }
-.total-principal.total-vazio { display: flex; }
 .pessoa-teia { margin-top: var(--e3); }
 .pessoas { align-items: start; }
 .aviso-leitura { background: none; padding: var(--e1) 0 var(--e1) var(--e4); }
-@media (max-width: 900px) {
-  .totais { grid-template-columns: 1fr; }
-  .total-principal { display: flex; }
-  .total-principal .total-explica { margin-top: var(--e4); }
-}
 
 /* =========================================================================
    Credibilidade, compreensão e conforto (v3)
@@ -924,9 +870,6 @@ body:not(.e-materia) .progresso { display: none; }
 .caminhos-ferr .ico { color: var(--papel-2); width: 28px; height: 28px; }
 
 /* Quanto custou: modo de valor */
-.modo-valor { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e2) var(--e4); margin-top: var(--e5); }
-.modo-t { margin: 0; font-size: var(--t-15); color: var(--chumbo); }
-.modo-nota { margin: 0; flex-basis: 100%; font-size: var(--t-13); color: var(--chumbo); }
 .valor-orig { display: block; font-size: var(--t-13); color: var(--chumbo); font-weight: 400; }
 .valores-caso .vc-hoje { font-size: var(--t-13); color: var(--papel-2); }
 
@@ -1055,3 +998,68 @@ html[data-tema="claro"] .busca::backdrop { background: rgba(40,35,30,.35); }
 
 .cabeca-lista > .seletor { margin-top: var(--e5); }
 @media (max-width: 520px) { .numeros b { font-size: var(--t-34); } }
+
+/* =========================================================================
+   Quanto custou (v4): barra fixa, quatro totais iguais, tabela com filtros
+   ========================================================================= */
+.v-ferr { justify-content: space-between; }
+.v-modo { display: flex; align-items: center; gap: var(--e3); }
+.v-modo-t { font-size: var(--t-13); color: var(--chumbo); }
+.v-modo-nota { margin: var(--e3) 0 0; font-size: var(--t-13); color: var(--chumbo); max-width: 80ch; }
+.v-cobertura { margin: var(--e6) 0 0; font-size: var(--t-17); color: var(--papel-2); }
+.v-cobertura b, .v-cobertura strong { color: var(--papel); }
+.v-totais { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--e5); margin-top: var(--e5); }
+.v-total { display: flex; flex-direction: column; padding-top: var(--e4); border-top: 3px solid var(--linha-ui); }
+.v-total-desvio { border-top-color: var(--v-desvio); }
+.v-total-propina { border-top-color: var(--v-propina); }
+.v-total-apreendido { border-top-color: var(--v-apreendido); }
+.v-total-devolvido { border-top-color: var(--v-devolvido); }
+.v-total h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 var(--e3); font-size: var(--t-15); font-weight: 600; }
+.v-num { margin: 0; font: 800 var(--t-44)/1 var(--sans); font-stretch: 72%; font-variant-numeric: tabular-nums; }
+.v-num-2 { margin: 6px 0 0; font: 800 var(--t-26)/1 var(--sans); font-stretch: 75%; color: var(--papel-2); font-variant-numeric: tabular-nums; }
+.v-nada { font-size: var(--t-22); color: var(--chumbo); font-weight: 600; font-stretch: 85%; }
+.v-explica { margin: auto 0 0; padding-top: var(--e4); font-size: var(--t-13); line-height: 1.5; color: var(--chumbo); }
+.v-chips { margin-bottom: var(--e4); }
+.barras-decada small { display: block; margin-top: 4px; font: 400 var(--t-13)/1 var(--sans); text-transform: none; color: var(--chumbo); font-stretch: 100%; }
+.barras-decada .barra:hover { background: none; }
+.v-filtros { margin-top: 0; }
+.v-tabela-wrap { margin-top: var(--e2); }
+.v-tabela { width: 100%; border-collapse: collapse; font-size: var(--t-15); line-height: 1.45; }
+.v-tabela th, .v-tabela td { padding: 12px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--linha); }
+.v-tabela thead th { font-size: var(--t-13); font-weight: 600; color: var(--chumbo); white-space: nowrap; }
+.v-tabela thead button { all: unset; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; min-height: 32px; color: var(--papel-2); }
+.v-tabela thead button::after { content: "↕"; color: var(--chumbo); font-size: .9em; }
+.v-tabela thead [aria-sort="ascending"] button::after { content: "↑"; color: var(--papel); }
+.v-tabela thead [aria-sort="descending"] button::after { content: "↓"; color: var(--papel); }
+.v-tabela thead button:hover { color: var(--papel); }
+.v-tabela thead button:focus-visible { outline: 2px solid var(--papel); outline-offset: 2px; }
+.v-tabela tbody th { font-weight: 700; min-width: 140px; }
+.v-tabela tbody th a { text-decoration-color: var(--linha-ui); text-underline-offset: 3px; }
+.v-tabela .num { text-align: right; white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; }
+.v-tabela thead .num button { flex-direction: row-reverse; }
+.v-tabela .v-fonte { color: var(--chumbo); font-size: var(--t-13); }
+.v-tabela tr.fora > * { color: var(--chumbo); }
+.v-tabela em { display: block; margin-top: 4px; font-style: normal; font-size: var(--t-13); color: var(--chumbo); }
+.v-tabela td:nth-child(5) { color: var(--papel-2); max-width: 42ch; }
+.tag-tipo { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
+.v-vazio { margin: var(--e5) 0; color: var(--chumbo); }
+@media (max-width: 1100px) { .v-totais { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e6) var(--e5); } }
+@media (max-width: 760px) {
+  .v-ferr { gap: var(--e2); }
+  .v-modo { width: 100%; }
+  .v-modo .seletor { flex: 1; }
+  .v-num { font-size: var(--t-34); }
+  .v-num-2 { font-size: var(--t-22); }
+  .v-tabela thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  .v-tabela, .v-tabela tbody, .v-tabela tr, .v-tabela th, .v-tabela td { display: block; }
+  .v-tabela tr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: var(--e4) 0; border-bottom: 1px solid var(--linha); }
+  .v-tabela tbody th, .v-tabela td { padding: 0; border: 0; min-width: 0; max-width: none !important; }
+  .v-tabela tbody th { grid-column: 1; font-size: var(--t-17); }
+  .v-tabela td.num { grid-column: 2; grid-row: 1; font-size: var(--t-17); }
+  .v-tabela td[data-rot="Ano"], .v-tabela td[data-rot="Tipo"] { display: inline-flex; grid-column: 1 / -1; font-size: var(--t-13); color: var(--chumbo); }
+  .v-tabela td[data-rot="Ano"] { grid-row: 2; }
+  .v-tabela td[data-rot="Tipo"] { grid-row: 2; justify-self: end; }
+  .v-tabela td[data-rot="O que é"], .v-tabela td.v-fonte { grid-column: 1 / -1; }
+  .v-tabela td.v-fonte::before { content: "Fonte: "; }
+}
+@media (max-width: 480px) { .v-totais { grid-template-columns: 1fr; } }

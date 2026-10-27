@@ -18,110 +18,113 @@
 {{- end -}}
 {{- $dados := dict "entidades" $ents "vinculos" (site.Data.teia.vinculos | default slice) "casos" $casos -}}
 <!doctype html>
-<html lang="pt-br">
+<html lang="pt-br" data-tema-fixo>
 <head>
   <title>{{ .Title }} · {{ site.Title }}</title>
   {{ partial "cabeca.html" . }}
   <style>
-  /* Teia: mesa de investigação em tela cheia sob o topo do portal */
-  :root{
-    --t-fundo:#07080a; --t-sup:var(--carvao); --t-linha:var(--grafite);
-    --t-texto:var(--osso); --t-mudo:var(--cinza); --t-sangue:var(--sangue); --t-ouro:var(--ouro); --t-aco:#6f8fb3;
-    --t-mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
-  }
-  [hidden]{display:none!important}
+  /* Teia: grafo em tela cheia sob o topo, com os mesmos painéis do Globo */
   html,body.pagina-teia{height:100%;overflow:hidden}
-  body.pagina-teia{background:var(--t-fundo);font-size:16px;line-height:1.5}
+  body.pagina-teia{background:#07080a}
   #t-grafo{position:fixed;left:0;right:0;bottom:0;top:var(--topo)}
   #t-rotulos{position:fixed;left:0;right:0;bottom:0;top:var(--topo);pointer-events:none;overflow:hidden}
-  .t-lbl{position:absolute;transform:translate(-50%,0);white-space:nowrap;font:500 11px/1.2 var(--titulo);color:var(--t-texto);text-shadow:0 1px 3px #000,0 0 6px #000;opacity:.85}
-  .t-lbl.caso{font:800 15px/1.1 var(--titulo);font-stretch:72%;text-transform:uppercase;color:#fff;opacity:1}
-  .t-lbl.caso::before{content:"";display:block;height:3px;background:var(--t-sangue);margin-bottom:3px}
+  .t-carregando{position:fixed;inset:var(--topo) 0 0;display:grid;place-items:center;color:var(--chumbo);font-size:var(--t-15)}
+  .t-lbl{position:absolute;transform:translate(-50%,0);white-space:nowrap;font:500 11px/1.2 var(--sans);color:var(--papel);text-shadow:0 1px 3px #000,0 0 6px #000;opacity:.85}
+  .t-lbl.caso{font:800 15px/1.1 var(--sans);font-stretch:72%;text-transform:uppercase;color:#fff;opacity:1}
+  .t-lbl.caso::before{content:"";display:block;height:3px;border-radius:2px;background:var(--nova-republica);margin-bottom:3px}
   .t-lbl.peq{font-size:10px;opacity:.6}
   .t-lbl.apagado{opacity:.06}
   .t-lbl.longe{opacity:.45}
-  .t-seg{display:inline-flex;border:1px solid var(--t-linha)}
-  .t-seg button{font:600 .75rem/1 var(--titulo);background:transparent;color:var(--t-mudo);border:0;padding:7px 10px;cursor:pointer}
-  .t-seg button[aria-pressed="true"]{background:var(--t-sangue);color:#fff}
 
-  .t-cab{position:fixed;z-index:5;top:calc(var(--topo) + 14px);left:0;right:0;display:flex;flex-wrap:wrap;gap:10px 18px;align-items:flex-start;justify-content:space-between;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));pointer-events:none}
+  /* Cabeçalho à esquerda, como no Globo */
+  .t-cab{position:fixed;z-index:5;top:calc(var(--topo) + 20px);left:max(16px,env(safe-area-inset-left));width:min(420px,calc(100vw - 32px));pointer-events:none}
   .t-cab>*{pointer-events:auto}
-  .t-titulo{max-width:430px}
-  .t-titulo h1{margin:0;font:800 clamp(1.9rem,3.6vw,2.9rem)/1 var(--titulo);font-stretch:75%;text-wrap:balance}
-  .t-titulo h1::after{content:none}
-  .t-titulo p{margin:10px 0 0;font-size:.92rem;color:var(--t-mudo);max-width:46ch}
-  .t-ferr{display:flex;flex-direction:column;gap:8px;align-items:flex-end;max-width:100%}
-  .t-chips{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end}
-  .t-chip{font:500 .8rem/1 var(--titulo);color:var(--t-texto);background:rgba(20,20,20,.85);border:1px solid var(--t-linha);border-radius:999px;padding:6px 11px 6px 9px;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
-  .t-chip i{width:9px;height:9px;border-radius:50%;display:inline-block}
-  .t-chip[aria-pressed="false"]{opacity:.4}
-  .t-barra{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:flex-end;background:rgba(20,20,20,.9);border:1px solid var(--t-linha);padding:6px 8px}
-  .t-barra label{font:600 .72rem/1 var(--titulo);color:var(--t-mudo)}
-  .t-barra select,.t-barra input{font:15px var(--corpo);background:#000;color:var(--t-texto);border:1px solid var(--t-linha);padding:5px 7px;max-width:180px}
-  .t-barra input{width:210px}
-  .t-btn{font:600 .85rem/1 var(--titulo);border:0;padding:8px 12px;cursor:pointer;background:var(--t-sangue);color:#fff}
-  .t-btn.vazio{background:transparent;color:var(--t-texto);border:1px solid var(--t-linha)}
+  .t-cab h1{margin:16px 0 0;font:800 clamp(1.8rem,3.2vw,2.6rem)/1 var(--sans);font-stretch:75%;text-wrap:balance}
+  .t-cab .t-desc{margin:10px 0 0;font-size:var(--t-15);line-height:1.5;color:var(--papel-2);max-width:42ch}
+  .t-contagem{margin:8px 0 0;font-size:var(--t-13);color:var(--chumbo)}
+  .t-acoes{display:flex;flex-wrap:wrap;gap:var(--e2);margin-top:var(--e4)}
+  .t-acoes .botao-fino{padding:0 14px;background:rgba(22,22,22,.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .t-acoes .botao-fino[aria-expanded="true"]{background:var(--papel);color:var(--tinta);border-color:var(--papel)}
+  .t-acoes .botao-fino .n{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--nova-republica);color:#fff;font-size:12px;font-weight:700}
 
-  .t-dossie{position:fixed;z-index:6;top:calc(var(--topo) + 170px);right:max(16px,env(safe-area-inset-right,0px));bottom:calc(96px + env(safe-area-inset-bottom,0px));width:360px;background:var(--t-sup);border-top:5px solid var(--t-sangue);display:flex;flex-direction:column;min-height:0}
-  .t-dossie header{padding:16px 18px 12px;border-bottom:1px solid var(--t-linha);display:flex;justify-content:space-between;gap:10px}
-  .t-tipo{font:600 .72rem/1 var(--titulo);color:var(--t-mudo)}
-  .t-dossie h2{margin:6px 0 0;font:800 1.7rem/1 var(--titulo);font-stretch:70%;text-transform:uppercase;text-wrap:balance}
-  .t-fechar{background:none;border:0;color:var(--t-mudo);font-size:22px;cursor:pointer;line-height:1}
-  .t-corpo{padding:12px 18px 18px;overflow-y:auto;min-height:0;display:flex;flex-direction:column;gap:14px;font-size:.95rem;line-height:1.5;color:#ddd8d0}
+  /* Painéis: filtros (esquerda) e dossiê (direita), iguais ao dossiê do Globo */
+  .t-painel{position:fixed;z-index:6;display:flex;flex-direction:column;border-radius:12px;background:rgba(22,22,22,.94);border:1px solid var(--grafite);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);overflow:hidden;min-height:0}
+  .t-painel>header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:16px 16px 12px 18px;border-bottom:1px solid var(--grafite)}
+  .t-painel h2{margin:0;font:700 var(--t-22)/1.1 var(--sans);font-stretch:85%}
+  .t-painel .botao-icone{width:40px;height:40px;flex-shrink:0}
+  .t-corpo{padding:14px 18px 18px;overflow-y:auto;min-height:0;display:grid;gap:18px;align-content:start;font-size:var(--t-15);line-height:1.5;color:var(--papel-2)}
+  .t-ferr{left:max(16px,env(safe-area-inset-left));top:calc(var(--topo) + 20px);bottom:calc(112px + env(safe-area-inset-bottom));width:min(380px,calc(100vw - 32px))}
+  .t-dossie{right:max(16px,env(safe-area-inset-right));top:calc(var(--topo) + 20px);bottom:calc(112px + env(safe-area-inset-bottom));width:min(380px,calc(100vw - 32px))}
+  .t-grupo h3{margin:0 0 8px;font-size:var(--t-13);font-weight:600;color:var(--chumbo)}
+  .t-grupo .filtro-busca input{font-size:var(--t-17);padding:10px 0}
+  .t-chips{display:flex;flex-wrap:wrap;gap:6px}
+  .t-chips .chip{min-height:36px;padding:0 12px;font-size:var(--t-13)}
+  .t-chips .chip[aria-pressed="false"]{opacity:.55}
+  .t-chips .chip[aria-pressed="true"]{background:transparent;color:var(--papel);border-color:var(--papel-2)}
+  .t-grupo .seletor{display:flex;width:100%}
+  .t-grupo .seletor-op{flex:1;justify-content:center;padding:0 8px;font-size:var(--t-13);min-height:38px}
+  .t-caminho{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .t-caminho label{display:grid;gap:4px;font-size:var(--t-13);color:var(--chumbo)}
+  .t-caminho select{min-height:var(--alvo);width:100%;padding:0 10px;border-radius:var(--r2);border:1px solid var(--linha-ui);background:var(--breu);color:var(--papel);font-size:var(--t-15)}
+  .t-caminho .botao,.t-caminho .botao-fino{width:100%;white-space:nowrap;padding:0 10px;font-size:var(--t-15)}
+  .t-grupo p{margin:8px 0 0;font-size:var(--t-13);color:var(--chumbo)}
+
+  /* Dossiê */
+  .t-meta{margin:0;font-size:var(--t-13);font-weight:600;color:var(--sangue-texto)}
+  .t-dossie h2{margin:6px 0 0;font:800 1.9rem/1 var(--sans);font-stretch:70%;text-transform:uppercase;text-wrap:balance}
   .t-corpo p{margin:0}
-  .t-ler{align-self:flex-start;font:600 .95rem/1 var(--titulo);color:var(--t-texto);text-decoration:none;padding-bottom:4px;border-bottom:2px solid var(--t-sangue)}
-  .t-desf dt{font:600 .85rem/1.2 var(--titulo);color:var(--t-sangue)}
-  .t-desf dd{margin:4px 0 0}
-  .t-grp h3{margin:0 0 6px;font:600 .75rem/1 var(--titulo);color:var(--t-mudo);display:flex;align-items:center;gap:8px}
-  .t-grp h3 i{width:16px;height:3px;display:inline-block}
-  .t-grp ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
-  .t-grp li button{all:unset;cursor:pointer;display:block;width:100%;box-sizing:border-box;padding:5px 6px}
+  .t-ler{justify-self:start}
+  .t-desf{margin:0}
+  .t-desf dt{font-size:var(--t-13);font-weight:600;color:var(--chumbo)}
+  .t-desf dd{margin:4px 0 0;color:var(--papel)}
+  .t-grp h3{margin:0 0 6px;font-size:var(--t-13);font-weight:600;color:var(--chumbo);display:flex;align-items:center;gap:8px}
+  .t-grp h3 i{width:16px;height:3px;border-radius:2px;display:inline-block}
+  .t-grp ul{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+  .t-grp li button{all:unset;box-sizing:border-box;cursor:pointer;display:block;width:100%;padding:8px;border-radius:8px}
   .t-grp li button:hover,.t-grp li button:focus-visible{background:#000}
-  .t-grp li b{font:600 .98rem/1.3 var(--titulo);color:var(--t-texto)}
-  .t-grp li span{display:block;color:var(--t-mudo);font-size:.85rem;line-height:1.35}
+  .t-grp li button:focus-visible{outline:2px solid var(--papel)}
+  .t-grp li b{font-weight:600;color:var(--papel)}
+  .t-grp li span{display:block;font-size:var(--t-13);color:var(--papel-2);line-height:1.4;margin-top:2px}
   .t-passos{list-style:none;margin:0;padding:0}
-  .t-passos>li{display:grid;grid-template-columns:18px 1fr;gap:8px;padding:4px 0}
-  .t-passos>li .n{width:10px;height:10px;border-radius:50%;margin-top:8px;margin-left:4px}
-  .t-passos>li.aresta{display:block;margin-left:8px;padding:2px 0 2px 16px;border-left:2px solid var(--t-linha);color:var(--t-mudo);font-size:.85rem;font-style:italic}
-  .t-nota{font-size:.8rem;color:var(--t-mudo);border-top:1px solid var(--t-linha);padding-top:10px}
+  .t-passos>li{display:grid;grid-template-columns:18px 1fr;gap:8px;padding:2px 0}
+  .t-passos>li .n{width:10px;height:10px;border-radius:50%;margin-top:14px;margin-left:4px}
+  .t-passos>li.aresta{display:block;margin-left:8px;padding:2px 0 2px 16px;border-left:2px solid var(--grafite);color:var(--chumbo);font-size:var(--t-13)}
+  .t-nota{font-size:var(--t-13);color:var(--chumbo);border-top:1px solid var(--grafite);padding-top:12px}
 
-  .t-pe{position:fixed;z-index:5;left:0;right:0;bottom:0;padding-top:10px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));background:linear-gradient(to top,var(--t-fundo) 55%,transparent);display:flex;flex-wrap:wrap;gap:8px 24px;align-items:flex-end}
-  .t-legenda{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.8rem;color:var(--t-mudo)}
-  .t-legenda span{display:inline-flex;align-items:center;gap:6px}
-  .t-legenda i{display:inline-block;width:20px;border-top-style:solid}
-  .t-tempo{flex:1 1 320px;min-width:0}
-  .t-tempo-cab{display:flex;justify-content:space-between;align-items:baseline}
-  .t-tempo-cab label{font:600 .72rem/1 var(--titulo);color:var(--t-mudo)}
-  .t-ano{font:700 1.6rem/1 var(--titulo);font-variant-numeric:tabular-nums}
-  .t-tempo input{width:100%;accent-color:var(--t-sangue)}
-  .t-marcas{display:flex;justify-content:space-between;font:500 .72rem/1 var(--titulo);color:var(--t-mudo);font-variant-numeric:tabular-nums}
-  .t-carregando{position:fixed;inset:var(--topo) 0 0 0;display:grid;place-items:center;font:600 .85rem/1 var(--titulo);color:var(--t-mudo)}
+  /* Rodapé: legenda e linha do tempo, como no Globo */
+  .t-pe{position:fixed;z-index:5;left:0;right:0;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,420px);align-items:end;gap:8px 32px;padding:12px max(16px,env(safe-area-inset-right)) calc(12px + env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));background:linear-gradient(to top,#07080a 55%,transparent);font-size:var(--t-13);color:var(--papel-2)}
+  .t-legenda{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0;list-style:none}
+  .t-legenda li{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+  .t-legenda i{display:inline-block;width:20px;height:3px;border-radius:2px}
+  .t-tempo-cab{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+  .t-tempo-cab label{color:var(--papel-2)}
+  .t-ano{font:800 var(--t-22)/1 var(--sans);font-stretch:80%;font-variant-numeric:tabular-nums;color:var(--papel)}
+  .t-tempo input{width:100%;height:28px;margin:2px 0 0;accent-color:var(--nova-republica)}
+  .t-marcas{display:flex;justify-content:space-between;color:var(--chumbo);font-variant-numeric:tabular-nums}
 
-  .t-abas{display:flex;gap:8px;margin-top:12px}
-  .t-abas button{display:inline-flex;align-items:center;gap:7px;min-height:40px;padding:0 13px;font:500 .95rem/1 var(--titulo);background:rgba(20,20,20,.92);color:var(--t-texto);border:1px solid var(--t-linha);cursor:pointer}
-  .t-abas button[aria-expanded="true"]{border-color:var(--t-sangue);background:#1a0a0c}
-  .t-abrir-ferr{display:none!important}
-  .t-ajuda{position:fixed;z-index:7;top:calc(var(--topo) + 74px);left:max(16px,env(safe-area-inset-left,0px));width:min(430px,calc(100vw - 32px));max-height:calc(100% - var(--topo) - 130px);overflow-y:auto;background:var(--t-sup);border:1px solid var(--t-linha);border-top:5px solid var(--t-sangue);padding:18px 20px 20px;font-size:.95rem;line-height:1.55;color:#ddd8d0;box-shadow:0 10px 40px rgba(0,0,0,.7)}
-  .t-ajuda h2{margin:0 0 10px;font:700 1.3rem/1 var(--titulo);font-stretch:85%;color:var(--t-texto);display:flex;justify-content:space-between;align-items:center}
-  .t-ajuda ol{margin:0;padding-left:1.2em;display:grid;gap:8px}
-  .t-ajuda b{color:#fff}
-  .t-ajuda p{margin:12px 0 0;color:var(--t-mudo);font-size:.88rem}
+  /* Ajuda: janela no centro, igual à busca */
+  .t-ajuda{width:min(560px,calc(100vw - 24px));max-height:min(84vh,720px);margin:auto;padding:0;background:var(--carvao);color:var(--papel);border:1px solid var(--grafite);border-radius:var(--r2);box-shadow:0 30px 80px rgba(0,0,0,.8)}
+  .t-ajuda::backdrop{background:rgba(0,0,0,.72)}
+  .t-ajuda-in{padding:22px 24px 24px;display:grid;gap:14px}
+  .t-ajuda header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+  .t-ajuda h2{margin:0;font:700 var(--t-26)/1.1 var(--sans);font-stretch:85%}
+  .t-ajuda ol{margin:0;padding-left:1.2em;display:grid;gap:10px;font:400 var(--t-17)/1.5 var(--serif);color:var(--papel-2)}
+  .t-ajuda b{color:var(--papel);font-family:var(--sans);font-weight:600}
+  .t-ajuda p{margin:0;font-size:var(--t-15);color:var(--chumbo)}
+  .t-ajuda .botao{justify-self:start}
+
   @media (max-width:820px){
-    .t-cab{flex-direction:column;top:calc(var(--topo) + 10px);gap:8px}
-    .t-titulo h1{font-size:1.6rem}
-    .t-titulo h1::after{margin-top:8px;height:4px;width:48px}
-    .t-abrir-ferr{display:inline-flex!important}
-    .t-ferr{display:none;background:rgba(7,8,10,.96);border:1px solid var(--t-linha);padding:10px;max-height:calc(100svh - var(--topo) - 210px);overflow-y:auto}
-    .t-cab.ferr-aberta .t-ferr{display:flex}
-    .t-barra input{width:auto;flex:1;min-width:0}
-    .t-barra select{max-width:none;flex:1 1 38%;min-width:110px}
-    .t-btn{flex:1}
-    .t-barra{width:100%}
-    .t-ajuda{top:calc(var(--topo) + 66px);max-height:calc(100svh - var(--topo) - 170px)}
-    .t-ferr{align-items:stretch;width:100%}
-    .t-chips,.t-barra{justify-content:flex-start}
-    .t-titulo p,.t-legenda{display:none}
-    .t-dossie{left:0;right:0;width:auto;top:auto;bottom:0;max-height:60%;padding-bottom:env(safe-area-inset-bottom,0px)}
+    .t-cab{top:calc(var(--topo) + 12px);right:16px;width:auto}
+    .t-cab h1{font-size:1.5rem;margin-top:10px}
+    .t-cab .t-desc,.t-contagem{display:none}
+    .t-acoes{margin-top:10px}
+    .t-acoes{flex-wrap:nowrap}
+    .t-acoes .botao-fino{min-height:var(--alvo);padding:0 12px;font-size:var(--t-13)}
+    .t-acoes .t-rot{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+    .t-acoes .botao-fino:has(.t-rot){width:var(--alvo);padding:0}
+    .t-painel{left:0!important;right:0!important;top:auto!important;bottom:0!important;width:auto!important;max-height:68%;border-radius:14px 14px 0 0;z-index:8;padding-bottom:env(safe-area-inset-bottom)}
+    .t-pe{grid-template-columns:1fr;gap:6px}
+    .t-legenda{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:14px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
   </style>
@@ -129,87 +132,109 @@
 <body class="pagina-teia sec-nova-republica">
   {{ partial "topo.html" . }}
 
-  <div id="t-grafo" aria-label="Grafo 3D de casos, pessoas, órgãos e lugares"></div>
+  <div id="t-grafo" role="img" aria-label="Grafo 3D que liga casos, pessoas, empresas, órgãos e lugares. A mesma informação está em lista na página Pessoas."></div>
   <div id="t-rotulos" aria-hidden="true"></div>
   <div class="t-carregando" id="t-carregando">Montando a teia…</div>
 
   <div class="t-cab" id="conteudo" tabindex="-1">
-    <div class="t-titulo">
-      {{ partial "seletor-mapas.html" . }}
-      <h1>{{ .Title }}</h1>
-      <p><span id="t-contagem"></span> Arraste para girar, role para aproximar e clique num ponto para abrir o dossiê. Passe o mouse sobre um ponto para ver o nome.</p>
-      <div class="t-abas">
-        <button type="button" id="t-ajuda-btn" aria-expanded="false" aria-controls="t-ajuda">{{ partial "icone.html" "ajuda" }}Como usar</button>
-        <button type="button" class="t-abrir-ferr" id="t-ferr-btn" aria-expanded="false" aria-controls="t-ferr">{{ partial "icone.html" "filtro" }}Filtros e busca</button>
-      </div>
-    </div>
-    <div class="t-ferr" id="t-ferr">
-      <div class="t-chips" id="t-chips" role="group" aria-label="Mostrar tipos"></div>
-      <div class="t-barra">
-        <label id="t-rot-lbl">Nomes</label>
-        <div class="t-seg" role="group" aria-labelledby="t-rot-lbl" id="t-rot">
-          <button type="button" data-m="casos" aria-pressed="true">Casos</button>
-          <button type="button" data-m="principais" aria-pressed="false">Principais</button>
-          <button type="button" data-m="todos" aria-pressed="false">Todos</button>
-          <button type="button" data-m="nenhum" aria-pressed="false">Nenhum</button>
-        </div>
-      </div>
-      <div class="t-barra">
-        <label for="t-busca">Buscar</label>
-        <input id="t-busca" list="t-lista" placeholder="caso, pessoa, lugar…" autocomplete="off">
-        <datalist id="t-lista"></datalist>
-      </div>
-      <div class="t-barra">
-        <label for="t-de">Caminho</label>
-        <select id="t-de"></select>
-        <label for="t-ate">até</label>
-        <select id="t-ate"></select>
-        <button class="t-btn" id="t-ligar" type="button">Ligar</button>
-        <button class="t-btn vazio" id="t-limpar" type="button">Limpar</button>
-      </div>
+    {{ partial "seletor-mapas.html" . }}
+    <h1>{{ .Title }}</h1>
+    <p class="t-desc">{{ .Description }} Clique num ponto para abrir o dossiê.</p>
+    <p class="t-contagem" id="t-contagem"></p>
+    <div class="t-acoes">
+      <button type="button" class="botao botao-fino" id="t-ferr-btn" aria-expanded="false" aria-controls="t-ferr">{{ partial "icone.html" "filtro" }}<span>Buscar e filtrar</span><span class="n" id="t-ferr-n" hidden></span></button>
+      <button type="button" class="botao botao-fino" id="t-ajuda-btn" aria-haspopup="dialog" aria-controls="t-ajuda">{{ partial "icone.html" "ajuda" }}<span class="t-rot">Como usar</span></button>
+      <a class="botao botao-fino" href="{{ "pessoas/" | relURL }}">{{ partial "icone.html" "pessoas" }}<span class="t-rot">Em lista</span></a>
     </div>
   </div>
 
-  <section class="t-ajuda" id="t-ajuda" hidden aria-labelledby="t-ajuda-t">
-    <h2 id="t-ajuda-t">Como usar a Teia <button class="t-fechar" type="button" id="t-ajuda-fechar" aria-label="Fechar ajuda">×</button></h2>
-    <ol>
-      <li><b>Cada ponto</b> é um caso, uma pessoa, uma empresa, um órgão, um partido ou um lugar. As cores estão na legenda.</li>
-      <li><b>Cada linha</b> é uma ligação: quem foi condenado, cassado, delatou, foi citado ou teve o processo anulado em cada caso.</li>
-      <li><b>Toque ou clique</b> num ponto para abrir o dossiê, com o resumo e as ligações. No dossiê, toque num nome para ir até ele.</li>
-      <li><b>Arraste</b> para girar e use a roda do mouse, ou dois dedos, para aproximar.</li>
-      <li>Em <b>Filtros e busca</b>, procure um nome, escolha quais tipos aparecem e use <b>Caminho</b> para ver como duas pessoas ou casos se conectam.</li>
-      <li>A <b>linha do tempo</b>, embaixo, mostra só os casos que começaram até o ano escolhido.</li>
-    </ol>
-    <p>Estar na Teia não significa ter sido condenado. O tipo de cada ligação diz qual foi o papel da pessoa no caso.</p>
+  <section class="t-painel t-ferr" id="t-ferr" hidden aria-labelledby="t-ferr-t">
+    <header>
+      <h2 id="t-ferr-t">Buscar e filtrar</h2>
+      <button class="botao-icone" type="button" id="t-ferr-fechar" aria-label="Fechar buscar e filtrar">{{ partial "icone.html" "fechar" }}</button>
+    </header>
+    <div class="t-corpo">
+      <div class="t-grupo">
+        <h3><label for="t-busca">Ir até um nome</label></h3>
+        <div class="filtro-busca">
+          {{ partial "icone.html" "busca" }}
+          <input id="t-busca" type="search" list="t-lista" placeholder="Caso, pessoa, empresa ou lugar" autocomplete="off">
+        </div>
+        <datalist id="t-lista"></datalist>
+      </div>
+      <div class="t-grupo">
+        <h3 id="t-chips-t">Mostrar no grafo</h3>
+        <div class="t-chips" id="t-chips" role="group" aria-labelledby="t-chips-t"></div>
+      </div>
+      <div class="t-grupo">
+        <h3 id="t-rot-lbl">Nomes escritos no grafo</h3>
+        <div class="seletor" role="group" aria-labelledby="t-rot-lbl" id="t-rot">
+          <button type="button" class="seletor-op" data-m="casos" aria-pressed="true">Casos</button>
+          <button type="button" class="seletor-op" data-m="principais" aria-pressed="false">Principais</button>
+          <button type="button" class="seletor-op" data-m="todos" aria-pressed="false">Todos</button>
+          <button type="button" class="seletor-op" data-m="nenhum" aria-pressed="false">Nenhum</button>
+        </div>
+      </div>
+      <div class="t-grupo">
+        <h3>Caminho entre duas pessoas</h3>
+        <div class="t-caminho">
+          <label>De<select id="t-de"></select></label>
+          <label>Até<select id="t-ate"></select></label>
+          <button class="botao" id="t-ligar" type="button">Ver caminho</button>
+          <button class="botao botao-fino" id="t-limpar" type="button">Limpar</button>
+        </div>
+        <p>Mostra por quais casos, empresas e órgãos as duas pessoas se conectam.</p>
+      </div>
+    </div>
   </section>
 
-  <aside class="t-dossie" id="t-dossie" hidden aria-live="polite">
+  <dialog class="t-ajuda" id="t-ajuda" aria-labelledby="t-ajuda-t">
+    <form method="dialog" class="t-ajuda-in">
+      <header>
+        <h2 id="t-ajuda-t">Como usar a Teia</h2>
+        <button class="botao-icone" value="fechar" aria-label="Fechar">{{ partial "icone.html" "fechar" }}</button>
+      </header>
+      <ol>
+        <li><b>Cada ponto</b> é um caso, uma pessoa, uma empresa, um órgão, um partido ou um lugar.</li>
+        <li><b>Cada linha</b> é uma ligação. A cor diz o papel da pessoa no caso: condenada, cassada, delatora, citada ou absolvida. A legenda fica embaixo.</li>
+        <li><b>Clique ou toque</b> num ponto para abrir o dossiê. No dossiê, toque num nome para ir até ele.</li>
+        <li><b>Arraste</b> para girar. Use a roda do mouse, ou dois dedos, para aproximar.</li>
+        <li>Em <b>Buscar e filtrar</b>, vá direto a um nome, escolha o que aparece e veja o caminho entre duas pessoas.</li>
+        <li>A <b>linha do tempo</b>, embaixo, mostra só os casos que começaram até o ano escolhido.</li>
+      </ol>
+      <p>Estar na Teia não significa ter sido condenado. Prefere ler em lista? A página <a href="{{ "pessoas/" | relURL }}">Pessoas</a> tem as mesmas ligações.</p>
+      <button class="botao" value="ok">Entendi</button>
+    </form>
+  </dialog>
+
+  <aside class="t-painel t-dossie" id="t-dossie" hidden aria-labelledby="t-d-titulo">
     <header>
-      <div><div class="t-tipo" id="t-d-tipo"></div><h2 id="t-d-titulo"></h2></div>
-      <button class="t-fechar" id="t-d-fechar" aria-label="Fechar dossiê">×</button>
+      <div><p class="t-meta" id="t-d-tipo"></p><h2 id="t-d-titulo"></h2></div>
+      <button class="botao-icone" type="button" id="t-d-fechar" aria-label="Fechar dossiê">{{ partial "icone.html" "fechar" }}</button>
     </header>
-    <div class="t-corpo" id="t-d-corpo"></div>
+    <div class="t-corpo" id="t-d-corpo" aria-live="polite"></div>
   </aside>
 
   <div class="t-pe">
-    <div class="t-legenda" id="t-legenda"></div>
+    <ul class="t-legenda" id="t-legenda" aria-label="Cores das ligações" tabindex="0"></ul>
     <div class="t-tempo">
-      <div class="t-tempo-cab"><label for="t-ano">Linha do tempo · casos iniciados até</label><span class="t-ano" id="t-ano-saida"></span></div>
+      <div class="t-tempo-cab"><label for="t-ano">Casos que começaram até</label><output class="t-ano" id="t-ano-saida" for="t-ano"></output></div>
       <input type="range" id="t-ano" step="1">
-      <div class="t-marcas" id="t-marcas"></div>
+      <div class="t-marcas" id="t-marcas" aria-hidden="true"></div>
     </div>
   </div>
 
   <script>
   (function(){
-    var cab=document.querySelector('.t-cab'), fb=document.getElementById('t-ferr-btn'),
-        ab=document.getElementById('t-ajuda-btn'), aj=document.getElementById('t-ajuda');
-    fb.addEventListener('click',function(){var on=!cab.classList.contains('ferr-aberta');cab.classList.toggle('ferr-aberta',on);fb.setAttribute('aria-expanded',String(on));});
-    function ajuda(on){aj.hidden=!on;ab.setAttribute('aria-expanded',String(on));if(on)document.getElementById('t-ajuda-fechar').focus();}
-    ab.addEventListener('click',function(){ajuda(aj.hidden);});
-    document.getElementById('t-ajuda-fechar').addEventListener('click',function(){ajuda(false);ab.focus();});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!aj.hidden)ajuda(false);});
-    try{if(!localStorage.getItem('teia-ajuda-vista')){ajuda(true);localStorage.setItem('teia-ajuda-vista','1');}}catch(e){}
+    var fb=document.getElementById('t-ferr-btn'), fp=document.getElementById('t-ferr'),
+        ab=document.getElementById('t-ajuda-btn'), aj=document.getElementById('t-ajuda'), dos=document.getElementById('t-dossie');
+    window.teiaFerr=function(on,foco){fp.hidden=!on;fb.setAttribute('aria-expanded',String(on));if(on&&innerWidth<=820)dos.hidden=true;if(on&&foco)document.getElementById('t-busca').focus();if(!on&&foco)fb.focus();};
+    fb.addEventListener('click',function(){teiaFerr(fp.hidden,true);});
+    document.getElementById('t-ferr-fechar').addEventListener('click',function(){teiaFerr(false,true);});
+    ab.addEventListener('click',function(){aj.showModal();});
+    aj.addEventListener('click',function(e){if(e.target===aj)aj.close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!fp.hidden&&!aj.open)teiaFerr(false,true);});
+    try{if(!localStorage.getItem('teia-ajuda-vista')){aj.showModal();localStorage.setItem('teia-ajuda-vista','1');}}catch(e){}
   })();
   </script>
   <script>window.TEIA = {{ $dados | jsonify | safeJS }};</script>
@@ -278,7 +303,7 @@
 
   /* ===== grafo ===== */
   const el = document.getElementById("t-grafo");
-  const tip = (t,s) => `<div style="font:13px 'Source Serif 4',Georgia,serif;background:#141414;border:1px solid #262626;padding:5px 9px;color:#f1ede6;max-width:280px">${esc(t)}${s?`<br><span style="color:#9a958d">${esc(s)}</span>`:""}</div>`;
+  const tip = (t,s) => `<div style="font:500 13px/1.35 Archivo,Arial,sans-serif;background:#161616;border:1px solid #2e2e2e;border-radius:6px;padding:6px 10px;color:#ece7df;max-width:280px">${esc(t)}${s?`<br><span style="color:#a39e96">${esc(s)}</span>`:""}</div>`;
   const G = ForceGraph3D({controlType:"orbit"})(el)
     .backgroundColor("#07080a").showNavInfo(false)
     .graphData({nodes:N, links})
@@ -303,11 +328,7 @@
   G.d3VelocityDecay(0.35).warmupTicks(120).cooldownTicks(200);
   let enquadrado = false;
   G.onEngineStop(() => { if(!enquadrado && !location.hash){ enquadrado = true; G.zoomToFit(1000, 10); } });
-  function dimensionar(){
-    G.width(el.clientWidth).height(el.clientHeight);
-    const ferr=document.querySelector(".t-ferr"), dos=document.getElementById("t-dossie");
-    if(ferr && dos){ dos.style.top = innerWidth>820 ? (ferr.getBoundingClientRect().bottom + 12) + "px" : ""; }
-  }
+  function dimensionar(){ G.width(el.clientWidth).height(el.clientHeight); }
   addEventListener("resize", dimensionar); dimensionar();
 
   const rotEl = document.getElementById("t-rotulos"), rot = {};
@@ -367,7 +388,7 @@
     document.getElementById("t-d-titulo").textContent = n.n;
     let h = n.d ? `<p>${esc(n.d)}</p>` : "";
     if(n.f) h += `<dl class="t-desf"><dt>Desfecho</dt><dd>${esc(n.f)}</dd></dl>`;
-    if(n.url) h += `<a class="t-ler" href="${esc(n.url)}">Ler a matéria completa →</a>`;
+    if(n.url) h += `<a class="botao t-ler" href="${esc(n.url)}">Ler o caso</a>`;
     const g={}; adj[id].forEach(a=>{ (g[a.e.k] ||= []).push(a); });
     ORDEM.forEach(k=>{
       if(!g[k]) return;
@@ -375,7 +396,7 @@
       h += `<div class="t-grp"><h3><i style="background:${LIGA[k].cor}"></i>${LIGA[k].label}</h3><ul>` + it.map(a=>`<li><button data-id="${esc(a.o)}"><b>${esc(byId[a.o].n)}</b><span>${esc(a.e.l)}</span></button></li>`).join("") + `</ul></div>`;
     });
     h += `<p class="t-nota">Fonte: matérias e posts do ${esc(document.title.split(" · ").pop())}. A cor de cada ligação indica a natureza do vínculo; aparecer na teia não significa culpa.</p>`;
-    corpo.innerHTML=h; dossie.hidden=false; atualizar();
+    corpo.innerHTML=h; dossie.hidden=false; if(innerWidth<=820) window.teiaFerr(false); atualizar();
     try{ history.replaceState(null,"","#"+(n.slug||n.id)); }catch(e){}
     if(voar && n.x!==undefined){ const dist=n.k==="caso"?420:260, r=1+dist/Math.hypot(n.x||1,n.y||1,n.z||1); G.cameraPosition({x:n.x*r,y:n.y*r,z:n.z*r}, n, 900); }
   }
@@ -385,13 +406,14 @@
 
   /* ===== filtros, legenda, tempo ===== */
   const chips=document.getElementById("t-chips");
-  Object.entries(TIPOS).forEach(([k,t])=>{ const b=document.createElement("button"); b.className="t-chip"; b.type="button"; b.id="t-chip-"+k; b.setAttribute("aria-pressed","true"); b.innerHTML=`<i style="background:${t.cor}"></i>${t.label}`; b.onclick=()=>{ tipoOn[k]=!tipoOn[k]; b.setAttribute("aria-pressed",String(tipoOn[k])); atualizar(); }; chips.appendChild(b); });
-  document.getElementById("t-legenda").innerHTML = ["condenado","cassado","delator","anulado","citado","agente","caso"].map(k=>`<span><i style="border-top-color:${LIGA[k].cor};border-top-width:${Math.max(2,LIGA[k].w*1.4)}px"></i>${LIGA[k].label}</span>`).join("");
+  Object.entries(TIPOS).forEach(([k,t])=>{ const b=document.createElement("button"); b.className="chip"; b.type="button"; b.id="t-chip-"+k; b.setAttribute("aria-pressed","true"); b.innerHTML=`<i class="ponto" style="background:${t.cor}" aria-hidden="true"></i>${t.label}`; b.onclick=()=>{ tipoOn[k]=!tipoOn[k]; b.setAttribute("aria-pressed",String(tipoOn[k])); contarFiltros(); atualizar(); }; chips.appendChild(b); });
+  document.getElementById("t-legenda").innerHTML = ["condenado","cassado","delator","anulado","citado","agente","caso"].map(k=>`<li><i style="background:${LIGA[k].cor}" aria-hidden="true"></i>${LIGA[k].label}</li>`).join("");
+  function contarFiltros(){ const n=Object.values(tipoOn).filter(v=>!v).length+(ano<ANO_MAX?1:0); const e=document.getElementById("t-ferr-n"); e.hidden=!n; e.textContent=n; e.setAttribute("aria-label", n+" filtro"+(n===1?"":"s")+" ativo"+(n===1?"":"s")); }
   const anoEl=document.getElementById("t-ano"), anoOut=document.getElementById("t-ano-saida");
   anoEl.min=ANO_MIN; anoEl.max=ANO_MAX; anoEl.value=ANO_MAX; anoOut.textContent=ANO_MAX;
   const passo=(ANO_MAX-ANO_MIN)/4; document.getElementById("t-marcas").innerHTML=[0,1,2,3,4].map(i=>`<span>${Math.round(ANO_MIN+passo*i)}</span>`).join("");
-  anoEl.addEventListener("input",()=>{ ano=+anoEl.value; anoOut.textContent=ano; atualizar(); });
-  function sincronizar(){ anoEl.value=ano; anoOut.textContent=ano; Object.keys(tipoOn).forEach(k=>document.getElementById("t-chip-"+k).setAttribute("aria-pressed",String(tipoOn[k]))); atualizar(); }
+  anoEl.addEventListener("input",()=>{ ano=+anoEl.value; anoOut.textContent=ano; contarFiltros(); atualizar(); });
+  function sincronizar(){ anoEl.value=ano; anoOut.textContent=ano; Object.keys(tipoOn).forEach(k=>document.getElementById("t-chip-"+k).setAttribute("aria-pressed",String(tipoOn[k]))); contarFiltros(); atualizar(); }
 
   document.getElementById("t-rot").addEventListener("click", e=>{
     const b=e.target.closest("button[data-m]"); if(!b) return;
@@ -429,7 +451,7 @@
     let h=`<p>${p.nos.length-1} passos separam as duas pessoas nos casos publicados.</p><ol class="t-passos">`;
     p.nos.forEach((id,i)=>{ const n=byId[id]; h+=`<li><span class="n" style="background:${TIPOS[n.k].cor}"></span><div class="t-grp"><ul><li><button data-id="${esc(id)}"><b>${esc(n.n)}</b><span>${TIPOS[n.k].label}</span></button></li></ul></div></li>`; if(p.ar[i]) h+=`<li class="aresta">${esc(p.ar[i].l)}</li>`; });
     h+=`</ol><p class="t-nota">O caminho mostra como os casos se conectam, não uma relação direta entre as pessoas.</p>`;
-    corpo.innerHTML=h; dossie.hidden=false; atualizar(); G.zoomToFit(900,160,n=>caminhoNos&&caminhoNos.has(n.id));
+    corpo.innerHTML=h; dossie.hidden=false; if(innerWidth<=820) window.teiaFerr(false); atualizar(); G.zoomToFit(900,160,n=>caminhoNos&&caminhoNos.has(n.id));
   });
   document.getElementById("t-limpar").addEventListener("click", fechar);
 

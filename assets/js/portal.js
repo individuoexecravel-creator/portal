@@ -346,7 +346,8 @@
   var botaoLeitura = $('[data-leitura]'), painelLeitura = $('#leitura');
   if (botaoLeitura && painelLeitura) {
     var escalas = [0.9, 1, 1.1, 1.2, 1.35];
-    var temaAtual = function () { return raiz.getAttribute('data-tema') === 'claro' ? 'claro' : 'escuro'; };
+    var temaFixo = raiz.hasAttribute('data-tema-fixo');
+    var temaAtual = function () { if (temaFixo) return guarda.ler('portal-tema') === 'claro' ? 'claro' : 'escuro'; return raiz.getAttribute('data-tema') === 'claro' ? 'claro' : 'escuro'; };
     var escalaAtual = function () { var e = parseFloat(getComputedStyle(raiz).getPropertyValue('--escala')) || 1; return escalas.reduce(function (a, b) { return Math.abs(b - e) < Math.abs(a - e) ? b : a; }); };
     var corTopo = $('meta[name="theme-color"]'), esquema = $('meta[name="color-scheme"]');
     var mostrarLeitura = function () {
@@ -355,8 +356,8 @@
       $('[data-tam-valor]', painelLeitura).textContent = Math.round(e * 100) + '%';
       $('[data-tam="-1"]', painelLeitura).disabled = e <= escalas[0];
       $('[data-tam="1"]', painelLeitura).disabled = e >= escalas[escalas.length - 1];
-      if (corTopo) corTopo.content = t === 'claro' ? '#f7f3ec' : '#000000';
-      if (esquema) esquema.content = t === 'claro' ? 'light' : 'dark';
+      if (!temaFixo && corTopo) corTopo.content = t === 'claro' ? '#f7f3ec' : '#000000';
+      if (!temaFixo && esquema) esquema.content = t === 'claro' ? 'light' : 'dark';
     };
     var fecharLeitura = function (foco) { painelLeitura.hidden = true; botaoLeitura.setAttribute('aria-expanded', 'false'); if (foco) botaoLeitura.focus(); };
     botaoLeitura.addEventListener('click', function () {
@@ -366,7 +367,7 @@
     });
     $$('[data-tema-op]', painelLeitura).forEach(function (b) {
       b.addEventListener('click', function () {
-        if (b.dataset.temaOp === 'claro') raiz.setAttribute('data-tema', 'claro'); else raiz.removeAttribute('data-tema');
+        if (!temaFixo) { if (b.dataset.temaOp === 'claro') raiz.setAttribute('data-tema', 'claro'); else raiz.removeAttribute('data-tema'); }
         guarda.por('portal-tema', b.dataset.temaOp); mostrarLeitura();
       });
     });
@@ -559,5 +560,46 @@
     sels.b.addEventListener('change', function () { preencher(true); });
     $('[data-cmp-trocar]', c).addEventListener('click', function () { var x = sels.a.value; sels.a.value = sels.b.value; sels.b.value = x; preencher(true); });
     preencher(false);
+  });
+
+  /* ---------- Quanto custou: busca, filtro e ordem da tabela ---------- */
+  $$('[data-v-tabela]').forEach(function (sec) {
+    var corpo = $('tbody', sec), linhas = $$('tbody tr', sec), q = $('[data-vt-q]', sec), conta = $('[data-vt-conta]', sec), vazio = $('[data-vt-vazio]', sec);
+    var tipo = '', ord = 'valor', dir = -1;
+    linhas.forEach(function (l) { l._b = norm(l.dataset.busca); });
+    var aplicar = function () {
+      var termos = norm(q.value).split(/\s+/).filter(Boolean), n = 0;
+      linhas.forEach(function (l) {
+        var ok = (!tipo || l.dataset.tipo === tipo) && termos.every(function (t) { return l._b.indexOf(t) >= 0; });
+        l.hidden = !ok; if (ok) n++;
+      });
+      conta.textContent = n + (n === 1 ? ' valor' : ' valores');
+      vazio.hidden = n > 0;
+    };
+    var ordenar = function () {
+      linhas.slice().sort(function (a, b) {
+        if (ord === 'caso') return dir * a.dataset.caso.localeCompare(b.dataset.caso, 'pt');
+        if (ord === 'ano') return dir * (a.dataset.ano - b.dataset.ano) || (b.dataset.valor - a.dataset.valor);
+        return (a.dataset.moeda - b.dataset.moeda) || dir * (a.dataset.valor - b.dataset.valor);
+      }).forEach(function (l) { corpo.appendChild(l); });
+      $$('thead th', sec).forEach(function (th) {
+        var b = $('[data-vt-ord]', th); if (!b) return;
+        th.setAttribute('aria-sort', b.dataset.vtOrd === ord ? (dir > 0 ? 'ascending' : 'descending') : 'none');
+      });
+    };
+    $$('[data-vt-ord]', sec).forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (ord === b.dataset.vtOrd) dir = -dir; else { ord = b.dataset.vtOrd; dir = ord === 'caso' ? 1 : -1; }
+        ordenar();
+      });
+    });
+    $$('[data-vt-tipo]', sec).forEach(function (c) {
+      c.addEventListener('click', function () {
+        tipo = c.dataset.vtTipo;
+        $$('[data-vt-tipo]', sec).forEach(function (x) { x.setAttribute('aria-pressed', String(x === c)); });
+        aplicar();
+      });
+    });
+    var tm; q.addEventListener('input', function () { clearTimeout(tm); tm = setTimeout(aplicar, 120); });
   });
 })();
