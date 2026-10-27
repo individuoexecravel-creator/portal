@@ -15,6 +15,20 @@ ficha:
     valor: "Gravações telefônicas feitas pela Polícia Federal, reveladas pela revista IstoÉ em novembro de 1995"
   - item: "Desfecho"
     valor: "Queda do chefe do cerimonial e do ministro da Aeronáutica; Senado mantém o contrato; ninguém é condenado"
+justica:
+  inicio: 1994
+  fim: 1995
+  desfecho: sem-punicao
+  nota: "Caem o chefe do cerimonial e o ministro da Aeronáutica; o Senado mantém o contrato."
+fontes:
+  - titulo: "Mensagem (SF) nº 284, de 1995: projeto SIVAM"
+    veiculo: "Senado Federal"
+    ano: 1995
+    url: "https://www25.senado.leg.br/web/atividade/materias/-/materia/6822"
+  - titulo: "Raytheon denies bribery in Brazil"
+    veiculo: "The Spokesman-Review"
+    ano: 1995
+    url: "https://www.spokesman.com/stories/1995/nov/19/raytheon-denies-bribery-in-brazil/"
 ---
 
 A Amazônia ocupa mais da metade do território brasileiro e, no início dos anos 1990, era quase invisível para o Estado. Não havia radares suficientes para controlar voos, rastrear o narcotráfico, acompanhar o desmatamento ou prever o clima. O **Sistema de Vigilância da Amazônia**, o **SIVAM**, foi criado para resolver isso. Acabou virando também um dos primeiros escândalos do governo Fernando Henrique Cardoso.

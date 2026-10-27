@@ -28,6 +28,20 @@ valores:
     ano: 2003
     descricao: "Dinheiro vivo encontrado com a ex-mulher do juiz"
     fonte: "Polícia Federal"
+uf: "SP"
+justica:
+  inicio: 2003
+  fim: 2015
+  desfecho: condenacao
+  nota: "Rocha Mattos é condenado e perde o cargo; em 2015, nova condenação."
+fontes:
+  - titulo: "Operação Anaconda: juiz e mais nove condenados"
+    veiculo: "Tribuna do Paraná"
+    url: "https://www.tribunapr.com.br/noticias/brasil/operacao-anaconda-juiz-e-mais-nove-condenados/amp/"
+  - titulo: "STF nega HC a ex-juiz federal Rocha Mattos"
+    veiculo: "Migalhas"
+    ano: 2018
+    url: "https://www.migalhas.com.br/quentes/280160/stf-nega-hc-a-ex-juiz-federal-rocha-mattos"
 ---
 
 No Brasil, juízes têm uma proteção que poucas profissões têm. São **vitalícios**: depois de dois anos no cargo, só podem perdê-lo por decisão judicial definitiva. E não podem ser investigados por qualquer delegado ou promotor: um juiz federal, por exemplo, só pode ser processado criminalmente com a autorização e sob a supervisão do **Tribunal Regional Federal** ao qual está vinculado. Essas garantias existem para proteger a independência de quem julga. Durante anos, porém, deram a impressão de que o Judiciário era **intocável**. Em 2003, uma operação da Polícia Federal mostrou o contrário. Ela se chamava **Anaconda**.

@@ -22,6 +22,20 @@ valores:
     ano: 2005
     descricao: "Dinheiro do Fundo Visanet, do Banco do Brasil, desviado para o esquema"
     fonte: "Processo do mensalão no STF"
+justica:
+  inicio: 2003
+  fim: 2012
+  desfecho: condenacao
+  nota: "STF condena 25 dos 37 réus em 2012; as prisões começam em 2013."
+fontes:
+  - titulo: "Supremo conclui julgamento do mensalão"
+    veiculo: "Migalhas"
+    ano: 2012
+    url: "https://www.migalhas.com.br/quentes/169687/supremo-conclui-julgamento-do-mensalao"
+  - titulo: "STF envia mensalão para o Banco do Brasil para recuperar dinheiro desviado"
+    veiculo: "Gazeta do Povo"
+    ano: 2013
+    url: "https://www.gazetadopovo.com.br/vida-publica/stf-envia-mensalao-para-o-banco-do-brasil-para-recuperar-dinheiro-desviado-3wv4lfeau2iq8qoebd7npje4u"
 ---
 
 Em maio de 2005, a revista *Veja* publicou o vídeo de um funcionário dos Correios, Maurício Marinho, recebendo **R$ 3 mil** de propina e explicando como funcionava a cobrança de comissões na estatal. Ele dizia agir com o respaldo do PTB, partido do deputado **Roberto Jefferson**. A cena parecia o início de um escândalo menor. Acabou sendo o estopim do maior caso de corrupção julgado pelo Supremo Tribunal Federal até então.

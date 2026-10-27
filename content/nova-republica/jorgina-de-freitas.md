@@ -22,6 +22,21 @@ valores:
     ano: 1991
     descricao: "Fraude contra a Previdência Social"
     fonte: "Estimativas oficiais da época"
+uf: "RJ"
+justica:
+  inicio: 1988
+  fim: 1998
+  desfecho: condenacao
+  nota: "Presa na Costa Rica em 1997, extraditada em 1998 e condenada."
+fontes:
+  - titulo: "Morre Jorgina de Freitas, ex-advogada que fraudou o INSS"
+    veiculo: "Poder360"
+    ano: 2022
+    url: "https://www.poder360.com.br/brasil/morre-jorgina-de-freitas-ex-advogada-que-fraudou-o-inss/"
+  - titulo: "Morre Jorgina de Freitas, condenada no maior esquema de fraudes no INSS"
+    veiculo: "IBDP"
+    ano: 2022
+    url: "https://www.ibdp.org.br/2022/07/22/morre-jorgina-de-freitas-condenada-no-maior-esquema-de-fraudes-no-inss/"
 ---
 
 O Instituto Nacional do Seguro Social, o INSS, é condenado na Justiça todos os dias a pagar benefícios e indenizações. Na maioria das vezes, isso é a lei funcionando. No Rio de Janeiro do fim dos anos 1980, um grupo percebeu que, se controlasse as três pontas de um processo, quem pede, quem julga e quem deveria defender o INSS, poderia fazer a Previdência pagar o que quisesse. A figura mais conhecida desse grupo era a advogada **Jorgina de Freitas**.

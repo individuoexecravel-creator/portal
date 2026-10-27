@@ -1,0 +1,11 @@
+{{- /* Dados de tempo da Justiça de uma seção. Devolve lista de dicts: pag, caso, ini, fim, anos, tipo, nota, anulado, prescrito. */ -}}
+{{- $out := slice -}}
+{{- range where site.RegularPages "Section" . -}}
+  {{- $pg := . -}}
+  {{- with .Params.justica -}}
+    {{- $fim := int (.fim | default 0) -}}
+    {{- $ini := int .inicio -}}
+    {{- $out = $out | append (dict "pag" $pg "ini" $ini "fim" $fim "anos" (cond (gt $fim 0) (sub $fim $ini) -1) "tipo" .desfecho "nota" (.nota | default "") "anulado" (.anulado | default false) "prescrito" (.prescrito | default false)) -}}
+  {{- end -}}
+{{- end -}}
+{{- return $out -}}

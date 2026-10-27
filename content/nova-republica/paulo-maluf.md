@@ -15,6 +15,21 @@ ficha:
     valor: "Contas em Jersey, na Suíça e em outros paraísos fiscais, em nome de offshores ligadas à família"
   - item: "Desfecho"
     valor: "Condenado pelo STF em 2017 por lavagem de dinheiro; preso na Papuda; depois passa à prisão domiciliar por razões de saúde"
+uf: "SP"
+justica:
+  inicio: 1993
+  fim: 2017
+  desfecho: condenacao
+  nota: "STF condena Maluf em 2017 por lavagem de dinheiro."
+fontes:
+  - titulo: "STF condena Maluf a 7 anos e 9 meses de prisão por lavagem de dinheiro"
+    veiculo: "IstoÉ Dinheiro"
+    ano: 2017
+    url: "https://istoedinheiro.com.br/stf-condena-maluf-a-7-anos-e-9-meses-de-prisao-por-lavagem-de-dinheiro"
+  - titulo: "STF rejeita recurso e mantém condenação de Maluf"
+    veiculo: "Poder360"
+    ano: 2017
+    url: "https://www.poder360.com.br/justica/stf-rejeita-recurso-e-mantem-condenacao-de-maluf/"
 ---
 
 Poucos políticos brasileiros tiveram uma carreira tão longa e tão marcada por acusações quanto **Paulo Maluf**. Prefeito biônico de São Paulo na ditadura, governador indireto, candidato derrotado por Tancredo no Colégio Eleitoral em 1985, prefeito eleito nos anos 1990 e deputado federal por vários mandatos. Durante quase todo esse tempo, seu nome esteve ligado a obras superfaturadas e a uma frase que nem foi ele quem cunhou, mas que grudou nele: **"rouba, mas faz"**. Por décadas, as acusações não davam em nada. Até que o dinheiro foi encontrado.

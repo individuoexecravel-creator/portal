@@ -15,6 +15,25 @@ ficha:
     valor: "Cassado pela Câmara em 15 de abril de 1998, por 277 votos a 163"
   - item: "Desfecho judicial"
     valor: "Absolvido na esfera criminal em 2005; condenado a indenizar cerca de 120 famílias; morreu em 2009 antes do fim do processo"
+uf: "RJ"
+justica:
+  inicio: 1998
+  fim: 2005
+  desfecho: absolvicao
+  nota: "Cassado pela Câmara em 1998; absolvido na esfera criminal em 2005."
+fontes:
+  - titulo: "25 anos do desabamento do Palace II: relembre a tragédia"
+    veiculo: "Band"
+    ano: 2023
+    url: "https://www.band.com.br/rio-de-janeiro/noticias/25-anos-do-desabamento-do-palace-ii-relembre-a-tragedia-16584222"
+  - titulo: "STJ mantém indenização a vítimas do desabamento do Palace 2"
+    veiculo: "Agência Brasil"
+    ano: 2022
+    url: "https://agenciabrasil.ebc.com.br/justica/noticia/2022-06/stj-mantem-indenizacao-vitimas-do-desabamento-do-palace-2"
+  - titulo: "Ex-deputado Sérgio Naya morre na Bahia"
+    veiculo: "Congresso em Foco"
+    ano: 2009
+    url: "https://www.congressoemfoco.com.br/noticia/78557/ex-deputado-sergio-naya-morre-na-bahia"
 ---
 
 Na madrugada de **22 de fevereiro de 1998**, por volta das **3 horas da manhã**, os moradores do edifício **Palace II**, na Barra da Tijuca, no Rio de Janeiro, acordaram com o barulho de concreto se partindo. Em poucos segundos, parte do prédio veio abaixo. **Oito pessoas morreram**. Famílias inteiras perderam tudo em uma noite. Quem tinha construído o prédio era um **deputado federal**.

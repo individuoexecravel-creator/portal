@@ -22,6 +22,21 @@ valores:
     ano: 2014
     descricao: "Sobrepreço estimado em dez contratos de reforma de trens do Metrô"
     fonte: "Ministério Público de São Paulo"
+uf: "SP"
+justica:
+  inicio: 1998
+  fim: 2019
+  desfecho: misto
+  nota: "O Cade condena 11 empresas em 2019; os processos criminais e de improbidade se arrastam."
+fontes:
+  - titulo: "Cade condena 11 empresas por cartel no metrô"
+    veiculo: "Forbes Brasil"
+    ano: 2019
+    url: "https://forbes.com.br/negocios/2019/07/cade-condena-11-empresas-por-cartel-no-metro/"
+  - titulo: "Promotor pede que cartel dos trens em SP pague prejuízo"
+    veiculo: "Gazeta do Povo"
+    ano: 2014
+    url: "https://www.gazetadopovo.com.br/vida-publica/promotor-pede-que-cartel-dos-trens-em-sp-pague-prejuizo-eiyjd7llcy87janj7wmmsf9se"
 ---
 
 São Paulo tem a maior rede de transporte sobre trilhos do país, operada por duas empresas estaduais: o **Metrô** e a **CPTM**, a Companhia Paulista de Trens Metropolitanos. Comprar trens, reformar composições e construir sistemas de sinalização são contratos de centenas de milhões de reais, disputados por poucas multinacionais. Durante mais de uma década, segundo as autoridades de defesa da concorrência, essas empresas não disputavam de verdade. Combinavam. O caso ficou conhecido como **Trensalão**, ou cartel dos trens.

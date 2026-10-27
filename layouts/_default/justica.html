@@ -1,0 +1,80 @@
+{{ define "main" }}
+{{ $tipos := partial "tipos-justica.html" "x" }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+</section>
+
+<div class="wrap" data-abas>
+  <div class="seletor seletor-abas" role="tablist" aria-label="Seção">
+    {{ range $i, $s := slice "nova-republica" "internacional" }}
+    <button type="button" role="tab" class="seletor-op" id="aba-{{ $s }}" aria-controls="painel-{{ $s }}" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}"{{ if ne $i 0 }} tabindex="-1"{{ end }} data-aba="{{ $s }}">{{ partial "icone.html" (cond (eq $s "nova-republica") "brasil" "mundo") }}<span>{{ if eq $s "nova-republica" }}No Brasil{{ else }}Fora do Brasil{{ end }}</span></button>
+    {{ end }}
+  </div>
+
+  {{ range $i, $s := slice "nova-republica" "internacional" }}
+  {{ $dados := partial "justica-dados.html" $s }}
+  {{ $com := where $dados "anos" "ge" 0 }}
+  {{ $sem := where $dados "anos" -1 }}
+  <div{{ if ne $i 0 }} hidden{{ end }} data-painel-wrap="{{ $s }}" role="tabpanel" id="painel-{{ $s }}" aria-labelledby="aba-{{ $s }}">
+    {{ with $com }}
+    {{ $soma := 0 }}{{ range . }}{{ $soma = add $soma .anos }}{{ end }}
+    {{ $ord := sort . "anos" "desc" }}
+    {{ $max := (index $ord 0).anos }}
+    {{ $nPun := len (where . "tipo" "in" (slice "condenacao" "misto")) }}
+    {{ $nNada := len (where $dados "tipo" "in" (slice "sem-punicao" "arquivado" "absolvicao" "anulacao")) }}
+    <div class="numeros">
+      <p><b>{{ lang.FormatNumberCustom 1 (div (float $soma) (len .)) "- , ." }} anos</b><span>em média, do começo do esquema ao desfecho</span></p>
+      <p><b>{{ $max }} anos</b><span>no caso mais longo: {{ (partial "partes.html" (index $ord 0).pag).caso }}</span></p>
+      <p><b>{{ $nPun }} de {{ len $dados }}</b><span>casos com alguém condenado na Justiça</span></p>
+      <p><b>{{ $nNada }}</b><span>terminaram em absolvição, anulação, arquivamento ou sem ninguém punido</span></p>
+    </div>
+
+    <section class="grafico" aria-labelledby="rel-{{ $s }}">
+      <header class="grafico-topo">
+        <h2 id="rel-{{ $s }}">Do começo ao desfecho</h2>
+        <ul class="legenda-just">
+          {{ range $tipos }}{{ $id := .id }}{{ if where $dados "tipo" $id }}<li><i class="j-amostra j-{{ .id }}" aria-hidden="true"></i>{{ .nome }}</li>{{ end }}{{ end }}
+        </ul>
+      </header>
+      <ol class="relogio">
+        {{ range $ord }}{{ $p := partial "partes.html" .pag }}{{ $t := index (where $tipos "id" .tipo) 0 }}
+        <li>
+          <a class="rel-linha" href="{{ .pag.RelPermalink }}">
+            <span class="rel-nome">{{ $p.caso }}</span>
+            <span class="rel-anos"><b>{{ .anos }}</b> {{ cond (eq .anos 1) "ano" "anos" }}<span class="rel-periodo">{{ .ini }}{{ if ne .ini .fim }}–{{ .fim }}{{ end }}</span></span>
+            <span class="rel-trilho" aria-hidden="true"><span class="rel-fill j-{{ .tipo }}" style="width: {{ math.Max 1.2 (div (mul (float .anos) 100.0) $max) }}%"></span></span>
+            <span class="rel-desf">{{ $t.nome }}{{ if .prescrito }} · houve prescrição{{ end }}{{ if .anulado }} · houve anulação{{ end }}</span>
+          </a>
+          {{ with .nota }}<p class="rel-nota">{{ . }}</p>{{ end }}
+        </li>
+        {{ end }}
+      </ol>
+      <p class="grafico-nota">Cada barra vai do ano em que o esquema começou ao ano do desfecho principal do caso: a condenação definitiva, a cassação, a absolvição ou o arquivamento. Casos que se resolveram no mesmo ano aparecem com zero ano.</p>
+    </section>
+    {{ end }}
+
+    {{ with $sem }}
+    <section class="sem-valor" aria-labelledby="sd-{{ $s }}">
+      <h2 id="sd-{{ $s }}">Casos sem um ano de desfecho</h2>
+      <p>Nestes casos não há uma única decisão final: os processos se dividiram, se arrastaram ou nunca chegaram ao fim.</p>
+      <ul class="sem-desf">
+        {{ range sort . "ini" }}{{ $p := partial "partes.html" .pag }}{{ $t := index (where $tipos "id" .tipo) 0 }}
+        <li><a href="{{ .pag.RelPermalink }}">{{ $p.caso }}</a> <span class="rel-periodo">desde {{ .ini }} · {{ $t.nome }}</span>{{ with .nota }}<br><span class="rel-nota">{{ . }}</span>{{ end }}</li>
+        {{ end }}
+      </ul>
+    </section>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <section class="como-conta" aria-labelledby="tj-como">
+    <h2 id="tj-como">O que cada desfecho quer dizer</h2>
+    <dl class="tipos-just">
+      {{ range $tipos }}<div><dt><i class="j-amostra j-{{ .id }}" aria-hidden="true"></i>{{ .nome }}</dt><dd>{{ .explica }}</dd></div>{{ end }}
+    </dl>
+    <p>Os anos vêm do texto de cada caso. Quando um caso teve vários desfechos, vale o principal, explicado na nota. Termos como <a href="{{ "glossario/" | relURL }}#prescricao">prescrição</a> e <a href="{{ "glossario/" | relURL }}#transito">trânsito em julgado</a> estão no glossário.</p>
+  </section>
+</div>
+{{ end }}

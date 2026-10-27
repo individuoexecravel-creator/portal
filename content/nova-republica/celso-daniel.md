@@ -15,6 +15,16 @@ ficha:
     valor: "Crime encomendado, ligado a um esquema de propina na Prefeitura de Santo André"
   - item: "Desfecho"
     valor: "Executores condenados; Sombra, apontado como mandante, morre em 2016 antes do julgamento"
+uf: "SP"
+justica:
+  inicio: 2002
+  fim: 2016
+  desfecho: misto
+  nota: "Executores condenados; o apontado como mandante morreu em 2016, antes do julgamento."
+fontes:
+  - titulo: "Três são condenados pela morte do prefeito Celso Daniel"
+    veiculo: "Gazeta do Povo"
+    url: "https://www.gazetadopovo.com.br/vida-publica/tres-sao-condenados-pela-morte-do-prefeito-celso-daniel-1m7wc4lqc3w610cjc8fx1sfny"
 ---
 
 Na noite de **18 de janeiro de 2002**, o prefeito de Santo André, **Celso Daniel**, saiu de um restaurante na zona sul de São Paulo no carro do empresário e amigo **Sérgio Gomes da Silva**, conhecido como **Sombra**. No caminho, o veículo foi cercado por homens armados. Celso Daniel foi levado. Sombra ficou. Dois dias depois, o corpo do prefeito foi encontrado numa estrada de terra em **Juquitiba**, na Grande São Paulo, com oito tiros. A partir daí, o caso se dividiu em duas histórias que nunca mais se encontraram.

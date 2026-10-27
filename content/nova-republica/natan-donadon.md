@@ -22,6 +22,17 @@ valores:
     ano: 1998
     descricao: "Desvio da Assembleia Legislativa de Rondônia"
     fonte: "STF"
+uf: "RO"
+justica:
+  inicio: 1995
+  fim: 2013
+  desfecho: condenacao
+  nota: "Preso em 2013 e cassado em 2014; depois indultado."
+fontes:
+  - titulo: "Câmara cassa deputado preso por desviar dinheiro"
+    veiculo: "Congresso em Foco"
+    ano: 2014
+    url: "https://congressoemfoco.com.br/noticias/camara-cassa-deputado-preso-por-desviar-dinheiro"
 ---
 
 Em **agosto de 2013**, o Brasil assistiu a uma cena que parecia impossível. Um deputado federal saiu da **Papuda**, o presídio de Brasília, foi levado sob escolta até a Câmara dos Deputados, fez sua defesa no plenário e voltou para a cela **ainda deputado**. Os colegas tinham votado, em sessão secreta, para não cassar o mandato de um homem condenado pelo Supremo Tribunal Federal e que já cumpria pena. O nome dele era **Natan Donadon**, e o episódio mudou uma regra do Congresso.

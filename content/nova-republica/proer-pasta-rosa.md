@@ -15,6 +15,19 @@ ficha:
     valor: "Pasta encontrada no Banco Econômico com registros de doações a políticos na eleição de 1990"
   - item: "Desfecho"
     valor: "PROER salva o sistema bancário; caso da Pasta Rosa é arquivado; dirigentes do Nacional são condenados por fraude"
+justica:
+  inicio: 1995
+  desfecho: arquivado
+  nota: "O caso da Pasta Rosa é arquivado; dirigentes do Nacional são condenados por fraude."
+fontes:
+  - titulo: "Nota técnica da CPI do PROER"
+    veiculo: "Câmara dos Deputados"
+    ano: 2001
+    url: "https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-temporarias/parlamentar-de-inquerito/51-legislatura/cpiproer/notas/nt091001.pdf"
+  - titulo: "Calmon de Sá condenado no STJ por gestão fraudulenta do Banco Econômico"
+    veiculo: "Jornal do Brasil"
+    ano: 2012
+    url: "https://www.jb.com.br/economia/noticias/2012/09/05/amp/calmon-de-sa-condenado-no-stj-por-gestao-fraudulenta-do-banco-economico.html"
 ---
 
 O Plano Real derrubou a inflação em 1994 e, com ela, uma fonte de lucro fácil para os bancos. Durante anos, muitas instituições ganharam dinheiro simplesmente aplicando os depósitos dos clientes enquanto a moeda se desvalorizava. Quando os preços se estabilizaram, ficou claro que vários grandes bancos estavam quebrados por dentro. O socorro do governo ganhou uma sigla, **PROER**. E de dentro de um dos bancos socorridos saiu uma pasta cor-de-rosa que fez tremer Brasília.

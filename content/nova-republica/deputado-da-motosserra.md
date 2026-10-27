@@ -15,6 +15,21 @@ ficha:
     valor: "CPI do Narcotráfico da Câmara dos Deputados (1999), Polícia Federal e Ministério Público"
   - item: "Desfecho"
     valor: "Cassado e preso em setembro de 1999; condenações que somam mais de 100 anos; o TSE rejeitou o último recurso em abril de 2026"
+uf: "AC"
+justica:
+  inicio: 1996
+  fim: 2026
+  desfecho: condenacao
+  nota: "Cassado e preso em 1999; o TSE rejeita o último recurso em abril de 2026."
+fontes:
+  - titulo: "TSE nega recurso de deputado da motosserra"
+    veiculo: "Poder360"
+    ano: 2026
+    url: "https://www.poder360.com.br/poder-justica/tse-nega-recurso-de-deputado-da-motosserra/"
+  - titulo: "TSE mantém condenação de deputado da motosserra por crime eleitoral"
+    veiculo: "Congresso em Foco"
+    ano: 2026
+    url: "https://www.congressoemfoco.com.br/noticia/117994/tse-mantem-condenacao-de-deputado-da-motosserra-por-crime-eleitoral"
 ---
 
 Durante os anos 1990, o nome de **Hildebrando Pascoal** provocava medo no Acre. Coronel da Polícia Militar, ex-comandante da corporação, ele chegou à **Câmara dos Deputados** em 1998 com uma votação expressiva. Segundo as investigações e as condenações que vieram depois, ao mesmo tempo comandava um **esquadrão da morte** formado por policiais e aliados, responsável por execuções de extrema crueldade. Uma delas lhe rendeu o apelido pelo qual ficou conhecido no país inteiro: **o deputado da motosserra**.

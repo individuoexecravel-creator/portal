@@ -15,6 +15,19 @@ ficha:
     valor: "Pouco mais de um ano, até agosto de 1981"
   - item: "Desfecho"
     valor: "García Meza condenado em 1993 a 30 anos sem indulto; capturado no Brasil e extraditado; Arce Gómez condenado nos EUA e na Bolívia"
+justica:
+  inicio: 1980
+  fim: 1993
+  desfecho: condenacao
+  nota: "García Meza é condenado em 1993 a 30 anos sem indulto."
+fontes:
+  - titulo: "Muere el exgobernante de facto de Bolivia Luis García Meza"
+    veiculo: "T13 / BBC Mundo"
+    ano: 2018
+    url: "https://www.t13.cl/noticia/mundo/bbc/muere-el-ex-gobernante-de-facto-de-bolivia-luis-garcia-meza"
+  - titulo: "Luis Arce Gómez"
+    veiculo: "Wikipedia (inglês)"
+    url: "https://en.wikipedia.org/wiki/Luis_Arce_G%C3%B3mez"
 ---
 
 Em 1980, a Bolívia estava prestes a ter um governo eleito. Depois de anos de ditaduras e eleições anuladas, o candidato de centro-esquerda **Hernán Siles Zuazo** tinha vencido a votação e aguardava a confirmação do Congresso. Em **17 de julho de 1980**, antes que isso acontecesse, tanques e paramilitares tomaram La Paz. O general **Luis García Meza** assumiu o poder. Por trás dele estava um patrocinador inédito para um golpe de Estado: o **narcotráfico**. O episódio entrou para a história como o **Golpe da Cocaína**.

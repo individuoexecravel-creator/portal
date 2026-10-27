@@ -22,6 +22,21 @@ valores:
     ano: 1998
     descricao: "Desvio da obra do Fórum Trabalhista da Barra Funda"
     fonte: "Ministério Público Federal"
+uf: "SP"
+justica:
+  inicio: 1992
+  fim: 2016
+  desfecho: condenacao
+  nota: "Lalau e os donos da Incal são condenados; Luiz Estevão só é preso em 2016."
+fontes:
+  - titulo: "TRF mantém condenação de Lalau e Luiz Estevão por desvio de dinheiro"
+    veiculo: "Jornal do Brasil"
+    ano: 2013
+    url: "https://www.jb.com.br/pais/noticias/2013/11/04/amp/trf-mantem-condenacao-de-lalau-e-luis-estevao-por-desvio-de-dinheiro.html"
+  - titulo: "Condenado por desvio no TRT paulista, ex-juiz Lalau deixa a prisão"
+    veiculo: "Congresso em Foco"
+    ano: 2014
+    url: "https://www.congressoemfoco.com.br/noticia/50251/condenado-por-desvio-no-trt-paulista-ex-juiz-lalau-deixa-a-prisao"
 ---
 
 O apelido pegou porque rimava e porque resumia. **Nicolau dos Santos Neto**, juiz que presidiu o Tribunal Regional do Trabalho de São Paulo, virou para o país o **Lalau**. Sob sua responsabilidade, a construção do novo Fórum Trabalhista da cidade se transformou num dos maiores desvios de dinheiro público dos anos 1990 e no escândalo mais grave já envolvendo um magistrado no Brasil.

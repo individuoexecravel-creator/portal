@@ -15,6 +15,19 @@ ficha:
     valor: "Operação Caixa de Pandora, da Polícia Federal, em 27 de novembro de 2009"
   - item: "Desfecho"
     valor: "Arruda é preso em fevereiro de 2010 e perde o mandato; condenações por improbidade e na esfera criminal"
+uf: "DF"
+justica:
+  inicio: 2006
+  fim: 2010
+  desfecho: politico
+  nota: "Arruda é preso e perde o mandato em 2010. As ações penais se arrastaram por anos e acabaram suspensas pelo STJ."
+fontes:
+  - titulo: "STJ suspende ações penais de Arruda e outros 38 réus da Caixa de Pandora"
+    veiculo: "Congresso em Foco"
+    url: "https://www.congressoemfoco.com.br/noticias/stj-suspende-acoes-penais-de-arruda-e-outros-38-reus-da-caixa-de-pandora/"
+  - titulo: "Justiça considera vídeos de Durval Barbosa nulos para produzir provas na Pandora"
+    veiculo: "Correio Braziliense"
+    url: "https://blogs.correiobraziliense.com.br/cbpoder/justica-considera-videos-de-durval-barbosa-nulos-para-produzir-provas-na-pandora/"
 ---
 
 Em **27 de novembro de 2009**, a Polícia Federal deflagrou no Distrito Federal uma operação com nome mitológico: **Caixa de Pandora**. O que saiu dela foram vídeos. Neles, o governador **José Roberto Arruda**, deputados distritais e assessores apareciam recebendo maços de dinheiro. Um deputado guardava as notas nas **meias**. Outros rezavam em agradecimento. O caso ficou conhecido como o **mensalão do DEM**, partido de Arruda, e terminou com algo inédito no país: um governador preso no exercício do mandato.

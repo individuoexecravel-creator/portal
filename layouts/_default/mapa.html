@@ -1,0 +1,53 @@
+{{ define "main" }}
+{{ $mapa := site.Data.brasil_mapa }}
+{{ $casos := where site.RegularPages "Section" "nova-republica" }}
+{{ $porUF := newScratch }}
+{{ range $casos }}{{ $pg := . }}{{ with .Params.uf }}{{ $porUF.Add (upper .) (slice $pg) }}{{ end }}{{ end }}
+{{ $federais := slice }}{{ range $casos }}{{ if not .Params.uf }}{{ $federais = $federais | append . }}{{ end }}{{ end }}
+{{ $max := 1 }}{{ range $k, $v := $porUF.Values }}{{ if gt (len $v) $max }}{{ $max = len $v }}{{ end }}{{ end }}
+{{ $estados := slice }}{{ range $mapa.locations }}{{ $loc := . }}{{ $uf := upper .id }}{{ with $porUF.Get $uf }}{{ $estados = $estados | append (dict "uf" $uf "nome" $loc.name "n" (len .) "casos" .) }}{{ end }}{{ end }}
+
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+  <div class="seletor" role="group" aria-label="Seção">
+    <a class="seletor-op" href="{{ .RelPermalink }}" aria-current="page">{{ partial "icone.html" "brasil" }}<span>No Brasil</span></a>
+    <a class="seletor-op" href="{{ "globo/" | relURL }}">{{ partial "icone.html" "mundo" }}<span>Fora do Brasil, no globo</span></a>
+  </div>
+</section>
+
+<div class="wrap mapa-layout">
+  <figure class="mapa-br">
+    <svg viewBox="{{ $mapa.viewBox }}" role="group" aria-label="Mapa do Brasil. Estados com casos são links para a lista abaixo.">
+      {{ range $mapa.locations }}{{ $uf := upper .id }}{{ $lista := $porUF.Get $uf }}
+      {{ if $lista }}{{ $n := len $lista }}
+      <a href="#uf-{{ $uf }}" class="uf uf-com" data-uf="{{ $uf }}" aria-label="{{ .name }}: {{ $n }} {{ cond (eq $n 1) "caso" "casos" }}">
+        <path d="{{ .path }}" style="--int: {{ div (float $n) $max }}"><title>{{ .name }}: {{ $n }} {{ cond (eq $n 1) "caso" "casos" }}</title></path>
+      </a>
+      {{ else }}
+      <path class="uf" d="{{ .path }}"><title>{{ .name }}: nenhum caso estadual</title></path>
+      {{ end }}{{ end }}
+    </svg>
+    <figcaption>
+      <span class="mapa-escala"><i style="--int: .25"></i><i style="--int: .5"></i><i style="--int: 1"></i> Mais casos, cor mais forte</span>
+      <span class="mapa-credito">Contorno dos estados: <a href="https://github.com/VictorCazanave/svg-maps" rel="noopener" target="_blank">svg-maps, de Victor Cazanave<span class="sr"> (abre em nova aba)</span></a>, licença CC BY 4.0.</span>
+    </figcaption>
+  </figure>
+
+  <div class="mapa-listas">
+    <p class="mapa-resumo"><b>{{ len $estados }}</b> unidades da federação com casos locais · <b>{{ len $federais }}</b> casos federais</p>
+    {{ range sort $estados "n" "desc" }}
+    <section class="mapa-uf" id="uf-{{ .uf }}" aria-labelledby="uf-t-{{ .uf }}" tabindex="-1">
+      <h2 id="uf-t-{{ .uf }}"><span class="uf-sigla">{{ .uf }}</span>{{ .nome }} <span class="uf-n">{{ .n }} {{ cond (eq .n 1) "caso" "casos" }}</span></h2>
+      <ul>{{ range sort .casos "Params.periodo" }}{{ $p := partial "partes.html" . }}<li><a href="{{ .RelPermalink }}" data-lido="{{ .File.ContentBaseName }}">{{ $p.caso }}</a> <span class="rel-periodo">{{ .Params.periodo }}</span></li>{{ end }}</ul>
+    </section>
+    {{ end }}
+    <section class="mapa-uf mapa-federal" id="federais" aria-labelledby="fed-t">
+      <h2 id="fed-t"><span class="uf-sigla">BR</span>Federais <span class="uf-n">{{ len $federais }} casos</span></h2>
+      <p>Esquemas no governo federal, no Congresso ou em estatais, sem um estado só como palco.</p>
+      <ul>{{ range sort $federais "Params.periodo" }}{{ $p := partial "partes.html" . }}<li><a href="{{ .RelPermalink }}" data-lido="{{ .File.ContentBaseName }}">{{ $p.caso }}</a> <span class="rel-periodo">{{ .Params.periodo }}</span></li>{{ end }}</ul>
+    </section>
+  </div>
+</div>
+{{ end }}

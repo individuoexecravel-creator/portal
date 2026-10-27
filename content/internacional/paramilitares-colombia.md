@@ -15,6 +15,20 @@ ficha:
     valor: "Mario Uribe, senador e primo do presidente Álvaro Uribe; Jorge Noguera, diretor do DAS"
   - item: "Desfecho"
     valor: "Dezenas de congressistas condenados pela Suprema Corte; Noguera condenado a 25 anos; chefes paramilitares extraditados aos EUA"
+justica:
+  inicio: 1997
+  fim: 2011
+  desfecho: condenacao
+  nota: "Dezenas de congressistas condenados; Noguera recebe 25 anos em 2011."
+fontes:
+  - titulo: "Condenan a Mario Uribe a siete años de prisión"
+    veiculo: "Colombia.com"
+    ano: 2011
+    url: "https://www.colombia.com/actualidad/politica/sdi/6310/condenan-a-mario-uribe-a-siete-anos-de-prision"
+  - titulo: "Former Colombian spy chief sentenced to 25 years"
+    veiculo: "CTV News"
+    ano: 2011
+    url: "https://www.ctvnews.ca/former-colombian-spy-chief-sentenced-to-25-years-1.696997"
 ---
 
 Durante décadas, a Colômbia viveu um conflito armado com várias frentes. De um lado, guerrilhas de esquerda, como as **FARC** e o **ELN**. Do outro, o Estado. E, no meio, um terceiro ator que cresceu nos anos 1980 e 1990: os **paramilitares**, grupos armados de extrema direita criados com o discurso de combater a guerrilha, mas que se envolveram profundamente com o **narcotráfico** e com massacres contra a população civil. No início dos anos 2000, eles já não queriam apenas controlar territórios. Queriam controlar o Estado. O escândalo que revelou isso ficou conhecido como **parapolítica**.

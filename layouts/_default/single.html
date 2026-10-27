@@ -19,8 +19,19 @@
       </div>
       {{ end }}
       <div class="meta-linha">
-        <p class="meta">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, {{ .ReadingTime }} min de leitura</p>
-        <button class="botao botao-fino" type="button" data-compartilhar data-titulo="{{ .Title }}">{{ partial "icone.html" "compartilhar" }}<span>Compartilhar</span></button>
+        <p class="meta">Por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>, {{ .ReadingTime }} min de leitura<br>
+          <span class="meta-data">Publicado em <time datetime="{{ .Date.Format "2006-01-02" }}">{{ partial "data.html" .Date }}</time>{{ if and .Params.lastmod (gt .Lastmod.Unix .Date.Unix) }} · <a href="#fontes-t">atualizado em {{ partial "data.html" .Lastmod }}</a>{{ end }}</span>
+          <span class="lido-selo" data-lido-selo hidden>{{ partial "icone.html" "ok" }}Você já leu este caso</span></p>
+        <div class="meta-acoes">
+          <div class="ouvir" data-ouvir hidden>
+            <button class="botao botao-fino" type="button" data-ouvir-play aria-pressed="false"><span class="i-play">{{ partial "icone.html" "ouvir" }}</span><span class="i-pausa">{{ partial "icone.html" "pausa" }}</span><span data-ouvir-rot>Ouvir</span></button>
+            <button class="botao-icone" type="button" data-ouvir-parar aria-label="Parar a leitura em voz alta" hidden>{{ partial "icone.html" "parar" }}</button>
+            <label class="ouvir-vel" hidden data-ouvir-vel-wrap><span class="sr">Velocidade da voz</span>
+              <select data-ouvir-vel><option value="0.85">0,85×</option><option value="1" selected>1×</option><option value="1.2">1,2×</option><option value="1.4">1,4×</option></select>
+            </label>
+          </div>
+          <button class="botao botao-fino" type="button" data-compartilhar data-titulo="{{ .Title }}">{{ partial "icone.html" "compartilhar" }}<span>Compartilhar</span></button>
+        </div>
       </div>
     </div>
     <div class="mt-img"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt="" fetchpriority="high"></div>
@@ -46,12 +57,16 @@
     </details>
     {{ end }}
   </aside>
-  <article class="texto" data-texto>
+  <article class="texto" data-texto data-slug="{{ .File.ContentBaseName }}">
     {{ .Content }}
     {{ partial "quem-e-quem.html" . }}
+    {{ partial "fontes.html" . }}
     {{ partial "autor.html" . }}
   </article>
 </div>
+<script type="application/json" id="glossario-dados" data-url="{{ "glossario/" | relURL }}">{{ site.Data.glossario | jsonify | safeJS }}</script>
+
+{{ partial "trilha-caso.html" . }}
 
 {{/* Caso anterior e próximo na linha do tempo da seção */}}
 {{ $itens := slice }}

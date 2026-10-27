@@ -22,6 +22,15 @@ valores:
     ano: 2006
     descricao: "Prejuízo mínimo na compra de ambulâncias, com superfaturamento em 70% dos convênios analisados"
     fonte: "CGU e Denasus"
+justica:
+  inicio: 2000
+  fim: 2006
+  desfecho: sem-punicao
+  nota: "A CPMI pede 72 cassações e nenhuma acontece; a maioria não se reelege em 2006."
+fontes:
+  - titulo: "Entenda o caso: o que foi a Operação Sanguessuga"
+    veiculo: "Congresso em Foco"
+    url: "https://www.congressoemfoco.com.br/noticias/entenda-o-caso-o-que-foi-a-operacao-sanguessuga/"
 ---
 
 Uma ambulância é um dos pedidos mais comuns que prefeitos de cidades pequenas fazem a deputados e senadores. É um bem concreto, que aparece na foto da entrega e rende voto. Durante anos, essa demanda legítima alimentou um esquema que a Polícia Federal batizou com um nome que dizia tudo: **Operação Sanguessuga**.

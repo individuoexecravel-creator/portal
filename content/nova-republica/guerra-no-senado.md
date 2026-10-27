@@ -15,6 +15,18 @@ ficha:
     valor: "Desvios no Banpará e fraudes na Sudam"
   - item: "Desfecho"
     valor: "Arruda, ACM e Jader renunciam aos mandatos em 2001; os três voltam a ser eleitos em 2002"
+justica:
+  inicio: 2000
+  fim: 2001
+  desfecho: politico
+  nota: "Arruda, ACM e Jader renunciam aos mandatos em 2001 e voltam eleitos em 2002."
+fontes:
+  - titulo: "“Menti porque era igual a todos os políticos”, diz Arruda"
+    veiculo: "Congresso em Foco"
+    url: "https://www.congressoemfoco.com.br/noticia/72975/menti-porque-era-igual-a-todos-os-politicos-diz-arruda"
+  - titulo: "Voto triturado, quebra de sigilo e dossiês marcaram outras eleições no Senado"
+    veiculo: "Bem Paraná"
+    url: "https://www.bemparana.com.br/noticia/voto-triturado-quebra-de-sigilo-e-dossies-marcaram-outras-eleicoes-no-senado"
 ---
 
 No início dos anos 2000, o Senado tinha dois homens que se viam como donos do lugar. **Antônio Carlos Magalhães**, o ACM, do PFL da Bahia, presidia a Casa e era o político mais temido do país. **Jader Barbalho**, do PMDB do Pará, queria sucedê-lo. A disputa entre os dois virou uma guerra de dossiês, travada na tribuna e nos jornais, e terminou com os dois fora do Senado, junto com um terceiro senador que não tinha nada a ver com a briga original.

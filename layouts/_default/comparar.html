@@ -1,0 +1,55 @@
+{{ define "main" }}
+{{ $todas := where site.RegularPages "Section" "in" (slice "nova-republica" "internacional") }}
+{{ $tipos := partial "tipos-justica.html" "x" }}
+{{ $tiposV := partial "tipos-valor.html" "x" }}
+{{ $ufs := dict }}{{ range site.Data.brasil_mapa.locations }}{{ $ufs = merge $ufs (dict (upper .id) .name) }}{{ end }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+</section>
+
+<div class="wrap comparar" data-comparar data-padrao-a="mensalao" data-padrao-b="mensalao-mineiro">
+  <noscript><p class="aviso-js">O comparador precisa de JavaScript ligado. Sem ele, você pode abrir cada caso pela página <a href="{{ "casos/" | relURL }}">Casos</a>.</p></noscript>
+  <form class="cmp-escolha" data-cmp-form>
+    {{ range $lado := slice "a" "b" }}
+    <label class="cmp-sel">
+      <span>{{ if eq $lado "a" }}Primeiro caso{{ else }}Segundo caso{{ end }}</span>
+      <select name="{{ $lado }}" data-cmp-sel="{{ $lado }}">
+        {{ range $sec := slice "nova-republica" "internacional" }}{{ with site.GetPage (print "/" $sec) }}
+        <optgroup label="{{ .Title }}">
+          {{ range sort .RegularPages "Params.periodo" }}{{ $p := partial "partes.html" . }}<option value="{{ .File.ContentBaseName }}">{{ $p.caso }} ({{ .Params.periodo }})</option>{{ end }}
+        </optgroup>
+        {{ end }}{{ end }}
+      </select>
+    </label>
+    {{ end }}
+    <button type="button" class="botao-fino botao" data-cmp-trocar>{{ partial "icone.html" "comparar" }}<span>Trocar de lado</span></button>
+  </form>
+
+  <div class="cmp-tabela-wrap" aria-live="polite">
+    <table class="cmp-tabela" data-cmp-tabela hidden>
+      <caption class="sr">Comparação entre os dois casos escolhidos</caption>
+      <thead><tr><td></td><th scope="col" data-cmp-col="a"></th><th scope="col" data-cmp-col="b"></th></tr></thead>
+      <tbody>
+        {{ range slice (slice "secao" "Seção") (slice "periodo" "Período") (slice "onde" "Onde") (slice "tempo" "Tempo até o desfecho") (slice "desfecho" "Desfecho") (slice "pessoas" "Pessoas e o que aconteceu com elas") (slice "dinheiro" "Dinheiro") }}
+        <tr data-cmp-linha="{{ index . 0 }}"><th scope="row">{{ index . 1 }}</th><td data-lado="a"></td><td data-lado="b"></td></tr>
+        {{ end }}
+      </tbody>
+    </table>
+  </div>
+
+  {{ range $todas }}{{ $pg := . }}{{ $p := partial "partes.html" . }}{{ $slug := .File.ContentBaseName }}
+  <template data-cmp="{{ $slug }}">
+    <div data-campo="cabeca"><a class="cmp-caso sec-{{ .Section }}" href="{{ .RelPermalink }}">{{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" width="560" height="700">{{ end }}<span class="cmp-nome">{{ $p.caso }}</span>{{ with $p.sub }}<span class="cmp-sub">{{ . }}</span>{{ end }}</a></div>
+    <div data-campo="secao">{{ .CurrentSection.Title }}</div>
+    <div data-campo="periodo">{{ .Params.periodo | default "Não informado" }}</div>
+    <div data-campo="onde">{{ if eq .Section "internacional" }}Fora do Brasil{{ else }}{{ with .Params.uf }}{{ index $ufs (upper .) }}{{ else }}Federal: governo, Congresso ou estatais{{ end }}{{ end }}</div>
+    <div data-campo="tempo">{{ with .Params.justica }}{{ if .fim }}{{ $a := sub (int .fim) (int .inicio) }}<b class="cmp-num">{{ $a }} {{ cond (eq $a 1) "ano" "anos" }}</b> <span class="cmp-fraco">{{ .inicio }} a {{ .fim }}</span>{{ else }}Sem um ano de desfecho <span class="cmp-fraco">desde {{ .inicio }}</span>{{ end }}{{ else }}Não informado{{ end }}</div>
+    <div data-campo="desfecho">{{ with .Params.justica }}{{ $t := index (where $tipos "id" .desfecho) 0 }}<span class="cmp-tag"><i class="j-amostra j-{{ .desfecho }}" aria-hidden="true"></i>{{ $t.nome }}</span> {{ .nota }}{{ else }}Não informado{{ end }}</div>
+    <div data-campo="pessoas">{{ with partial "placar.html" (dict "slug" $slug "completo" true) }}{{ . }}{{ else }}<span class="cmp-fraco">Sem pessoas classificadas</span>{{ end }}</div>
+    <div data-campo="dinheiro">{{ with .Params.valores }}<ul class="cmp-valores">{{ range . }}{{ $t := index (where $tiposV "id" .tipo) 0 }}<li><span class="vc-valor"><i class="ponto v-{{ .tipo }}" aria-hidden="true"></i>{{ partial "dinheiro.html" (dict "v" .valor "m" (.moeda | default "BRL")) }}</span> <span class="cmp-fraco">{{ $t.nome }}, {{ .ano }}{{ if and (eq (.moeda | default "BRL") "BRL") (lt (int .ano) now.Year) }}; corrigido pelo IPCA, {{ partial "dinheiro.html" (dict "v" (mul (float .valor) (partialCached "ipca-fator.html" .ano .ano)) "m" "BRL") }}{{ end }}</span></li>{{ end }}</ul>{{ else }}<span class="cmp-fraco">Sem valor documentado</span>{{ end }}</div>
+  </template>
+  {{ end }}
+</div>
+{{ end }}

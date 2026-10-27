@@ -30,6 +30,42 @@ valores:
     ano: 2005
     descricao: "Passagens aéreas pagas pela Assembleia para os réus e indicados"
     fonte: "Tribunal de Justiça de Rondônia"
+uf: "RO"
+justica:
+  inicio: 2004
+  fim: 2025
+  desfecho: misto
+  prescrito: true
+  nota: "Condenações em vários processos; em 2023, 17 dos 21 réus de um deles se livram pela prescrição."
+fontes:
+  - titulo: "PF prende presidentes do TJ e da Assembleia de Rondônia"
+    veiculo: "Congresso em Foco"
+    ano: 2006
+    url: "https://www.congressoemfoco.com.br/noticia/92973/pf-prende-presidentes-do-tj-e-da-assembleia-de-rondonia"
+  - titulo: "Gravações revelam como operava quadrilha em RO"
+    veiculo: "Congresso em Foco"
+    ano: 2006
+    url: "https://www.congressoemfoco.com.br/noticia/102435/gravacoes-revelam-como-operava-quadrilha-em-ro"
+  - titulo: "Operação Dominó foi determinada pelo STJ"
+    veiculo: "Migalhas"
+    ano: 2006
+    url: "https://www.migalhas.com.br/quentes/28418/operacao-domino-foi-determinada-pelo-stj"
+  - titulo: "Ex-presidente do TJ-RO é punido com aposentadoria compulsória"
+    veiculo: "OAB"
+    ano: 2008
+    url: "https://www.oab.org.br/noticia/12704/ex-presidente-do-tj-ro-e-punido-com-aposentadoria-compulsoria"
+  - titulo: "Dominó: Justiça condena e manda prender 21 ex-deputados e assessores da ALE"
+    veiculo: "Rondoniaovivo"
+    ano: 2012
+    url: "https://rondoniaovivo.com/noticia/geral/2012/06/06/domino-justica-condena-e-manda-prender-21-ex-deputados-e-assessores-da-ale-envolvidos-em-folha-paralela.html"
+  - titulo: "Operação Dominó: TJ/RO condena quatro; maioria dos acusados se safa por prescrição"
+    veiculo: "Tudo Rondônia"
+    ano: 2023
+    url: "https://www.tudorondonia.com/noticias/operacao-domino-tj-ro-condena-quatro-maioria-dos-acusados-se-safa-da-justica-por-prescricao,108849.shtml"
+  - titulo: "Ex-deputado Carlão de Oliveira é preso em São Paulo após anos de fuga"
+    veiculo: "Rondoniagora"
+    ano: 2025
+    url: "https://www.rondoniagora.com/policia/ex-deputado-carlao-de-oliveira-e-preso-em-sao-pau-apos-anos-de-fuga"
 ---
 
 Na manhã de **4 de agosto de 2006**, cerca de **300 policiais federais** saíram às ruas de Porto Velho. No fim do dia, estavam presos o **presidente da Assembleia Legislativa** e o **presidente do Tribunal de Justiça** de Rondônia. Junto com eles, um juiz, um procurador de Justiça, um conselheiro do Tribunal de Contas, assessores e parentes de deputados. A imprensa resumiu o tamanho da coisa numa frase: o Legislativo, o Judiciário e os órgãos de controle de um estado inteiro tinham ido para a cadeia no mesmo dia.

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="pt-br">
 <head>
+  <script>try{var d=document.documentElement,t=localStorage.getItem("portal-tema"),e=parseFloat(localStorage.getItem("portal-escala"));if(t==="claro")d.setAttribute("data-tema","claro");if(e>=.85&&e<=1.4)d.style.setProperty("--escala",e)}catch(_){}</script>
   <title>{{ if .IsHome }}{{ site.Title }} · {{ site.Params.slogan }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
   {{ partial "cabeca.html" . }}
   {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .RelPermalink }}">{{ end }}

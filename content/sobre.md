@@ -15,7 +15,7 @@ Os textos são de **Indivíduo Execrável**, o mesmo autor das séries publicada
 
 ## De onde vêm as informações
 
-Cada texto é montado a partir de processos judiciais, relatórios de Comissões Parlamentares de Inquérito, decisões de tribunais e reportagens publicadas na época dos fatos.
+Cada texto é montado a partir de processos judiciais, relatórios de Comissões Parlamentares de Inquérito, decisões de tribunais e reportagens publicadas na época dos fatos. No fim de cada matéria, o bloco **Fontes e leitura complementar** traz os links das reportagens usadas, para você conferir.
 
 ## Como ler um caso
 
@@ -32,8 +32,15 @@ Aparecer num caso não é o mesmo que ser culpado. Ser investigado ou denunciado
 - A [linha do tempo](../linha-do-tempo/) põe todos os casos em ordem, com o presidente que governava em cada época.
 - A página [Pessoas](../pessoas/) mostra quem aparece em cada caso, no Brasil e fora dele, e como terminou para cada um.
 - [Quanto custou](../valores/) soma o dinheiro desviado, as propinas e os valores apreendidos, caso a caso, com a fonte de cada número.
+- O [Tempo da Justiça](../tempo-da-justica/) mostra quantos anos cada caso levou do começo do esquema ao desfecho, e quantos terminaram sem ninguém punido.
+- O [Mapa dos casos](../mapa/) separa os escândalos por estado, e as [trilhas de leitura](../trilhas/) sugerem casos para ler em sequência, por tema.
+- Em [Comparar casos](../comparar/) você põe dois casos lado a lado, e o [glossário](../glossario/) explica termos como peculato, prescrição e foro privilegiado. Nas matérias, as palavras sublinhadas com pontinhos abrem a explicação.
 - A [Teia](../teia/) desenha as ligações entre os casos brasileiros, e o [globo](../globo/) mostra onde aconteceram os casos de fora do Brasil, para onde os acusados fugiram e onde foram julgados.
 
 ## Correções
 
-Encontrou um erro ou tem uma informação que complementa um caso? Mande uma mensagem para o autor por uma das redes abaixo. As correções são feitas no próprio texto.
+Encontrou um erro ou tem uma informação que complementa um caso? Mande uma mensagem para o autor por uma das redes abaixo. As correções são feitas no próprio texto e ficam registradas no fim da matéria, com a data, no bloco **Correções e atualizações**. Quando um texto muda, ele mostra também a data da última atualização.
+
+## Conforto de leitura
+
+No botão **Leitura**, no topo, você escolhe o tema claro ou escuro e aumenta ou diminui o texto das matérias. Em cada matéria, o botão **Ouvir** lê o texto em voz alta com a voz do seu navegador, e os casos que você já leu ganham o selo **Lido** nas listas. Tudo fica salvo só no seu navegador.

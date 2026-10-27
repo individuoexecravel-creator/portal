@@ -22,6 +22,21 @@ valores:
     ano: 1998
     descricao: "Recursos públicos desviados para a campanha, segundo a denúncia"
     fonte: "Procuradoria-Geral da República"
+uf: "MG"
+justica:
+  inicio: 1998
+  fim: 2018
+  desfecho: condenacao
+  nota: "Azeredo é condenado e preso em 2018, vinte anos depois da campanha."
+fontes:
+  - titulo: "Ex-senador Eduardo Azeredo é condenado a 20 anos de prisão"
+    veiculo: "Congresso em Foco"
+    ano: 2015
+    url: "https://www.congressoemfoco.com.br/noticia/43022/ex-senador-eduardo-azeredo-e-condenado-a-20-anos-de-prisao"
+  - titulo: "Azeredo se entrega e é o primeiro preso do mensalão tucano"
+    veiculo: "TNH1"
+    ano: 2018
+    url: "https://www.tnh1.com.br/noticia/nid/azeredo-se-entrega-e-e-o-primeiro-preso-do-mensalao-tucano/"
 ---
 
 Quando o país descobriu, em 2005, que um publicitário mineiro chamado **Marcos Valério** operava pagamentos a deputados da base do governo Lula, os investigadores logo perceberam que aquele mecanismo não tinha nascido em Brasília. Ele já tinha sido usado, com as mesmas agências, o mesmo banco e quase o mesmo roteiro, sete anos antes, em Minas Gerais. Ali, o candidato beneficiado era um tucano: o governador **Eduardo Azeredo**, que tentava a reeleição em 1998. O caso ficou conhecido como **mensalão mineiro**, ou mensalão tucano, e a Procuradoria-Geral da República o descreveu como a origem do esquema que viria depois.

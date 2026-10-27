@@ -1,0 +1,28 @@
+{{ define "main" }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+</section>
+<div class="wrap trilhas">
+  {{ range site.Data.trilhas }}
+  {{ $pags := slice }}{{ range .casos }}{{ with or (site.GetPage (print "/nova-republica/" .)) (site.GetPage (print "/internacional/" .)) }}{{ $pags = $pags | append . }}{{ end }}{{ end }}
+  <section class="trilha-bloco" id="{{ .id }}" aria-labelledby="tr-{{ .id }}" data-trilha>
+    <header>
+      <h2 id="tr-{{ .id }}">{{ .titulo }}</h2>
+      <p class="bloco-desc">{{ .descricao }}</p>
+      <p class="trilha-prog" data-trilha-prog data-total="{{ len $pags }}">{{ len $pags }} casos</p>
+    </header>
+    <ol class="trilha-lista">
+      {{ range $k, $pg := $pags }}{{ $p := partial "partes.html" $pg }}
+      <li><a href="{{ $pg.RelPermalink }}" class="sec-{{ $pg.Section }}" data-lido="{{ $pg.File.ContentBaseName }}">
+        <span class="tl-n" aria-hidden="true">{{ add $k 1 }}</span>
+        {{ with $pg.Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy" width="560" height="700">{{ end }}
+        <span class="tl-texto"><span class="tl-ano">{{ $pg.Params.periodo }}</span><span class="tl-nome">{{ $p.caso }}</span></span>
+      </a></li>
+      {{ end }}
+    </ol>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

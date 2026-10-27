@@ -15,6 +15,21 @@ ficha:
     valor: "Operações Vegas e Monte Carlo, da Polícia Federal, e CPMI do Cachoeira"
   - item: "Desfecho"
     valor: "Demóstenes cassado em julho de 2012; Cachoeira condenado; CPMI termina sem indiciamentos relevantes"
+uf: "GO"
+justica:
+  inicio: 2004
+  fim: 2012
+  desfecho: politico
+  nota: "Demóstenes Torres é cassado pelo Senado em 2012; Cachoeira é condenado."
+fontes:
+  - titulo: "Cronologia da CPI mista do Cachoeira"
+    veiculo: "Agência Senado"
+    ano: 2012
+    url: "https://www12.senado.leg.br/noticias/materias/2012/10/24/cronologia-da-cpi-mista-do-cachoeira"
+  - titulo: "Demóstenes Torres tem seu mandato cassado no Senado"
+    veiculo: "Jornal do Brasil"
+    ano: 2012
+    url: "https://www.jb.com.br/pais/noticias/2012/07/11/amp/demostenes-torres-tem-seu-mandato-cassado-no-senado.html"
 ---
 
 Carlos Augusto Ramos, o **Carlinhos Cachoeira**, já era conhecido em Brasília antes de 2012. Em **2004**, um vídeo em que ele aparecia negociando com **Waldomiro Diniz**, então assessor da Casa Civil do governo Lula, tinha provocado o primeiro escândalo do governo petista. Oito anos depois, Cachoeira voltou ao centro do noticiário, agora com uma rede de influência que ia de policiais em Goiás a um dos senadores mais respeitados do país.

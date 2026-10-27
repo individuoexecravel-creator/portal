@@ -1,0 +1,10 @@
+{{- /* Tipos de desfecho na Justiça, usados no Tempo da Justiça e no comparador. */ -}}
+{{- return (slice
+  (dict "id" "condenacao" "nome" "Condenação" "explica" "Os principais acusados foram condenados.")
+  (dict "id" "misto" "nome" "Condenações parciais" "explica" "Parte dos acusados foi condenada; outros escaparam por absolvição, prescrição ou anulação.")
+  (dict "id" "politico" "nome" "Só punição política" "explica" "Cassação ou renúncia, sem condenação criminal dos principais nomes.")
+  (dict "id" "absolvicao" "nome" "Absolvição" "explica" "O principal acusado foi absolvido na Justiça.")
+  (dict "id" "anulacao" "nome" "Anulação" "explica" "A Justiça anulou a investigação ou as provas.")
+  (dict "id" "arquivado" "nome" "Arquivado" "explica" "A investigação foi arquivada.")
+  (dict "id" "sem-punicao" "nome" "Ninguém punido" "explica" "Nenhum dos envolvidos foi condenado ou cassado.")
+) -}}

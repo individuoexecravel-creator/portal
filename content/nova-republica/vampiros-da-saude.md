@@ -22,6 +22,14 @@ valores:
     ano: 2004
     descricao: "Prejuízo estimado aos cofres públicos ao longo de mais de uma década"
     fonte: "Polícia Federal"
+justica:
+  inicio: 1990
+  desfecho: sem-punicao
+  nota: "Operação Vampiro em 2004, com presos; o texto não registra um desfecho final."
+fontes:
+  - titulo: "Máfia dos vampiros: bloqueados R$ 8,6 mi de acusado"
+    veiculo: "Congresso em Foco"
+    url: "https://www.congressoemfoco.com.br/noticia/91545/mafia-dos-vampiros-bloqueados-r-8-6-mi-de-acusado"
 ---
 
 Hemoderivados são medicamentos produzidos a partir do **plasma do sangue humano**. O mais conhecido é o fator de coagulação usado por **hemofílicos**, pessoas cujo sangue não coagula normalmente e que podem morrer por um sangramento simples. Para esses pacientes, o remédio não é opcional. No Brasil, o Ministério da Saúde compra e distribui esses produtos gratuitamente pelo SUS. Durante anos, essas compras foram controladas por um cartel que a Polícia Federal apelidou com precisão: os **vampiros**.

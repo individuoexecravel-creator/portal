@@ -17,6 +17,19 @@ ficha:
     valor: "Impeachment aprovado na Câmara por 441 votos; Collor renuncia e o Senado o declara inelegível por 8 anos"
   - item: "Desfecho judicial"
     valor: "Collor absolvido no STF em 1994 por falta de provas válidas. PC Farias condenado por sonegação e falsidade; morto em 1996"
+justica:
+  inicio: 1990
+  fim: 1994
+  desfecho: absolvicao
+  nota: "Impeachment e inelegibilidade em 1992; no STF, Collor é absolvido em 1994 por falta de provas válidas."
+fontes:
+  - titulo: "Há 34 anos, Câmara abria impeachment de Collor e testava a democracia"
+    veiculo: "Congresso em Foco"
+    ano: 2026
+    url: "https://www.congressoemfoco.com.br/noticia/122575/ha-34-anos-camara-abria-impeachment-de-collor-e-testava-a-democracia"
+  - titulo: "Em 1992, Collor era o 1º presidente do Brasil a sofrer impeachment"
+    veiculo: "Gazeta do Povo"
+    url: "https://www.gazetadopovo.com.br/vida-publica/em-1992-collor-era-o-1-presidente-do-brasil-a-sofrer-impeachment-efsblledqdg5hahb5h9ea4g02"
 ---
 
 Fernando Collor de Mello chegou ao Palácio do Planalto em março de 1990 como o primeiro presidente eleito pelo voto direto desde 1960. Tinha 40 anos, discurso de caçador de marajás e a promessa de modernizar um país que saía da hiperinflação. Dois anos e meio depois, foi afastado do cargo por um processo de impeachment, o primeiro da história da República. No meio do caminho estava um homem que não ocupava cargo nenhum no governo, mas que, segundo a CPI do Congresso, mandava em boa parte dele: **Paulo César Farias, o PC**.

@@ -51,3 +51,43 @@ Guia rápido para manter o visual consistente quando o site crescer. Os valores 
 - Botão só com ícone precisa de `aria-label`.
 - Nada interativo com menos de 44 px de altura.
 - Se for pôr uma borda em volta de um bloco de conteúdo, tente uma linha em cima e espaço antes.
+
+## Campos de cada caso (front matter)
+
+Além de `title`, `date`, `description`, `image`, `periodo`, `ficha` e `valores`, cada caso pode ter:
+
+```yaml
+uf: "SP"                 # só casos da Nova República que aconteceram num estado. Sem uf = caso federal no Mapa
+justica:                 # alimenta o Tempo da Justiça e o Comparar
+  inicio: 1992           # ano em que o esquema começou
+  fim: 2016              # ano do desfecho principal. Sem fim = "sem um ano de desfecho"
+  desfecho: condenacao   # condenacao, misto, politico, absolvicao, anulacao, arquivado, sem-punicao
+  prescrito: true        # opcional: houve prescrição
+  anulado: true          # opcional: houve anulação
+  nota: "Uma frase sobre o desfecho."
+fontes:                  # aparecem no fim da matéria, em "Fontes e leitura complementar"
+  - titulo: "Título da reportagem"
+    veiculo: "Nome do veículo"
+    ano: 2016            # opcional
+    url: "https://..."
+lastmod: 2026-11-02      # opcional: data da última atualização do texto
+correcoes:               # opcional: histórico público de correções
+  - data: 2026-11-02
+    texto: "O texto dizia X. O correto é Y."
+```
+
+## Dados do site
+
+| Arquivo | O que guarda |
+|---|---|
+| `data/ipca.yaml` | Inflação de cada ano. Atualize `parcial` e `ate` todo mês, e acrescente o ano novo em janeiro |
+| `data/glossario.yaml` | Termos do glossário. Na matéria, só a primeira aparição de cada termo ganha a explicação |
+| `data/trilhas.yaml` | Trilhas de leitura: lista ordenada de casos por tema |
+| `data/brasil_mapa.json` | Contorno dos estados (svg-maps, de Victor Cazanave, CC BY 4.0). Não precisa mexer |
+
+## Conforto de leitura
+
+- Tema claro e tamanho do texto ficam em `localStorage` (`portal-tema`, `portal-escala`). O script no `<head>` do `baseof.html` aplica antes de a página aparecer, sem piscar.
+- Tema claro troca os tokens em `html[data-tema="claro"]`. Cores novas devem usar tokens, nunca `#000` ou `#fff` direto. Para texto sobre fundo cor de papel, use `--tinta`; para negrito forte, `--forte`.
+- Casos lidos ficam em `portal-lidos`. Qualquer link de caso com `data-lido="<slug>"` ganha o selo "Lido".
+- "Ouvir" usa a voz do próprio navegador. Se o navegador não tiver síntese de voz, o botão não aparece.

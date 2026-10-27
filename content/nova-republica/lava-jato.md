@@ -28,6 +28,29 @@ valores:
     ano: 2019
     descricao: "Valor devolvido aos cofres públicos até outubro de 2019"
     fonte: "Força-tarefa da Lava Jato em Curitiba"
+justica:
+  inicio: 2014
+  fim: 2021
+  desfecho: misto
+  anulado: true
+  nota: "Mais de cem condenações em Curitiba; depois, o STF anula as de Lula e a força-tarefa é extinta em 2021."
+fontes:
+  - titulo: "Lava Jato completa cinco anos com 155 pessoas condenadas"
+    veiculo: "Bem Paraná"
+    ano: 2019
+    url: "https://www.bemparana.com.br/noticias/politica/lava-jato-completa-cinco-anos-com-155-pessoas-condenadas/amp/"
+  - titulo: "Valor devolvido pela Operação Lava Jato ultrapassa R$ 4 bilhões"
+    veiculo: "Jovem Pan"
+    ano: 2019
+    url: "https://jovempan.com.br/brasil/valor-devolvido-operacao-lava-jato-ultrapassa-r-4-bilhoes/"
+  - titulo: "Lava Jato recuperou R$ 2,8 bi desviados, diz MPF"
+    veiculo: "Congresso em Foco"
+    ano: 2015
+    url: "https://www.congressoemfoco.com.br/noticias/lava-jato-recuperou-r-28-bi-desviados-diz-mpf/"
+  - titulo: "Brazil dismantles anti-corruption task force behind Lava Jato"
+    veiculo: "OCCRP"
+    ano: 2021
+    url: "https://www.occrp.org/en/news/brazil-dismantles-anti-corruption-task-force-behind-lava-jato"
 ---
 
 Em **17 de março de 2014**, a Polícia Federal deflagrou uma operação contra doleiros que usavam um **posto de combustíveis** em Brasília, o Posto da Torre, para movimentar dinheiro. Por causa do lava-jato do posto, a operação foi batizada de **Lava Jato**. Ninguém imaginava que ela chegaria à maior empresa do país, às maiores empreiteiras, a um ex-presidente da República e a governos de mais de dez países. Sete anos depois, a operação tinha mudado a política brasileira, e começava a ser desmontada.

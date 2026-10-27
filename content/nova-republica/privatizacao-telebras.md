@@ -15,6 +15,15 @@ ficha:
     valor: "Gravações ilegais de conversas no BNDES, divulgadas em novembro de 1998"
   - item: "Desfecho"
     valor: "Ministro e presidente do BNDES pedem demissão; ninguém é condenado; a privatização é mantida"
+justica:
+  inicio: 1998
+  fim: 1998
+  desfecho: sem-punicao
+  nota: "O ministro e o presidente do BNDES pedem demissão; ninguém é condenado."
+fontes:
+  - titulo: "Justiça confirma que privatização de teles não teve irregularidades"
+    veiculo: "Gazeta do Povo"
+    url: "https://www.gazetadopovo.com.br/economia/justica-confirma-que-privatizacao-de-teles-nao-teve-irregularidades-1gwnsm2tb0tzuu1fp7gvjk7ri"
 ---
 
 Até 1998, quase todas as linhas de telefone do Brasil pertenciam ao Estado. O **sistema Telebrás** era um conjunto de empresas estatais que controlava a telefonia fixa, a longa distância e a nascente telefonia celular. Conseguir uma linha podia levar anos, e o telefone era declarado no Imposto de Renda como patrimônio. A privatização prometia mudar isso, e mudou. Mas o leilão deixou uma gravação que derrubou dois dos homens mais importantes da equipe econômica.

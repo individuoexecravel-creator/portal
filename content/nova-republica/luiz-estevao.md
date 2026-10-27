@@ -25,6 +25,29 @@ valores:
     descricao: "Desvio da obra do TRT de São Paulo; é o mesmo valor do caso Lalau"
     fonte: "Ministério Público Federal"
     repete: lalau-trt-sp
+uf: "SP"
+justica:
+  inicio: 1992
+  fim: 2016
+  desfecho: condenacao
+  nota: "Condenado em 2006, só começa a cumprir a pena em 2016, depois de dezenas de recursos."
+fontes:
+  - titulo: "Senador cassado Luiz Estevão se entrega à Polícia Civil do DF"
+    veiculo: "Estado de Minas"
+    ano: 2016
+    url: "https://www.em.com.br/app/noticia/politica/2016/03/08/interna_politica,741330/amp.html"
+  - titulo: "Justiça nega 38º recurso de Luiz Estevão contra pena de 26 anos de prisão"
+    veiculo: "Congresso em Foco"
+    ano: 2018
+    url: "https://www.congressoemfoco.com.br/corrupcao/justica-nega-38o-recurso-de-luiz-estevao-contra-pena-de-26-anos-de-prisao/"
+  - titulo: "STJ concede prisão domiciliar temporária ao ex-senador Luiz Estevão"
+    veiculo: "Poder360"
+    ano: 2020
+    url: "https://www.poder360.com.br/justica/stj-concede-prisao-domiciliar-temporaria-ao-ex-senador-luiz-estevao/"
+  - titulo: "Luiz Estevão vai para o regime aberto em 2021"
+    veiculo: "Correio Braziliense"
+    ano: 2019
+    url: "https://blogs.correiobraziliense.com.br/cbpoder/luiz-estevao-vai-para-o-regime-aberto-em-2021/"
 ---
 
 Na madrugada de **8 de março de 2016**, por volta das 5h40, um ex-senador saiu de casa no Lago Sul, em Brasília, e foi se entregar à Polícia Civil do Distrito Federal. Era **Luiz Estevão**, condenado **dez anos antes** a 31 anos de prisão. Nesse intervalo, a defesa apresentou recurso atrás de recurso, em todas as instâncias da Justiça. A pergunta que o caso deixa é simples: como alguém condenado em 2006 só começa a cumprir a pena em 2016?

@@ -12,14 +12,26 @@
     {{ end }}
   </div>
 
+  <div class="modo-valor" role="group" aria-labelledby="modo-t">
+    <p id="modo-t" class="modo-t">Mostrar os valores em reais</p>
+    <div class="seletor">
+      <button type="button" class="seletor-op" aria-pressed="true" data-modo-op="epoca">Da época</button>
+      <button type="button" class="seletor-op" aria-pressed="false" data-modo-op="ipca">Corrigidos pela inflação</button>
+    </div>
+    <p class="modo-nota">A correção usa o IPCA, a inflação oficial, de cada ano até {{ site.Data.ipca.ate }}. Dólares e euros não são corrigidos.</p>
+  </div>
+
   {{ range $i, $s := slice "nova-republica" "internacional" }}
-    <div{{ if ne $i 0 }} hidden{{ end }} data-painel-wrap="{{ $s }}">{{ partial "painel-valores.html" $s }}</div>
+    <div{{ if ne $i 0 }} hidden{{ end }} data-painel-wrap="{{ $s }}" role="tabpanel" id="painel-{{ $s }}" aria-labelledby="aba-{{ $s }}">
+      {{ partial "painel-valores.html" (dict "sec" $s "ipca" false) }}
+      {{ partial "painel-valores.html" (dict "sec" $s "ipca" true) }}
+    </div>
   {{ end }}
 
   <section class="como-conta" aria-labelledby="como-t">
     <h2 id="como-t">Como a conta é feita</h2>
     <ul>
-      <li><strong>Valores da época, sem correção.</strong> Um real de 1998 valia mais do que um real de hoje. Os números somam o que foi apurado em cada momento, sem atualizar pela inflação.</li>
+      <li><strong>Da época ou corrigidos.</strong> Um real de 1998 valia muito mais do que um real de hoje. Por padrão, os números somam o que foi apurado em cada momento. Na opção "corrigidos pela inflação", cada valor em reais é atualizado pelo IPCA acumulado desde o ano em que foi apurado. Fonte do índice: <a href="{{ site.Data.ipca.fonte_url }}" rel="noopener" target="_blank">{{ site.Data.ipca.fonte }}<span class="sr"> (abre em nova aba)</span></a>.</li>
       <li><strong>Moedas separadas.</strong> Reais, dólares e euros nunca se misturam numa mesma soma.</li>
       <li><strong>Só valores com fonte.</strong> Cada número vem de um processo, de uma CPI, do Ministério Público, da polícia ou do órgão lesado, e a fonte está na tabela.</li>
       <li><strong>Sem contar duas vezes.</strong> Quando dois casos tratam do mesmo dinheiro, como Lalau e Luiz Estevão, o valor entra uma vez só.</li>

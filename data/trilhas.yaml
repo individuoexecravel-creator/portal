@@ -1,0 +1,30 @@
+# Trilhas de leitura: sequências de casos para ler em ordem.
+# Cada caso é o nome do arquivo, sem .md. Um caso pode estar em mais de uma trilha.
+- id: petrobras
+  titulo: "Petrobras e Lava Jato"
+  descricao: "Do esquema de diretorias na estatal à operação que prendeu empreiteiros, políticos e um ex-presidente, e ao que sobrou dela depois."
+  casos: [petrolao, lava-jato, collor-br-distribuidora, sergio-cabral, bunker-de-geddel]
+- id: juizes
+  titulo: "Juízes no banco dos réus"
+  descricao: "Quando quem devia julgar passou a ser julgado: obras superfaturadas, sentenças vendidas e um Tribunal de Justiça inteiro sob suspeita."
+  casos: [lalau-trt-sp, luiz-estevao, operacao-anaconda, operacao-domino]
+- id: votos
+  titulo: "Votos comprados"
+  descricao: "Mandato de cinco anos, reeleição, mesada a deputados e propina filmada: como governos compraram apoio no Legislativo."
+  casos: [o-preco-do-quinto-ano, compra-de-votos-reeleicao, mensalao-mineiro, mensalao, caixa-de-pandora]
+- id: bancos
+  titulo: "Bancos e dinheiro lá fora"
+  descricao: "Socorro a bancos quebrados, um câmbio salvo pelo Banco Central e bilhões enviados ao exterior por contas CC5."
+  casos: [proer-pasta-rosa, banestado, marka-fontecindam, paulo-maluf]
+- id: cassacoes
+  titulo: "Cassados pelo Congresso"
+  descricao: "Os casos em que deputados e senadores perderam o mandato, e os que escaparam na votação."
+  casos: [anoes-do-orcamento, sergio-naya, deputado-da-motosserra, guerra-no-senado, natan-donadon]
+- id: saude
+  titulo: "Dinheiro da saúde"
+  descricao: "Hemoderivados superfaturados e ambulâncias vendidas a preço inflado com emendas parlamentares."
+  casos: [vampiros-da-saude, sanguessugas]
+- id: narco
+  titulo: "Narcoestados"
+  descricao: "Fora do Brasil: governos tomados pelo tráfico e pela máfia, da Bolívia à Sicília."
+  casos: [golpe-da-cocaina, manuel-noriega, paramilitares-colombia, mafia-dentro-do-estado]

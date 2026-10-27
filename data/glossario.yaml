@@ -1,0 +1,127 @@
+# Glossário: termos jurídicos e políticos que aparecem nos casos.
+# "termos" são as formas que o site procura no texto (sem diferenciar maiúsculas).
+# Na matéria, só a primeira aparição de cada termo ganha a explicação.
+- id: peculato
+  nome: "Peculato"
+  termos: ["peculato"]
+  def: "Crime do servidor público que se apropria de dinheiro ou bem que estava sob sua guarda por causa do cargo, ou que o desvia para si ou para outra pessoa."
+- id: corrupcao-passiva
+  nome: "Corrupção passiva"
+  termos: ["corrupção passiva"]
+  def: "Crime do agente público que pede, recebe ou aceita promessa de vantagem indevida por causa do cargo. É o lado de quem recebe a propina."
+- id: corrupcao-ativa
+  nome: "Corrupção ativa"
+  termos: ["corrupção ativa"]
+  def: "Crime de quem oferece ou promete vantagem indevida a um agente público para que ele faça, deixe de fazer ou atrase algo do seu trabalho. É o lado de quem paga a propina."
+- id: lavagem
+  nome: "Lavagem de dinheiro"
+  termos: ["lavagem de dinheiro"]
+  def: "Esconder a origem criminosa de um dinheiro para que ele pareça legal: passando por empresas de fachada, contas no exterior, imóveis ou contratos falsos."
+- id: prescricao
+  nome: "Prescrição"
+  termos: ["prescrição", "prescreveu", "prescreveram", "prescrito", "prescritos", "prescrita", "prescritas"]
+  def: "Perda do direito do Estado de punir porque passou tempo demais. O prazo depende da pena do crime. Quando um crime prescreve, o réu não é inocentado, apenas não pode mais ser punido por ele."
+- id: foro
+  nome: "Foro privilegiado"
+  termos: ["foro privilegiado"]
+  def: "Regra que faz certas autoridades, como deputados, senadores e ministros, serem julgadas diretamente por tribunais superiores, como o STF, e não por um juiz de primeira instância. O nome oficial é foro por prerrogativa de função."
+- id: delacao
+  nome: "Delação premiada"
+  termos: ["delação premiada", "delações premiadas", "colaboração premiada"]
+  def: "Acordo em que um investigado conta o que sabe e entrega provas sobre o esquema em troca de redução da pena. O nome oficial é colaboração premiada. O que o delator diz precisa ser confirmado por outras provas."
+- id: leniencia
+  nome: "Acordo de leniência"
+  termos: ["acordo de leniência", "acordos de leniência", "leniência"]
+  def: "Uma espécie de delação feita por empresas: a companhia admite o que fez, colabora com a investigação e devolve dinheiro, em troca de punições menores e de poder continuar fechando contratos."
+- id: transito
+  nome: "Trânsito em julgado"
+  termos: ["trânsito em julgado", "transitou em julgado"]
+  def: "Momento em que não cabe mais nenhum recurso contra uma decisão. A partir daí, a condenação é definitiva."
+- id: segunda-instancia
+  nome: "Segunda instância"
+  termos: ["segunda instância"]
+  def: "O tribunal que revisa a decisão do primeiro juiz, como os Tribunais Regionais Federais e os Tribunais de Justiça dos estados. Acima deles ainda estão o STJ e o STF."
+- id: improbidade
+  nome: "Improbidade administrativa"
+  termos: ["improbidade administrativa", "improbidade"]
+  def: "Ato de agente público contra a honestidade na administração, como enriquecer ilicitamente ou causar prejuízo aos cofres públicos. É julgada na esfera civil: a punição inclui devolver dinheiro, multa e perda de direitos políticos, mas não prisão."
+- id: cpi
+  nome: "CPI e CPMI"
+  termos: ["CPMI", "CPI"]
+  def: "Comissão Parlamentar de Inquérito: grupo de parlamentares que investiga um fato com poderes parecidos com os de um juiz, como convocar testemunhas e quebrar sigilos. A CPMI é mista, com deputados e senadores. Ela não condena ninguém: envia as conclusões ao Ministério Público."
+- id: cassacao
+  nome: "Cassação"
+  termos: ["cassação", "cassado", "cassada", "cassados"]
+  def: "Perda do mandato decidida pela própria Casa legislativa, em votação, por quebra de decoro ou por outros motivos previstos na Constituição. É uma punição política, separada de qualquer processo criminal."
+- id: inelegivel
+  nome: "Inelegibilidade"
+  termos: ["inelegível", "inelegíveis", "inelegibilidade"]
+  def: "Proibição de se candidatar a cargos públicos por um período. Pode vir de uma cassação, de uma condenação por órgão colegiado (pela Lei da Ficha Limpa) ou de um impeachment."
+- id: impeachment
+  nome: "Impeachment"
+  termos: ["impeachment"]
+  def: "Processo em que o Congresso afasta o presidente da República por crime de responsabilidade. A Câmara autoriza a abertura e o Senado julga. A pena é a perda do cargo e a inelegibilidade por oito anos."
+- id: habeas-corpus
+  nome: "Habeas corpus"
+  termos: ["habeas corpus"]
+  def: "Pedido feito à Justiça para soltar ou evitar a prisão de alguém que esteja sofrendo ou ameaçado de sofrer uma prisão ilegal."
+- id: caixa-dois
+  nome: "Caixa dois"
+  termos: ["caixa dois", "caixa 2"]
+  def: "Dinheiro de campanha ou de partido que não é declarado à Justiça Eleitoral. Muitas vezes vem de empresas em troca de favores e serve para esconder a origem de propinas."
+- id: superfaturamento
+  nome: "Superfaturamento"
+  termos: ["superfaturamento", "superfaturada", "superfaturadas", "superfaturado", "superfaturados"]
+  def: "Cobrar do poder público mais do que o produto ou a obra valem. A diferença costuma ser dividida entre empresários e quem aprovou o contrato."
+- id: evasao
+  nome: "Evasão de divisas"
+  termos: ["evasão de divisas"]
+  def: "Crime de mandar dinheiro para fora do país sem declarar ao Banco Central, ou manter no exterior valores escondidos das autoridades brasileiras."
+- id: quadrilha
+  nome: "Formação de quadrilha"
+  termos: ["formação de quadrilha"]
+  def: "Crime de se juntar a outras pessoas de forma estável para cometer crimes. Desde 2013 o nome legal é associação criminosa."
+- id: orcrim
+  nome: "Organização criminosa"
+  termos: ["organização criminosa"]
+  def: "Grupo de quatro ou mais pessoas, com divisão de tarefas, que se organiza para obter vantagens por meio de crimes graves. Foi definido pela lei de 2013, que também regulou a delação premiada."
+- id: gestao-fraudulenta
+  nome: "Gestão fraudulenta"
+  termos: ["gestão fraudulenta"]
+  def: "Crime de quem administra um banco ou instituição financeira usando fraudes, como esconder prejuízos ou enganar o Banco Central e os clientes."
+- id: prisao-domiciliar
+  nome: "Prisão domiciliar"
+  termos: ["prisão domiciliar"]
+  def: "Cumprimento da prisão em casa, em geral com tornozeleira eletrônica. A Justiça concede em casos como idade avançada, doença grave ou, durante a pandemia, risco de contágio."
+- id: regime-fechado
+  nome: "Regime fechado"
+  termos: ["regime fechado"]
+  def: "Cumprimento da pena dentro da prisão, sem saídas. Depois de parte da pena, o preso pode passar ao regime semiaberto, em que trabalha fora durante o dia, e depois ao aberto."
+- id: indulto
+  nome: "Indulto"
+  termos: ["indulto", "indultado"]
+  def: "Perdão da pena concedido por decreto do presidente da República, em geral no fim do ano, para presos que cumprem certas condições. Apaga a pena, mas não a condenação."
+- id: extradicao
+  nome: "Extradição"
+  termos: ["extradição", "extraditado", "extraditada"]
+  def: "Entrega de uma pessoa por um país a outro, a pedido deste, para que seja julgada ou cumpra pena."
+- id: doleiro
+  nome: "Doleiro"
+  termos: ["doleiro", "doleiros"]
+  def: "Operador que compra, vende e envia moeda estrangeira por fora do sistema oficial, sem registro no Banco Central. Doleiros aparecem em quase todos os esquemas de lavagem de dinheiro."
+- id: denuncia
+  nome: "Denúncia"
+  termos: ["denúncia"]
+  def: "Na linguagem da Justiça, é a acusação formal que o Ministério Público apresenta contra alguém. Se o juiz aceita a denúncia, o investigado vira réu e começa o processo."
+- id: estelionato
+  nome: "Estelionato"
+  termos: ["estelionato"]
+  def: "Crime de obter vantagem enganando alguém, por meio de fraude ou mentira, e causando prejuízo à vítima."
+- id: cade
+  nome: "Cade"
+  termos: ["Cade"]
+  def: "Conselho Administrativo de Defesa Econômica: órgão federal que investiga e pune cartéis e outras práticas contra a concorrência. As punições são administrativas, como multas."
+- id: abin
+  nome: "Abin"
+  termos: ["Abin"]
+  def: "Agência Brasileira de Inteligência, ligada à Presidência da República. Não é polícia e não pode, por lei, conduzir investigações criminais."

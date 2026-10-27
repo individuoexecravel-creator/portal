@@ -15,6 +15,16 @@ ficha:
     valor: "CPI do Orçamento (out. 1993 a jan. 1994)"
   - item: "Desfecho"
     valor: "CPI pede a cassação de 18 parlamentares: 6 são cassados, 4 renunciam e 8 são absolvidos pelo plenário"
+justica:
+  inicio: 1989
+  fim: 1994
+  desfecho: politico
+  nota: "6 cassados, 4 renúncias e 8 absolvidos pelo plenário. Ninguém foi condenado na Justiça."
+fontes:
+  - titulo: "Relembre o escândalo dos Anões do Orçamento"
+    veiculo: "Jornal do Brasil"
+    ano: 2012
+    url: "https://www.jb.com.br/pais/noticias/2012/04/15/amp/relembre-o-escandalo-dos-anoes-do-orcamento.html"
 ---
 
 O apelido veio da estatura. Os parlamentares que comandavam a Comissão Mista de Orçamento do Congresso no início dos anos 1990 eram, em boa parte, baixinhos, e quase todos pertenciam ao chamado **baixo clero**: deputados sem projeção nacional, longe dos holofotes, mas com poder sobre o lugar onde se decidia para onde ia o dinheiro do país. A imprensa os batizou de **Anões do Orçamento**. O escândalo que levou esse nome estourou em outubro de 1993, menos de um ano depois do impeachment de Collor, e mostrou que o problema não estava só no Palácio do Planalto.

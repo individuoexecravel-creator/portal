@@ -12,6 +12,12 @@
         {{ range site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
       </ul>
     </nav>
+    <nav class="rodape-nav" aria-label="Ferramentas">
+      <h2>Para entender melhor</h2>
+      <ul>
+        {{ range site.Menus.ferramentas }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+      </ul>
+    </nav>
     <nav class="rodape-nav" aria-label="Seções">
       <h2>Seções</h2>
       <ul>

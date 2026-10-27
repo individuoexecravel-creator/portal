@@ -22,6 +22,20 @@ valores:
     ano: 1999
     descricao: "Prejuízo aos cofres públicos com a venda de dólares abaixo do mercado"
     fonte: "CPI dos Bancos"
+justica:
+  inicio: 1999
+  fim: 2008
+  desfecho: condenacao
+  nota: "Cacciola foge para a Itália, é preso em Mônaco em 2007 e extraditado em 2008."
+fontes:
+  - titulo: "Ex-dirigentes do BC e banqueiros são condenados a devolver bilhões ao Erário"
+    veiculo: "Jornal do Brasil"
+    ano: 2012
+    url: "https://www.jb.com.br/pais/noticias/2012/03/29/amp/ex-dirigentes-do-bc-e-banqueiros-sao-condenados-a-devolver-bilhoes-ao-erario.html"
+  - titulo: "Justiça dá parecer favorável à extradição de Cacciola"
+    veiculo: "Consultor Jurídico"
+    ano: 2008
+    url: "https://www.conjur.com.br/2008-abr-16/justica_parecer_favoravel_extradicao_cacciola/"
 ---
 
 Em **janeiro de 1999**, o Brasil abandonou o câmbio controlado que sustentava o Plano Real desde 1994. Em poucos dias, o dólar disparou e o país viveu uma das maiores crises financeiras da sua história recente. No meio desse terremoto, o Banco Central tomou uma decisão que só se tornaria pública semanas depois: vendeu dólares, a preço camarada, a dois bancos que estavam à beira da falência. O caso ficou conhecido pelos nomes desses bancos, **Marka e FonteCindam**.

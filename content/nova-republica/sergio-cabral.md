@@ -15,6 +15,20 @@ ficha:
     valor: "Operação Calicute (Lava Jato do Rio de Janeiro) e dezenas de desdobramentos"
   - item: "Desfecho"
     valor: "Mais de 20 condenações, somando mais de 400 anos; deixa a prisão em dezembro de 2022 após seis anos"
+uf: "RJ"
+justica:
+  inicio: 2007
+  fim: 2017
+  desfecho: condenacao
+  nota: "Primeira condenação em 2017; mais de 20 depois, somando mais de 400 anos."
+fontes:
+  - titulo: "Bretas condena Cabral a 45 anos na Operação Calicute"
+    veiculo: "Congresso em Foco"
+    ano: 2018
+    url: "https://www.congressoemfoco.com.br/noticias/bretas-condena-cabral-a-45-anos-na-operacao-calicute/"
+  - titulo: "Sérgio Cabral já soma mais de 400 anos de prisão"
+    veiculo: "TNH1"
+    url: "https://www.tnh1.com.br/noticia/nid/sergio-cabral-ja-soma-mais-de-400-anos-de-prisao/"
 ---
 
 Sérgio Cabral governou o Rio de Janeiro de **2007 a 2014** num período de dinheiro farto. O estado recebia royalties do petróleo, preparava-se para a Copa do Mundo de 2014 e as Olimpíadas de 2016 e tocava grandes obras como a reforma do **Maracanã**, o **Arco Metropolitano** e as obras do **PAC nas favelas**. Cabral era aliado de Lula e Dilma, tinha alta popularidade e chegou a ser cotado para a Presidência. Em **17 de novembro de 2016**, foi preso em casa, no Leblon. As investigações mostraram que, durante todo o governo, ele cobrou uma **taxa** sobre quase tudo que o estado contratava.

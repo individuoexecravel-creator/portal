@@ -22,6 +22,16 @@ valores:
     ano: 2014
     descricao: "Propina recebida em contratos da BR Distribuidora"
     fonte: "STF"
+justica:
+  inicio: 2010
+  fim: 2023
+  desfecho: condenacao
+  nota: "STF condena Collor em 2023; a prisão só começa em abril de 2025."
+fontes:
+  - titulo: "Fernando Collor é condenado a 8 anos e 10 meses de prisão pelo STF"
+    veiculo: "CNN Brasil"
+    ano: 2023
+    url: "https://www.cnnbrasil.com.br/politica/fernando-collor-e-condenado-a-8-anos-e-10-meses-de-prisao-pelo-stf/"
 ---
 
 Em dezembro de 1992, Fernando Collor de Mello deixou a Presidência da República pela porta dos fundos: renunciou horas antes de ser condenado pelo Senado no processo de impeachment, depois do escândalo do **esquema PC Farias**. Dois anos depois, o Supremo Tribunal Federal o absolveu da acusação de corrupção por falta de provas. Parecia o fim da história. Não era. Em **25 de abril de 2025**, aos 75 anos, Collor foi preso pela Polícia Federal em Maceió. O motivo, desta vez, era outro: **propina em contratos da BR Distribuidora**, uma subsidiária da Petrobras.

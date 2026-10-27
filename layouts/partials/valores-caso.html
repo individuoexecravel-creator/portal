@@ -7,6 +7,9 @@
     {{- range . }}{{ $t := index (where $tipos "id" .tipo) 0 }}
     <li>
       <span class="vc-valor"><i class="ponto v-{{ .tipo }}" aria-hidden="true"></i>{{ partial "dinheiro.html" (dict "v" .valor "m" (.moeda | default "BRL")) }}</span>
+      {{- if and (eq (.moeda | default "BRL") "BRL") (lt (int .ano) now.Year) }}
+      <span class="vc-hoje">{{ partial "dinheiro.html" (dict "v" (mul (float .valor) (partialCached "ipca-fator.html" .ano .ano)) "m" "BRL") }} em valores de hoje, pelo IPCA</span>
+      {{- end }}
       <span class="vc-desc">{{ $t.nome }}: {{ .descricao }}. Fonte: {{ .fonte }}.</span>
     </li>
     {{- end }}

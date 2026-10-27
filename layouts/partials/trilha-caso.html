@@ -1,0 +1,23 @@
+{{- /* Trilhas de leitura que passam por esta matéria. */ -}}
+{{- $slug := .File.ContentBaseName -}}
+{{- range site.Data.trilhas -}}
+{{- $t := . -}}
+{{- if in $t.casos $slug -}}
+{{- $n := len $t.casos -}}
+{{- $i := 0 }}{{ range $k, $c := $t.casos }}{{ if eq $c $slug }}{{ $i = $k }}{{ end }}{{ end -}}
+<div class="wrap"><nav class="trilha-caso" aria-label="Trilha {{ $t.titulo }}">
+  <p class="tc-rot">{{ partial "icone.html" "trilha" }}<span>Trilha de leitura · <a href="{{ "trilhas/" | relURL }}#{{ $t.id }}">{{ $t.titulo }}</a></span></p>
+  <ol class="tc-passos">
+    {{ range $k, $c := $t.casos }}{{ with or (site.GetPage (print "/nova-republica/" $c)) (site.GetPage (print "/internacional/" $c)) }}{{ $p := partial "partes.html" . }}
+    <li{{ if eq $k $i }} aria-current="step"{{ end }}><a href="{{ .RelPermalink }}" title="{{ $p.caso }}"><span class="sr">{{ add $k 1 }}. {{ $p.caso }}</span></a></li>
+    {{ end }}{{ end }}
+  </ol>
+  <p class="tc-pos">Caso {{ add $i 1 }} de {{ $n }}</p>
+  {{ if lt (add $i 1) $n }}{{ $c := index $t.casos (add $i 1) }}{{ with or (site.GetPage (print "/nova-republica/" $c)) (site.GetPage (print "/internacional/" $c)) }}{{ $p := partial "partes.html" . }}
+  <a class="tc-prox" href="{{ .RelPermalink }}"><span class="tc-prox-rot">Próximo na trilha</span><span class="tc-prox-nome">{{ $p.caso }}</span>{{ partial "icone.html" "dir" }}</a>
+  {{ end }}{{ else }}
+  <p class="tc-fim">Você chegou ao fim desta trilha. <a href="{{ "trilhas/" | relURL }}">Ver outras trilhas</a></p>
+  {{ end }}
+</nav></div>
+{{- end -}}
+{{- end -}}

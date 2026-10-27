@@ -15,6 +15,19 @@ ficha:
     valor: "Dezenas de presos em vários estados"
   - item: "Desfecho"
     valor: "Silas Rondeau deixa o ministério; processos se arrastam por anos e parte das provas é questionada na Justiça"
+justica:
+  inicio: 2007
+  desfecho: sem-punicao
+  nota: "Silas Rondeau deixa o ministério; os processos se arrastam e parte das provas é contestada."
+fontes:
+  - titulo: "Entenda o que é a Operação Navalha"
+    veiculo: "Congresso em Foco"
+    ano: 2007
+    url: "https://www.congressoemfoco.com.br/noticias/entenda-o-que-e-a-operacao-navalha/"
+  - titulo: "PF mantém acusações contra Silas Rondeau"
+    veiculo: "Congresso em Foco"
+    ano: 2007
+    url: "https://www.congressoemfoco.com.br/noticia/85279/pf-mantem-acusacoes-contra-silas-rondeau"
 ---
 
 A **Gautama** era uma construtora da Bahia sem grande expressão nacional, mas com uma capacidade impressionante de conseguir contratos com dinheiro federal em vários estados do Norte e do Nordeste. Em **17 de maio de 2007**, a Polícia Federal deflagrou a **Operação Navalha** e mostrou o segredo desse sucesso: segundo a investigação, a empresa pagava a quem fosse preciso, do servidor que media a obra ao ministro que liberava o dinheiro.

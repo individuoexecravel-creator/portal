@@ -22,6 +22,15 @@ valores:
     ano: 1997
     descricao: "Valor que o deputado Ronivon Santiago disse ter recebido por um voto"
     fonte: "Gravações publicadas pela Folha de S.Paulo"
+justica:
+  inicio: 1997
+  fim: 1997
+  desfecho: sem-punicao
+  nota: "Dois deputados renunciam; não há CPI e ninguém é punido."
+fontes:
+  - titulo: "Entenda como foi a compra de votos a favor da emenda da reeleição em 1997"
+    veiculo: "Poder360"
+    url: "https://www.poder360.com.br/brasil/entenda-como-foi-a-compra-de-votos-a-favor-da-emenda-da-reeleicao-em-1997/"
 ---
 
 A Constituição de 1988 proibia a reeleição de presidente, governadores e prefeitos. Em 1996, o governo Fernando Henrique Cardoso, embalado pelo sucesso do Plano Real, decidiu mudar a regra e permitir um segundo mandato consecutivo, a começar pelo próprio presidente. A emenda foi aprovada. Meses depois, gravações mostraram que pelo menos parte dos votos tinha sido **comprada**.

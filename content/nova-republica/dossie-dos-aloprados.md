@@ -22,6 +22,18 @@ valores:
     ano: 2006
     descricao: "Dinheiro vivo apreendido num hotel em São Paulo, entre reais e dólares"
     fonte: "Polícia Federal"
+justica:
+  inicio: 2006
+  desfecho: sem-punicao
+  nota: "A origem do dinheiro nunca foi identificada e a Justiça rejeitou a acusação."
+fontes:
+  - titulo: "PF: ex-assessor levou dinheiro para pagar por dossiê"
+    veiculo: "Congresso em Foco"
+    ano: 2006
+    url: "https://www.congressoemfoco.com.br/noticia/1585/pf-ex-assessor-levou-dinheiro-para-pagar-por-dossie"
+  - titulo: "Justiça rejeita acusação contra aloprados do PT"
+    veiculo: "Folha Vitória"
+    url: "https://www.folhavitoria.com.br/politica/justica-rejeita-acusacao-contra-aloprados-do-pt/"
 ---
 
 No dia **15 de setembro de 2006**, a Polícia Federal entrou num quarto do hotel Ibis, perto do aeroporto de Congonhas, em São Paulo, e encontrou dois homens com uma montanha de dinheiro vivo: **cerca de R$ 1,7 milhão**, parte em reais e parte em dólares. Os dois eram ligados ao PT. O dinheiro, segundo a investigação, seria usado para comprar um **dossiê** contra o candidato do PSDB ao governo de São Paulo, **José Serra**. Faltavam duas semanas para a eleição.

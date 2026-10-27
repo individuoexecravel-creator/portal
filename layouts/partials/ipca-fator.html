@@ -1,0 +1,11 @@
+{{- /* Fator de correção pelo IPCA de um ano até o mês em data/ipca.yaml ("ate").
+       Valor do ano X vira valor de hoje multiplicando pela inflação de X+1 até o último ano, mais a parcial do ano atual. */ -}}
+{{- $ano := int . -}}
+{{- $d := site.Data.ipca -}}
+{{- $f := 1.0 -}}
+{{- range $a, $r := $d.anos -}}
+  {{- if gt (int $a) $ano }}{{ $f = mul $f (add 1.0 (div (float $r) 100.0)) }}{{ end -}}
+{{- end -}}
+{{- $ultimo := 0 }}{{ range $a, $r := $d.anos }}{{ if gt (int $a) $ultimo }}{{ $ultimo = int $a }}{{ end }}{{ end -}}
+{{- if le $ano $ultimo }}{{ $f = mul $f (add 1.0 (div (float $d.parcial) 100.0)) }}{{ end -}}
+{{- return $f -}}

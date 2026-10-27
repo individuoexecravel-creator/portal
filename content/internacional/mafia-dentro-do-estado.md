@@ -15,6 +15,24 @@ ficha:
     valor: "Cuffaro: favorecimento agravado à Cosa Nostra e revelação de segredos de investigação. Dell'Utri: concurso externo em associação mafiosa"
   - item: "Desfecho"
     valor: "Cuffaro condenado definitivamente em 2011 a 7 anos; Dell'Utri condenado definitivamente em 2014 a 7 anos, depois de fugir para o Líbano"
+justica:
+  inicio: 1974
+  fim: 2014
+  desfecho: condenacao
+  nota: "Cuffaro condenado em definitivo em 2011; Dell'Utri, em 2014."
+fontes:
+  - titulo: "Perché Cuffaro è stato condannato"
+    veiculo: "Il Post"
+    ano: 2011
+    url: "https://www.ilpost.it/2011/01/22/perche-cuffaro-e-stato-condannato/"
+  - titulo: "Dalle indagini del '94 ai domiciliari: la storia di Marcello Dell'Utri"
+    veiculo: "Sky TG24"
+    ano: 2018
+    url: "https://tg24.sky.it/cronaca/2018/07/07/marcello-dellutri-storia-processuale"
+  - titulo: "Estradizione Dell'Utri, anche il presidente della Repubblica dice sì"
+    veiculo: "Il Fatto Quotidiano"
+    ano: 2014
+    url: "https://www.ilfattoquotidiano.it/2014/05/19/estradizione-dellutri-anche-il-presidente-della-repubblica-dice-si/990542/"
 ---
 
 A **Cosa Nostra**, a máfia siciliana, é uma das organizações criminosas mais antigas e poderosas do mundo. Durante décadas, seu poder não dependeu apenas da violência, mas de uma rede de alianças com empresários, servidores públicos e políticos. Os italianos têm um nome para esse território: **"zona cinzenta"**, o espaço em que o Estado e a máfia deixam de ser inimigos e passam a fazer negócios. Dois casos julgados até a última instância mostram como essa zona funciona. Num deles, o protagonista é o governador da Sicília. No outro, o homem que fundou o partido de Silvio Berlusconi.

@@ -22,6 +22,19 @@ valores:
     ano: 2014
     descricao: "Prejuízo com corrupção reconhecido pela Petrobras no balanço de 2014"
     fonte: "Petrobras"
+justica:
+  inicio: 2003
+  desfecho: condenacao
+  nota: "Ex-diretores, empreiteiros e operadores condenados em anos diferentes, a partir da Lava Jato."
+fontes:
+  - titulo: "Petrobras perde R$ 6,2 bilhões com corrupção"
+    veiculo: "Congresso em Foco"
+    ano: 2015
+    url: "https://www.congressoemfoco.com.br/noticias/petrobras-perde-r-62-bilhoes-com-corrupcao/"
+  - titulo: "Petrobras: balanço auditado aponta prejuízo de R$ 21,6 bilhões em 2014"
+    veiculo: "Jornal do Brasil"
+    ano: 2015
+    url: "https://www.jb.com.br/economia/noticias/2015/04/22/amp/petrobras-balanco-auditado-aponta-prejuizo-de-r-216-bilhoes-em-2014.html"
 ---
 
 A Petrobras é a maior empresa do Brasil e, durante a primeira década dos anos 2000, viveu seu período de maior expansão. Com a descoberta do **pré-sal**, em 2006, a estatal passou a investir dezenas de bilhões de reais por ano em refinarias, plataformas, navios e gasodutos. Esse dinheiro passava por poucas mãos: as diretorias da empresa e um grupo restrito de grandes empreiteiras. As investigações da Lava Jato mostraram que, nesse caminho, uma parte ficava pelo caminho. O esquema ganhou o nome de **Petrolão**.

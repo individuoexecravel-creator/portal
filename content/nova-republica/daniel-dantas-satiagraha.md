@@ -15,6 +15,21 @@ ficha:
     valor: "Satiagraha, deflagrada pela Polícia Federal em 8 de julho de 2008"
   - item: "Desfecho"
     valor: "Dantas condenado em primeira instância por corrupção ativa; STJ anula a operação em 2011 por participação irregular da Abin"
+justica:
+  inicio: 2004
+  fim: 2011
+  desfecho: anulacao
+  anulado: true
+  nota: "Dantas chega a ser condenado em primeira instância, mas o STJ anula a operação em 2011."
+fontes:
+  - titulo: "STJ: é ilegal a participação da Abin na Operação Satiagraha"
+    veiculo: "Conselho da Justiça Federal"
+    ano: 2011
+    url: "https://www.cjf.jus.br/cjf/outras-noticias/2011/marco/stj-e-ilegal-a-participacao-da-abin-na-operacao-satiagraha"
+  - titulo: "Anulação da Satiagraha e condenação de Protógenes são definitivas"
+    veiculo: "Consultor Jurídico"
+    ano: 2015
+    url: "https://www.conjur.com.br/2015-ago-19/anulacao-satiagraha-condenacao-protogenes-sao-definitivas/"
 ---
 
 Daniel Dantas foi, durante mais de uma década, um dos banqueiros mais poderosos e controversos do país. Fundador do banco **Opportunity**, participou da privatização das telecomunicações em 1998, controlou empresas como a Brasil Telecom e travou disputas societárias bilionárias com fundos de pensão e sócios estrangeiros. Em **julho de 2008**, foi preso pela Polícia Federal numa operação com nome inspirado em Gandhi, **Satiagraha**, que significa algo como "firmeza na verdade". O que se seguiu foi uma das maiores batalhas judiciais da história recente do país.

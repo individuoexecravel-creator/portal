@@ -1,6 +1,6 @@
 {{- /* Caso em linha: ano, nome, subtítulo, placar e miniatura. Recebe a página. */ -}}
 {{- $p := partial "partes.html" . -}}
-<a class="linha-caso sec-{{ .Section }}" href="{{ .RelPermalink }}">
+<a class="linha-caso sec-{{ .Section }}" href="{{ .RelPermalink }}" data-lido="{{ .File.ContentBaseName }}">
   <span class="lc-ano">{{ .Params.periodo }}</span>
   <span class="lc-texto">
     <span class="lc-nome">{{ $p.caso }}</span>

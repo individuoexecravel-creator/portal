@@ -15,6 +15,19 @@ ficha:
     valor: "CPI dos Títulos Públicos do Senado, relatada por Roberto Requião"
   - item: "Desfecho"
     valor: "CPI aponta prejuízo bilionário e pede punições; Senado restringe a emissão de títulos; poucas condenações"
+justica:
+  inicio: 1995
+  desfecho: misto
+  nota: "A CPI apontou prejuízo bilionário, mas houve poucas condenações."
+fontes:
+  - titulo: "STF tranca ação de acusado no escândalo dos precatórios"
+    veiculo: "Consultor Jurídico"
+    ano: 2008
+    url: "https://www.conjur.com.br/2008-nov-19/stf_tranca_acao_acusado_escandalo_precatorios/"
+  - titulo: "Conheça a trajetória política conturbada de Celso Pitta"
+    veiculo: "Gazeta do Povo"
+    ano: 2009
+    url: "https://www.gazetadopovo.com.br/vida-publica/conheca-a-trajetoria-politica-conturbada-de-celso-pitta-c06jxwlbew2819gwnob2irm8e/"
 ---
 
 Precatório é uma palavra de juridiquês para uma coisa simples: uma **dívida que o poder público foi condenado a pagar na Justiça**. Uma desapropriação, uma indenização, um salário atrasado. Em meados dos anos 1990, prefeituras e governos estaduais descobriram uma forma de transformar essas dívidas em dinheiro novo, e um grupo de operadores descobriu como transformar esse dinheiro em lucro privado. O resultado foi o **Escândalo dos Precatórios**.

@@ -22,6 +22,20 @@ valores:
     ano: 2010
     descricao: "Dinheiro confiscado de contas de Noriega na França"
     fonte: "Justiça francesa"
+justica:
+  inicio: 1983
+  fim: 1992
+  desfecho: condenacao
+  nota: "Condenado em Miami em 1992; depois, também na França e no Panamá."
+fontes:
+  - titulo: "Noriega é condenado a 7 anos de prisão por lavagem de dinheiro"
+    veiculo: "IstoÉ Dinheiro"
+    ano: 2010
+    url: "https://istoedinheiro.com.br/noriega-condenado-a-7-anos-de-prisao-por-lavagem-de-dinheiro-3"
+  - titulo: "French court hands Panama's ex-dictator Noriega 7-year prison term for laundering drug money"
+    veiculo: "Fox News"
+    ano: 2010
+    url: "https://www.foxnews.com/world/french-court-hands-panamas-ex-dictator-noriega-7-year-prison-term-for-laundering-drug-money.amp"
 ---
 
 Manuel Antonio Noriega nunca foi eleito para nada. Mesmo assim, durante a maior parte dos anos 1980, foi o homem que mandava no **Panamá**. Comandava as forças armadas, decidia quem seria presidente e controlava a polícia e os serviços de inteligência. Ao mesmo tempo, era um **informante pago pela CIA** e um **parceiro do Cartel de Medellín**, de Pablo Escobar. Essa dupla lealdade funcionou por anos, até que deixou de ser útil para Washington.

@@ -15,6 +15,19 @@ ficha:
     valor: "Estimativas falam em cerca de US$ 30 bilhões"
   - item: "Desfecho"
     valor: "Dezenas de condenações na Justiça Federal; CPMI termina sem relatório aprovado"
+uf: "PR"
+justica:
+  inicio: 1996
+  desfecho: misto
+  nota: "Dezenas de condenações na Justiça Federal, em anos diferentes; a CPMI terminou sem relatório aprovado."
+fontes:
+  - titulo: "Fim da CPI do Banestado não prejudica investigações do MP"
+    veiculo: "Tribuna do Paraná"
+    ano: 2004
+    url: "https://www.tribunapr.com.br/noticias/fim-da-cpi-do-banestado-nao-prejudica-investigacoes-do-mp/"
+  - titulo: "Presos, em Curitiba, ex-diretores do Banestado"
+    veiculo: "Tribuna do Paraná"
+    url: "https://www.tribunapr.com.br/noticias/politica/presos-em-curitiba-ex-diretores-do-banestado/"
 ---
 
 Foz do Iguaçu, na tríplice fronteira entre Brasil, Paraguai e Argentina, sempre foi um lugar de comércio intenso e de dinheiro em espécie circulando. Na segunda metade dos anos 1990, a agência do **Banestado**, o banco estatal do Paraná, na cidade, virou também o ponto de partida de uma das maiores operações de **evasão de divisas** da história do país. Por ali passaram dezenas de bilhões de dólares que saíram do Brasil sem pagar imposto e sem deixar rastro, até que alguém resolveu seguir o caminho.

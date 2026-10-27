@@ -22,6 +22,17 @@ valores:
     ano: 2017
     descricao: "Dinheiro vivo achado num apartamento em Salvador: R$ 42,6 milhões e US$ 2,7 milhões"
     fonte: "Polícia Federal"
+uf: "BA"
+justica:
+  inicio: 2011
+  fim: 2019
+  desfecho: condenacao
+  nota: "STF condena Geddel e Lúcio Vieira Lima em outubro de 2019."
+fontes:
+  - titulo: "STF condena Geddel e Lúcio Vieira Lima por bunker de R$ 51 milhões"
+    veiculo: "Poder360"
+    ano: 2019
+    url: "https://www.poder360.com.br/justica/stf-condena-geddel-e-lucio-vieira-lima-por-bunker-de-r-51-milhoes/"
 ---
 
 Em **5 de setembro de 2017**, agentes da Polícia Federal entraram num apartamento no bairro da Graça, em Salvador. Não havia móveis. Havia **malas e caixas de papelão** empilhadas pelo chão, cheias de dinheiro vivo. A contagem, feita com máquinas, levou cerca de **14 horas**. O total: **R$ 42,6 milhões e US$ 2,7 milhões**, cerca de **R$ 51 milhões**. Foi a **maior apreensão de dinheiro em espécie da história do Brasil**. O apartamento tinha sido emprestado a um ex-ministro: **Geddel Vieira Lima**.

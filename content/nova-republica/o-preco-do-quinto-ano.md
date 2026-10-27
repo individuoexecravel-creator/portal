@@ -15,6 +15,19 @@ ficha:
     valor: "Concessões de rádio e TV, cargos e liberação de verbas para aliados"
   - item: "Desfecho"
     valor: "Constituinte aprova cinco anos de mandato em junho de 1988; nenhuma punição"
+justica:
+  inicio: 1987
+  fim: 1988
+  desfecho: sem-punicao
+  nota: "A Constituinte aprova os cinco anos de mandato; ninguém é punido."
+fontes:
+  - titulo: "Crise política (1988)"
+    veiculo: "Luiz Carlos Bresser-Pereira"
+    ano: 1988
+    url: "https://bresserpereira.org.br/articles/1988/999.Crise_Politica.88.pdf"
+  - titulo: "Centrão: passado, presente e futuro"
+    veiculo: "Congresso em Foco"
+    url: "https://www.congressoemfoco.com.br/coluna/27416/centrao-passado-presente-e-futuro"
 ---
 
 José Sarney nunca foi eleito presidente. Era o vice de **Tancredo Neves**, escolhido pelo Colégio Eleitoral em janeiro de 1985 para encerrar a ditadura militar. Tancredo adoeceu na véspera da posse e morreu em abril, e Sarney, um político que tinha passado a vida na Arena e no PDS, partidos de sustentação do regime militar, assumiu a Presidência da Nova República. A pergunta que dominou os anos seguintes era simples: **por quanto tempo ele ficaria no cargo?** A resposta custou caro.

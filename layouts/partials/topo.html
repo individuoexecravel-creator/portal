@@ -18,6 +18,9 @@
       {{- end }}
     </nav>
     <div class="topo-acoes">
+      <button class="botao-topo" type="button" data-leitura aria-expanded="false" aria-controls="leitura" aria-label="Ajustes de leitura: tema e tamanho do texto">
+        {{ partial "icone.html" "leitura" }}<span class="rotulo-botao">Leitura</span>
+      </button>
       <button class="botao-topo" type="button" data-abrir-busca aria-haspopup="dialog" aria-controls="busca" aria-label="Buscar casos e pessoas">
         {{ partial "icone.html" "busca" }}<span class="rotulo-botao">Buscar</span><kbd class="atalho" aria-hidden="true">/</kbd>
       </button>
@@ -27,6 +30,26 @@
     </div>
   </div>
   <div class="progresso" aria-hidden="true"><span></span></div>
+  <div class="leitura-painel" id="leitura" hidden>
+    <div class="wrap lp-in">
+      <div class="lp-grupo" role="group" aria-labelledby="lp-tema">
+        <p class="lp-t" id="lp-tema">Tema</p>
+        <div class="seletor">
+          <button type="button" class="seletor-op" aria-pressed="true" data-tema-op="escuro">{{ partial "icone.html" "lua" }}<span>Escuro</span></button>
+          <button type="button" class="seletor-op" aria-pressed="false" data-tema-op="claro">{{ partial "icone.html" "sol" }}<span>Claro</span></button>
+        </div>
+      </div>
+      <div class="lp-grupo" role="group" aria-labelledby="lp-tam">
+        <p class="lp-t" id="lp-tam">Tamanho do texto das matérias</p>
+        <div class="lp-tam">
+          <button type="button" class="botao-icone lp-a" data-tam="-1" aria-label="Diminuir o texto"><span aria-hidden="true">A−</span></button>
+          <output data-tam-valor aria-live="polite">100%</output>
+          <button type="button" class="botao-icone lp-a lp-a-mais" data-tam="1" aria-label="Aumentar o texto"><span aria-hidden="true">A+</span></button>
+        </div>
+      </div>
+      <p class="lp-nota">Fica salvo neste navegador. A Teia e o globo continuam escuros.</p>
+    </div>
+  </div>
 </header>
 
 <div class="menu-movel" id="menu-movel" hidden>
@@ -35,6 +58,12 @@
     {{- range site.Menus.main }}
       {{- $ativo := or (and .Page (eq .Page.RelPermalink $cur.RelPermalink)) (and $emCaso (eq .Name "Casos")) (and $emGlobo (eq .Name "Teia")) }}
       <a href="{{ .URL }}"{{ if $ativo }} aria-current="page"{{ end }}>{{ partial "icone.html" (index $icones .Name | default "casos") }}<span>{{ .Name }}</span>{{ with .Page }}<small>{{ .Description }}</small>{{ end }}</a>
+    {{- end }}
+  </nav>
+  <nav class="menu-ferramentas" aria-label="Ferramentas">
+    <p class="mf-t">Para entender melhor</p>
+    {{- range site.Menus.ferramentas }}
+      <a href="{{ .URL }}"{{ if and .Page (eq .Page.RelPermalink $cur.RelPermalink) }} aria-current="page"{{ end }}>{{ partial "icone.html" .Params.icone }}<span>{{ .Name }}</span></a>
     {{- end }}
   </nav>
   <div class="menu-movel-pe">

@@ -249,7 +249,7 @@
   /* ---------- Matéria ---------- */
   var texto = $('[data-texto]');
   if (texto) {
-    var sum = $('[data-sumario]'), hs = $$(':scope > h2, :scope > .quem > h2', texto);
+    var sum = $('[data-sumario]'), hs = $$(':scope > h2, :scope > .quem > h2, :scope > .fontes > h2', texto);
     if (sum && hs.length >= 3) {
       var ol = $('ol', sum);
       hs.forEach(function (h, i) {
@@ -333,5 +333,231 @@
         $$('[data-v-lista]', p).forEach(function (l) { l.hidden = l.dataset.vLista !== c.dataset.vTipo; });
       });
     });
+  });
+
+  /* ---------- Armazenamento local (pode falhar em aba anônima) ---------- */
+  var guarda = {
+    ler: function (k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    por: function (k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+  };
+  var raiz = document.documentElement;
+
+  /* ---------- Ajustes de leitura: tema e tamanho do texto ---------- */
+  var botaoLeitura = $('[data-leitura]'), painelLeitura = $('#leitura');
+  if (botaoLeitura && painelLeitura) {
+    var escalas = [0.9, 1, 1.1, 1.2, 1.35];
+    var temaAtual = function () { return raiz.getAttribute('data-tema') === 'claro' ? 'claro' : 'escuro'; };
+    var escalaAtual = function () { var e = parseFloat(getComputedStyle(raiz).getPropertyValue('--escala')) || 1; return escalas.reduce(function (a, b) { return Math.abs(b - e) < Math.abs(a - e) ? b : a; }); };
+    var corTopo = $('meta[name="theme-color"]'), esquema = $('meta[name="color-scheme"]');
+    var mostrarLeitura = function () {
+      var t = temaAtual(), e = escalaAtual();
+      $$('[data-tema-op]', painelLeitura).forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.temaOp === t)); });
+      $('[data-tam-valor]', painelLeitura).textContent = Math.round(e * 100) + '%';
+      $('[data-tam="-1"]', painelLeitura).disabled = e <= escalas[0];
+      $('[data-tam="1"]', painelLeitura).disabled = e >= escalas[escalas.length - 1];
+      if (corTopo) corTopo.content = t === 'claro' ? '#f7f3ec' : '#000000';
+      if (esquema) esquema.content = t === 'claro' ? 'light' : 'dark';
+    };
+    var fecharLeitura = function (foco) { painelLeitura.hidden = true; botaoLeitura.setAttribute('aria-expanded', 'false'); if (foco) botaoLeitura.focus(); };
+    botaoLeitura.addEventListener('click', function () {
+      var abrir = painelLeitura.hidden;
+      painelLeitura.hidden = !abrir; botaoLeitura.setAttribute('aria-expanded', String(abrir));
+      if (abrir) { mostrarLeitura(); $('[aria-pressed="true"]', painelLeitura).focus(); }
+    });
+    $$('[data-tema-op]', painelLeitura).forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (b.dataset.temaOp === 'claro') raiz.setAttribute('data-tema', 'claro'); else raiz.removeAttribute('data-tema');
+        guarda.por('portal-tema', b.dataset.temaOp); mostrarLeitura();
+      });
+    });
+    $$('[data-tam]', painelLeitura).forEach(function (b) {
+      b.addEventListener('click', function () {
+        var i = escalas.indexOf(escalaAtual()) + +b.dataset.tam;
+        var e = escalas[Math.max(0, Math.min(escalas.length - 1, i))];
+        raiz.style.setProperty('--escala', e); guarda.por('portal-escala', String(e)); mostrarLeitura();
+        if (b.disabled) $('[data-tam]:not([disabled])', painelLeitura).focus();
+      });
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !painelLeitura.hidden) fecharLeitura(true); });
+    document.addEventListener('click', function (e) { if (!painelLeitura.hidden && !painelLeitura.contains(e.target) && !botaoLeitura.contains(e.target)) fecharLeitura(false); });
+    mostrarLeitura();
+  }
+
+  /* ---------- Casos já lidos ---------- */
+  var lidos = {};
+  try { lidos = JSON.parse(guarda.ler('portal-lidos') || '{}') || {}; } catch (e) { lidos = {}; }
+  function marcarLidos() {
+    $$('[data-lido]').forEach(function (el) {
+      var l = !!lidos[el.dataset.lido];
+      el.classList.toggle('lido', l);
+      if (l && !$('.selo-lido', el)) {
+        var s = document.createElement('span'); s.className = 'selo-lido'; s.textContent = 'Lido';
+        var alvo = $('.card-texto, .lc-texto, .tl-texto', el) || el; alvo.appendChild(s);
+      }
+    });
+    $$('[data-trilha]').forEach(function (t) {
+      var itens = $$('[data-lido]', t), n = itens.filter(function (i) { return lidos[i.dataset.lido]; }).length;
+      var pr = $('[data-trilha-prog]', t); if (pr && n) pr.textContent = n + ' de ' + itens.length + ' lidos' + (n === itens.length ? '. Trilha completa.' : '');
+    });
+  }
+  marcarLidos();
+  var texto = $('[data-texto]');
+  if (texto && texto.dataset.slug) {
+    var slug = texto.dataset.slug, selo = $('[data-lido-selo]');
+    if (lidos[slug] && selo) selo.hidden = false;
+    var fimTexto = $('.fontes', texto) || texto.lastElementChild;
+    if ('IntersectionObserver' in window && fimTexto && !lidos[slug]) {
+      var ob = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { lidos[slug] = Date.now(); guarda.por('portal-lidos', JSON.stringify(lidos)); ob.disconnect(); }
+      });
+      ob.observe(fimTexto);
+    }
+  }
+
+  /* ---------- Glossário nas matérias ---------- */
+  var dadosGl = $('#glossario-dados');
+  if (texto && dadosGl) {
+    var termos = [];
+    try { termos = JSON.parse(dadosGl.textContent); } catch (e) {}
+    var usados = {}, nGl = 0;
+    var bordaPalavra = '(^|[^0-9A-Za-zÀ-ÿ])';
+    var padroes = termos.map(function (t) {
+      var formas = t.termos.slice().sort(function (a, b) { return b.length - a.length; }).map(function (f) { return f.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); });
+      var sens = t.termos.some(function (f) { return /[A-Z]/.test(f); });
+      return { t: t, re: new RegExp(bordaPalavra + '(' + formas.join('|') + ')(?![0-9A-Za-zÀ-ÿ])', sens ? '' : 'i') };
+    });
+    var blocos = $$(':scope > p, :scope > ul > li, :scope > ol > li, :scope > blockquote p', texto);
+    var bolha = document.createElement('div');
+    bolha.className = 'gl-bolha'; bolha.id = 'gl-bolha'; bolha.setAttribute('role', 'tooltip'); bolha.hidden = true;
+    document.body.appendChild(bolha);
+    var ativo = null;
+    var fixo = false;
+    var esconder = function () { bolha.hidden = true; fixo = false; if (ativo) ativo.setAttribute('aria-expanded', 'false'); ativo = null; };
+    var mostrarGl = function (b) {
+      var t = termos[+b.dataset.gl];
+      bolha.innerHTML = '<b>' + esc(t.nome) + '</b><span>' + esc(t.def) + '</span><a href="' + esc(b.dataset.glUrl) + '#' + esc(t.id) + '">Ver o glossário</a>';
+      bolha.hidden = false; if (ativo && ativo !== b) ativo.setAttribute('aria-expanded', 'false'); ativo = b; b.setAttribute('aria-expanded', 'true');
+      var r = b.getBoundingClientRect(), w = bolha.offsetWidth, h = bolha.offsetHeight;
+      var x = Math.max(12, Math.min(innerWidth - w - 12, r.left + r.width / 2 - w / 2));
+      var y = r.bottom + 10; if (y + h > innerHeight - 12 && r.top - h - 10 > 0) y = r.top - h - 10;
+      bolha.style.left = (x + scrollX) + 'px'; bolha.style.top = (y + scrollY) + 'px';
+    };
+    var urlGl = dadosGl.dataset.url || (document.querySelector('link[rel="icon"]').getAttribute('href').replace(/favicon\.png$/, '') + 'glossario/');
+    blocos.forEach(function (bl) {
+      if (bl.closest('.quem-e-quem, .fontes, .autor, .linha-tempo')) return;
+      var andar = document.createTreeWalker(bl, NodeFilter.SHOW_TEXT, { acceptNode: function (n) { return n.parentNode.closest('a, button, .gl') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT; } });
+      var nos = []; while (andar.nextNode()) nos.push(andar.currentNode);
+      nos.forEach(function (no) {
+        padroes.forEach(function (pd, i) {
+          if (usados[pd.t.id] || !no.parentNode) return;
+          var m = pd.re.exec(no.nodeValue); if (!m) return;
+          usados[pd.t.id] = 1;
+          var ini = m.index + m[1].length, palavra = m[2];
+          var depois = no.splitText(ini); depois.nodeValue = depois.nodeValue.slice(palavra.length);
+          var b = document.createElement('button');
+          b.type = 'button'; b.className = 'gl'; b.textContent = palavra; b.dataset.gl = i; b.dataset.glUrl = urlGl;
+          b.setAttribute('aria-expanded', 'false'); b.setAttribute('aria-controls', 'gl-bolha');
+          b.setAttribute('aria-label', palavra + ': ver explicação');
+          no.parentNode.insertBefore(b, depois); nGl++;
+          no = depois;
+        });
+      });
+    });
+    if (nGl) {
+      texto.addEventListener('click', function (e) { var b = e.target.closest('.gl'); if (!b) return; if (ativo === b && fixo) esconder(); else { mostrarGl(b); fixo = true; } });
+      texto.addEventListener('mouseover', function (e) { var b = e.target.closest('.gl'); if (b && ultimoPonteiro === 'mouse' && !fixo) mostrarGl(b); });
+      texto.addEventListener('mouseout', function (e) { var b = e.target.closest('.gl'); if (b && ultimoPonteiro === 'mouse' && !fixo) setTimeout(function () { if (!fixo && !bolha.matches(':hover') && !b.matches(':hover') && ativo === b) esconder(); }, 200); });
+      bolha.addEventListener('mouseleave', function () { if (ultimoPonteiro === 'mouse' && ativo && !fixo) esconder(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && ativo) { var a = ativo; esconder(); a.focus(); } });
+      document.addEventListener('click', function (e) { if (ativo && !e.target.closest('.gl, .gl-bolha')) esconder(); });
+      addEventListener('resize', esconder);
+    }
+  }
+
+  /* ---------- Ouvir a matéria ---------- */
+  var ouvir = $('[data-ouvir]');
+  if (ouvir && texto && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
+    ouvir.hidden = false;
+    var sint = window.speechSynthesis, play = $('[data-ouvir-play]', ouvir), parar = $('[data-ouvir-parar]', ouvir);
+    var rot = $('[data-ouvir-rot]', ouvir), velWrap = $('[data-ouvir-vel-wrap]', ouvir), vel = $('[data-ouvir-vel]', ouvir);
+    var partes = [], pos = 0, estado = 'parado', voz = null;
+    var acharVoz = function () {
+      var vs = sint.getVoices();
+      voz = vs.filter(function (v) { return /^pt[-_]BR/i.test(v.lang); })[0] || vs.filter(function (v) { return /^pt/i.test(v.lang); })[0] || null;
+    };
+    acharVoz(); if (sint.addEventListener) sint.addEventListener('voiceschanged', acharVoz);
+    var juntar = function () {
+      var t = $('h1') ? [{ el: null, txt: $('h1').textContent + '. ' + ($('.linha-fina') ? $('.linha-fina').textContent : '') }] : [];
+      $$(':scope > h2, :scope > h3, :scope > p, :scope > ul > li, :scope > ol > li, :scope > blockquote', texto).forEach(function (el) {
+        if (el.closest('.quem-e-quem, .fontes, .autor')) return;
+        var s = el.textContent.replace(/\s+/g, ' ').trim(); if (s) t.push({ el: el, txt: s });
+      });
+      return t;
+    };
+    var marcar = function (el) { $$('.lendo', texto).forEach(function (x) { x.classList.remove('lendo'); }); if (el) el.classList.add('lendo'); };
+    var falar = function () {
+      if (pos >= partes.length) { pararTudo(); return; }
+      var p = partes[pos], u = new SpeechSynthesisUtterance(p.txt);
+      u.lang = 'pt-BR'; if (voz) u.voice = voz; u.rate = parseFloat(vel.value) || 1;
+      u.onend = function () { if (estado === 'tocando') { pos++; falar(); } };
+      u.onerror = function (e) { if (e.error !== 'interrupted' && e.error !== 'canceled') pararTudo(); };
+      marcar(p.el);
+      if (p.el) { var r = p.el.getBoundingClientRect(); if (r.top < 80 || r.bottom > innerHeight) p.el.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
+      sint.speak(u);
+    };
+    var mostrar = function () {
+      ouvir.dataset.estado = estado;
+      play.setAttribute('aria-pressed', String(estado === 'tocando'));
+      rot.textContent = estado === 'tocando' ? 'Pausar' : estado === 'pausado' ? 'Continuar' : 'Ouvir';
+      parar.hidden = velWrap.hidden = estado === 'parado';
+    };
+    var pararTudo = function () { estado = 'parado'; sint.cancel(); pos = 0; marcar(null); mostrar(); };
+    play.addEventListener('click', function () {
+      if (estado === 'tocando') { estado = 'pausado'; sint.cancel(); }
+      else { if (estado === 'parado') { partes = juntar(); pos = 0; } estado = 'tocando'; sint.cancel(); falar(); }
+      mostrar();
+    });
+    parar.addEventListener('click', function () { pararTudo(); play.focus(); });
+    vel.addEventListener('change', function () { if (estado === 'tocando') { sint.cancel(); falar(); } });
+    addEventListener('pagehide', function () { sint.cancel(); });
+    mostrar();
+  }
+
+  /* ---------- Quanto custou: valores da época ou corrigidos ---------- */
+  var modos = $$('[data-modo-op]');
+  if (modos.length) {
+    var aplicarModo = function (m, salvar) {
+      modos.forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.modoOp === m)); });
+      $$('[data-modo]').forEach(function (p) { p.hidden = p.dataset.modo !== m; });
+      if (salvar) { var u = new URL(location.href); if (m === 'ipca') u.searchParams.set('valores', 'corrigidos'); else u.searchParams.delete('valores'); history.replaceState(null, '', u); }
+    };
+    modos.forEach(function (b) { b.addEventListener('click', function () { aplicarModo(b.dataset.modoOp, true); }); });
+    if (new URL(location.href).searchParams.get('valores') === 'corrigidos') aplicarModo('ipca');
+  }
+
+  /* ---------- Comparar casos ---------- */
+  $$('[data-comparar]').forEach(function (c) {
+    var tabela = $('[data-cmp-tabela]', c), sels = { a: $('[data-cmp-sel="a"]', c), b: $('[data-cmp-sel="b"]', c) };
+    var existe = function (s) { return s && $('template[data-cmp="' + CSS.escape(s) + '"]', c); };
+    var u = new URL(location.href);
+    sels.a.value = existe(u.searchParams.get('a')) ? u.searchParams.get('a') : c.dataset.padraoA;
+    sels.b.value = existe(u.searchParams.get('b')) ? u.searchParams.get('b') : c.dataset.padraoB;
+    var preencher = function (salvar) {
+      ['a', 'b'].forEach(function (l) {
+        var tpl = existe(sels[l].value); if (!tpl) return;
+        var frag = tpl.content;
+        $('[data-cmp-col="' + l + '"]', tabela).innerHTML = frag.querySelector('[data-campo="cabeca"]').innerHTML;
+        $$('[data-cmp-linha]', tabela).forEach(function (tr) {
+          var campo = frag.querySelector('[data-campo="' + tr.dataset.cmpLinha + '"]');
+          $('[data-lado="' + l + '"]', tr).innerHTML = campo ? campo.innerHTML : '';
+        });
+      });
+      tabela.hidden = false;
+      if (salvar) { var n = new URL(location.href); n.searchParams.set('a', sels.a.value); n.searchParams.set('b', sels.b.value); history.replaceState(null, '', n); }
+    };
+    sels.a.addEventListener('change', function () { preencher(true); });
+    sels.b.addEventListener('change', function () { preencher(true); });
+    $('[data-cmp-trocar]', c).addEventListener('click', function () { var x = sels.a.value; sels.a.value = sels.b.value; sels.b.value = x; preencher(true); });
+    preencher(false);
   });
 })();

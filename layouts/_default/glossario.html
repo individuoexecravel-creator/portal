@@ -1,0 +1,18 @@
+{{ define "main" }}
+{{ $termos := sort site.Data.glossario "nome" }}
+<section class="wrap cabeca-lista">
+  <nav class="trilha" aria-label="Você está em"><a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span><span aria-current="page">{{ .Title }}</span></nav>
+  <h1>{{ .Title }}</h1>
+  <p class="linha">{{ .Description }}</p>
+  <nav class="gl-letras" aria-label="Termos">
+    {{ range $termos }}<a href="#{{ .id }}">{{ .nome }}</a>{{ end }}
+  </nav>
+</section>
+<div class="wrap">
+  <dl class="glossario">
+    {{ range $termos }}
+    <div id="{{ .id }}" tabindex="-1"><dt>{{ .nome }}</dt><dd>{{ .def }}</dd></div>
+    {{ end }}
+  </dl>
+</div>
+{{ end }}

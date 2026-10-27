@@ -84,3 +84,35 @@ summaryLength = 40
     name = "Sobre"
     pageRef = "/sobre"
     weight = 6
+
+# Ferramentas: aparecem no menu do celular, no rodapé e em "Outras formas de explorar".
+[[menus.ferramentas]]
+  name = "Tempo da Justiça"
+  pageRef = "/tempo-da-justica"
+  weight = 1
+  [menus.ferramentas.params]
+    icone = "relogio"
+[[menus.ferramentas]]
+  name = "Mapa dos casos"
+  pageRef = "/mapa"
+  weight = 2
+  [menus.ferramentas.params]
+    icone = "mapa"
+[[menus.ferramentas]]
+  name = "Trilhas de leitura"
+  pageRef = "/trilhas"
+  weight = 3
+  [menus.ferramentas.params]
+    icone = "trilha"
+[[menus.ferramentas]]
+  name = "Comparar casos"
+  pageRef = "/comparar"
+  weight = 4
+  [menus.ferramentas.params]
+    icone = "comparar"
+[[menus.ferramentas]]
+  name = "Glossário"
+  pageRef = "/glossario"
+  weight = 5
+  [menus.ferramentas.params]
+    icone = "livro"
