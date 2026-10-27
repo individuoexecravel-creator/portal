@@ -1,5 +1,5 @@
 {{ with site.Params.autor }}
-<aside class="autor" aria-label="Quem escreve">
+<div class="autor">
   <img src="{{ "img/logo.png" | relURL }}" alt="" width="72" height="72">
   <div>
     <p class="autor-nome"><a href="{{ "sobre/" | relURL }}">{{ .nome }}</a></p>
@@ -7,5 +7,5 @@
     <p class="autor-bio">{{ .bio }}</p>
     {{ partial "redes.html" (dict "nomes" true) }}
   </div>
-</aside>
+</div>
 {{ end }}

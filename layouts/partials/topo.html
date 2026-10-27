@@ -18,10 +18,10 @@
       {{- end }}
     </nav>
     <div class="topo-acoes">
-      <button class="botao-topo" type="button" data-abrir-busca aria-haspopup="dialog" aria-controls="busca">
+      <button class="botao-topo" type="button" data-abrir-busca aria-haspopup="dialog" aria-controls="busca" aria-label="Buscar casos e pessoas">
         {{ partial "icone.html" "busca" }}<span class="rotulo-botao">Buscar</span><kbd class="atalho" aria-hidden="true">/</kbd>
       </button>
-      <button class="botao-topo botao-menu" type="button" aria-expanded="false" aria-controls="menu-movel" data-menu>
+      <button class="botao-topo botao-menu" type="button" aria-expanded="false" aria-controls="menu-movel" aria-label="Menu" data-menu>
         <span class="i-abrir">{{ partial "icone.html" "menu" }}</span><span class="i-fechar">{{ partial "icone.html" "fechar" }}</span><span class="rotulo-botao">Menu</span>
       </button>
     </div>

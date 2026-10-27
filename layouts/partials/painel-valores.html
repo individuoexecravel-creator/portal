@@ -25,6 +25,7 @@
   <p class="valores-cobertura">{{ len $casosCom }} de {{ len $todos }} casos de {{ $secPag.Title }} têm valores documentados. {{ if lt (len $casosCom) (len $todos) }}Os outros aparecem no fim da página.{{ end }}</p>
 
   {{/* ---------- Totais ---------- */}}
+  <h2 class="sr">Totais</h2>
   <div class="totais">
     {{ range $i, $t := $tipos }}
     {{ $linhas := slice }}
