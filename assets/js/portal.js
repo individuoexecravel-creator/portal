@@ -476,51 +476,126 @@
     }
   }
 
-  /* ---------- Ouvir a matéria ---------- */
-  var ouvir = $('[data-ouvir]');
-  if (ouvir && texto && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
+  /* ---------- Ouvir a matéria ----------
+     Usa a voz do próprio navegador. Para soar menos robótico:
+     1) escolhe a melhor voz em português disponível (as "Natural", "Online", "Google" ou "Aprimorada");
+     2) reescreve o que a voz lê mal (R$ 3 mil vira "3 mil reais", 1992–2005 vira "1992 a 2005");
+     3) lê frase por frase, com pausas depois de títulos e parágrafos, como uma pessoa lendo. */
+  var ouvir = $('[data-ouvir]'), painelOuvir = $('[data-ouvir-painel]');
+  if (ouvir && painelOuvir && texto && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window) {
     ouvir.hidden = false;
-    var sint = window.speechSynthesis, play = $('[data-ouvir-play]', ouvir), parar = $('[data-ouvir-parar]', ouvir);
-    var rot = $('[data-ouvir-rot]', ouvir), velWrap = $('[data-ouvir-vel-wrap]', ouvir), vel = $('[data-ouvir-vel]', ouvir);
-    var partes = [], pos = 0, estado = 'parado', voz = null;
-    var acharVoz = function () {
-      var vs = sint.getVoices();
-      voz = vs.filter(function (v) { return /^pt[-_]BR/i.test(v.lang); })[0] || vs.filter(function (v) { return /^pt/i.test(v.lang); })[0] || null;
+    var sint = window.speechSynthesis, play = $('[data-ouvir-play]', ouvir), parar = $('[data-ouvir-parar]', ouvir), rot = $('[data-ouvir-rot]', ouvir);
+    var vozSel = $('[data-ouvir-voz]', painelOuvir), vel = $('[data-ouvir-vel]', painelOuvir), dica = $('[data-ouvir-dica]', painelOuvir);
+    var frases = [], pos = 0, estado = 'parado', voz = null, vozes = [], espera = null;
+
+    var notaVoz = function (v) {
+      var n = v.name, s = 0;
+      if (/natural|neural/i.test(n)) s += 60;
+      if (/online/i.test(n)) s += 15;
+      if (/premium|enhanced|aprimorad|melhorad/i.test(n)) s += 45;
+      if (/google/i.test(n)) s += 30;
+      if (/pt[-_]BR/i.test(v.lang)) s += 10;
+      if (/compact|espeak|eloquence|robot/i.test(n)) s -= 40;
+      return s;
     };
-    acharVoz(); if (sint.addEventListener) sint.addEventListener('voiceschanged', acharVoz);
+    var nomeVoz = function (v) {
+      var n = v.name.replace(/^Microsoft\s+/i, '').replace(/\s*[-–]\s*Portugu[eê]s.*$/i, '').replace(/\s*Online\s*\(Natural\)/i, ' (natural)').replace(/^Google\s+portugu[eê]s do Brasil$/i, 'Google');
+      return n + (/pt[-_]PT/i.test(v.lang) ? ' · Portugal' : '');
+    };
+    var carregarVozes = function () {
+      vozes = sint.getVoices().filter(function (v) { return /^pt/i.test(v.lang); }).sort(function (a, b) { return notaVoz(b) - notaVoz(a); });
+      if (!vozes.length) { vozSel.innerHTML = '<option>Voz padrão do navegador</option>'; vozSel.disabled = true; voz = null; }
+      else {
+        vozSel.disabled = false;
+        vozSel.innerHTML = vozes.map(function (v, i) { return '<option value="' + i + '">' + esc(nomeVoz(v)) + '</option>'; }).join('');
+        var salva = guarda.ler('portal-voz'), i = 0;
+        vozes.forEach(function (v, k) { if (v.name === salva) i = k; });
+        vozSel.value = String(i); voz = vozes[i];
+      }
+      var boa = vozes.length && notaVoz(vozes[0]) >= 40;
+      dica.hidden = boa;
+      dica.textContent = 'As vozes deste navegador soam mais robóticas. Para uma leitura mais natural, abra o site no Microsoft Edge, que tem vozes "Natural", ou no Chrome. No iPhone, baixe uma voz "Aprimorada" em Ajustes, Acessibilidade, Conteúdo Falado, Vozes.';
+    };
+    carregarVozes(); if (sint.addEventListener) sint.addEventListener('voiceschanged', carregarVozes);
+
+    /* O que a voz lê mal, escrito como se fala */
+    var unid = { mil: 'mil', mi: 'milhões', 'milhão': 'milhão', 'milhões': 'milhões', bi: 'bilhões', 'bilhão': 'bilhão', 'bilhões': 'bilhões' };
+    var falado = function (t) {
+      return t
+        .replace(/(R\$|US\$|€)\s?(\d[\d.,]*)(?:\s?(mil|milhões|milhão|mi|bilhões|bilhão|bi)(?![a-zà-ú]))?/g, function (_, m, n, u) {
+          var moeda = m === 'R$' ? 'reais' : m === 'US$' ? 'dólares' : 'euros';
+          if (u) { u = unid[u]; return n + ' ' + u + (u === 'mil' ? ' ' : ' de ') + moeda; }
+          return n + ' ' + moeda;
+        })
+        .replace(/\bentre (\d{4})\s?[–-]\s?(\d{4})\b/g, 'entre $1 e $2')
+        .replace(/\b(\d{4})\s?[–-]\s?(\d{4})\b/g, '$1 a $2')
+        .replace(/\b(\d{1,2})\s?[–-]\s?(\d{1,2})\b/g, '$1 a $2')
+        .replace(/\bn[ºo°]\s?(?=\d)/gi, 'número ')
+        .replace(/\s[—–]\s/g, ', ').replace(/—/g, ', ')
+        .replace(/\s?·\s?/g, ', ')
+        .replace(/\s\/\s/g, ', ')
+        .replace(/[“”"«»]/g, '')
+        .replace(/:\s/g, ': ')
+        .replace(/\s+/g, ' ').trim();
+    };
+    /* Divide em frases sem quebrar números como 1.600.000 */
+    var emFrases = function (t) {
+      var partes = t.replace(/([.!?…][)\]]?)\s+(?=[A-ZÁÉÍÓÚÂÊÔÃÕÇ(¿¡])/g, '$1\u0001').split('\u0001'), out = [];
+      partes.forEach(function (p) {
+        p = p.trim(); if (!p) return;
+        if (out.length && out[out.length - 1].length < 40) { out[out.length - 1] += ' ' + p; return; }
+        while (p.length > 240) { var c = p.lastIndexOf(', ', 200); if (c < 80) break; out.push(p.slice(0, c + 1)); p = p.slice(c + 2); }
+        out.push(p);
+      });
+      return out;
+    };
     var juntar = function () {
-      var t = $('h1') ? [{ el: null, txt: $('h1').textContent + '. ' + ($('.linha-fina') ? $('.linha-fina').textContent : '') }] : [];
+      var lista = [], h1 = $('h1');
+      var poe = function (el, txt, pausa) { var fs = emFrases(falado(txt)); fs.forEach(function (f, i) { lista.push({ el: el, txt: f, pausa: i === fs.length - 1 ? pausa : 60 }); }); };
+      if (h1) { var hc = $('.h1-caso', h1), hs = $('.h1-sub', h1); poe(null, (hc ? hc.textContent + (hs ? '. ' + hs.textContent : '') : h1.textContent.replace(/:\s*/, '. ')).replace(/\s+/g, ' ').trim() + '.', 500); }
+      if ($('.linha-fina')) poe(null, $('.linha-fina').textContent, 700);
       $$(':scope > h2, :scope > h3, :scope > p, :scope > ul > li, :scope > ol > li, :scope > blockquote', texto).forEach(function (el) {
         if (el.closest('.quem-e-quem, .fontes, .autor')) return;
-        var s = el.textContent.replace(/\s+/g, ' ').trim(); if (s) t.push({ el: el, txt: s });
+        var t = el.textContent.replace(/\s+/g, ' ').trim(); if (!t) return;
+        var titulo = /^H[23]$/.test(el.tagName);
+        if (titulo && !/[.!?]$/.test(t)) t += '.';
+        poe(el, t, titulo ? 550 : el.tagName === 'LI' ? 250 : 380);
       });
-      return t;
+      return lista;
     };
-    var marcar = function (el) { $$('.lendo', texto).forEach(function (x) { x.classList.remove('lendo'); }); if (el) el.classList.add('lendo'); };
+    var marcar = function (el) { $$('.lendo', texto).forEach(function (x) { if (x !== el) x.classList.remove('lendo'); }); if (el) el.classList.add('lendo'); };
     var falar = function () {
-      if (pos >= partes.length) { pararTudo(); return; }
-      var p = partes[pos], u = new SpeechSynthesisUtterance(p.txt);
-      u.lang = 'pt-BR'; if (voz) u.voice = voz; u.rate = parseFloat(vel.value) || 1;
-      u.onend = function () { if (estado === 'tocando') { pos++; falar(); } };
+      clearTimeout(espera);
+      if (pos >= frases.length) { pararTudo(); return; }
+      var f = frases[pos], u = new SpeechSynthesisUtterance(f.txt);
+      u.lang = voz ? voz.lang : 'pt-BR'; if (voz) { try { u.voice = voz; } catch (e) {} }
+      u.rate = parseFloat(vel.value) || 1; u.pitch = 1;
+      u.onend = function () { if (estado === 'tocando') { pos++; espera = setTimeout(falar, f.pausa); } };
       u.onerror = function (e) { if (e.error !== 'interrupted' && e.error !== 'canceled') pararTudo(); };
-      marcar(p.el);
-      if (p.el) { var r = p.el.getBoundingClientRect(); if (r.top < 80 || r.bottom > innerHeight) p.el.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' }); }
+      if (f.el && !f.el.classList.contains('lendo')) {
+        marcar(f.el);
+        var r = f.el.getBoundingClientRect();
+        if (r.top < 90 || r.bottom > innerHeight) f.el.scrollIntoView({ block: 'center', behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+      }
       sint.speak(u);
     };
     var mostrar = function () {
       ouvir.dataset.estado = estado;
       play.setAttribute('aria-pressed', String(estado === 'tocando'));
       rot.textContent = estado === 'tocando' ? 'Pausar' : estado === 'pausado' ? 'Continuar' : 'Ouvir';
-      parar.hidden = velWrap.hidden = estado === 'parado';
+      parar.hidden = painelOuvir.hidden = estado === 'parado';
     };
-    var pararTudo = function () { estado = 'parado'; sint.cancel(); pos = 0; marcar(null); mostrar(); };
+    var pararTudo = function () { estado = 'parado'; clearTimeout(espera); sint.cancel(); pos = 0; marcar(null); mostrar(); };
+    var recomecarFrase = function () { if (estado === 'tocando') { sint.cancel(); setTimeout(falar, 60); } };
     play.addEventListener('click', function () {
-      if (estado === 'tocando') { estado = 'pausado'; sint.cancel(); }
-      else { if (estado === 'parado') { partes = juntar(); pos = 0; } estado = 'tocando'; sint.cancel(); falar(); }
+      if (estado === 'tocando') { estado = 'pausado'; clearTimeout(espera); sint.cancel(); }
+      else { if (estado === 'parado') { frases = juntar(); pos = 0; } estado = 'tocando'; sint.cancel(); setTimeout(falar, 60); }
       mostrar();
     });
     parar.addEventListener('click', function () { pararTudo(); play.focus(); });
-    vel.addEventListener('change', function () { if (estado === 'tocando') { sint.cancel(); falar(); } });
+    vel.addEventListener('change', function () { guarda.por('portal-voz-vel', vel.value); recomecarFrase(); });
+    vozSel.addEventListener('change', function () { voz = vozes[+vozSel.value] || null; if (voz) guarda.por('portal-voz', voz.name); recomecarFrase(); });
+    var velSalva = guarda.ler('portal-voz-vel'); if (velSalva && $('option[value="' + velSalva + '"]', vel)) vel.value = velSalva;
     addEventListener('pagehide', function () { sint.cancel(); });
     mostrar();
   }

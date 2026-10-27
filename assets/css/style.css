@@ -1114,3 +1114,12 @@ html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
   .cronos-area { --linha: 19px; --gov-h: 50px; }
   .raia { height: 13px; border-radius: 3px; }
 }
+
+/* Ouvir: painel de voz e velocidade, e áudio gravado */
+.ouvir-painel { display: flex; flex-wrap: wrap; align-items: end; gap: var(--e3) var(--e4); margin-top: var(--e4); padding: var(--e4); max-width: 620px; border-radius: var(--r2); background: var(--carvao); border: 1px solid var(--grafite); }
+.ouvir-campo { display: grid; gap: 4px; font-size: var(--t-13); color: var(--chumbo); flex: 1 1 200px; min-width: 0; }
+.ouvir-campo select { min-height: var(--alvo); width: 100%; padding: 0 10px; border-radius: var(--r2); border: 1px solid var(--linha-ui); background: var(--breu); color: var(--papel); font-size: var(--t-15); }
+.ouvir-dica { flex-basis: 100%; margin: 0; font-size: var(--t-13); line-height: 1.45; color: var(--papel-2); }
+.ouvir-arquivo { margin-top: var(--e4); max-width: 620px; }
+.ouvir-t { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: var(--t-15); font-weight: 600; }
+.ouvir-arquivo audio { width: 100%; }

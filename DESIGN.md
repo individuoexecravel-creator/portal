@@ -95,3 +95,9 @@ correcoes:               # opcional: histórico público de correções
 ## Menu do topo
 
 O menu tem quatro entradas: Casos, **Explorar**, **Entender** e Sobre. Explorar e Entender são grupos: no computador abrem uma lista com ícone e descrição; no celular viram seções do menu. Para pôr uma página nova num grupo, crie a entrada em `hugo.toml` com `parent = "explorar"` ou `parent = "entender"`, e preencha `icone` e `desc` em `[menus.main.params]`. O rodapé e o início leem o mesmo menu.
+
+## Ouvir a matéria
+
+O botão "Ouvir" usa a voz do navegador. O site escolhe sozinho a voz mais natural disponível, e o leitor pode trocar a voz e a velocidade (fica salvo no navegador). As melhores vozes grátis são as "Natural" do Microsoft Edge e a do Google no Chrome. No iPhone, a pessoa pode baixar uma voz "Aprimorada" nos ajustes.
+
+Para uma narração gravada, com voz humana ou de um serviço de voz neural, ponha o arquivo em `static/audio/<slug>.mp3` e escreva `audio: "<slug>.mp3"` no começo da matéria. Com isso, a matéria mostra um player com o áudio no lugar da voz do navegador.
