@@ -125,3 +125,19 @@
   nome: "Abin"
   termos: ["Abin"]
   def: "Agência Brasileira de Inteligência, ligada à Presidência da República. Não é polícia e não pode, por lei, conduzir investigações criminais."
+- id: graca
+  nome: "Graça"
+  termos: ["graça constitucional", "graça presidencial"]
+  def: "Perdão da pena concedido pelo presidente da República a uma pessoa específica. É parecido com o indulto, que é coletivo. O STF pode anular a graça quando entende que ela foi usada com desvio de finalidade, como fez no caso Daniel Silveira."
+- id: coacao
+  nome: "Coação no curso do processo"
+  termos: ["coação no curso do processo"]
+  def: "Crime de usar violência ou ameaça contra juízes, testemunhas, partes ou qualquer pessoa que atue num processo, para favorecer interesse próprio ou de outra pessoa."
+- id: concussao
+  nome: "Concussão"
+  termos: ["concussão"]
+  def: "Crime do agente público que exige vantagem indevida em razão do cargo. Na corrupção passiva ele pede ou aceita; na concussão, ele impõe."
+- id: condicional
+  nome: "Liberdade condicional"
+  termos: ["liberdade condicional"]
+  def: "Saída antecipada da prisão concedida a quem já cumpriu parte da pena e tem bom comportamento. Vem com condições, e quem as descumpre volta para a prisão."

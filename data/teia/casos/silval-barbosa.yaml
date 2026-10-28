@@ -1,0 +1,100 @@
+# Teia do caso: Silval Barbosa
+caso: silval-barbosa
+nome: Silval Barbosa
+periodo:
+  - 2010
+  - 2026
+resumo: Governador de Mato Grosso de 2010 a 2014, preso na Operação Sodoma em 2015, confessou numa delação homologada pelo STF em 2017 e devolveu, com a família, mais de R$ 70 milhões.
+desfecho: Condenações que somam 20 anos, cumpridas em grande parte em casa; regime aberto em 2021; nova condenação no STJ em 2026, ainda com recurso.
+novas_entidades:
+  - id: silval
+    nome: Silval Barbosa
+    tipo: pessoa
+    desc: Governador de Mato Grosso de 2010 a 2014, delator.
+  - id: roseli-barbosa
+    nome: Roseli Barbosa
+    tipo: pessoa
+    desc: Esposa de Silval, ex-primeira-dama de Mato Grosso.
+  - id: rodrigo-barbosa
+    nome: Rodrigo Barbosa
+    tipo: pessoa
+    desc: Filho de Silval.
+  - id: antonio-barbosa
+    nome: Antônio Barbosa
+    tipo: pessoa
+    desc: Irmão de Silval.
+  - id: silvio-cezar
+    nome: Silvio Cézar Corrêa
+    tipo: pessoa
+    desc: Ex-chefe de gabinete de Silval.
+  - id: blairo-maggi
+    nome: Blairo Maggi
+    tipo: pessoa
+    desc: Governador de Mato Grosso antes de Silval, depois senador e ministro da Agricultura.
+  - id: jose-riva
+    nome: José Riva
+    tipo: pessoa
+    desc: Ex-presidente da Assembleia Legislativa de Mato Grosso.
+  - id: fux
+    nome: Luiz Fux
+    tipo: pessoa
+    desc: Ministro do STF.
+  - id: operacao-sodoma
+    nome: Operação Sodoma
+    tipo: estado
+    desc: Investigação do MP e da Polícia Civil de Mato Grosso sobre a venda de incentivos fiscais.
+  - id: prodeic
+    nome: Prodeic
+    tipo: estado
+    desc: Programa de incentivos fiscais de Mato Grosso.
+  - id: mato-grosso
+    nome: Mato Grosso
+    tipo: lugar
+envolvidos:
+  - id: silval
+    tipo: delator
+    rel: Confessou na delação de 2017; condenado a 20 anos, cumpridos em grande parte em casa
+  - id: roseli-barbosa
+    tipo: delator
+    rel: Esposa; também fechou acordo de delação
+  - id: rodrigo-barbosa
+    tipo: delator
+    rel: Filho; também fechou acordo de delação
+  - id: antonio-barbosa
+    tipo: delator
+    rel: Irmão; também fechou acordo de delação
+  - id: silvio-cezar
+    tipo: delator
+    rel: Ex-chefe de gabinete; também fechou acordo de delação
+  - id: jose-riva
+    tipo: condenado
+    rel: Condenado na Operação Sodoma em 2018
+  - id: blairo-maggi
+    tipo: citado
+    rel: Citado na delação; Fux abriu inquérito em 2017
+  - id: fux
+    tipo: agente
+    rel: Homologou a delação em agosto de 2017
+  - id: stf
+    tipo: agente
+    rel: Homologou a delação
+  - id: stj
+    tipo: agente
+    rel: Condenou Silval em outro processo em 2026
+  - id: operacao-sodoma
+    tipo: agente
+    rel: Levou à prisão de Silval em 2015
+  - id: prodeic
+    tipo: vinculo
+    rel: Os incentivos fiscais vendidos, segundo a acusação
+  - id: pmdb
+    tipo: vinculo
+    rel: Partido de Silval
+  - id: mato-grosso
+    tipo: vinculo
+    rel: O estado governado por Silval
+relacionados:
+  - caso: sergio-cabral
+    rel: Dois governadores presos depois de deixar o cargo
+  - caso: caixa-de-pandora
+    rel: Vídeos de políticos recebendo dinheiro entregues por um delator

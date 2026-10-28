@@ -306,7 +306,7 @@
 - id: moraes
   nome: Alexandre de Moraes
   tipo: pessoa
-  desc: Ministro do STF que mandou prender Collor em 2025.
+  desc: Ministro do STF. Mandou prender Collor em 2025 e foi o relator do caso Daniel Silveira.
 - id: amazonino
   nome: Amazonino Mendes
   tipo: pessoa

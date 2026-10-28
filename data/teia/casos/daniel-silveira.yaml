@@ -1,0 +1,52 @@
+# Teia do caso: Daniel Silveira
+caso: daniel-silveira
+nome: Daniel Silveira
+periodo:
+  - 2021
+  - 2025
+resumo: Deputado federal preso em 2021 por um vídeo com ameaças a ministros do STF, condenado em 2022 a 8 anos e 9 meses, perdoado por Bolsonaro e de volta à prisão quando o STF anulou o perdão.
+desfecho: Condenado em 2022; graça presidencial anulada em 2023; preso desde fevereiro de 2023; semiaberto com tornozeleira em 2025.
+novas_entidades:
+  - id: daniel-silveira
+    nome: Daniel Silveira
+    tipo: pessoa
+    desc: Ex-policial militar e deputado federal pelo Rio de Janeiro, eleito em 2018.
+  - id: bolsonaro
+    nome: Jair Bolsonaro
+    tipo: pessoa
+    desc: Presidente da República de 2019 a 2022.
+  - id: andre-mendonca
+    nome: André Mendonça
+    tipo: pessoa
+    desc: Ministro do STF.
+  - id: nunes-marques
+    nome: Nunes Marques
+    tipo: pessoa
+    desc: Ministro do STF.
+envolvidos:
+  - id: daniel-silveira
+    tipo: condenado
+    rel: 8 anos e 9 meses pelo STF em 2022; preso desde 2023
+  - id: bolsonaro
+    tipo: vinculo
+    rel: Concedeu a graça em abril de 2022, anulada pelo STF em 2023
+  - id: moraes
+    tipo: agente
+    rel: Relator; mandou prender Silveira em 2021 e em 2023
+  - id: andre-mendonca
+    tipo: agente
+    rel: Votou pela condenação só pelas ameaças, com pena menor
+  - id: nunes-marques
+    tipo: agente
+    rel: Votou pela absolvição
+  - id: stf
+    tipo: agente
+    rel: Condenou em 2022 e anulou a graça em 2023
+  - id: camara
+    tipo: agente
+    rel: Manteve a prisão em fevereiro de 2021
+relacionados:
+  - caso: natan-donadon
+    rel: Outros deputados federais presos durante o mandato
+  - caso: collor-br-distribuidora
+    rel: Alexandre de Moraes foi quem mandou prender os dois
