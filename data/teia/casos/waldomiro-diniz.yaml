@@ -1,0 +1,57 @@
+# Teia do caso: Waldomiro Diniz
+caso: waldomiro-diniz
+nome: Waldomiro Diniz
+periodo:
+  - 2002
+  - 2018
+resumo: Assessor da Casa Civil filmado em 2002, quando presidia a Loterj, pedindo dinheiro a Carlinhos Cachoeira. O vídeo saiu em 2004 e foi o primeiro grande escândalo do governo Lula.
+desfecho: Os dois condenados no Rio em 2012; em 2018, o STJ mandou prender Cachoeira e negou a prisão imediata de Waldomiro, que tinha recurso pendente.
+novas_entidades:
+  - id: loterj
+    nome: Loterj
+    tipo: estado
+    desc: Loteria do estado do Rio de Janeiro.
+  - id: cpi-bingos
+    nome: CPI dos Bingos
+    tipo: estado
+    desc: Comissão do Senado instalada em 2005 depois do vídeo de Waldomiro.
+  - id: gtech
+    nome: GTech
+    tipo: org
+    desc: Empresa de loterias com contrato na Caixa.
+envolvidos:
+  - id: waldomiro
+    tipo: condenado
+    rel: 12 anos por corrupção e fraude em licitação, em 2012; respondeu em liberdade
+  - id: carlinhos-cachoeira
+    tipo: condenado
+    rel: Gravou o encontro; condenado em 2012 e preso em 2018
+  - id: dirceu
+    tipo: vinculo
+    rel: Chefe de Waldomiro na Casa Civil
+  - id: loterj
+    tipo: vinculo
+    rel: Presidida por Waldomiro de 2001 a 2003
+  - id: cpi-bingos
+    tipo: agente
+    rel: Investigou o caso a partir de 2005
+  - id: stj
+    tipo: agente
+    rel: Mandou prender Cachoeira em 2018 e negou a prisão de Waldomiro
+  - id: gtech
+    tipo: vinculo
+    rel: Contrato com a Caixa investigado na CPI
+  - id: caixa
+    tipo: vinculo
+    rel: Contrato com a GTech investigado na CPI
+  - id: pt
+    tipo: vinculo
+    rel: Waldomiro era de confiança do partido no governo
+  - id: rio
+    tipo: vinculo
+    rel: Onde ficava a Loterj
+relacionados:
+  - caso: caso-cachoeira
+    rel: Cachoeira, que gravou o vídeo, voltou ao centro do caso Monte Carlo em 2012
+  - caso: mensalao
+    rel: O escândalo seguinte do governo, que levou Dirceu à prisão
