@@ -1,0 +1,38 @@
+caso: pablo-escobar-deputado
+pais: Colômbia
+locais:
+  - id: medellin
+    nome: Medellín
+    lat: 6.24
+    lng: -75.58
+    tipo: crime
+    desc: Base do Cartel de Medellín e da campanha de Escobar em 1982. Perto dali, em Envigado, ficava La Catedral, a prisão de onde ele fugiu em 1992. Foi morto na cidade em 1993.
+  - id: bogota
+    nome: Bogotá
+    lat: 4.71
+    lng: -74.07
+    tipo: justica
+    desc: Sede do Congresso onde Escobar ocupou uma cadeira e da Suprema Corte, que condenou Santofimio em 2011. Lara Bonilla foi morto na cidade em 1984, e Galán, em Soacha, ao lado, em 1989.
+rotas:
+  - de: medellin
+    para: bogota
+    desc: Do bairro ao Congresso (1982)
+envolvidos:
+  - nome: Alberto Santofimio Botero
+    tipo: condenado
+    rel: 24 anos como coautor do assassinato de Galán, em definitivo em 2011; liberdade condicional em 2020
+  - nome: Pablo Escobar
+    tipo: citado
+    rel: Deputado suplente de 1982 a 1984; morto em 1993 sem condenação definitiva
+  - nome: John Jairo Velásquez, o Popeye
+    tipo: delator
+    rel: Ex-integrante do grupo de Escobar; testemunha principal contra Santofimio
+  - nome: Luis Carlos Galán
+    tipo: vinculo
+    rel: Vetou Escobar em 1982; assassinado em 1989
+  - nome: Rodrigo Lara Bonilla
+    tipo: vinculo
+    rel: Ministro da Justiça que expôs Escobar; assassinado em 1984
+  - nome: Jairo Ortega
+    tipo: vinculo
+    rel: Encabeçava a lista em que Escobar foi eleito suplente

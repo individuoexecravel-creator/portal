@@ -26,5 +26,5 @@
   casos: [vampiros-da-saude, sanguessugas]
 - id: narco
   titulo: "Narcoestados"
-  descricao: "Fora do Brasil: governos tomados pelo tráfico e pela máfia, da Bolívia à Sicília."
-  casos: [golpe-da-cocaina, manuel-noriega, paramilitares-colombia, mafia-dentro-do-estado]
+  descricao: "Fora do Brasil: governos e congressos tomados pelo tráfico e pela máfia, da Bolívia à Sicília."
+  casos: [golpe-da-cocaina, pablo-escobar-deputado, manuel-noriega, paramilitares-colombia, mafia-dentro-do-estado]
