@@ -1,0 +1,65 @@
+caso: narcosobrinos
+pais: Venezuela
+locais:
+  - id: caracas
+    nome: Caracas, Venezuela
+    lat: 10.49
+    lng: -66.88
+    tipo: crime
+    desc: Onde o negócio foi fechado, num restaurante de shopping, em 2015; onde Maduro e Cilia Flores foram capturados em 2026.
+  - id: roatan
+    nome: Roatán, Honduras
+    lat: 16.32
+    lng: -86.53
+    tipo: crime
+    desc: Primeiro encontro com "El Sentado", informante da DEA, em outubro de 2015.
+  - id: porto-principe
+    nome: Porto Príncipe, Haiti
+    lat: 18.54
+    lng: -72.34
+    tipo: justica
+    desc: Onde os primos foram presos por agentes haitianos e da DEA, em 10 de novembro de 2015.
+  - id: nova-york
+    nome: Nova York, EUA
+    lat: 40.71
+    lng: -74.0
+    tipo: justica
+    desc: Julgados e condenados a 18 anos; onde Maduro e Cilia Flores respondem às acusações desde 2026.
+  - id: sao-vicente
+    nome: São Vicente e Granadinas
+    lat: 13.25
+    lng: -61.2
+    tipo: outro
+    desc: Pista onde os primos foram trocados por sete americanos presos na Venezuela, em outubro de 2022.
+rotas:
+  - de: caracas
+    para: roatan
+    desc: Em busca de quem levasse a carga (2015)
+  - de: caracas
+    para: porto-principe
+    desc: Voo para buscar US$ 5 milhões (2015)
+  - de: porto-principe
+    para: nova-york
+    desc: Levados presos aos EUA (2015)
+  - de: nova-york
+    para: sao-vicente
+    desc: Libertados na troca de presos (2022)
+envolvidos:
+  - nome: Efraín Antonio Campo Flores
+    tipo: condenado
+    rel: 18 anos em 2017; libertado por clemência em 2022; sancionado de novo em 2025
+  - nome: Franqui Francisco Flores de Freitas
+    tipo: condenado
+    rel: 18 anos em 2017; libertado por clemência em 2022; sancionado de novo em 2025
+  - nome: Cilia Flores
+    tipo: citado
+    rel: Tia dos dois; capturada com Maduro em 2026 e acusada em Nova York, presumida inocente
+  - nome: Nicolás Maduro
+    tipo: citado
+    rel: Capturado em 2026 e acusado em Nova York, presumido inocente
+  - nome: Carlos Erik Malpica Flores
+    tipo: vinculo
+    rel: Outro sobrinho, ex-vice-presidente de finanças da PDVSA, sancionado em 2025
+  - nome: Joe Biden
+    tipo: vinculo
+    rel: Concedeu a clemência na troca de 2022
