@@ -1,0 +1,76 @@
+# Teia do caso: José Riva
+caso: jose-riva
+nome: José Riva
+periodo:
+  - 1995
+  - 2026
+resumo: Presidente da Assembleia Legislativa de Mato Grosso por vários mandatos, com cerca de 150 processos. Preso em 2015, fechou delação e contou que deputados recebiam um mensalinho para votar com o governo.
+desfecho: Condenado a 26 anos pelo mensalinho, com a pena reduzida pela delação de 2020, em que se comprometeu a devolver R$ 92 milhões. Regime aberto desde 2024; ainda responde a processos.
+novas_entidades:
+  - id: janete-riva
+    nome: Janete Riva
+    tipo: pessoa
+    desc: Mulher de José Riva; disputou o governo de Mato Grosso em 2014.
+  - id: assembleia-mt
+    nome: Assembleia Legislativa de MT
+    tipo: estado
+    desc: Legislativo de Mato Grosso, presidido por Riva em vários mandatos.
+  - id: tce-mt
+    nome: TCE de Mato Grosso
+    tipo: estado
+    desc: Tribunal de Contas do Estado de Mato Grosso.
+  - id: humberto-bosaipo
+    nome: Humberto Bosaipo
+    tipo: pessoa
+    desc: Ex-deputado e ex-conselheiro do TCE de Mato Grosso.
+  - id: tjmt
+    nome: TJ de Mato Grosso
+    tipo: estado
+    desc: Tribunal de Justiça de Mato Grosso.
+  - id: operacao-ararath
+    nome: Operação Ararath
+    tipo: estado
+    desc: Investigação da Polícia Federal sobre crimes financeiros em Mato Grosso.
+envolvidos:
+  - id: jose-riva
+    tipo: delator
+    rel: Condenado a 26 anos pelo mensalinho; delação homologada em 2020
+  - id: assembleia-mt
+    tipo: vinculo
+    rel: De onde, segundo a delação, saía o dinheiro do mensalinho
+  - id: janete-riva
+    tipo: vinculo
+    rel: Disputou o governo em 2014 no lugar do marido; seria beneficiada pela vaga no TCE
+  - id: humberto-bosaipo
+    tipo: acusado
+    rel: Réu desde 2024, acusado de receber R$ 7 milhões para deixar a vaga no TCE
+  - id: tce-mt
+    tipo: vinculo
+    rel: A vaga que, segundo o MP, Riva tentou comprar para Janete
+  - id: blairo-maggi
+    tipo: citado
+    rel: Citado por Riva como um dos governos que pagavam o mensalinho
+  - id: silval
+    tipo: citado
+    rel: Segundo Riva, o mensalinho só terminou no fim do governo dele
+  - id: gilmar
+    tipo: agente
+    rel: Concedeu o habeas corpus que tirou Riva da prisão em 2016
+  - id: stf
+    tipo: agente
+    rel: Soltou Riva em 2014 e em 2016
+  - id: tjmt
+    tipo: agente
+    rel: Homologou a delação em 2020 e reduziu penas em 2026
+  - id: operacao-ararath
+    tipo: agente
+    rel: Prendeu Riva por três dias em 2014
+  - id: operacao-sodoma
+    tipo: vinculo
+    rel: Riva também foi condenado na operação, em 2018
+  - id: mato-grosso
+    tipo: vinculo
+    rel: Onde o esquema funcionou
+relacionados:
+  - caso: silval-barbosa
+    rel: O governador delator do mesmo estado; os dois foram condenados na Operação Sodoma
