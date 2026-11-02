@@ -1,0 +1,86 @@
+# Teia do caso: Operação Hurricane
+caso: operacao-hurricane
+nome: Operação Hurricane
+periodo:
+  - 2007
+  - 2023
+resumo: Operação da PF que em 2007 prendeu desembargadores, um procurador e chefes do jogo do bicho, suspeitos de comprar e vender decisões para liberar bingos e caça-níqueis. Chegou a um ministro do STJ.
+desfecho: Os chefes do jogo foram condenados em 2012. Os magistrados foram aposentados à força pelo CNJ em 2010; Medina morreu sem julgamento e Carreira Alvim foi absolvido em 2023.
+novas_entidades:
+  - id: paulo-medina
+    nome: Paulo Medina
+    tipo: pessoa
+    desc: Ministro do STJ, afastado em 2007 e aposentado à força pelo CNJ em 2010; morreu em 2021.
+  - id: virgilio-medina
+    nome: Virgílio Medina
+    tipo: pessoa
+    desc: Advogado, irmão do ministro Paulo Medina.
+  - id: carreira-alvim
+    nome: Carreira Alvim
+    tipo: pessoa
+    desc: Desembargador e ex-vice-presidente do TRF da 2ª Região.
+  - id: capitao-guimaraes
+    nome: Capitão Guimarães
+    tipo: pessoa
+    desc: Ailton Guimarães Jorge, chefe do jogo do bicho e presidente da Liesa.
+  - id: anisio-beija-flor
+    nome: Anísio da Beija-Flor
+    tipo: pessoa
+    desc: Aniz Abrahão David, chefe do jogo do bicho e presidente de honra da Beija-Flor.
+  - id: turcao
+    nome: Turcão
+    tipo: pessoa
+    desc: Antonio Petrus Kalil, chefe do jogo do bicho no Rio.
+  - id: trf2
+    nome: TRF da 2ª Região
+    tipo: estado
+    desc: Tribunal Regional Federal do Rio de Janeiro e do Espírito Santo.
+  - id: policia-federal
+    nome: Polícia Federal
+    tipo: estado
+    desc: Polícia judiciária da União.
+envolvidos:
+  - id: paulo-medina
+    tipo: anulado
+    rel: Réu no STF em 2008 e aposentado pelo CNJ em 2010; morreu em 2021 sem julgamento final
+  - id: carreira-alvim
+    tipo: anulado
+    rel: Condenado em 2018 com pena prescrita; absolvido pelo TRF-2 em 2023
+  - id: virgilio-medina
+    tipo: anulado
+    rel: Suspeito de intermediar a venda de liminar; absolvido em 2023
+  - id: capitao-guimaraes
+    tipo: condenado
+    rel: 9 anos e 5 meses por corrupção ativa; condenação mantida pelo TRF-2 em 2022
+  - id: anisio-beija-flor
+    tipo: condenado
+    rel: 9 anos e 5 meses por corrupção ativa; condenação mantida pelo TRF-2 em 2022
+  - id: turcao
+    tipo: vinculo
+    rel: Réu no processo principal; preso em 2012, ficou em prisão domiciliar pela idade
+  - id: policia-federal
+    tipo: agente
+    rel: Deflagrou a operação em abril de 2007
+  - id: stf
+    tipo: agente
+    rel: Aceitou a denúncia contra Medina em 2008
+  - id: stj
+    tipo: vinculo
+    rel: Tribunal de Medina; mandou o processo para o Rio em 2017
+  - id: cnj
+    tipo: agente
+    rel: Aposentou Medina e Carreira Alvim à força em 2010
+  - id: trf2
+    tipo: agente
+    rel: Tribunal de Carreira Alvim; absolveu-o em 2023
+  - id: pgr
+    tipo: agente
+    rel: Denunciou os magistrados com foro
+  - id: rio
+    tipo: vinculo
+    rel: Onde funcionava o esquema do jogo
+relacionados:
+  - caso: operacao-anaconda
+    rel: Outra operação contra a venda de decisões judiciais, em São Paulo
+  - caso: caso-cachoeira
+    rel: Outro esquema de jogo ilegal com braços no poder público
