@@ -141,3 +141,15 @@
   nome: "Liberdade condicional"
   termos: ["liberdade condicional"]
   def: "Saída antecipada da prisão concedida a quem já cumpriu parte da pena e tem bom comportamento. Vem com condições, e quem as descumpre volta para a prisão."
+- id: concordata
+  nome: "Concordata"
+  termos: ["concordata"]
+  def: "Pedido de uma empresa em crise para ganhar prazo e pagar as dívidas em parcelas, sem falir. Em 2005, foi substituída pela recuperação judicial."
+- id: massa-falida
+  nome: "Massa falida"
+  termos: ["massa falida"]
+  def: "O conjunto de bens e direitos que sobra de uma empresa depois da falência. Um administrador nomeado pela Justiça vende esses bens e usa o dinheiro para pagar os credores, numa ordem definida por lei."
+- id: patrimonio-afetacao
+  nome: "Patrimônio de afetação"
+  termos: ["patrimônio de afetação"]
+  def: "Regra criada em 2004 que separa o dinheiro de cada empreendimento imobiliário do caixa da construtora. Se a empresa quebrar, o dinheiro pago pelos compradores de um prédio continua reservado para aquela obra."
