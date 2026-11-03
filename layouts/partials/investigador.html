@@ -1,0 +1,33 @@
+{{- /* Fim da página inicial: a ficha do Indivíduo Execrável e as duas alas. Espelha a do Porão, com a outra metade da foto. */ -}}
+{{ with site.Params.autor }}
+<section class="wrap bloco investigador" aria-labelledby="inv-t">
+  <div class="inv-in">
+    <figure class="inv-foto">
+      <img src="{{ "img/investigador.jpg" | relURL }}" alt="O repórter de chapéu do Indivíduo Execrável, sem rosto, diante do Congresso Nacional sob um céu vermelho." width="600" height="750" loading="lazy" decoding="async">
+      <figcaption>o repórter, sem rosto</figcaption>
+    </figure>
+    <div class="inv-texto">
+      <header class="bloco-topo"><h2 id="inv-t">Quem conta</h2></header>
+      <p class="inv-nome"><a href="{{ "sobre/" | relURL }}">{{ .nome }}</a></p>
+      <p class="inv-funcao">{{ .funcao }}</p>
+      <p class="inv-bio">{{ .bio }}</p>
+      <div class="inv-alas">
+        <a class="inv-ala inv-ala-portal" href="{{ site.Home.RelPermalink }}" aria-current="page">
+          <span class="inv-ala-rot">Política</span>
+          <span class="inv-ala-nome">O Portal</span>
+          <span class="inv-ala-d">Você está aqui. Escândalos da política brasileira e internacional, do começo ao fim.</span>
+        </a>
+        {{ with site.Params.porao }}
+        <a class="inv-ala inv-ala-porao" href="{{ . }}">
+          <span class="inv-ala-rot">Crime</span>
+          <span class="inv-ala-nome">O Porão</span>
+          <span class="inv-ala-d">Crimes graves que atingiram gente comum, reconstruídos com documentos.</span>
+        </a>
+        {{ end }}
+      </div>
+      <p class="inv-siga">Siga nas redes</p>
+      {{ partial "redes.html" (dict "nomes" true) }}
+    </div>
+  </div>
+</section>
+{{ end }}
