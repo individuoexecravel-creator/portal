@@ -1041,7 +1041,7 @@ html[data-tema="claro"] .busca::backdrop { background: rgba(40,35,30,.35); }
 .tag-tipo { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .v-vazio { margin: var(--e5) 0; color: var(--chumbo); }
 @media (max-width: 1100px) { .v-totais { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e6) var(--e5); } }
-@media (max-width: 760px) {
+@media (max-width: 900px) {
   .v-ferr { gap: var(--e2); }
   .v-modo { width: 100%; }
   .v-modo .seletor { flex: 1; }
@@ -1123,3 +1123,110 @@ html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
 .ouvir-arquivo { margin-top: var(--e4); max-width: 620px; }
 .ouvir-t { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: var(--t-15); font-weight: 600; }
 .ouvir-arquivo audio { width: 100%; }
+
+/* =========================================================================
+   v5: apresentação e responsividade
+   ========================================================================= */
+
+/* Grades que nunca passam da largura da tela */
+.filtros { grid-template-columns: minmax(0, 1fr); }
+.filtros > * { min-width: 0; }
+.glossario { grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr)); }
+.quem-lista { grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr)); }
+.trilha-lista { grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr)); }
+.pessoas { grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); }
+.grade { grid-template-columns: repeat(auto-fill, minmax(min(230px, 100%), 1fr)); }
+
+/* Texto: quebras de linha mais equilibradas */
+.texto p, .linha-fina, .card-sub, .novo-desc, .lc-sub, .bloco-desc, .cabeca-lista .linha, .cam-d, .pessoa-desc, .glossario dd { text-wrap: pretty; }
+.bloco-topo h2, .cabeca-lista h1, .texto h2, .grafico-topo h2, .trilha-bloco h2 { text-wrap: balance; }
+
+/* Fotos: fundo enquanto carregam e um leve zoom ao passar o mouse */
+.card-foto, .novo-foto, .vit-foto { background: linear-gradient(160deg, var(--carvao-2), var(--carvao)); }
+.card-foto img, .novo-foto img, .vit-foto img, .lc-img { transition: transform .45s cubic-bezier(.2,.7,.2,1), filter .3s; }
+@media (hover: hover) {
+  .card:hover .card-foto img, .novo:hover .novo-foto img, .vit-foto:hover img { transform: scale(1.04); }
+  .linha-caso:hover .lc-img { transform: scale(1.06); }
+}
+.card:focus-visible, .novo:focus-visible, .linha-caso:focus-visible { outline-offset: 6px; border-radius: var(--r2); }
+
+/* Seção com título: um traço na cor da seção antes do título */
+.bloco-topo h2::before, .cabeca-lista h1::before { content: ""; display: block; width: 40px; height: 4px; margin-bottom: var(--e4); border-radius: 2px; background: var(--acento); }
+.bloco-int .bloco-topo h2::before { background: var(--internacional); }
+
+/* Link "Ver quem é quem" com área de toque de verdade */
+.mt-placar-link { display: inline-flex; align-items: center; min-height: var(--alvo); margin-top: 4px; }
+
+/* Telas grandes: mais respiro nas laterais */
+@media (min-width: 1600px) {
+  .wrap { max-width: 1360px; }
+  .trilho { padding-inline: max(16px, calc((100vw - 1360px) / 2 + 32px)); scroll-padding-inline: max(16px, calc((100vw - 1360px) / 2 + 32px)); }
+}
+
+/* Tablet (601 a 960 px): três colunas de casos e matéria com foto ao lado */
+@media (min-width: 601px) and (max-width: 960px) {
+  .grade { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px 16px; }
+  .grade .card-titulo { font-size: 1.35rem; }
+  .grade-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .grade-4 .card-sub { display: none; }
+  .mt-in { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); align-items: start; gap: 32px; }
+  .mt-img { order: 0; max-width: none; position: sticky; top: calc(var(--topo) + 16px); }
+  .mt-img img { aspect-ratio: 4 / 5; }
+  .h1-caso { font-size: clamp(2.4rem, 6.4vw, 3.6rem); }
+  .vit { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 24px; align-items: center; }
+  .novo-grande { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); }
+  .caminhos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 var(--e5); }
+  .caminhos a { padding: 20px 0; }
+  .rodape-in { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .rodape-redes { grid-column: auto; }
+}
+
+/* Abaixo de 960 px: o índice "Neste caso" vira uma fila de atalhos */
+@media (max-width: 960px) {
+  .sumario { display: block; padding: 0; border-left: 0; margin-inline: -16px; }
+  .sumario h2 { padding-inline: 16px; }
+  .sumario ol { display: flex; gap: var(--e2); overflow-x: auto; padding: 2px 16px 6px; scrollbar-width: none; scroll-snap-type: x proximity; }
+  .sumario ol::-webkit-scrollbar { display: none; }
+  .sumario li { flex: none; scroll-snap-align: start; }
+  .sumario a { display: inline-flex; align-items: center; min-height: var(--alvo); margin: 0; padding: 0 var(--e4); border: 1px solid var(--linha-ui); border-left-width: 1px; border-radius: var(--r-pilula); white-space: nowrap; }
+  .sumario a.atual { background: var(--papel); border-color: var(--papel); color: var(--tinta); }
+  .lateral { gap: var(--e5); }
+}
+@media (min-width: 720px) and (max-width: 960px) {
+  .sumario { margin-inline: -32px; }
+  .sumario h2 { padding-inline: 32px; }
+  .sumario ol { padding-inline: 32px; }
+}
+
+/* Celular */
+@media (max-width: 600px) {
+  .bloco-topo h2::before, .cabeca-lista h1::before { width: 32px; height: 3px; margin-bottom: var(--e3); }
+  .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .card-texto { padding-top: 10px; }
+  .card-periodo { font-size: var(--t-13); }
+  .mt-img { margin-inline: -16px; max-width: none; }
+  .mt-img img { border-radius: 0; }
+  .rodape { margin-top: 64px; }
+}
+@media (max-width: 360px) {
+  .wrap { padding: 0 14px; }
+  .filtro-grupo { margin: 0 -14px; padding: 0 14px; }
+  .lt-ferr { margin-left: -14px; margin-right: -14px; padding-left: 14px; padding-right: 14px; }
+  .sumario { margin-inline: -14px; }
+  .sumario h2, .sumario ol { padding-inline: 14px; }
+  .mt-img { margin-inline: -14px; }
+  .marca-nome { font-size: 1.4rem; }
+  .topo-acoes { gap: 6px; }
+  .grade .card-titulo { font-size: 1.1rem; }
+  .h1-caso { font-size: 2.15rem; }
+  .abertura h1 { font-size: 2.3rem; }
+}
+
+/* Celular deitado: menos altura para o topo e para a foto */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mt-img img { aspect-ratio: 16 / 7; }
+  .busca { margin-top: 2vh; max-height: 96vh; }
+}
+.lateral { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.lateral > * { min-width: 0; }
+.filtro-ordem select { min-width: 0; max-width: 100%; }
