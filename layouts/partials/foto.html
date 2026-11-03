@@ -1,0 +1,31 @@
+{{- /*
+  Foto de caso em alta resolução, com várias larguras (srcset) em WebP.
+  Uso: partial "foto.html" (dict "img" .Params.image "sizes" "(max-width: 600px) 50vw, 280px" "ws" (slice 320 480 640) "prio" false)
+  A imagem vem de static/img/capas (montada também como asset no hugo.toml); se faltar, cai na miniatura.
+*/ -}}
+{{- $nome := .img -}}
+{{- $ws := .ws | default (slice 320 480 640) -}}
+{{- $sizes := .sizes | default "100vw" -}}
+{{- $r := resources.Get (print "img/capas/" $nome) -}}
+{{- if not $r }}{{ $r = resources.Get (print "img/thumbs/" $nome) }}{{ end -}}
+{{- if $r -}}
+  {{- $set := slice -}}{{- $menor := "" -}}{{- $maior := "" -}}
+  {{- range $ws -}}
+    {{- if le . $r.Width -}}
+      {{- $v := $r.Resize (printf "%dx webp q80 Lanczos" .) -}}
+      {{- $set = $set | append (printf "%s %dw" $v.RelPermalink $v.Width) -}}
+      {{- if not $menor }}{{ $menor = $v }}{{ end }}{{ $maior = $v -}}
+    {{- end -}}
+  {{- end -}}
+  {{- /* Se alguma largura pedida passa da foto original, inclui a largura máxima da própria foto */ -}}
+  {{- if and $maior (lt $maior.Width $r.Width) (gt (index (last 1 $ws) 0) $r.Width) -}}
+    {{- $v := $r.Resize (printf "%dx webp q80 Lanczos" $r.Width) -}}
+    {{- $set = $set | append (printf "%s %dw" $v.RelPermalink $v.Width) -}}{{- $maior = $v -}}
+  {{- end -}}
+  {{- if not $menor -}}{{- $v := $r.Resize (printf "%dx webp q80 Lanczos" $r.Width) -}}{{- $set = slice (printf "%s %dw" $v.RelPermalink $v.Width) -}}{{- $menor = $v }}{{ $maior = $v -}}{{- end -}}
+  {{- /* src: a segunda menor (boa para telas comuns) */ -}}
+  {{- $src := $menor -}}{{- if ge (len $set) 2 }}{{ $src = $r.Resize (printf "%dx webp q80 Lanczos" (index $ws 1)) }}{{ end -}}
+  <img src="{{ $src.RelPermalink }}" srcset="{{ delimit $set ", " }}" sizes="{{ $sizes }}" alt="{{ .alt | default "" }}" width="{{ $maior.Width }}" height="{{ $maior.Height }}"{{ if .prio }} fetchpriority="high"{{ else }} loading="lazy" decoding="async"{{ end }}>
+{{- else -}}
+  <img src="{{ (print "img/thumbs/" $nome) | relURL }}" alt="" loading="lazy">
+{{- end -}}

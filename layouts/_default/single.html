@@ -8,7 +8,7 @@
         <a href="{{ site.Home.RelPermalink }}">Início</a><span aria-hidden="true">›</span>
         <a href="{{ .CurrentSection.RelPermalink }}">{{ .CurrentSection.Title }}</a>
       </nav>
-      {{ with .Params.periodo }}<p class="mt-periodo">{{ . }}</p>{{ end }}
+      <p class="mt-periodo"><span class="mt-dossie">Dossiê</span>{{ with .Params.periodo }}<span>{{ . }}</span>{{ end }}{{ with .Params.uf }}<span>{{ . }}</span>{{ end }}</p>
       <h1><span class="h1-caso">{{ $p.caso }}</span>{{ with $p.sub }}<span class="h1-sub">{{ . }}</span>{{ end }}</h1>
       <p class="linha-fina">{{ .Description }}</p>
       {{ with partial "placar.html" (dict "slug" .File.ContentBaseName "completo" true) }}
@@ -47,7 +47,7 @@
       </div>
       {{- end }}
     </div>
-    <div class="mt-img"><img src="{{ (print "img/capas/" .Params.image) | relURL }}" alt="" fetchpriority="high"></div>
+    <div class="mt-img">{{ partial "foto.html" (dict "img" .Params.image "ws" (slice 480 640 900 1100) "sizes" "(max-width: 600px) 100vw, (max-width: 960px) 40vw, 440px" "prio" true) }}{{ partial "carimbo.html" . }}</div>
   </div>
 </header>
 

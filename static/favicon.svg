@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="ceu" cx="50%" cy="100%" r="80%">
+      <stop offset="0" stop-color="#7a0c12"/>
+      <stop offset=".55" stop-color="#2a0507"/>
+      <stop offset="1" stop-color="#0a0a0a"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="12" fill="url(#ceu)"/>
+  <g fill="none" stroke="#ece7df" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 31.5 C20 46 25 54 32 54 C39 54 44 46 44 31.5" stroke-width="2.6" fill="#0a0a0a"/>
+    <ellipse cx="32" cy="28.6" rx="26" ry="4.3" stroke-width="2.8" fill="#0a0a0a"/>
+    <path d="M18 27 C19 15 25 10 32 10 C39 10 45 15 46 27" stroke-width="2.8" fill="#0a0a0a"/>
+    <path d="M25 13.2 Q32 18 39 13.2" stroke-width="1.6"/>
+    <path d="M18.5 23 L45.5 23 L46 27.5 L18 27.5 Z" fill="#ece7df" stroke-width="1"/>
+  </g>
+  <path d="M14.5 36.6 C21 34.6 30 35.8 38 34.6 C43.5 33.9 47.5 34.4 50 35.2 L49.3 41.6 C44 40.6 38.5 42 31 41.8 C24.5 41.6 19.5 42.8 14 42.2 Z" fill="#ff2a35"/>
+  <path d="M21 42 L21.5 46.5 M28.5 42 L28.8 48.6 M37 41.8 L37.3 45.6" stroke="#ff2a35" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -101,3 +101,16 @@ O menu tem quatro entradas: Casos, **Explorar**, **Entender** e Sobre. Explorar 
 O botão "Ouvir" usa a voz do navegador. O site escolhe sozinho a voz mais natural disponível, e o leitor pode trocar a voz e a velocidade (fica salvo no navegador). As melhores vozes grátis são as "Natural" do Microsoft Edge e a do Google no Chrome. No iPhone, a pessoa pode baixar uma voz "Aprimorada" nos ajustes.
 
 Para uma narração gravada, com voz humana ou de um serviço de voz neural, ponha o arquivo em `static/audio/<slug>.mp3` e escreva `audio: "<slug>.mp3"` no começo da matéria. Com isso, a matéria mostra um player com o áudio no lugar da voz do navegador.
+
+## Identidade v6: o lado Portal do Agente Noir
+
+O Portal e O Porão são irmãos: o mesmo chapéu de detetive, cada um do seu lado da logo das redes.
+
+- **Ícone** (`layouts/partials/marca.html`, `static/favicon.svg`): o chapéu do Porão desenhado em traço, com a tarja vermelha nos olhos, como nos cards. Arquivos prontos: `favicon.svg`, `favicon.png` (64 px), `apple-touch-icon.png` (180 px) e `img/icone-512.png`.
+- **Céu vermelho**: um brilho vermelho no alto da abertura e das matérias (`--ceu`), e grão de filme no fundo (`--grao`).
+- **Voz de imprensa**: rótulos, datas e períodos em IBM Plex Mono, em caixa alta (`.rotulo`). Os blocos da página inicial são numerados (Nº 01, Nº 02…).
+- **Tarja**: `<span class="tarja">` pinta um trecho do título de vermelho, como a tarja dos olhos.
+- **Carimbo**: o desfecho do caso (`justica.desfecho`) aparece carimbado na foto da matéria e do destaque da página inicial. Sai sozinho do front matter.
+- **Horizonte**: o Congresso desenhado em traço na abertura (`partial "horizonte.html"`).
+- **Rodapé**: o lema "Nenhum escândalo termina na manchete", com beira rasgada, como o papel do Porão.
+- **Fotos**: continuam indo para `static/img/capas` e `static/img/thumbs`. Na publicação, o Hugo gera versões em WebP de várias larguras (`partial "foto.html"`), e cada tela baixa a que precisa, nítida também em telas de alta resolução.

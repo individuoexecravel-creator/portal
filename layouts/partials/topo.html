@@ -11,10 +11,18 @@
   {{- $ativoEm = merge $ativoEm (dict .Name $on) -}}
 {{- end -}}
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+{{- if not (in (slice "teia" "globo") $cur.Layout) }}
+<div class="faixa">
+  <div class="wrap faixa-in">
+    <span>{{ site.Params.autor.nome }}</span><span class="faixa-sep" aria-hidden="true">/</span><span class="faixa-ala">Ala de escândalos políticos</span>
+    {{ with site.Params.porao }}<a class="faixa-porao" href="{{ . }}">Ir para O Porão <span aria-hidden="true">→</span></a>{{ end }}
+  </div>
+</div>
+{{- end }}
 <header class="topo">
   <div class="wrap topo-in">
     <a class="marca" href="{{ site.Home.RelPermalink }}">
-      <img src="{{ "img/logo.png" | relURL }}" alt="" width="36" height="36">
+      {{ partial "marca.html" . }}
       <span class="marca-nome">{{ site.Title }}</span>
       <span class="marca-desc">{{ site.Params.slogan }}</span>
     </a>
@@ -96,6 +104,7 @@
   <div class="menu-movel-pe">
     <p>Siga {{ site.Params.autor.nome }}</p>
     {{ partial "redes.html" . }}
+    {{ with site.Params.porao }}<a class="menu-porao" href="{{ . }}"><span>O Porão</span><small>A ala de crimes reais do {{ site.Params.autor.nome }}</small><span aria-hidden="true">→</span></a>{{ end }}
   </div>
 </div>
 

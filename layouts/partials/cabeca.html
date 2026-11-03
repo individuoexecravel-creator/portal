@@ -9,10 +9,12 @@
 <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
 <meta property="og:url" content="{{ .Permalink }}">
 {{ with .Params.image }}<meta property="og:image" content="{{ (print "img/capas/" .) | absURL }}"><meta name="twitter:card" content="summary_large_image">{{ end }}
-<link rel="icon" href="{{ "favicon.png" | relURL }}">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="icon" href="{{ "favicon.png" | relURL }}" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.png" | relURL }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..600&display=swap" rel="stylesheet">
 {{- /* CSS e JS saem de assets/, minificados e com nome único a cada mudança (sem cache velho). */ -}}
 {{- $css := resources.Get "css/style.css" | minify | fingerprint }}
 {{- $js := resources.Get "js/portal.js" | minify | fingerprint }}

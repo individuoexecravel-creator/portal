@@ -35,8 +35,10 @@
 <section class="abertura" aria-labelledby="abertura-t">
   <div class="wrap abertura-in">
     <div class="abertura-texto">
-      <h1 id="abertura-t">Escândalos políticos, do começo ao fim.</h1>
+      <p class="rotulo">Arquivo aberto · {{ len $todas }} casos · {{ $de }}–{{ now.Year }}</p>
+      <h1 id="abertura-t">Escândalos políticos, do começo <span class="tarja">ao fim</span>.</h1>
       <p>{{ len $todas }} casos contados com nomes, valores, datas e o que a Justiça decidiu no final. Cada barra abaixo é um caso, do ano em que começou ao ano em que terminou.</p>
+      {{ partial "horizonte.html" . }}
     </div>
 
     <figure class="cronos" data-cronos>
@@ -78,7 +80,7 @@
       {{ range $i, $it := $itens }}{{ $pg := .pag }}{{ $p := partial "partes.html" $pg }}
       <article class="vit sec-{{ $pg.Section }}" data-vit="{{ $i }}"{{ if ne $pg.RelPermalink $recente.RelPermalink }} hidden{{ else }} data-inicial{{ end }}>
         <a class="vit-foto" href="{{ $pg.RelPermalink }}" tabindex="-1" aria-hidden="true">
-          {{ with $pg.Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" {{ if eq $pg.RelPermalink $recente.RelPermalink }}fetchpriority="high"{{ else }}loading="lazy"{{ end }} width="560" height="700">{{ end }}
+          {{ with $pg.Params.image }}{{ partial "foto.html" (dict "img" . "ws" (slice 320 480 640) "sizes" "(max-width: 600px) 120px, (max-width: 960px) 40vw, 300px" "prio" (eq $pg.RelPermalink $recente.RelPermalink)) }}{{ end }}{{ partial "carimbo.html" $pg }}
         </a>
         <div class="vit-texto">
           <p class="vit-meta">{{ if eq $pg.RelPermalink $recente.RelPermalink }}<span class="selo">Publicado por último</span>{{ end }}<span>{{ $pg.CurrentSection.Title }}, {{ $pg.Params.periodo }}</span></p>
@@ -103,7 +105,7 @@
   <div class="novos">
     {{ range $i, $pg := $novos }}{{ $p := partial "partes.html" $pg }}
     <a class="novo{{ if eq $i 0 }} novo-grande{{ end }} sec-{{ $pg.Section }}" href="{{ $pg.RelPermalink }}">
-      <span class="novo-foto">{{ with $pg.Params.image }}<img src="{{ (print (cond (eq $i 0) "img/capas/" "img/thumbs/") .) | relURL }}" alt="" loading="lazy">{{ end }}</span>
+      <span class="novo-foto">{{ with $pg.Params.image }}{{ if eq $i 0 }}{{ partial "foto.html" (dict "img" . "ws" (slice 480 640 900) "sizes" "(max-width: 600px) 100vw, (max-width: 960px) 42vw, 380px") }}{{ else }}{{ partial "foto.html" (dict "img" . "ws" (slice 160 240 320) "sizes" "(max-width: 600px) 96px, 140px") }}{{ end }}{{ end }}</span>
       <span class="novo-texto">
         <span class="novo-meta">{{ $pg.CurrentSection.Title }}, {{ $pg.Params.periodo }}</span>
         <span class="novo-nome">{{ $p.caso }}</span>

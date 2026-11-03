@@ -17,7 +17,7 @@
       {{ range $k, $pg := $pags }}{{ $p := partial "partes.html" $pg }}
       <li><a href="{{ $pg.RelPermalink }}" class="sec-{{ $pg.Section }}" data-lido="{{ $pg.File.ContentBaseName }}">
         <span class="tl-n" aria-hidden="true">{{ add $k 1 }}</span>
-        {{ with $pg.Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" loading="lazy" width="560" height="700">{{ end }}
+        {{ with $pg.Params.image }}{{ partial "foto.html" (dict "img" . "ws" (slice 160 240) "sizes" "64px") }}{{ end }}
         <span class="tl-texto"><span class="tl-ano">{{ $pg.Params.periodo }}</span><span class="tl-nome">{{ $p.caso }}</span></span>
       </a></li>
       {{ end }}

@@ -1,7 +1,13 @@
 <footer class="rodape">
+  <div class="rodape-lema">
+    <div class="wrap rl-in">
+      <p class="rl-t">Nenhum escândalo termina na&nbsp;<span class="tarja">manchete</span>.</p>
+      <p class="rl-d">O Portal acompanha cada caso até o fim: a condenação, a absolvição, a prescrição ou o arquivamento.{{ with site.Params.porao }} Os crimes que não são políticos ficam n'<a href="{{ . }}">O Porão</a>.{{ end }}</p>
+    </div>
+  </div>
   <div class="wrap rodape-in">
     <div class="rodape-marca">
-      <a class="marca" href="{{ site.Home.RelPermalink }}"><img src="{{ "img/logo.png" | relURL }}" alt="" width="44" height="44"><span class="marca-nome">{{ site.Title }}</span></a>
+      <a class="marca" href="{{ site.Home.RelPermalink }}">{{ partial "marca.html" . }}<span class="marca-nome">{{ site.Title }}</span></a>
       <p>{{ site.Params.description }}</p>
       <p>Escrito e mantido por <a href="{{ "sobre/" | relURL }}">{{ site.Params.autor.nome }}</a>.</p>
     </div>

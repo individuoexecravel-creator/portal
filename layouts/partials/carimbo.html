@@ -1,0 +1,5 @@
+{{- /* Carimbo com o desfecho do caso (front matter justica.desfecho). */ -}}
+{{- $t := dict "condenacao" "Condenado" "misto" "Em parte" "politico" "Cassado" "absolvicao" "Absolvido" "anulacao" "Anulado" "arquivado" "Arquivado" "sem-punicao" "Impune" -}}
+{{- with .Params.justica }}{{ with .desfecho }}{{ with index $t . -}}
+<span class="carimbo carimbo-{{ $.Params.justica.desfecho }}" aria-hidden="true">{{ . }}</span>
+{{- end }}{{ end }}{{ end -}}

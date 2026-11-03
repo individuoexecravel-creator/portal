@@ -3,9 +3,28 @@ languageCode = "pt-br"
 title = "Portal"
 summaryLength = 40
 
+# As fotos continuam sendo enviadas para static/img. Esta montagem deixa o Hugo
+# gerar versões menores e em alta resolução delas (WebP) na hora de publicar.
+[module]
+  [[module.mounts]]
+    source = "assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
+  [[module.mounts]]
+    source = "static/img"
+    target = "assets/img"
+
+[imaging]
+  quality = 80
+  resampleFilter = "Lanczos"
+
 [params]
   description = "Escândalos políticos contados do começo ao fim, com nomes, valores, datas e o que a Justiça decidiu."
   slogan = "Arquivo de escândalos políticos"
+  # Link para o site irmão, de crimes reais
+  porao = "https://individuoexecravel-creator.github.io/porao/"
 
   # Casos indicados para quem está chegando agora (nome do arquivo, sem .md).
   # Aparecem no início, em "Para começar". Troque à vontade.

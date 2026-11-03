@@ -1150,9 +1150,6 @@ html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
 }
 .card:focus-visible, .novo:focus-visible, .linha-caso:focus-visible { outline-offset: 6px; border-radius: var(--r2); }
 
-/* Seção com título: um traço na cor da seção antes do título */
-.bloco-topo h2::before, .cabeca-lista h1::before { content: ""; display: block; width: 40px; height: 4px; margin-bottom: var(--e4); border-radius: 2px; background: var(--acento); }
-.bloco-int .bloco-topo h2::before { background: var(--internacional); }
 
 /* Link "Ver quem é quem" com área de toque de verdade */
 .mt-placar-link { display: inline-flex; align-items: center; min-height: var(--alvo); margin-top: 4px; }
@@ -1200,7 +1197,6 @@ html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
 
 /* Celular */
 @media (max-width: 600px) {
-  .bloco-topo h2::before, .cabeca-lista h1::before { width: 32px; height: 3px; margin-bottom: var(--e3); }
   .grade { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
   .card-texto { padding-top: 10px; }
   .card-periodo { font-size: var(--t-13); }
@@ -1230,3 +1226,136 @@ html[data-tema="claro"] .nav-sub { box-shadow: 0 20px 50px rgba(0,0,0,.14); }
 .lateral { grid-template-columns: minmax(0, 1fr); min-width: 0; }
 .lateral > * { min-width: 0; }
 .filtro-ordem select { min-width: 0; max-width: 100%; }
+
+/* =========================================================================
+   v6: identidade "Agente Noir, lado Portal"
+   Brasília à noite, céu vermelho, imprensa e a tarja vermelha dos cards.
+   Irmão d'O Porão: mesmo chapéu, mesmo cuidado com textura, outra cor.
+   ========================================================================= */
+:root {
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --ceu: rgba(224, 36, 46, .2);
+  /* grão de filme sobre o preto */
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .055 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  /* pincelada vermelha, como a tarja dos olhos nos cards */
+  --pincel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 60' preserveAspectRatio='none'%3E%3Cpath d='M6 14 C60 4 120 12 180 7 C230 3 270 6 296 11 L292 50 C250 44 200 52 150 50 C100 48 50 56 4 50 Z' fill='%23e0242e'/%3E%3Cpath d='M40 50 L42 58 M128 50 L129 59 M226 49 L227 56' stroke='%23e0242e' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E");
+  --marca-fundo: var(--breu);
+}
+html[data-tema="claro"] {
+  --ceu: rgba(224, 36, 46, .12);
+  --grao: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+body { background-image: var(--grao); }
+
+/* Rótulo de imprensa: a "voz de telegrama" do site, em mono e caixa alta */
+.rotulo, .mt-periodo, .card-periodo, .novo-meta, .lc-ano, .vit-meta, .viz-ano, .tl-ano, .rel-periodo, .selo, .novo-tempo, .faixa {
+  font-family: var(--mono); font-stretch: 100%; letter-spacing: .08em; text-transform: uppercase;
+}
+.rotulo { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 var(--e4); font-size: var(--t-13); font-weight: 500; color: var(--papel-2); }
+.rotulo::before { content: ""; width: 10px; height: 10px; background: var(--nova-republica); flex: none; }
+.card-periodo, .novo-meta, .lc-ano, .viz-ano, .tl-ano { font-size: .75rem; font-weight: 500; }
+.vit-meta { font-size: .75rem; }
+.novo-tempo { font-size: .7rem; }
+.selo { font-size: .7rem; font-weight: 500; letter-spacing: .1em; border-radius: 2px; }
+
+/* Faixa de cima: liga o Portal ao Porão (só em telas largas; no celular o link fica no menu) */
+.faixa { border-bottom: 1px solid var(--grafite); background: var(--breu); font-size: .7rem; color: var(--chumbo); }
+.faixa-in { display: flex; align-items: center; gap: 10px; min-height: 32px; }
+.faixa-sep { color: var(--linha-ui); }
+.faixa-porao { margin-left: auto; color: var(--papel-2); text-decoration: none; display: inline-flex; align-items: center; min-height: 32px; border-bottom: 1px solid transparent; }
+.faixa-porao:hover { color: var(--papel); border-bottom-color: var(--papel); }
+@media (max-width: 960px) { .faixa { display: none; } }
+.menu-porao { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; margin-top: var(--e6); padding: var(--e4); border: 1px solid var(--linha-ui); border-radius: var(--r2); text-decoration: none; }
+.menu-porao span:first-child { font: 400 var(--t-22)/1.1 "Courier Prime", "Courier New", monospace; letter-spacing: .06em; text-transform: uppercase; }
+.menu-porao small { grid-column: 1; font-size: var(--t-13); color: var(--chumbo); }
+.menu-porao span:last-child { grid-column: 2; grid-row: 1 / span 2; color: var(--chumbo); }
+
+/* Marca: chapéu desenhado + nome */
+.marca-icone { width: 40px; height: 40px; color: var(--papel); flex: none; }
+.marca:hover .marca-tarja { fill: #ff2a35; }
+.marca-nome { font-size: 1.7rem; letter-spacing: .04em; }
+.rodape .marca-icone { width: 52px; height: 52px; }
+@media (max-width: 480px) { .marca-icone { width: 34px; height: 34px; } .marca-nome { font-size: 1.45rem; } }
+
+/* Tarja: o trecho que importa, pintado de vermelho */
+.tarja { position: relative; display: inline-block; padding: 0 .12em; margin: 0 -.06em; color: #fff; z-index: 0; white-space: nowrap; }
+.tarja::before { content: ""; position: absolute; inset: .12em -.06em -.02em; background: var(--pincel) center / 100% 100% no-repeat; z-index: -1; transform: rotate(-1.2deg); }
+@media (prefers-reduced-motion: no-preference) {
+  .tarja::before { animation: pintar .7s .25s cubic-bezier(.6,.1,.3,1) both; transform-origin: left center; }
+  @keyframes pintar { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+}
+
+/* Abertura: céu vermelho, horizonte do Congresso */
+.abertura { position: relative; overflow: hidden; background: radial-gradient(120% 70% at 78% -10%, var(--ceu), transparent 62%); }
+.abertura h1 { font-size: clamp(2.6rem, 5.8vw, 5rem); max-width: 13ch; }
+.abertura-texto .rotulo { margin-bottom: var(--e5); }
+.horizonte { display: block; width: 100%; max-width: 560px; height: auto; margin-top: var(--e6); color: var(--linha-ui); }
+.horizonte path:nth-child(4), .horizonte path:nth-child(7) { color: var(--papel-2); }
+@media (max-width: 600px) { .horizonte { margin-top: var(--e5); max-width: none; } }
+
+/* Carimbo do desfecho, nas fotos de destaque */
+.vit-foto, .mt-img { position: relative; }
+.carimbo { position: absolute; right: 12px; top: 14px; z-index: 2; padding: 5px 12px 4px; border: 2.5px solid currentColor; border-radius: 3px; box-shadow: inset 0 0 0 1.5px rgba(0,0,0,.55), 0 0 0 1px rgba(0,0,0,.35); background: rgba(10,10,10,.62); color: var(--sangue-texto); font: 800 1.05rem/1 var(--sans); font-stretch: 75%; letter-spacing: .14em; text-transform: uppercase; transform: rotate(-7deg); pointer-events: none;
+  -webkit-mask: var(--grao), linear-gradient(#000, #000); }
+.carimbo-politico { color: #ff9a52; }
+.carimbo-absolvicao, .carimbo-anulacao, .carimbo-arquivado { color: #d6d1c8; }
+.carimbo-sem-punicao { color: #e2cf9f; }
+.mt-img .carimbo { right: 18px; top: 20px; font-size: 1.4rem; padding: 7px 16px 6px; }
+@media (max-width: 600px) { .vit-foto .carimbo { font-size: .7rem; padding: 3px 6px; right: 6px; top: 8px; border-width: 2px; } }
+@media (prefers-reduced-motion: no-preference) {
+  .mt-img .carimbo, .vit:not([hidden]) .carimbo { animation: carimbar .35s .5s cubic-bezier(.2,1.6,.4,1) both; }
+  @keyframes carimbar { from { opacity: 0; transform: rotate(-14deg) scale(1.7); } to { opacity: 1; transform: rotate(-7deg) scale(1); } }
+}
+
+/* Fotos: recorte de imprensa, com fio fino em volta */
+.card-foto, .novo-foto, .vit-foto, .mt-img img { border-radius: 3px; box-shadow: inset 0 0 0 1px rgba(255,255,255,.06); }
+.card-foto, .novo-foto, .vit-foto { position: relative; }
+.card-foto::after, .novo-foto::after, .vit-foto::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(236,231,223,.08); pointer-events: none; }
+.card-foto img, .novo-foto img, .vit-foto img { height: 100%; }
+.lc-img { display: block; overflow: hidden; flex: none; }
+.lc-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 14%; }
+.trilha-lista img, .cmp-caso img { height: auto; }
+
+/* Títulos de bloco: número de seção em mono, como pauta de jornal */
+main { counter-reset: bloco; }
+.bloco { counter-increment: bloco; }
+.bloco-topo h2::before { content: "Nº " counter(bloco, decimal-leading-zero); display: block; width: max-content; margin-bottom: var(--e3); padding-top: var(--e2); border-top: 3px solid var(--acento); font: 500 .75rem/1 var(--mono); letter-spacing: .12em; color: var(--acento-texto); }
+.bloco-int .bloco-topo h2::before { border-top-color: var(--internacional); color: var(--internacional-texto); }
+.cabeca-lista h1::before { content: ""; display: block; width: 48px; height: 4px; margin-bottom: var(--e4); background: var(--pincel) center / 100% 100% no-repeat; }
+
+/* Matéria: rótulo de dossiê */
+.mt-periodo { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; font-size: .8rem; font-weight: 500; color: var(--acento-texto); }
+.mt-periodo span + span::before { content: "·"; margin-right: 14px; color: var(--chumbo); }
+.mt-dossie { color: var(--papel); background: var(--acento); color: #fff; padding: 3px 8px 2px; }
+.sec-internacional .mt-dossie { color: #000; }
+.materia-topo { background: radial-gradient(90% 80% at 85% -20%, var(--ceu), transparent 60%); }
+
+/* Para começar: duas colunas em telas largas */
+@media (min-width: 1100px) {
+  .lista-casos { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--e7); border-top: 0; }
+  .lista-casos .linha-caso { border-top: 1px solid var(--grafite); border-bottom: 0; grid-template-columns: 96px minmax(0, 1fr) 84px; }
+  .lista-casos .lc-img { width: 84px; height: 105px; }
+}
+
+/* Rodapé: lema com a tarja e beira rasgada */
+.rodape { border-top: 0; padding-top: 0; }
+.rodape-lema { position: relative; margin-bottom: var(--e7); padding: var(--e8) 0 var(--e7); background: var(--carvao) var(--grao); }
+.rodape-lema::before { content: ""; position: absolute; left: 0; right: 0; top: -14px; height: 15px; background: var(--carvao);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 15' preserveAspectRatio='none'%3E%3Cpath d='M0 15 L0 8 L9 5 L15 9 L24 4 L33 7 L41 3 L50 7 L57 5 L66 9 L74 3 L85 6 L92 2 L101 8 L110 5 L118 7 L127 3 L136 6 L144 4 L153 9 L162 3 L170 7 L179 2 L188 7 L196 5 L205 9 L213 3 L222 7 L231 3 L239 8 L248 5 L257 7 L265 2 L274 6 L283 4 L291 9 L300 3 L308 7 L317 3 L326 8 L334 5 L343 9 L351 3 L360 7 L369 3 L377 7 L386 5 L394 8 L400 6 L400 15 Z'/%3E%3C/svg%3E") 0 0 / 100% 100%;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 15' preserveAspectRatio='none'%3E%3Cpath d='M0 15 L0 8 L9 5 L15 9 L24 4 L33 7 L41 3 L50 7 L57 5 L66 9 L74 3 L85 6 L92 2 L101 8 L110 5 L118 7 L127 3 L136 6 L144 4 L153 9 L162 3 L170 7 L179 2 L188 7 L196 5 L205 9 L213 3 L222 7 L231 3 L239 8 L248 5 L257 7 L265 2 L274 6 L283 4 L291 9 L300 3 L308 7 L317 3 L326 8 L334 5 L343 9 L351 3 L360 7 L369 3 L377 7 L386 5 L394 8 L400 6 L400 15 Z'/%3E%3C/svg%3E") 0 0 / 100% 100%; }
+.rl-in { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--e5) var(--e7); align-items: end; }
+.rl-t { margin: 0; font: 800 clamp(2.2rem, 5vw, 4.2rem)/1 var(--sans); font-stretch: 72%; text-transform: uppercase; color: var(--papel); text-wrap: balance; }
+.rl-d { margin: 0; max-width: 46ch; font: 400 var(--t-19)/1.55 var(--serif); color: var(--papel-2); }
+.rl-d a { color: var(--papel); text-decoration-color: var(--acento); text-underline-offset: 4px; }
+@media (max-width: 760px) { .rl-in { grid-template-columns: 1fr; } .rodape-lema { padding: var(--e7) 0 var(--e6); } }
+
+/* Tema claro: a tarja e o carimbo continuam legíveis */
+html[data-tema="claro"] .carimbo { background: rgba(247,243,236,.86); box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.6); }
+html[data-tema="claro"] .carimbo-absolvicao, html[data-tema="claro"] .carimbo-anulacao, html[data-tema="claro"] .carimbo-arquivado { color: #4a4640; }
+html[data-tema="claro"] .carimbo-sem-punicao { color: #7a6534; }
+html[data-tema="claro"] .carimbo-politico { color: #a24a0c; }
+html[data-tema="claro"] .card-foto::after, html[data-tema="claro"] .novo-foto::after, html[data-tema="claro"] .vit-foto::after { box-shadow: inset 0 0 0 1px rgba(0,0,0,.08); }
+@media print { .faixa, .rodape-lema, .horizonte, .carimbo { display: none !important; } }
+.abertura-texto .rotulo { font: 500 var(--t-13)/1.3 var(--mono); color: var(--papel-2); max-width: none; }
+.mt-img { overflow: hidden; border-radius: 3px; }
+.mt-img img { height: auto; }

@@ -41,7 +41,7 @@
 
   {{ range $todas }}{{ $pg := . }}{{ $p := partial "partes.html" . }}{{ $slug := .File.ContentBaseName }}
   <template data-cmp="{{ $slug }}">
-    <div data-campo="cabeca"><a class="cmp-caso sec-{{ .Section }}" href="{{ .RelPermalink }}">{{ with .Params.image }}<img src="{{ (print "img/thumbs/" .) | relURL }}" alt="" width="560" height="700">{{ end }}<span class="cmp-nome">{{ $p.caso }}</span>{{ with $p.sub }}<span class="cmp-sub">{{ . }}</span>{{ end }}</a></div>
+    <div data-campo="cabeca"><a class="cmp-caso sec-{{ .Section }}" href="{{ .RelPermalink }}">{{ with .Params.image }}{{ partial "foto.html" (dict "img" . "ws" (slice 240 360 480) "sizes" "168px") }}{{ end }}<span class="cmp-nome">{{ $p.caso }}</span>{{ with $p.sub }}<span class="cmp-sub">{{ . }}</span>{{ end }}</a></div>
     <div data-campo="secao">{{ .CurrentSection.Title }}</div>
     <div data-campo="periodo">{{ .Params.periodo | default "Não informado" }}</div>
     <div data-campo="onde">{{ if eq .Section "internacional" }}Fora do Brasil{{ else }}{{ with .Params.uf }}{{ index $ufs (upper .) }}{{ else }}Federal: governo, Congresso ou estatais{{ end }}{{ end }}</div>
