@@ -193,8 +193,10 @@
       <a class="link-forte" href="{{ .RelPermalink }}">Ver a seção Internacional</a>
     </header>
   </div>
-  <div class="trilho" tabindex="0" aria-label="Casos internacionais">
-    {{ range .RegularPages }}{{ partial "card.html" . }}{{ end }}
+  <div class="wrap">
+    <div class="grade grade-int">
+      {{ range first 6 .RegularPages.ByDate.Reverse }}{{ partial "card.html" . }}{{ end }}
+    </div>
   </div>
 </section>
 {{ end }}
