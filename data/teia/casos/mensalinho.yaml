@@ -1,0 +1,58 @@
+# Teia do caso: Mensalinho
+caso: mensalinho
+nome: Mensalinho
+periodo:
+  - 2002
+  - 2020
+resumo: O presidente da Câmara, Severino Cavalcanti, foi acusado em 2005 de cobrar uma mesada do dono do restaurante da Casa para manter a concessão. Renunciou antes da cassação.
+desfecho: Denunciado por concussão em 2007, nunca foi julgado. Eleito prefeito de João Alfredo em 2008, morreu em 2020.
+novas_entidades:
+  - id: severino
+    nome: Severino Cavalcanti
+    tipo: pessoa
+    desc: Deputado do PP de Pernambuco, presidente da Câmara em 2005. Renunciou em setembro daquele ano.
+  - id: sebastiao-buani
+    nome: Sebastião Buani
+    tipo: pessoa
+    desc: Dono do restaurante Fiorella, na Câmara. Disse ter pago uma mesada a Severino.
+  - id: gonzaga-patriota
+    nome: Gonzaga Patriota
+    tipo: pessoa
+    desc: Deputado do PSB de Pernambuco. Citado por Buani na renovação do contrato; negou ter recebido dinheiro.
+  - id: greenhalgh
+    nome: Luiz Eduardo Greenhalgh
+    tipo: pessoa
+    desc: Deputado do PT, derrotado por Severino na eleição para a presidência da Câmara em 2005.
+envolvidos:
+  - id: severino
+    tipo: cassado
+    rel: Renunciou em 2005 para escapar da cassação; denunciado por concussão em 2007, morreu sem julgamento
+  - id: sebastiao-buani
+    tipo: vinculo
+    rel: Dono do restaurante; confirmou os pagamentos e apresentou o cheque descontado no gabinete de Severino
+  - id: gonzaga-patriota
+    tipo: citado
+    rel: Segundo Buani, ajudou na renovação do contrato; negou ter recebido dinheiro
+  - id: camara
+    tipo: vinculo
+    rel: Onde funcionava o restaurante Fiorella, e que Severino presidia em 2005
+  - id: policia-federal
+    tipo: agente
+    rel: Investigou o caso em 2005 e disse ter indícios da cobrança
+  - id: stf
+    tipo: agente
+    rel: Cuidava do caso até a renúncia, que tirou o foro de Severino
+  - id: greenhalgh
+    tipo: vinculo
+    rel: Candidato do governo derrotado por Severino em 2005
+  - id: pp
+    tipo: vinculo
+    rel: Partido de Severino
+  - id: lula
+    tipo: vinculo
+    rel: Presidente da República; o candidato do governo perdeu para Severino
+relacionados:
+  - caso: mensalao
+    rel: O mensalinho estourou no meio do Mensalão, em 2005, e herdou o nome
+  - caso: jose-riva
+    rel: Outro mensalinho, o da Assembleia de Mato Grosso, contado na delação de Riva

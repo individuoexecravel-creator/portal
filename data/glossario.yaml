@@ -153,3 +153,11 @@
   nome: "Patrimônio de afetação"
   termos: ["patrimônio de afetação"]
   def: "Regra criada em 2004 que separa o dinheiro de cada empreendimento imobiliário do caixa da construtora. Se a empresa quebrar, o dinheiro pago pelos compradores de um prédio continua reservado para aquela obra."
+- id: baixo-clero
+  nome: "Baixo clero"
+  termos: ["baixo clero"]
+  def: "Apelido dos deputados com pouca projeção, que não ocupam cargos de liderança e raramente aparecem no noticiário. Juntos, porém, somam a maioria dos votos da Câmara."
+- id: ficha-limpa
+  nome: "Lei da Ficha Limpa"
+  termos: ["Lei da Ficha Limpa", "Ficha Limpa"]
+  def: "Lei de 2010 que torna inelegível por oito anos quem foi condenado por um tribunal colegiado, cassado ou que renunciou ao mandato para fugir de um processo de cassação."
